@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PsicoFunnel | Neuroventas que Convierten</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    /* ----------- RESET & BASE ----------- */
+    /* =============================================================
+       1. RESET & BASE
+    ============================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background-color: #ffffff;
+      font-family: "Outfit", sans-serif;
+      background: #ffffff;
       color: #0a0f1c;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ----------- HEADER ----------- */
+    /* =============================================================
+       2. HEADER
+    ============================================================= */
     header {
-      background-color: #0a0f1c;
+      background: #0a0f1c;
       color: #ffffff;
       padding: 60px 20px 40px;
       text-align: center;
     }
     .header-top {
       display: grid;
-      grid-template-columns: 1fr auto 1fr; /* título – logo – espacio */
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       margin-bottom: 25px;
     }
@@ -33,12 +50,9 @@
       text-align: left;
     }
     .header-logo {
-      width: 140px;
+      width: 70px;
       height: auto;
       justify-self: center;
-    }
-    .header-spacer {
-      /* mantiene la estructura de tres columnas sin contenido */
     }
     .header-content h1 {
       font-size: 2.6rem;
@@ -50,7 +64,7 @@
       margin: 0 0 35px;
     }
     .cta-button {
-      background-color: #00a6e0;
+      background: #00a6e0;
       color: #0a0f1c;
       padding: 15px 32px;
       border: none;
@@ -58,16 +72,18 @@
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease;
       box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
     }
     .cta-button:hover {
-      background-color: #33c0f3;
+      background: #33c0f3;
       box-shadow: 0 0 20px rgba(0, 166, 224, 0.6);
       transform: translateY(-2px);
     }
 
-    /* ----------- GLOBAL FORM INPUTS ----------- */
+    /* =============================================================
+       3. GLOBAL FORM INPUTS
+    ============================================================= */
     input[type="email"],
     input[type="text"] {
       width: 100%;
@@ -75,7 +91,7 @@
       padding: 12px 14px;
       border-radius: 12px;
       border: none;
-      background-color: rgba(0, 166, 224, 0.1);
+      background: rgba(0, 166, 224, 0.1);
       color: #0a0f1c;
       font-size: 1rem;
       outline: none;
@@ -87,24 +103,26 @@
     }
     input[type="email"]:focus,
     input[type="text"]:focus {
-      background-color: rgba(0, 166, 224, 0.25);
+      background: rgba(0, 166, 224, 0.25);
     }
 
-    /* ----------- SECTIONS ----------- */
+    /* =============================================================
+       4. SECTIONS & LAYOUT
+    ============================================================= */
     section {
       padding: 100px 20px 60px;
       max-width: 1000px;
       margin: auto;
     }
     .shadow-box {
-      background-color: #e5f6ff;
+      background: #e5f6ff;
       padding: 45px 40px;
       border-radius: 14px;
       box-shadow: 0 8px 30px rgba(0, 166, 224, 0.18);
       margin-top: 40px;
     }
 
-    /* BENEFICIOS (4 cubos) */
+    /* BENEFITS GRID */
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -112,25 +130,25 @@
       text-align: center;
     }
     .benefit-card {
-      background-color: #ffffff;
+      background: #ffffff;
       padding: 30px 25px;
       border-radius: 18px;
       border: 2px solid transparent;
       transition: all 0.28s ease;
     }
     .benefit-card:hover {
-      background-color: #0a0f1c;
+      background: #0a0f1c;
       color: #ffffff;
       border-color: #00a6e0;
     }
 
-    /* NEWSLETTER SECTION */
+    /* NEWSLETTER */
     .newsletter-section {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 35px;
-      background-color: #0a0f1c;
+      background: #0a0f1c;
       color: #fff;
       border-radius: 14px;
     }
@@ -144,7 +162,7 @@
 
     /* FOOTER */
     footer {
-      background-color: #0a0f1c;
+      background: #0a0f1c;
       text-align: center;
       padding: 50px 20px 0;
       color: #aaa;
@@ -153,7 +171,7 @@
     }
     .ticker-container {
       margin-top: 35px;
-      background-color: #00a6e0;
+      background: #00a6e0;
       overflow: hidden;
       white-space: nowrap;
       height: 60px;
@@ -173,149 +191,209 @@
       font-size: 1.15rem;
     }
     @keyframes tickerMove {
-      0%   { transform: translateX(0);   }
+      0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+
+    /* =============================================================
+       5. RESPONSIVE BREAKPOINTS
+    ============================================================= */
+    @media (max-width: 960px) {
+      header { padding: 50px 15px 30px; }
+      .header-content h1 { font-size: 2.2rem; }
+      section { padding: 80px 15px 50px; }
+      .benefits-grid { gap: 18px; }
+    }
+    @media (max-width: 768px) {
+      .header-top { grid-template-columns: auto auto auto; }
+      .header-title { text-align: center; font-size: 1.6rem; }
+      .header-logo { width: 60px; }
+      .header-content h1 { font-size: 1.9rem; line-height: 1.3; }
+      .header-content p { font-size: 1rem; margin-bottom: 28px; }
+      .cta-button { padding: 14px 28px; font-size: 0.95rem; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .newsletter-section { flex-direction: column; text-align: center; padding: 35px 25px; }
+      .newsletter-section img { width: 180px; }
+    }
+    @media (max-width: 480px) {
+      .header-title { font-size: 1.4rem; }
+      .header-logo  { width: 50px; }
+      .header-content h1 { font-size: 1.6rem; }
+      .header-content p  { font-size: 0.95rem; }
+      section { padding: 60px 15px 40px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefit-card { padding: 25px 20px; }
+      .newsletter-section img { width: 160px; }
+      .shadow-box { padding: 35px 25px; }
     }
   </style>
 </head>
+
 <body>
-  <!-- ===== HEADER ===== -->
+  <!-- ========================================================= HEADER ========================================================= -->
   <header>
     <div class="header-top">
       <span class="header-title">PsicoFunnel</span>
-      <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo">
-      <span class="header-spacer"></span>
+      <img src="assets/logo-psicofunnel.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+      <span></span>
     </div>
+
     <div class="header-content">
       <h1>Neuroventas aplicadas a embudos que convierten</h1>
       <p>Un método de marketing estratégico basado en psicología del consumidor, diseñado para multiplicar tus ventas con elegancia e inteligencia.</p>
-      <button class="cta-button" onclick="document.getElementById('ebook').scrollIntoView({behavior: 'smooth'})">Accedé al recurso gratuito</button>
+      <button class="cta-button" onclick="document.getElementById('ebook').scrollIntoView({behavior:'smooth'})">
+        Accedé al recurso gratuito
+      </button>
     </div>
   </header>
 
-  <!-- ===== MAIN ===== -->
+  <!-- ========================================================= MAIN ========================================================= -->
   <main>
-    <!-- ===== EBOOK SECTION ===== -->
+
+    <!-- =================== EBOOK SECTION =================== -->
     <section id="ebook" class="shadow-box">
       <h2>📘 Ebook gratuito: Los 7 sesgos psicológicos que activan ventas</h2>
       <p>Basado en mi último video, este recurso te enseña cómo usar la mente del consumidor a tu favor. Es simple, aplicable y 100% gratuito.</p>
+
       <form id="form-ebook">
-        <input type="email" name="email" placeholder="Tu email para descargarlo" required>
-        <input type="hidden" name="origen" value="ebook">
+        <input type="email" name="email" placeholder="Tu email para descargarlo" required />
+        <input type="hidden" name="origen" value="ebook" />
         <button class="cta-button" type="submit">Descargar ebook</button>
       </form>
     </section>
 
-    <!-- ===== CONSULTORÍA SECTION ===== -->
+    <!-- ================= CONSULTORÍA SECTION ================ -->
     <section id="consultoria" class="shadow-box">
       <h2>Consultoría gratuita + video explicativo</h2>
       <p>Descubrí en 3 minutos cómo mejorar tu embudo actual con psicología de la decisión.</p>
-      <video src="vsl-psicofunnel.mp4" controls style="width:100%; border-radius: 12px; margin: 20px 0;"></video>
+
+      <video
+        src="vsl-psicofunnel.mp4"
+        controls
+        style="width: 100%; border-radius: 12px; margin: 20px 0"
+        poster="assets/vsl-cover.jpg"
+      ></video>
+
       <form id="form-consultoria">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="negocio" placeholder="Tu negocio o cuenta" required>
-        <input type="hidden" name="origen" value="consultoria">
+        <input type="text"  name="nombre"   placeholder="Nombre"               required />
+        <input type="email" name="email"    placeholder="Email"                required />
+        <input type="text"  name="negocio"  placeholder="Tu negocio o cuenta"  required />
+        <input type="hidden" name="origen" value="consultoria" />
         <button class="cta-button" type="submit">Agendar mi sesión</button>
       </form>
     </section>
 
-    <!-- ===== BENEFITS SECTION ===== -->
+    <!-- =================== BENEFITS SECTION ================= -->
     <section class="shadow-box">
-      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 45px;">
-        PsicoFunnel no solo mejora tus ventas.<br>
-        <span style="color:#00a6e0;">Transforma todas las áreas de tu vida</span>.
+      <h2 style="text-align:center;font-size:2rem;margin-bottom:45px">
+        PsicoFunnel no solo mejora tus ventas.<br />
+        <span style="color:#00a6e0">Transforma todas las áreas de tu vida</span>.
       </h2>
+
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div style="font-size: 2.2rem;">💼</div>
+          <div style="font-size: 2.2rem">💼</div>
           <h3>Vida profesional</h3>
           <p>Aprendé a influir con autoridad y convertite en alguien irremplazable para tu mercado.</p>
         </div>
+
         <div class="benefit-card">
-          <div style="font-size: 2.2rem;">🧠</div>
+          <div style="font-size: 2.2rem">🧠</div>
           <h3>Comunicación personal</h3>
           <p>Transmití ideas con claridad, carisma y estrategia. Nunca más te van a ignorar.</p>
         </div>
+
         <div class="benefit-card">
-          <div style="font-size: 2.2rem;">❤️</div>
+          <div style="font-size: 2.2rem">❤️</div>
           <h3>Tus relaciones</h3>
           <p>Cae bien, conecta desde lo emocional y generá confianza real en minutos.</p>
         </div>
+
         <div class="benefit-card">
-          <div style="font-size: 2.2rem;">💸</div>
+          <div style="font-size: 2.2rem">💸</div>
           <h3>Ventas y dinero</h3>
           <p>Usá los sesgos psicológicos para vender más, sin sentirte agresivo o forzado.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== NEWSLETTER SECTION ===== -->
+    <!-- =================== NEWSLETTER SECTION =============== -->
     <section class="shadow-box newsletter-section">
-      <img src="img/newsletter-image.png" alt="Imagen Fraternidad">
-      <div style="flex:1; min-width:240px;">
+      <img src="assets/newsletter-image.jpg" alt="Imagen Fraternidad" loading="lazy" />
+
+      <div style="flex: 1; min-width: 240px">
         <h2>📩 Unite a <strong>La Fraternidad</strong></h2>
         <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
       </div>
+
       <form id="form-newsletter" class="newsletter-form">
-        <input type="email" name="email" placeholder="Tu email para sumarte" required>
-        <input type="hidden" name="origen" value="newsletter">
-        <button class="cta-button" type="submit" style="width:100%;">Quiero unirme</button>
+        <input type="email" name="email" placeholder="Tu email para sumarte" required />
+        <input type="hidden" name="origen" value="newsletter" />
+        <button class="cta-button" type="submit" style="width: 100%">Quiero unirme</button>
       </form>
     </section>
 
-    <!-- ===== ABOUT SECTION ===== -->
-    <section class="shadow-box" style="margin-bottom: 85px;">
+    <!-- =================== ABOUT SECTION ==================== -->
+    <section class="shadow-box" style="margin-bottom: 85px">
       <h2>¿Quién está detrás de PsicoFunnel?</h2>
       <p>Soy Benjamín Alegre. Ayudo a creadores y marcas personales a vender más sin sacrificar su estilo ni su integridad. PsicoFunnel es mi metodología, y puede ser la tuya también.</p>
-      <div style="margin-top: 25px; text-align: center;">
-        <img src="foto-benjamin.jpg" alt="Foto de Benjamín Alegre" style="width: 170px; height: 170px; object-fit: cover; border-radius: 100px;">
+
+      <div style="margin-top: 25px; text-align: center">
+        <img
+          src="assets/foto-benjamin.jpg"
+          alt="Foto de Benjamín Alegre"
+          width="170"
+          height="170"
+          style="object-fit: cover; border-radius: 100px"
+          loading="lazy"
+        />
       </div>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ========================================================= FOOTER ========================================================= -->
   <footer>
     <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+
     <div class="ticker-container">
       <div class="ticker">
-        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span
+        ><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
       </div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS ===== -->
+  <!-- ========================================================= SCRIPTS ========================================================= -->
   <script>
     /**
-     * Conecta un formulario con un webhook de Make/Make.com (Integromat)
+     * Conecta un formulario con un webhook de Make/Integromat
      * @param {string} formId - ID del formulario
      * @param {string} webhookUrl - URL del webhook
      */
-    function enviarFormulario(formId, webhookUrl) {
-      const formElement = document.getElementById(formId);
-      if (!formElement) {
-        console.warn(`Formulario con id '${formId}' no encontrado. Verificar el HTML.`);
-        return; // evita error si falta
+    function conectarFormulario(formId, webhookUrl) {
+      const formulario = document.getElementById(formId);
+      if (!formulario) {
+        console.warn("Formulario no encontrado:", formId);
+        return;
       }
-
-      formElement.addEventListener("submit", function (e) {
+      formulario.addEventListener("submit", function (e) {
         e.preventDefault();
         const formData = new FormData(this);
 
         fetch(webhookUrl, {
           method: "POST",
-          body: formData
+          body: formData,
         })
-          .then(response => {
-            if (response.ok) {
+          .then((res) => {
+            if (res.ok) {
               alert("¡Formulario enviado con éxito!");
               this.reset();
             } else {
               alert("Hubo un problema. Intentá nuevamente.");
             }
           })
-          .catch(error => {
-            console.error("Error:", error);
+          .catch((err) => {
+            console.error("Error:", err);
             alert("Error al enviar el formulario.");
           });
       });
@@ -323,22 +401,11 @@
 
     const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
 
-    // Ejecutamos sólo cuando todo el DOM está listo
     window.addEventListener("DOMContentLoaded", () => {
-      enviarFormulario("form-ebook", WEBHOOK_URL);
-      enviarFormulario("form-newsletter", WEBHOOK_URL);
-      enviarFormulario("form-consultoria", WEBHOOK_URL);
+      conectarFormulario("form-ebook", WEBHOOK_URL);
+      conectarFormulario("form-consultoria", WEBHOOK_URL);
+      conectarFormulario("form-newsletter", WEBHOOK_URL);
     });
   </script>
-
-  <!-- ===== PLACEHOLDER PARA ALCANZAR 280+ LÍNEAS ===== -->
-  <!-- extra línea 1 -->
-  <!-- extra línea 2 -->
-  <!-- extra línea 3 -->
-  <!-- extra línea 4 -->
-  <!-- extra línea 5 -->
-  <!-- extra línea 6 -->
-  <!-- extra línea 7 -->
-  <!-- extra línea 8 -->
-  <!-- extra línea
-
+</body>
+</html>
