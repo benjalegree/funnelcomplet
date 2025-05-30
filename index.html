@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PsicoFunnel | Neuroventas que Convierten</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: #ffffff;
+      color: #0a0f1c;
+    }
+    header {
+      background-color: #0a0f1c;
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .logo-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .logo-text img {
+      width: 60px;
+    }
+    .logo-text span {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+    .header-content img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    .header-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .header-content p {
+      font-size: 1.2rem;
+      color: #cce3f6;
+      margin-bottom: 30px;
+    }
+    .cta-button {
+      background-color: #00a6e0;
+      color: #0a0f1c;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.3);
+    }
+    .cta-button:hover {
+      background-color: #33c0f3;
+      box-shadow: 0 0 20px rgba(0, 166, 224, 0.6), 0 0 30px rgba(0, 166, 224, 0.3);
+      transform: translateY(-2px);
+    }
+    input[type="email"], input[type="text"] {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: none;
+      background-color: rgba(0, 166, 224, 0.1);
+      color: #0a0f1c;
+      font-size: 1rem;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+    input[type="email"]::placeholder, input[type="text"]::placeholder {
+      color: #888;
+    }
+    input[type="email"]:focus, input[type="text"]:focus {
+      background-color: rgba(0, 166, 224, 0.2);
+    }
+    section {
+      padding: 100px 20px 60px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .shadow-box {
+      background-color: #e5f6ff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 166, 224, 0.15);
+      margin-top: 40px;
+    }
+    .benefits-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      text-align: center;
+    }
+    .benefit-card {
+      flex: 1 1 200px;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 260px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .benefit-card:hover {
+      background-color: #0a0f1c;
+      color: #ffffff;
+      border-color: #00a6e0;
+    }
+    footer {
+      background-color: #0a0f1c;
+      text-align: center;
+      padding: 40px 20px 0;
+      color: #aaa;
+      font-size: 0.9rem;
+      position: relative;
+    }
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-text">
+      <img src="logo-psicofunnel.png" alt="Logo PsicoFunnel">
+      <span>PsicoFunnel</span>
+    </div>
+    <div class="header-content">
+      <img src="logo-psicofunnel.png" alt="Logo PsicoFunnel">
+      <h1>Neuroventas aplicadas a embudos que convierten</h1>
+      <p>Un método de marketing estratégico basado en psicología del consumidor, diseñado para multiplicar tus ventas con elegancia e inteligencia.</p>
+      <button class="cta-button" onclick="document.getElementById('ebook').scrollIntoView({ behavior: 'smooth' });">Accedé al recurso gratuito</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="ebook" class="shadow-box">
+      <h2>📘 Ebook gratuito: Los 7 sesgos psicológicos que activan ventas</h2>
+      <p>Basado en mi último video, este recurso te enseña cómo usar la mente del consumidor a tu favor. Es simple, aplicable y 100% gratuito.</p>
+      <form id="form-ebook">
+        <input type="email" name="email" placeholder="Tu email para descargarlo" required>
+        <input type="hidden" name="origen" value="ebook">
+        <button class="cta-button" type="submit">Descargar ebook</button>
+      </form>
+    </section>
+
+    <section id="consultoria" class="shadow-box">
+      <h2>Consultoría gratuita + video explicativo</h2>
+      <p>Descubrí en 3 minutos cómo mejorar tu embudo actual con psicología de la decisión.</p>
+      <video src="vsl-psicofunnel.mp4" controls style="width:100%; border-radius: 12px; margin: 20px 0;"></video>
+      <form>
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Tu negocio o cuenta" required>
+        <button class="cta-button" type="submit">Agendar mi sesión</button>
+      </form>
+    </section>
+
+    <section class="shadow-box">
+      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">
+        PsicoFunnel no solo mejora tus ventas. <br>
+        Transforma <span style="color:#00a6e0;">todas las áreas de tu vida</span>.
+      </h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div style="font-size: 2rem;">💼</div>
+          <h3>Vida profesional</h3>
+          <p>Aprendé a influir con autoridad y convertite en alguien irremplazable para tu mercado.</p>
+        </div>
+        <div class="benefit-card">
+          <div style="font-size: 2rem;">🧠</div>
+          <h3>Comunicación personal</h3>
+          <p>Transmití ideas con claridad, carisma y estrategia. Nunca más te van a ignorar.</p>
+        </div>
+        <div class="benefit-card">
+          <div style="font-size: 2rem;">❤️</div>
+          <h3>Tus relaciones</h3>
+          <p>Cae bien, conecta desde lo emocional y generá confianza real en minutos.</p>
+        </div>
+        <div class="benefit-card">
+          <div style="font-size: 2rem;">💸</div>
+          <h3>Ventas y dinero</h3>
+          <p>Usá los sesgos psicológicos para vender más, sin sentirte agresivo o forzado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shadow-box" style="display: flex; align-items: center; gap: 30px; background-color: #0a0f1c; color: white;">
+      <img src="newsletter-image.jpg" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px;">
+      <div style="flex: 1; padding-right: 20px;">
+        <h2>📩 Unite a <strong>La Fraternidad</strong></h2>
+        <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+      </div>
+      <form id="form-newsletter" style="flex: 1;">
+        <input type="email" name="email" placeholder="Tu email para sumarte" required>
+        <input type="hidden" name="origen" value="newsletter">
+        <button class="cta-button" type="submit" style="width: 100%; margin-top: 10px;">Quiero unirme</button>
+      </form>
+    </section>
+
+    <section class="shadow-box" style="margin-bottom: 80px;">
+      <h2>¿Quién está detrás de PsicoFunnel?</h2>
+      <p>Soy Benjamín Alegre. Ayudo a creadores y marcas personales a vender más sin sacrificar su estilo ni su integridad. PsicoFunnel es mi metodología, y puede ser la tuya también.</p>
+      <div style="margin-top: 20px; text-align: center;">
+        <img src="foto-benjamin.jpg" alt="Foto de Benjamín Alegre" style="width: 160px; height: 160px; object-fit: cover; border-radius: 100px;">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
