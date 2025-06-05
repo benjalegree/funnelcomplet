@@ -373,34 +373,41 @@
      * @param {string} formId - ID del formulario
      * @param {string} webhookUrl - URL del webhook
      */
-    function conectarFormulario(formId, webhookUrl) {
-      const formulario = document.getElementById(formId);
-      if (!formulario) {
-        console.warn("Formulario no encontrado:", formId);
-        return;
-      }
-      formulario.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
+function conectarFormulario(formId, webhookUrl) {
+  const formulario = document.getElementById(formId);
+  if (!formulario) {
+    console.warn("Formulario no encontrado:", formId);
+    return;
+  }
 
-        fetch(webhookUrl, {
-          method: "POST",
-          body: formData,
-        })
-          .then((res) => {
-            if (res.ok) {
-              alert("¡Formulario enviado con éxito!");
-              this.reset();
-            } else {
-              alert("Hubo un problema. Intentá nuevamente.");
-            }
-          })
-          .catch((err) => {
-            console.error("Error:", err);
-            alert("Error al enviar el formulario.");
-          });
-      });
-    }
+  formulario.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch(webhookUrl, {
+      method: "POST",
+      body: formData,
+    })
+    .then((res) => {
+      if (res.ok) {
+        // 👇 ACA VA LA REDIRECCIÓN
+        if (formId === "form-ebook") {
+          window.location.href = "gracias.html";
+        } else {
+          alert("¡Formulario enviado con éxito!");
+          this.reset();
+        }
+      } else {
+        alert("Hubo un problema. Intentá nuevamente.");
+      }
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+      alert("Error al enviar el formulario.");
+    });
+  });
+}
+
 
     const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
 
