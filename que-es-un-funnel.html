@@ -127,6 +127,30 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: #555;
+  /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+
+/* 1. Todas las imágenes y videos se encogen dentro del contenedor */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;          /* evita que la imagen se salga con línea base */
+}
+
+/* 2. Evita cualquier desplazamiento horizontal inesperado */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 3. Índice: columnas auto-fit y texto que pueda partirse en móviles */
+@media (max-width: 600px) {
+  nav#indice ol {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  nav#indice a {
+    overflow-wrap: anywhere; /* parte el anchor si es muy largo */
+  }
+}
+
 }</style>
 
   <!-- ========================================================= -->
