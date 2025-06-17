@@ -150,20 +150,35 @@ html, body {
     overflow-wrap: anywhere; /* parte el anchor si es muy largo */
   }
 }
-/* --- Centro perfecto para la imagen "¿Qué es un funnel?" --- */
-.pf-img-separada,
-.pf-blog-img {              /* usa la clase que estés empleando */
-  text-align: center;       /* centra el <figure> y su caption */
+/* ======= CENTRADO ROBUSTO DE LA IMAGEN SEPARADA ======= */
+figure.pf-img-separada{
+  /* espacio alrededor para no pegarse al texto */
+  margin: 40px auto;
+  /* limita el ancho si quieres (opcional) */
+  max-width: 1000px;      /* igual al contenedor principal */
+  text-align: center;     /* centra el pie de foto */
 }
 
-.pf-img-separada img,
-.pf-blog-img img {
-  display: block;           /* evita espacio inline */
-  margin-left: auto;        /* centra horizontalmente */
-  margin-right: auto;
-  max-width: 100%;          /* responsive */
-  height: auto;
+figure.pf-img-separada picture{
+  display: block;         /* se convierte en bloque */
+  margin: 0 auto;         /* ¡centrado real del <picture>! */
+  max-width: 100%;
 }
+
+figure.pf-img-separada img{
+  width: 100%;            /* ocupa el ancho del <picture> */
+  height: auto;
+  display: block;         /* quita espacio inline Fantasma */
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,166,224,.15);
+}
+
+figure.pf-img-separada figcaption{
+  font-size: .9rem;
+  color: #555;
+  margin-top: 8px;
+}
+
 
 
 }</style>
