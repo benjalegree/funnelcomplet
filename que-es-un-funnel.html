@@ -150,23 +150,21 @@ html, body {
     overflow-wrap: anywhere; /* parte el anchor si es muy largo */
   }
 }
-/* Imagen separada y responsive PsicoFunnel */
-.pf-img-separada{
-  margin:40px auto;             /* espacio arriba y abajo */
-  text-align:center;
-  max-width:1000px;             /* opcional, igual que tu contenedor */
+/* --- Centro perfecto para la imagen "¿Qué es un funnel?" --- */
+.pf-img-separada,
+.pf-blog-img {              /* usa la clase que estés empleando */
+  text-align: center;       /* centra el <figure> y su caption */
 }
-.pf-img-separada img{
-  width:100%;
-  height:auto;
-  border-radius:14px;
-  box-shadow:0 6px 24px rgba(0,166,224,.15);
+
+.pf-img-separada img,
+.pf-blog-img img {
+  display: block;           /* evita espacio inline */
+  margin-left: auto;        /* centra horizontalmente */
+  margin-right: auto;
+  max-width: 100%;          /* responsive */
+  height: auto;
 }
-.pf-img-separada figcaption{
-  font-size:.9rem;
-  color:#555;
-  margin-top:8px;
-}
+
 
 }</style>
 
