@@ -25,6 +25,7 @@
   <meta name="twitter:description" content="Manual práctico de customer acquisition funnels y conversión." />
   <meta name="twitter:image" content="https://psicofunnel.com/img/preview-funnel.png" />
 
+
   <!-- ========================================================= -->
   <!-- 🖌️  ESTILOS                                               -->
   <!-- ========================================================= -->
@@ -141,55 +142,12 @@
       max-width: 100%;
       height: auto;
       display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
     }
+  </style>
 
-
-/* 2. Evita cualquier desplazamiento horizontal inesperado */
-html, body {
-  overflow-x: hidden;
-}
-
-/* 3. Índice: columnas auto-fit y texto que pueda partirse en móviles */
-@media (max-width: 600px) {
-  nav#indice ol {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-  nav#indice a {
-    overflow-wrap: anywhere; /* parte el anchor si es muy largo */
-  }
-}
-/* ======= CENTRADO ROBUSTO DE LA IMAGEN SEPARADA ======= */
-figure.pf-img-separada{
-  /* espacio alrededor para no pegarse al texto */
-  margin: 40px auto;
-  /* limita el ancho si quieres (opcional) */
-  max-width: 1000px;      /* igual al contenedor principal */
-  text-align: center;     /* centra el pie de foto */
-}
-
-figure.pf-img-separada picture{
-  display: block;         /* se convierte en bloque */
-  margin: 0 auto;         /* ¡centrado real del <picture>! */
-  max-width: 100%;
-}
-
-figure.pf-img-separada img{
-  width: 100%;            /* ocupa el ancho del <picture> */
-  height: auto;
-  display: block;         /* quita espacio inline Fantasma */
-  border-radius: 14px;
-  box-shadow: 0 6px 24px rgba(0,166,224,.15);
-}
-
-figure.pf-img-separada figcaption{
-  font-size: .9rem;
-  color: #555;
-  margin-top: 8px;
-}
-
-
-
-}</style>
 
   <!-- ========================================================= -->
   <!-- 🔎  SCHEMA FAQ                                            -->
