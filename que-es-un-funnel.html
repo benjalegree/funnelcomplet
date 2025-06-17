@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========================================================= -->
+  <!-- ✨  META‑DATOS SEO Y RENDIMIENTO                           -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Qué es un Funnel de Ventas? | PsicoFunnel Neuroventas</title>
+  <meta name="description" content="Guía definitiva sobre qué es un funnel (embudo, pipeline, customer journey funnel) y cómo diseñarlo paso a paso para multiplicar conversiones con neuroventas." />
+  <link rel="canonical" href="https://psicofunnel.com/que-es-un-funnel" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="PsicoFunnel" />
+  <meta property="og:title" content="¿Qué es un Funnel de Ventas? | PsicoFunnel" />
+  <meta property="og:description" content="Aprende todo sobre embudos de conversión, sales funnels, marketing funnels y pipelines de ventas." />
+  <meta property="og:url" content="https://psicofunnel.com/que-es-un-funnel" />
+  <meta property="og:image" content="https://psicofunnel.com/img/preview-funnel.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="¿Qué es un Funnel de Ventas? | PsicoFunnel" />
+  <meta name="twitter:description" content="Manual práctico de customer acquisition funnels y conversión." />
+  <meta name="twitter:image" content="https://psicofunnel.com/img/preview-funnel.png" />
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain;justify-self:center}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    @media(max-width:600px){nav#indice ol{grid-template-columns:1fr}.header-content h1{font-size:2rem}}
+    /* Estilos para el popup */
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+#popup {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 480px;
+  width: 90%;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.4s ease;
+}
+#popup-overlay.show #popup {
+  transform: translateY(0);
+}
+#popup h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #0a0f1c;
+}
+#popup p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #0a0f1c;
+  line-height: 1.6;
+}
+#popup input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  outline: none;
+}
+#popup button {
+  background: #00a6e0;
+  color: #0a0f1c;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+  transition: background .3s ease, transform .3s ease;
+}
+#popup button:hover {
+  background: #33c0f3;
+  transform: translateY(-2px);
+}
+#popup .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+}</style>
+
+  <!-- ========================================================= -->
+  <!-- 🔎  SCHEMA FAQ                                            -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Un funnel, sales pipeline o embudo de ventas es la visualización del proceso por el que pasa un prospecto desde el descubrimiento hasta la compra y la fidelización."}},{"@type":"Question","name":"¿Cuántas etapas tiene un embudo de conversión?","acceptedAnswer":{"@type":"Answer","text":"Clásicamente se divide en TOFU, MOFU y BOFU, aunque modelos avanzados incluyen post‑venta y re‑engagement."}},{"@type":"Question","name":"¿Para qué sirve mapear el customer journey?","acceptedAnswer":{"@type":"Answer","text":"Sirve para identificar cuellos de botella y potenciar las tasas de conversión (CVR) y el retorno sobre la inversión (ROI)."}}]}</script>
+</head>
+<body>
+  <!-- ========================================================= -->
+  <!-- 🚀  HEADER                                                -->
+  <!-- ========================================================= -->
+  <header>
+    <div class="header-top">
+      <span class="header-title">PsicoFunnel</span>
+      <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+      <span></span>
+    </div>
+    <div class="header-content">
+      <h1>¿Qué es un Funnel de Ventas?</h1>
+      <p>Conoce en profundidad los embudos de conversión, marketing funnels, purchase funnels y customer acquisition pipelines para escalar tu negocio.</p>
+    </div>
+  </header>
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora tu guía con los 7 sesgos psicológicos que activan ventas y aplica tácticas comprobadas hoy mismo.</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 📚  ÍNDICE COMPLETO 1‑20                                  -->
+  <!-- ========================================================= -->
+<nav id="indice" aria-label="Índice de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ol>
+    <li><a href="#bloque1">1. ¿Qué es un funnel de ventas y para qué sirve?</a></li>
+    <li><a href="#bloque2">2. Tipos de funnels que existen y cuándo usarlos</a></li>
+    <li><a href="#bloque3">3. ¿Qué es un funnel de ventas digitales?</a></li>
+    <li><a href="#bloque4">4. Las 4 etapas clásicas del embudo de ventas</a></li>
+    <li><a href="#bloque5">5. ¿Qué es un funnel de marketing y cómo funciona?</a></li>
+    <li><a href="#bloque6">6. Cómo armar un funnel de ventas paso a paso</a></li>
+    <li><a href="#bloque7">7. ¿Qué es un funnel corto en una estrategia digital?</a></li>
+    <li><a href="#bloque8">8. Etapa TOFU: generar conciencia estratégica</a></li>
+    <li><a href="#bloque9">9. Etapa MOFU: cultivar interés y confianza</a></li>
+    <li><a href="#bloque10">10. Etapa BOFU: convertir y cerrar ventas</a></li>
+    <li><a href="#bloque11">11. Post-funnel: fidelización y expansión de valor</a></li>
+    <li><a href="#bloque12">12. Buyer Persona: la brújula de todo funnel</a></li>
+    <li><a href="#bloque13">13. Propuesta de valor: el imán que atrae leads</a></li>
+    <li><a href="#bloque14">14. Triggers y llamadas a la acción de alto impacto</a></li>
+    <li><a href="#bloque15">15. Lead magnets irresistibles y distribuciones eficaces</a></li>
+    <li><a href="#bloque16">16. Automatización, CRM e inteligencia artificial</a></li>
+    <li><a href="#bloque17">17. Métricas y KPIs críticos para optimizar tu funnel</a></li>
+    <li><a href="#bloque18">18. Herramientas recomendadas (gratuitas y premium)</a></li>
+    <li><a href="#bloque19">19. Errores comunes y cómo evitarlos en 2025</a></li>
+    <li><a href="#bloque20">20. Tendencias 2025: IA generativa y funnels adaptativos</a></li>
+    <li><a href="#bloque21">21. Checklist final de implementación y mejora continua</a></li>
+  </ol>
+</nav>
+
+
+  <!-- ========================================================= -->
+  <!-- 📝  CONTENIDO PRINCIPAL BLOCKS 1‑20                        -->
+  <!-- ========================================================= -->
+<main id="contenido">
+  <!-- Bloques 1-4 -->
+  <!-- ===================================================== -->
+  <section id="bloque1" class="shadow-box">
+    <h2>1. ¿Qué es un funnel de ventas y para qué sirve?</h2>
+    <p>Un funnel de ventas —embudo de ventas— describe el camino que recorre un posible cliente desde su primer contacto con tu marca hasta la compra y la fidelización. Igual que un embudo físico, muchas visitas entran arriba y solo unas pocas se convierten abajo. Comprender este recorrido permite proyectar ingresos, asignar presupuesto con criterio y reducir costos guiando al visitante por conciencia, interés, deseo y acción. Analizar anuncios, artículos, redes y correos revela fugas, fortalece mensajes y eleva la tasa de conversión de forma sostenible a lo largo del tiempo.</p>
+  </section>
+<figure class="pf-blog-img">
+  <img src="img/que-es-un-funnel.jpg"
+       alt="Ilustración esquemática de un funnel de ventas completo"
+       loading="lazy"
+       width="1200" height="600">
+  <figcaption>Visualización general de un funnel de ventas.</figcaption>
+</figure>
+
+  <section id="bloque2" class="shadow-box">
+    <h2>2. Tipos de funnels que existen y cuándo usarlos</h2>
+    <p>Diferentes embudos se adaptan a distintos objetivos. El <strong>funnel evergreen</strong> permanece activo 24/7 y resulta ideal para infoproductos o SaaS con ventas constantes. El <strong>product launch funnel</strong> provoca picos de facturación durante un lanzamiento breve. El <strong>webinar evergreen funnel</strong> combina seminarios grabados con automatización para educar y cerrar tickets medios. El <strong>high-ticket funnel</strong> usa VSL y llamadas calificadas para vender servicios premium. El <strong>tripwire funnel</strong> ofrece un producto de bajo precio que financia anuncios. El <strong>challenge funnel</strong> crea retos de varios días y el <strong>free + shipping funnel</strong> regala un producto físico y monetiza con upsells.</p>
+  </section>
+
+  <section id="bloque3" class="shadow-box">
+    <h2>3. ¿Qué es un funnel de ventas digitales?</h2>
+    <p>El funnel de ventas digitales traslada el embudo clásico al mundo online: páginas de destino, anuncios PPC, correos automatizados y chatbots trabajan juntos todo el día. Un comercio electrónico pequeño puede atraer miles de leads sin aumentar plantilla. Las fases incluyen tráfico (Meta, Google, TikTok), captura con formularios y lead magnets, nutrición mediante emails y casos de éxito, venta con páginas persuasivas y pagos seguros, y fidelización con referidos. Herramientas como Google Analytics 4, Hotjar y un CRM revelan qué anuncio generó la compra y qué correo impulsó la decisión final.</p>
+  </section>
+
+  <section id="bloque4" class="shadow-box">
+    <h2>4. Las 4 etapas clásicas del embudo de ventas</h2>
+    <p>El modelo AIDA divide el proceso en <strong>Conciencia</strong>, <strong>Interés</strong>, <strong>Deseo</strong> y <strong>Acción</strong>. Conciencia surge al descubrir el problema; triunfan guías, vídeos y posts informativos. Interés explora soluciones con lead magnets y webinars. Deseo compara proveedores mediante testimonios y demos. Acción exige garantías claras, checkout simplificado y soporte inmediato. Medir impresiones, tiempo de lectura, oportunidades CRM y ventas finales muestra cuellos de botella y permite ajustar mensajes antes de perder prospectos valiosos.</p>
+  </section>
+
+  <!-- Bloques 5-8 -->
+  <!-- ===================================================== -->
+  <section id="bloque5" class="shadow-box">
+    <h2>5. ¿Qué es un funnel de marketing y cómo funciona?</h2>
+    <p>El funnel de marketing integra atracción, nutrición y conversión combinando branding y rendimiento. Campañas de contenidos, redes y anuncios generan tráfico; lead magnets y correos profundizan la relación; comparativas y demos convierten interesados en clientes. Etiquetas UTM muestran la ruta exacta y atribuyen resultados. Solo los leads que visitan precios o solicitan demo pasan a ventas, elevando productividad. Enlazar artículos clave consolida autoridad temática y guía al lector por un camino coherente hacia la compra.</p>
+  </section>
+
+  <section id="bloque6" class="shadow-box">
+    <h2>6. Cómo armar un funnel de ventas paso a paso</h2>
+    <p>Investiga a tu público con entrevistas y encuestas. Mapea el viaje completo hasta la recompra. Elige canales donde se mueve tu audiencia: búsquedas, redes o afiliados. Crea activos: lead magnets, landings, emails y página de ventas. Conecta formularios al CRM para activar disparadores. Lanza una versión mínima viable, mide cada micro-conversión y ajusta titulares y CTAs. Tapa fugas y escala duplicando lo que funciona; un embudo exitoso evoluciona respaldado en datos.</p>
+  </section>
+
+  <section id="bloque7" class="shadow-box">
+    <h2>7. ¿Qué es un funnel corto en una estrategia digital?</h2>
+    <p>El funnel corto —micro-funnel— elimina pasos para acelerar la compra. Ideal para productos de bajo precio, ofertas flash y audiencias urgentes. Su estructura: anuncio, landing y checkout rápido. Formularios de un solo campo y páginas ligeras cargan en menos de dos segundos. Métricas clave: clics del anuncio, tasa de conversión y valor medio de pedido. Proporciona flujo de caja rápido, pero requiere garantías sólidas y seguimiento posventa para evitar devoluciones impulsivas.</p>
+  </section>
+
+  <section id="bloque8" class="shadow-box">
+    <h2>8. Etapa TOFU: generar conciencia estratégica</h2>
+    <p>TOFU atrae tráfico frío que ignora su necesidad. Artículos extensos, infografías, vídeos y podcasts responden preguntas como “qué es un embudo de ventas” o “cómo aumentar ventas online”. Palabras clave largas captan lectores cualificados con menor competencia. Añade fragmentos FAQ para ocupar espacios destacados. Amplifica el contenido en redes y ofrece un checklist descargable a cambio del correo. Observa impresiones, clics y scroll para validar interés real.</p>
+  </section>
+
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form action="#" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+  <section id="bloque9" class="shadow-box">
+    <h2>9. Etapa MOFU: cultivar interés y confianza</h2>
+    <p>MOFU nutre leads que reconocen su problema. Webinars, miniseries de correos, plantillas y calculadoras fortalecen confianza. Usa lead scoring para separar contactos tibios de los preparados. Palabras como “mejor software de embudos” atraen evaluadores. Redirecciona posts antiguos hacia comparativas nuevas. Casos de éxito con cifras concretas y secciones personalizadas aumentan relevancia. Revisa aperturas, clic-through y ratio MQL→SQL para medir avance.</p>
+  </section>
+
+  <section id="bloque10" class="shadow-box">
+    <h2>10. Etapa BOFU: convertir y cerrar ventas</h2>
+    <p>BOFU transforma deseo en acción. Páginas de ventas con VSL, demostraciones, pruebas gratuitas y ofertas limitadas persuaden. Keywords como “precio embudo de ventas” capturan intención directa. Añade logos de seguridad y política de devoluciones. Checkouts en tres pasos y chat inmediato reducen fricción. Urgencia ética con contadores reales acelera decisiones. Mide tasa de cierre, valor del carrito y abandono; recupera ventas con correos de recordatorio e incentivos.</p>
+  </section>
+
+  <section id="bloque11" class="shadow-box">
+    <h2>11. Post-funnel: fidelización y expansión de valor</h2>
+    <p>Tras la venta empieza la relación. Onboardings guiados, encuestas NPS y programas de referidos elevan valor. Tutoriales en vídeo y artículos de soporte reducen tickets. Upgrades contextuales, bundles y renovaciones aumentan LTV. Métricas: retención, churn y recomendación. Conectar el CRM a WhatsApp permite asistencia proactiva. Clientes felices comparten testimonios y atraen nuevos visitantes, reforzando el ciclo de confianza que hace crecer el negocio.</p>
+  </section>
+
+  <section id="bloque12" class="shadow-box">
+    <h2>12. Buyer Persona: la brújula de todo funnel</h2>
+    <p>Definir Buyer Persona garantiza mensajes precisos. Incluye edad, metas, frustraciones y canales favoritos. Añade citas reales y objeciones típicas. Asigna arquetipos —Explorador, Cuidador, Sabio— para ajustar tono. Segmentar contenido a preguntas concretas reduce rebote y mantiene lectura profunda. Actualiza el perfil trimestralmente con datos de analítica y soporte. Un Buyer Persona vivo dirige decisiones en marketing, ventas y producto.</p>
+  </section>
+
+  <!-- Bloques 13-16 -->
+  <!-- ===================================================== -->
+  <section id="bloque13" class="shadow-box">
+    <h2>13. Propuesta de valor: el imán que atrae leads</h2>
+    <p>La propuesta de valor explica por qué elegirte. Combina resultado, plazo, prueba y tranquilidad: “Duplica tu conversión en noventa días avalado por cien testimonios o devolvemos tu dinero”. Colócala above-the-fold y repítela en correos y demos. Enfatiza beneficios sobre características: ahorro de tiempo, aumento de ingresos o reducción de estrés. Prueba titulares con tests A/B y observa clics y permanencia.</p>
+  </section>
+
+  <section id="bloque14" class="shadow-box">
+    <h2>14. Triggers y llamadas a la acción de alto impacto</h2>
+    <p>Gatillos mentales impulsan pasos siguientes: escasez con plazas limitadas, urgencia con cuentas atrás, prueba social con métricas tangibles y reciprocidad regalando valor antes de pedir compra. Llamadas a la acción efectivas usan verbos fuertes como “Descargar” o “Reservar”. Mantén un único CTA por pantalla, color contrastante y espacio blanco alrededor para clic rápido.</p>
+  </section>
+
+  <section id="bloque15" class="shadow-box">
+    <h2>15. Lead magnets irresistibles y distribuciones eficaces</h2>
+    <p>Un lead magnet exitoso resuelve un problema en menos de diez minutos y anticipa tu oferta principal. Formatos: checklist, plantilla, minicurso o calculadora de ROI. Formularios de dos campos como máximo y diseño atractivo aumentan suscripción. Ubícalo en pop-ups de salida, barras adhesivas y artículos invitados. Supervisa costo por lead y prueba formatos alternativos para mejorar la tasa de conversión.</p>
+  </section>
+
+  <section id="bloque16" class="shadow-box">
+    <h2>16. Automatización, CRM e inteligencia artificial</h2>
+    <p>Automatizar permite vender sin ampliar equipo. Centraliza contactos y puntuaciones en el CRM. Workflows: si el lead abre tres correos, envía oferta; si no, cambia asunto. Chatbots IA responden preguntas y capturan datos. Algoritmos predictivos identifican leads con alta probabilidad de compra y alertan al equipo antes de que se enfríen.</p>
+  </section>
+
+  <!-- Bloques 17-21 -->
+  <!-- ===================================================== -->
+  <section id="bloque17" class="shadow-box">
+    <h2>17. Métricas y KPIs críticos para optimizar tu funnel</h2>
+    <p>En TOFU mide clics orgánicos y costo por visitante. MOFU evalúa costo por lead, ratio lead-to-MQL y engagement. BOFU analiza CAC, ROAS y relación LTV/CAC. Post-funnel revisa churn, NPS y referidos. Configura objetivos en Google Analytics 4 y paneles en Looker Studio. Implementa tests continuos, documenta hallazgos y comparte con todo el equipo.</p>
+  </section>
+
+  <section id="bloque18" class="shadow-box">
+    <h2>18. Herramientas recomendadas (gratuitas y premium)</h2>
+    <p>Investiga preguntas con AnswerThePublic o Semrush. Crea sitios con WordPress + Elementor o Webflow. Captura leads con ConvertKit o MailerLite. Automatiza con Zapier o Make. Analiza comportamiento con Hotjar y VWO Free. Gestiona relaciones con HubSpot Starter o Zoho y conversa mediante ManyChat o Intercom con IA. Comienza con planes gratuitos y escala según resultados.</p>
+  </section>
+
+  <section id="bloque19" class="shadow-box">
+    <h2>19. Errores comunes y cómo evitarlos en 2025</h2>
+    <p>Vender demasiado pronto en TOFU provoca rebote. No rastrear micro-conversiones oculta aprendizajes. Ofertas incoherentes confunden. Formularios extensos en móvil reducen conversiones. Correos genéricos sin segmentación aumentan bajas. Mantén coherencia, configura eventos de clic y revisa datos mensualmente para un crecimiento sostenido.</p>
+  </section>
+
+  <section id="bloque20" class="shadow-box">
+    <h2>20. Tendencias 2025: IA generativa y funnels adaptativos</h2>
+    <p>La IA generativa ajusta textos, imágenes y precios en tiempo real según comportamiento. Búsquedas por voz y visuales requieren contenido conversacional. Billeteras digitales Web 3 aceleran pagos en BOFU. Modelos predictivos sugieren upsells antes de finalizar compra. Realiza pruebas mensuales y adopta tendencias tempranas para ganar ventaja.</p>
+  </section>
+
+  <section id="bloque21" class="shadow-box" style="margin-bottom:100px">
+    <h2>21. Checklist final de implementación y mejora continua</h2>
+    <ul>
+      <li>Definir Buyer Persona actualizado.</li>
+      <li>Redactar propuesta de valor cuantificable.</li>
+      <li>Crear activos TOFU-MOFU-BOFU enlazados.</li>
+      <li>Configurar seguimiento con Google Analytics 4 y etiquetas.</li>
+      <li>Implementar lead scoring y automatizaciones.</li>
+      <li>Programar tests A/B mensuales.</li>
+      <li>Revisar métricas clave cada semana.</li>
+      <li>Actualizar contenido evergreen trimestralmente.</li>
+      <li>Lanzar programa de referidos antes de escalar.</li>
+      <li>Documentar procesos para replicar éxitos rápidamente.</li>
+    </ul>
+  </section>
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="newsletter-image.jpg" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.integromat.com/tu-webhook-aqui">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- ========================================================= -->
+  <!-- 💤  SCRIPTS                                              -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('popup-overlay');
+      const closeBtn = document.getElementById('popup-close');
+      let shown = false;
+      window.addEventListener('scroll', () => {
+        const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (!shown && scrollRatio > 0.3) {
+          overlay.style.display = 'flex';
+          shown = true;
+        }
+      });
+      closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+      });
+      // Previene que el popup vuelva a aparecer
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- ========================================================= -->
+  <!-- 💤  LAZY‑LOAD SCRIPT                                      -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const imgs=[...document.querySelectorAll('img[loading="lazy"]')];
+      if('IntersectionObserver'in window){
+        const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.src||img.src;io.unobserve(img);}});});imgs.forEach(img=>io.observe(img));}
+    });
+  </script>
+</body>
+</html>
