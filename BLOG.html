@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========================================================= -->
+  <!-- ✨  META‑DATOS SEO Y RENDIMIENTO                           -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog de Neuro‑Funnels | PsicoFunnel</title>
+  <meta name="description" content="Explora las mejores guías y recursos sobre funnels de venta, neuro‑copywriting y automatización con IA para escalar tu negocio." />
+  <link rel="canonical" href="https://psicofunnel.com/blog" />
+  <!-- Open Graph & Twitter -->
+  <meta property="og:title" content="Blog de Neuro‑Funnels | PsicoFunnel" />
+  <meta property="og:description" content="Explora las mejores guías y recursos sobre funnels de venta, neuro‑copywriting y automatización con IA." />
+  <meta property="og:image" content="https://psicofunnel.com/assets/img/blog-cover.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://psicofunnel.com/blog" />
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  FUENTES & ESTILOS                                     -->
+  <!-- ========================================================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c;line-height:1.5}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+
+    /* Paleta */
+    :root{
+      --azul:#001a40;
+      --azul-claro:#00367a;
+      --gris:#f5f7fa;
+      --gris-borde:#e4e8ef;
+      --radius:14px;
+      --sombra:0 4px 10px rgba(0,0,0,.1);
+    }
+
+    /* Header */
+    header{
+      background:linear-gradient(to right,var(--azul) 0%,var(--azul-claro) 100%);
+      color:#fff;padding:60px 20px 80px;text-align:center;position:relative;overflow:hidden;
+    }
+    .header-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:40px;
+    }
+    .logo{font-size:1.5rem;font-weight:700;letter-spacing:.5px}
+    .nav-links{display:flex;gap:18px;font-size:.95rem}
+    .nav-links a:hover{opacity:.8}
+    .hero h1{font-size:2.4rem;margin:0 0 10px;font-weight:700}
+    .hero p{font-size:1.1rem;max-width:720px;margin:0 auto 30px;color:#e0e6f3}
+
+    /* Search & filters */
+    .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:40px}
+    .filter-btn{padding:6px 14px;font-size:.9rem;border:1px solid #fff;border-radius:20px;background:rgba(255,255,255,.2);color:#fff;cursor:pointer;transition:.25s}
+    .filter-btn.active,.filter-btn:hover{background:#fff;color:var(--azul)}
+    .search-box{max-width:420px;margin:0 auto 50px;position:relative}
+    .search-box input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--radius);border:none;font-size:1rem}
+    .search-box svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);opacity:.5}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1280px;margin:0 auto;padding:0 20px}
+    .card{background:var(--gris);border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;transition:transform .25s}
+    .card:hover{transform:translateY(-4px)}
+    .card img{height:160px;object-fit:cover}
+    .card-body{padding:18px 16px;flex:1;display:flex;flex-direction:column}
+    .tag{display:inline-block;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:12px;background:var(--azul);color:#fff;margin-bottom:10px;text-transform:uppercase}
+    .card h3{font-size:1.05rem;margin:0 0 auto;font-weight:600}
+
+    /* Newsletter */
+    .newsletter{background:var(--azul);color:#fff;padding:60px 20px;text-align:center;margin-top:80px}
+    .newsletter h2{font-size:1.8rem;margin-bottom:12px}
+    .newsletter p{font-size:1rem;max-width:660px;margin:0 auto 32px;color:#dbe3f4}
+    .newsletter form{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto}
+    .newsletter input{padding:14px;border:none;border-radius:var(--radius);font-size:1rem}
+    .newsletter button{padding:14px;font-size:1rem;border:none;border-radius:var(--radius);background:#fff;color:var(--azul);cursor:pointer;font-weight:600}
+    .newsletter button:hover{opacity:.9}
+
+    /* Footer */
+    footer{background:var(--azul);color:#fff;text-align:center;padding:30px 20px;position:relative}
+    .ticker{position:absolute;top:0;left:0;width:100%;background:#0e4aa2;padding:6px 0;font-size:.85rem;font-weight:600;letter-spacing:.4px}
+    .ticker span{display:inline-block;margin:0 20px;animation:scroll 20s linear infinite}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+    /* Responsive tweaks */
+    @media(min-width:768px){
+      .hero h1{font-size:3rem}
+      .search-box input{padding:16px 46px 16px 20px}
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================= -->
+  <!--  HEADER                                                   -->
+  <!-- ========================================================= -->
+  <header>
+    <div class="header-inner">
+      <nav class="nav">
+        <a class="logo" href="/">PsicoFunnel</a>
+        <div class="nav-links">
+          <a href="/">Inicio</a>
+          <a href="/servicios">Servicios</a>
+          <a href="/blog" style="font-weight:600">Blog</a>
+          <a href="/contacto">Contacto</a>
+        </div>
+      </nav>
+      <div class="hero">
+        <h1>Blog de Neuro‑Funnels</h1>
+        <p>Guías, tutoriales y recursos prácticos para que tu empresa y tus usuarios<br/>conecten, conviertan y crezcan con psicología y automatización.</p>
+      </div>
+      <div class="filters" id="filterBar"><!-- Botones de filtros JS --></div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar artículos…" aria-label="Buscar artículos" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!--  GRID                                                     -->
+  <!-- ========================================================= -->
+  <main>
+    <section class="grid" id="articlesGrid"><!-- Cards JS --></section>
+  </main>
+
+  <!-- ========================================================= -->
+  <!--  NEWSLETTER                                               -->
+  <!-- ========================================================= -->
+  <section class="newsletter" id="newsletter">
+    <h2>Suscríbete para más neuro‑ideas</h2>
+    <p>Recibe cada semana tips accionables de funnels, copywriting y automatización directamente en tu bandeja de entrada.</p>
+    <form action="https://hook.make.com/tu-webhook" method="POST">
+      <input type="email" name="email" placeholder="Tu correo electrónico" required />
+      <button type="submit">Quiero aprender más</button>
+    </form>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  FOOTER                                                   -->
+  <!-- ========================================================= -->
+  <footer>
+    <div class="ticker"><span>🚀 ¡Lleva tu embudo al siguiente nivel con PsicoFunnel!</span></div>
+    <p style="margin-top:30px">© 2025 PsicoFunnel. Todos los derechos reservados.</p>
+    <a href="#" style="display:inline-block;margin-top:20px;color:#a8c6ff;font-size:.9rem" id="toTop">Volver arriba ↑</a>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!--  SCRIPTS                                                  -->
+  <!-- ========================================================= -->
+  <script>
+    // ============================== Datos ============================== //
+    const categories = ["Empresa","Usuario"];
+
+    const articles = [
+      {title:"¿Qué es customer journey en marketing digital?",slug:"customer-journey",cover:"/assets/img/cover-customer-journey.webp",category:"Usuario"},
+      {title:"Qué tipo de contenido hacer en cada etapa de un funnel de ventas",slug:"contenido-por-etapa-funnel",cover:"/assets/img/cover-contenido-etapa.webp",category:"Usuario"},
+      {title:"Cómo hacer un lead magnet que convierta",slug:"lead-magnet-convierte",cover:"/assets/img/cover-lead-magnet.webp",category:"Usuario"},
+      {title:"Errores comunes en un funnel de ventas",slug:"errores-funnel-ventas",cover:"/assets/img/cover-errores-funnel.webp",category:"Usuario"},
+      {title:"Cómo tener leads más cualificados",slug:"leads-mas-cualificados",cover:"/assets/img/cover-leads-cualificados.webp",category:"Usuario"},
+      {title:"Cómo hacer el guion para un webinar de ventas",slug:"guion-webinar-ventas",cover:"/assets/img/cover-webinar.webp",category:"Usuario"},
+      {title:"Cómo saber qué hace tu competencia",slug:"analisis-competencia-funnel",cover:"/assets/img/cover-competencia.webp",category:"Usuario"},
+      {title:"Cómo hacer un funnel de correos para carrito abandonado",slug:"carrito-abandonado-email-funnel",cover:"/assets/img/cover-carrito.webp",category:"Usuario"},
+      {title:"Métricas clave de eficiencia en un funnel SaaS",slug:"metricas-funnel-saas",cover:"/assets/img/cover-metricas-saas.webp",category:"Usuario"},
+      {title:"Dashboard gratis de conversiones de funnel en Google Sheets",slug:"dashboard-funnel-google-sheets",cover:"/assets/img/cover-dashboard.webp",category:"Usuario"},
+      {title:"Copywriting para una página de ventas",slug:"copy-pagina-ventas",cover:"/assets/img/cover-copy-ventas.webp",category:"Usuario"},
+      {title:"Métricas más importantes en un funnel evergreen",slug:"metricas-funnel-evergreen",cover:"/assets/img/cover-evergreen.webp",category:"Usuario"},
+      {title:"Mejores herramientas gratuitas y pagas para funnels de venta",slug:"herramientas-funnels",cover:"/assets/img/cover-herramientas.webp",category:"Usuario"},
+
+      {title:"Make: etiquetar leads por comportamiento",slug:"make-etiquetar-leads",cover:"/assets/img/cover-make-leads.webp",category:"Empresa"},
+      {title:"Copy para reducir churn en onboarding",slug:"copy-reducir-churn",cover:"/assets/img/cover-churn.webp",category:"Empresa"},
+      {title:"Plantilla de email de bienvenida para coaching de ventas",slug:"email-bienvenida-coaching",cover:"/assets/img/cover-email-bienvenida.webp",category:"Empresa"},
+      {title:"Cómo usar testimonios en una landing page",slug:"testimonios-landing-page",cover:"/assets/img/cover-testimonios.webp",category:"Empresa"},
+      {title:"Gatillos de urgencia: ejemplos para landing page",slug:"gatillos-urgencia-landing",cover:"/assets/img/cover-urgencia.webp",category:"Empresa"},
+      {title:"Crear un quiz de calificación de leads paso a paso",slug:"quiz-calificacion-leads",cover:"/assets/img/cover-quiz.webp",category:"Empresa"},
+      {title:"Zapier vs Make para automatizar funnels de ventas",slug:"zapier-vs-make",cover:"/assets/img/cover-zapier-make.webp",category:"Empresa"}
+    ];
+
+    // ========================= Construir filtros ======================= //
+    const filterBar = document.getElementById('filterBar');
+    categories.forEach(cat=>{
+      const btn=document.createElement('button');
+      btn.className='filter-btn';
+      btn.dataset.cat=cat;
+      btn.textContent=cat;
+      filterBar.appendChild(btn);
+    });
+    // Añadir botón "Todos"
+    const allBtn=document.createElement('button');
+    allBtn.className='filter-btn active';
+    allBtn.dataset.cat='Todos';
+    allBtn.textContent='Todos';
+    filterBar.insertBefore(allBtn,filterBar.firstChild);
+
+    // ========================= Construir grid ========================== //
+    const grid=document.getElementById('articlesGrid');
+    function renderCards(list){
+      grid.innerHTML='';
+      list.forEach(a=>{
+        const card=document.createElement('article');
+        card.className='card';
+        card.innerHTML=`<a href="/blog/${a.slug}">
+          <img src="${a.cover}" alt="${a.title}" loading="lazy" />
+          <div class="card-body">
+            <span class="tag">${a.category}</span>
+            <h3>${a.title}</h3>
+          </div></a>`;
+        grid.appendChild(card);
+      });
+    }
+    renderCards(articles);
+
+    // ========================= Filtros & búsqueda ====================== //
+    function filterArticles(cat,query){
+      let result=[...articles];
+      if(cat&&cat!=='Todos')result=result.filter(a=>a.category===cat);
+      if(query)result=result.filter(a=>a.title.toLowerCase().includes(query.toLowerCase()));
+      renderCards(result);
+    }
+
+    // click filtros
+    filterBar.addEventListener('click',e=>{
+      if(e.target.matches('.filter-btn')){
+        document.querySelectorAll('.filter-btn').forEach(btn=>btn.classList.remove('active'));
+        e.target.classList.add('active');
+        const cat=e.target.dataset.cat;
+        const query=document.getElementById('searchInput').value;
+        filterArticles(cat,query);
+      }
+    });
+
+    // búsqueda
+    document.getElementById('searchInput').addEventListener('input',e=>{
+      const activeCat=document.querySelector('.filter-btn.active').dataset.cat;
+      filterArticles(activeCat,e.target.value);
+    });
+
+    // ========================= Volver arriba =========================== //
+    document.getElementById('toTop').addEventListener('click',e=>{
+      e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
