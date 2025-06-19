@@ -3,240 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Íconos para distintos dispositivos (todos en img/) -->
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="icon" href="/img/favicon.png">        <!-- fallback genérico -->
-<link rel="manifest" href="/img/site.webmanifest">
 
-<!-- Opcionales para Windows/Safari -->
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
-<meta name="theme-color" content="#ffffff">
+  <!-- Íconos para distintos dispositivos (todos en img/) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="icon" href="/img/favicon.png"> <!-- fallback genérico -->
+  <link rel="manifest" href="/img/site.webmanifest">
+
+  <!-- Opcionales para Windows/Safari -->
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
   <title>PsicoFunnel | Neuroventas que Convierten</title>
 
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* =============================================================
        1. RESET & BASE
     ============================================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: "Outfit", sans-serif;
-      background: #ffffff;
-      color: #0a0f1c;
-      -webkit-font-smoothing: antialiased;
-    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Outfit",sans-serif;background:#fff;color:#0a0f1c;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
 
     /* =============================================================
        2. HEADER
     ============================================================= */
-    header {
-      background: #0a0f1c;
-      color: #ffffff;
-      padding: 60px 20px 40px;
-      text-align: center;
+    header{
+      background:#0a0f1c;
+      color:#fff;
+      padding:60px 20px 40px;
+      text-align:center;
     }
-    .header-top {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      margin-bottom: 25px;
+
+    /* ----- Bloque original (lo CONSERVO) ----- */
+    .header-top{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      margin-bottom:25px;
     }
-    .header-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      text-align: left;
+    .header-title{
+      font-size:1.8rem;
+      font-weight:600;
+      text-align:left;
     }
-    .header-logo {
-      width: 70px;
-      height: auto;
-      justify-self: center;
+    .header-logo{
+      width:70px;
+      height:auto;
+      justify-self:center;
     }
-    .header-content h1 {
-      font-size: 2.6rem;
-      margin: 0 0 15px;
+
+    /* ----- NUEVO NAV BAR ----- */
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      max-width:1080px;
+      margin:0 auto 35px;
     }
-    .header-content p {
-      font-size: 1.2rem;
-      color: #cce3f6;
-      margin: 0 0 35px;
+    .logo{
+      font-size:1.6rem;
+      font-weight:700;
+      letter-spacing:.4px;
+      color:#fff;
     }
-    .cta-button {
-      background: #00a6e0;
-      color: #0a0f1c;
-      padding: 15px 32px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+    .nav-links{
+      display:flex;
+      gap:22px;
+      font-size:.95rem;
     }
-    .cta-button:hover {
-      background: #33c0f3;
-      box-shadow: 0 0 20px rgba(0, 166, 224, 0.6);
-      transform: translateY(-2px);
+    .nav-links a{
+      color:#fff;
+      transition:opacity .25s;
+    }
+    .nav-links a:hover{opacity:.8}
+
+    /* Hero */
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;font-weight:700}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+
+    /* CTA */
+    .cta-button{
+      background:#00a6e0;
+      color:#0a0f1c;
+      padding:15px 32px;
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all .35s ease;
+      box-shadow:0 4px 12px rgba(0,166,224,.35);
+    }
+    .cta-button:hover{
+      background:#33c0f3;
+      box-shadow:0 0 20px rgba(0,166,224,.6);
+      transform:translateY(-2px);
     }
 
     /* =============================================================
-       3. GLOBAL FORM INPUTS
+       3. GLOBAL FORM INPUTS  (sin cambios)
     ============================================================= */
-    input[type="email"],
-    input[type="text"] {
-      width: 100%;
-      margin-bottom: 18px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: none;
-      background: rgba(0, 166, 224, 0.1);
-      color: #0a0f1c;
-      font-size: 1rem;
-      outline: none;
-      transition: background-color 0.3s;
+    input[type="email"],input[type="text"]{
+      width:100%;
+      margin-bottom:18px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:none;
+      background:rgba(0,166,224,.1);
+      color:#0a0f1c;
+      font-size:1rem;
+      outline:none;
+      transition:background-color .3s;
     }
-    input[type="email"]::placeholder,
-    input[type="text"]::placeholder {
-      color: #888;
-    }
-    input[type="email"]:focus,
-    input[type="text"]:focus {
-      background: rgba(0, 166, 224, 0.25);
-    }
+    input[type="email"]::placeholder,input[type="text"]::placeholder{color:#888}
+    input[type="email"]:focus,input[type="text"]:focus{background:rgba(0,166,224,.25)}
 
     /* =============================================================
-       4. SECTIONS & LAYOUT
+       4. SECTIONS & LAYOUT  (todo tu bloque intacto)
     ============================================================= */
-    section {
-      padding: 100px 20px 60px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .shadow-box {
-      background: #e5f6ff;
-      padding: 45px 40px;
-      border-radius: 14px;
-      box-shadow: 0 8px 30px rgba(0, 166, 224, 0.18);
-      margin-top: 40px;
+    section{padding:100px 20px 60px;max-width:1000px;margin:auto}
+    .shadow-box{
+      background:#e5f6ff;
+      padding:45px 40px;
+      border-radius:14px;
+      box-shadow:0 8px 30px rgba(0,166,224,.18);
+      margin-top:40px;
     }
 
     /* BENEFITS GRID */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      text-align: center;
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;text-align:center;
     }
-    .benefit-card {
-      background: #ffffff;
-      padding: 30px 25px;
-      border-radius: 18px;
-      border: 2px solid transparent;
-      transition: all 0.28s ease;
+    .benefit-card{
+      background:#fff;
+      padding:30px 25px;
+      border-radius:18px;
+      border:2px solid transparent;
+      transition:all .28s ease;
     }
-    .benefit-card:hover {
-      background: #0a0f1c;
-      color: #ffffff;
-      border-color: #00a6e0;
+    .benefit-card:hover{
+      background:#0a0f1c;
+      color:#fff;
+      border-color:#00a6e0;
     }
 
     /* NEWSLETTER */
-    .newsletter-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 35px;
-      background: #0a0f1c;
-      color: #fff;
-      border-radius: 14px;
+    .newsletter-section{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:35px;
+      background:#0a0f1c;
+      color:#fff;
+      border-radius:14px;
     }
-    .newsletter-section img {
-      width: 220px;
-      border-radius: 12px;
-    }
-    .newsletter-form {
-      flex: 1 1 300px;
-    }
+    .newsletter-section img{width:220px;border-radius:12px}
+    .newsletter-form{flex:1 1 300px}
 
     /* FOOTER */
-    footer {
-      background: #0a0f1c;
-      text-align: center;
-      padding: 50px 20px 0;
-      color: #aaa;
-      font-size: 0.9rem;
-      position: relative;
+    footer{
+      background:#0a0f1c;
+      text-align:center;
+      padding:50px 20px 0;
+      color:#aaa;
+      font-size:.9rem;
+      position:relative;
     }
-    .ticker-container {
-      margin-top: 35px;
-      background: #00a6e0;
-      overflow: hidden;
-      white-space: nowrap;
-      height: 60px;
-      display: flex;
-      align-items: center;
+    .ticker-container{
+      margin-top:35px;
+      background:#00a6e0;
+      overflow:hidden;
+      white-space:nowrap;
+      height:60px;
+      display:flex;
+      align-items:center;
     }
-    .ticker {
-      display: inline-block;
-      animation: tickerMove 20s linear infinite;
-      width: 100%;
+    .ticker{
+      display:inline-block;
+      animation:tickerMove 20s linear infinite;
+      width:100%;
     }
-    .ticker span {
-      display: inline-block;
-      padding: 0 40px;
-      color: #0a0f1c;
-      font-weight: 600;
-      font-size: 1.15rem;
+    .ticker span{
+      display:inline-block;
+      padding:0 40px;
+      color:#0a0f1c;
+      font-weight:600;
+      font-size:1.15rem;
     }
-    @keyframes tickerMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    @keyframes tickerMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* =============================================================
-       5. RESPONSIVE BREAKPOINTS
+       5. RESPONSIVE BREAKPOINTS (añado ajustes del nav)
     ============================================================= */
-    @media (max-width: 960px) {
-      header { padding: 50px 15px 30px; }
-      .header-content h1 { font-size: 2.2rem; }
-      section { padding: 80px 15px 50px; }
-      .benefits-grid { gap: 18px; }
+    @media(max-width:960px){
+      header{padding:50px 15px 30px}
+      .header-content h1{font-size:2.2rem}
+      section{padding:80px 15px 50px}
+      .benefits-grid{gap:18px}
     }
-    @media (max-width: 768px) {
-      .header-top { grid-template-columns: auto auto auto; }
-      .header-title { text-align: center; font-size: 1.6rem; }
-      .header-logo { width: 60px; }
-      .header-content h1 { font-size: 1.9rem; line-height: 1.3; }
-      .header-content p { font-size: 1rem; margin-bottom: 28px; }
-      .cta-button { padding: 14px 28px; font-size: 0.95rem; }
-      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-      .newsletter-section { flex-direction: column; text-align: center; padding: 35px 25px; }
-      .newsletter-section img { width: 180px; }
+    @media(max-width:768px){
+      .header-top{grid-template-columns:auto auto auto}
+      .header-title{text-align:center;font-size:1.6rem}
+      .header-logo{width:60px}
+      .nav{flex-direction:column;gap:18px}
+      .header-content h1{font-size:1.9rem;line-height:1.3}
+      .header-content p{font-size:1rem;margin-bottom:28px}
+      .cta-button{padding:14px 28px;font-size:.95rem}
+      .benefits-grid{grid-template-columns:repeat(2,1fr)}
+      .newsletter-section{flex-direction:column;text-align:center;padding:35px 25px}
+      .newsletter-section img{width:180px}
     }
-    @media (max-width: 480px) {
-      .header-title { font-size: 1.4rem; }
-      .header-logo  { width: 50px; }
-      .header-content h1 { font-size: 1.6rem; }
-      .header-content p  { font-size: 0.95rem; }
-      section { padding: 60px 15px 40px; }
-      .benefits-grid { grid-template-columns: 1fr; }
-      .benefit-card { padding: 25px 20px; }
-      .newsletter-section img { width: 160px; }
-      .shadow-box { padding: 35px 25px; }
+    @media(max-width:480px){
+      .header-title{font-size:1.4rem}
+      .header-logo{width:50px}
+      .header-content h1{font-size:1.6rem}
+      .header-content p{font-size:.95rem}
+      section{padding:60px 15px 40px}
+      .benefits-grid{grid-template-columns:1fr}
+      .benefit-card{padding:25px 20px}
+      .newsletter-section img{width:160px}
+      .shadow-box{padding:35px 25px}
     }
   </style>
 </head>
@@ -244,12 +239,25 @@
 <body>
   <!-- ========================================================= HEADER ========================================================= -->
   <header>
+    <!-- Bloque original -->
     <div class="header-top">
-      <span class="header-title">PsicoFunnel</span>
-      <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+      <span class="header-title"></span>
+      <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy">
       <span></span>
     </div>
 
+    <!-- NUEVO menú navegación -->
+    <nav class="nav">
+      <a class="logo" href="index.html">PsicoFunnel</a>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="servicio.html">Servicios</a>
+        <a href="BLOG.html" style="font-weight:600">Blog</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- Hero original -->
     <div class="header-content">
       <h1>Neuroventas aplicadas a embudos que convierten</h1>
       <p>Un método de marketing estratégico basado en psicología del consumidor, diseñado para multiplicar tus ventas con elegancia e inteligencia.</p>
@@ -258,6 +266,7 @@
       </button>
     </div>
   </header>
+
 
   <!-- ========================================================= MAIN ========================================================= -->
   <main>
