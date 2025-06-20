@@ -741,4 +741,63 @@ a:hover,a:focus{
         }
       })
       .catch((err) => {
-        console.error(
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
