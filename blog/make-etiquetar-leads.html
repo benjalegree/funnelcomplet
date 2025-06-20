@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- ========================================================= -->
+<!--  SEO BASICS                                               -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Etiquetar Leads Automáticamente con Make | PsicoFunnel</title>
+<meta name="description" content="Guía paso a paso para etiquetar leads automáticamente con Make según su comportamiento y enviar mensajes hiperrelevantes que disparen tus conversiones." />
+<link rel="canonical" href="https://psicofunnel.com/etiquetar-leads-make" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Cómo etiquetar leads automáticamente con Make | PsicoFunnel" />
+<meta property="og:description" content="Aprende a segmentar contactos en tiempo real con Make (Integromat) y mejora tus campañas de marketing sin esfuerzo manual." />
+<meta property="og:image" content="https://psicofunnel.com/assets/img/etiquetar-leads-make-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://psicofunnel.com/etiquetar-leads-make" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Etiquetar Leads Automáticamente con Make | PsicoFunnel" />
+<meta name="twitter:description" content="Configura Make para añadir etiquetas a tus leads según su comportamiento y envía contenidos a medida que aumentan las ventas." />
+<meta name="twitter:image" content="https://psicofunnel.com/assets/img/etiquetar-leads-make-cover.webp" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+
+        /* ========================================================= */
+    /* 📚  ÍNDICE MEJORADO                                       */
+    /* ========================================================= */
+    nav#indice{
+      background:#e5f6ff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 20px rgba(0,166,224,0.15);
+      margin:40px auto;
+      max-width:1000px;
+    }
+    nav#indice h2{
+      font-size:1.8rem;
+      margin-bottom:20px;
+      color:#0a0f1c;
+      text-align:center;
+    }
+    nav#indice ol{
+      counter-reset:idx;
+      list-style:none;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:18px;
+    }
+    nav#indice ol li{
+      counter-increment:idx;
+      display:flex;
+      align-items:flex-start;
+    }
+    nav#indice ol li::before{
+      content:counter(idx);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:30px;
+      height:30px;
+      margin-right:10px;
+      background:#00a6e0;
+      color:#fff;
+      font-weight:700;
+      border-radius:50%;
+      flex-shrink:0;
+    }
+    nav#indice ol li a{
+      color:#001a40;
+      font-weight:600;
+      text-decoration:none;
+      transition:color .25s;
+      line-height:1.4;
+    }
+    nav#indice ol li a:hover{
+      color:#00a6e0;
+      text-decoration:underline;
+  </style>
+
+
+  <!-- ========================================================= -->
+  <!-- 🔎  SCHEMA FAQ                                            -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Un funnel, sales pipeline o embudo de ventas es la visualización del proceso por el que pasa un prospecto desde el descubrimiento hasta la compra y la fidelización."}},{"@type":"Question","name":"¿Cuántas etapas tiene un embudo de conversión?","acceptedAnswer":{"@type":"Answer","text":"Clásicamente se divide en TOFU, MOFU y BOFU, aunque modelos avanzados incluyen post‑venta y re‑engagement."}},{"@type":"Question","name":"¿Para qué sirve mapear el customer journey?","acceptedAnswer":{"@type":"Answer","text":"Sirve para identificar cuellos de botella y potenciar las tasas de conversión (CVR) y el retorno sobre la inversión (ROI)."}}]}</script>
+</head>
+<body>
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content">
+    <h1>Cómo etiquetar leads automáticamente con Make en tiempo real</h1>
+    <p style="color:#fff;">Segmenta al instante, envía mensajes precisos y multiplica tus conversiones con la automatización de PsicoFunnel.</p>
+  </div>
+</header>
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+      <!-- ========= ÍNDICE ========= -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ol>
+    <li><a href="#etiquetado-automatico-leads">1. Qué es el etiquetado automático de leads en Make y por qué dispara tus conversiones</a></li>
+    <li><a href="#make-explicado-facil">2. Make (Integromat) explicado fácil: módulos esenciales para automatizar tu CRM</a></li>
+    <li><a href="#mapa-comportamiento-crm">3. Cómo crear un mapa de comportamiento y campos de CRM para segmentar leads con precisión</a></li>
+    <li><a href="#tutorial-make-etiquetas">4. Tutorial paso a paso: configura en Make el flujo que etiqueta leads automáticamente</a></li>
+    <li><a href="#ejemplo-interes-precio">5. Ejemplo práctico: asigna la etiqueta “Interés-Precio” cuando visitan tu página de precios</a></li>
+    <li><a href="#naming-etiquetas">6. Naming de etiquetas: estándar probado para mantener tu segmentación limpia y escalable</a></li>
+    <li><a href="#pruebas-mantenimiento">7. Pruebas y mantenimiento 24/7: garantiza que el etiquetado automático nunca se detenga</a></li>
+  </ol>
+</nav>
+
+<!-- ========= SECTIONES ========= -->
+
+<section id="etiquetado-automatico-leads" class="shadow-box">
+  <h2>1. Qué es el etiquetado automático de leads en Make y por qué dispara tus conversiones</h2>
+  <p>El <strong>etiquetado automático de leads en Make</strong> es un sistema que añade rótulos a cada contacto en tu CRM según su comportamiento en tiempo real. Cuando alguien abre tres correos, visita la página de precios o descarga tu guía, Make añade una etiqueta como “Lead-Comprometido” o “Interés-Precio”. Con un simple rótulo sabes qué necesita esa persona y envías mensajes alineados a su nivel de interés, sin bombardearla con información genérica. Esta relevancia inmediata se traduce en más aperturas, más clics y, sobre todo, más ventas, porque el prospecto siente que lo entiendes. Además, la automatización funciona 24/7, evita errores humanos y libera horas de tareas repetitivas. El resultado: tu equipo se centra en creatividad y estrategia mientras Make hace el trabajo pesado de clasificar contactos con precisión quirúrgica. Cuando tu base de datos se convierte en un mapa vivo de intenciones, cada campaña de email, anuncio o llamada tiene el contexto perfecto para cerrar la venta más rápido y con menos coste por adquisición.</p>
+</section>
+
+<section id="make-explicado-facil" class="shadow-box">
+  <h2>2. Make (Integromat) explicado fácil: módulos esenciales para automatizar tu CRM</h2>
+  <p><strong>Make</strong> —antes Integromat— funciona con “escenarios” formados por piezas visuales llamadas módulos. Piensa en los módulos como bloques LEGO: arrastras un bloque disparador que “escucha” un evento, por ejemplo, un webhook o un nuevo registro de formulario, y luego añades bloques de acción que realizan tareas, como “actualizar contacto” o “enviar email”. Si necesitas caminos distintos según la conducta del lead, insertas un bloque <em>Router</em>, que actúa como un cruce con semáforos: si la condición se cumple, la información gira a la derecha; si no, sigue recto. Entre los módulos esenciales para <strong>automatizar tu CRM con Make</strong> están Webhook (recibe datos), HTTP (consulta APIs), Filtro (aplica reglas lógicas), Delay (espera X minutos) y el conector nativo de tu plataforma de email o ventas. Todo se configura sin código: solo campos de formulario y menús desplegables. En minutos puedes ver el camino que recorre cada dato y probarlo con ejemplos para asegurarte de que la etiqueta correcta llega al contacto adecuado. Esta simplicidad hace que incluso un principiante pueda construir flujos potentes y que un experto pula detalles como tiempos de espera y puntuaciones de lead scoring para segmentar al máximo detalle.</p>
+</section>
+
+<section id="mapa-comportamiento-crm" class="shadow-box">
+  <h2>3. Cómo crear un mapa de comportamiento y campos de CRM para segmentar leads con precisión</h2>
+  <p>Antes de tocar Make, dibuja un <strong>mapa de comportamiento</strong> que relacione acciones con etiquetas y contenidos. Haz tres columnas: <em>Acción registrada</em>, <em>Etiqueta a añadir</em> y <em>Mensaje que enviarás</em>. Por ejemplo: “Visita /pricing” → Etiqueta: Interés-Precio → Correo: comparativa de planes. Luego revisa tu CRM y crea un campo único para almacenar estas etiquetas; puede llamarse <code>tag_comportamiento</code> o simplemente “Etiquetas”. Anota también si existen valores que se deban borrar cuando el lead avance de etapa, para evitar rótulos contradictorios como “Prospecto-Frío” y “Cliente”. Este inventario sencillo convierte la configuración en Make en un ejercicio de unir puntos: cada ruta del escenario llena un campo específico y activa la campaña correcta. Además, el mapa sirve de guía rápida para tu equipo; todos entienden qué significa “ACT-Descarga” o “INT-Precio” sin perder tiempo en explicaciones. Con esta base clara, tu segmentación será precisa, escalable y a prueba de confusiones.</p>
+</section>
+
+<section id="tutorial-make-etiquetas" class="shadow-box">
+  <h2>4. Tutorial paso a paso: configura en Make el flujo que etiqueta leads automáticamente</h2>
+  <p>Para <strong>configurar en Make el flujo que etiqueta leads automáticamente</strong> sigue seis pasos simples. Paso&nbsp;1: crea un nuevo escenario y añade un módulo <em>Webhook Custom</em>; Make generará una URL única. Paso&nbsp;2: pega esa URL en tu formulario o en Google Tag Manager para que cada acción del usuario envíe los datos. Paso&nbsp;3: añade un <em>Router</em> y crea la primera rama con un filtro “URL contiene /pricing”. Paso&nbsp;4: conecta un módulo de tu CRM, elige “Crear o actualizar contacto” y escribe “Interés-Precio” en el campo de etiqueta. Paso&nbsp;5: replica la lógica para otras conductas: clic en botón demo, descarga de PDF, apertura de tres emails. Paso&nbsp;6: activa el escenario y envía datos de prueba; Make mostrará paso a paso cómo viaja la información y confirmará que la etiqueta correcta aparece en tu CRM. Una vez en marcha, el sistema trabaja solo: cada lead cae en su camino, recibe el contenido adecuado y tú obtienes una base de datos ordenada sin esfuerzo manual.</p>
+</section>
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+<section id="ejemplo-interes-precio" class="shadow-box">
+  <h2>5. Ejemplo práctico: asigna la etiqueta “Interés-Precio” cuando visitan tu página de precios</h2>
+  <p>Imagina que tu sitio usa WordPress y Google Tag Manager. Creas una etiqueta en Tag Manager que dispara un evento cada vez que alguien visita <code>/pricing</code>. Ese evento envía un webhook a Make con dos datos: correo electrónico y URL visitada. Make recibe la señal, pasa por el filtro “URL contiene /pricing” y, si se cumple, va directo al módulo del CRM que aplica la etiqueta “Interés-Precio”. En menos de un segundo, tu herramienta de email marketing mete a esa persona en la secuencia “Casos de éxito + demo en vivo”. Gracias a este flujo, el prospecto recibe un mensaje hiperespecífico justo cuando está pensando en precios, lo que puede aumentar las citas o demos hasta un 30 %. Todo sucede sin que nadie tenga que mover listas ni actualizar fichas; Make vigila, decide y etiqueta mientras tú te concentras en vender.</p>
+</section>
+
+<section id="naming-etiquetas" class="shadow-box">
+  <h2>6. Naming de etiquetas: estándar probado para mantener tu segmentación limpia y escalable</h2>
+  <p>Un buen <strong>naming de etiquetas</strong> evita caos y discusiones. Usa el patrón PREFIJO-Detalle, de pocas letras y sin espacios. Por ejemplo: <code>INT-Precio</code> (interés en precios), <code>ACT-Descarga</code> (acción de descarga) o <code>NUR-Email3</code> (nurturing email 3). Apunta cada etiqueta en una hoja compartida con cuatro columnas: nombre, significado, fecha y escenario de Make que la genera. Así cualquiera del equipo sabe que <code>INT-Video</code> significa “vio el video demo” y no confunde etiquetas. Si cambias el flujo, actualiza el documento; una sola fuente de verdad evita duplicados y mantiene tu segmentación clara aunque tu lista crezca a miles de contactos. Con nombres cortos y coherentes, los filtros en Make y en tu CRM son fáciles de leer, las búsquedas son rápidas y los reportes se entienden a la primera.</p>
+</section>
+
+<section id="pruebas-mantenimiento" class="shadow-box">
+  <h2>7. Pruebas y mantenimiento 24/7: garantiza que el etiquetado automático nunca se detenga</h2>
+  <p>Después de activar tu flujo de <strong>etiquetado automático con Make</strong>, dedica diez minutos a probar cada ruta con un correo ficticio. Verifica que la etiqueta aparece y que no se crean contactos duplicados. Make mostrará un módulo en rojo si algo falla: revisa campos vacíos o credenciales caducadas. Configura una notificación por email en el escenario para que te avise si ocurre un error dos veces seguidas; así sabrás cuándo intervenir sin vigilar todo el tiempo. Una vez al mes, entra en tu CRM y revisa la lista de etiquetas: elimina las que ya no uses y añade las nuevas campañas. Este mantenimiento ligero asegura que tu sistema siga ordenado y funcional. El beneficio es claro: tus leads reciben contenido relevante siempre, tu equipo confía en los datos y las ventas fluyen sin interrupciones.</p>
+</section>
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = documen
