@@ -166,7 +166,7 @@ a:hover,a:focus{
 <header>
   <div class="header-top container">
     <span class="header-title">PsicoFunnel</span>
-    <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
   </div>
   <div class="header-content container">
     <h1>Copywriting para una Página de Ventas</h1>
@@ -334,14 +334,14 @@ a:hover,a:focus{
 <!-- ✉️  NEWSLETTER                                            -->
 <!-- ========================================================= -->
 <section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
-  <img src="img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
   
   <div style="flex: 1; padding-right: 20px;">
     <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
     <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
   </div>
   
-  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.integromat.com/tu-webhook-aqui">
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
     <input type="email" name="email" placeholder="Tu email para sumarte" required
       style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
     
@@ -355,7 +355,7 @@ a:hover,a:focus{
 <!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
 <!-- ========================================================= -->
 <section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
-  <img src="img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
   <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
   <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
     Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
@@ -411,42 +411,56 @@ a:hover,a:focus{
     }
   </style>
 
-  <!-- ========================================================= -->
-  <!-- 💤  SCRIPTS                                              -->
-  <!-- ========================================================= -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const overlay = document.getElementById('popup-overlay');
-      const closeBtn = document.getElementById('popup-close');
-      let shown = false;
-      window.addEventListener('scroll', () => {
-        const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-        if (!shown && scrollRatio > 0.3) {
-          overlay.style.display = 'flex';
-          shown = true;
-        }
-      });
-      closeBtn.addEventListener('click', () => {
-        overlay.style.display = 'none';
-      });
-      // Previene que el popup vuelva a aparecer
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          overlay.style.display = 'none';
-        }
-      });
-    });
-  </script>
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
 
-  <!-- ========================================================= -->
-  <!-- 💤  LAZY‑LOAD SCRIPT                                      -->
-  <!-- ========================================================= -->
-  <script>
-    document.addEventListener('DOMContentLoaded',()=>{
-      const imgs=[...document.querySelectorAll('img[loading="lazy"]')];
-      if('IntersectionObserver'in window){
-        const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.src||img.src;io.unobserve(img);}});});imgs.forEach(img=>io.observe(img));}
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // Redirigir si es ebook o newsletter
+          if (formId === "form-ebook" || formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
     });
-  </script>
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-consultoria", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
 </body>
 </html>
