@@ -1,0 +1,582 @@
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain;justify-self:center}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    /* ========================================================= */
+    /* 📚  ÍNDICE MEJORADO                                       */
+    /* ========================================================= */
+    nav#indice{
+      background:#e5f6ff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 20px rgba(0,166,224,0.15);
+      margin:40px auto;
+      max-width:1000px;
+    }
+    nav#indice h2{
+      font-size:1.8rem;
+      margin-bottom:20px;
+      color:#0a0f1c;
+      text-align:center;
+    }
+    nav#indice ol{
+      counter-reset:idx;
+      list-style:none;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:18px;
+    }
+    nav#indice ol li{
+      counter-increment:idx;
+      display:flex;
+      align-items:flex-start;
+    }
+    nav#indice ol li::before{
+      content:counter(idx);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:30px;
+      height:30px;
+      margin-right:10px;
+      background:#00a6e0;
+      color:#fff;
+      font-weight:700;
+      border-radius:50%;
+      flex-shrink:0;
+    }
+    nav#indice ol li a{
+      color:#001a40;
+      font-weight:600;
+      text-decoration:none;
+      transition:color .25s;
+      line-height:1.4;
+    }
+    nav#indice ol li a:hover{
+      color:#00a6e0;
+      text-decoration:underline;
+    }
+    /* ========================================================= */
+    /* SECCIONES Y ESTILOS GENERALES                            */
+    /* ========================================================= */
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    a{color:#00a6e0;text-decoration:none;transition:color .25s ease}
+    a:hover{color:#33c0f3;text-decoration:underline}
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); display: none;
+      align-items: center; justify-content: center; z-index: 10000;
+    }
+    #popup {
+      background:#fff; border-radius:14px; max-width:480px; width:90%;
+      padding:30px 20px; text-align:center; box-shadow:0 8px 40px rgba(0,0,0,0.25);
+      position:relative; transform:translateY(-20px);
+      transition:transform 0.4s ease;
+    }
+    #popup-overlay.show #popup { transform:translateY(0); }
+    #popup h3{font-size:1.6rem;margin-bottom:12px;color:#0a0f1c}
+    #popup p{font-size:1rem;margin-bottom:20px;color:#0a0f1c;line-height:1.6}
+    #popup input[type="email"]{
+      width:100%;padding:12px 14px;border:1px solid #ccc;border-radius:8px;
+      margin-bottom:16px;font-size:1rem;outline:none;
+    }
+    #popup button{
+      background:#00a6e0;color:#0a0f1c;padding:14px 28px;border:none;
+      border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,166,224,.35);
+      transition:background .3s ease, transform .3s ease;
+    }
+    #popup button:hover{background:#33c0f3;transform:translateY(-2px)}
+    #popup .close-btn{
+      position:absolute;top:12px;right:12px;background:none;border:none;
+      font-size:1.5rem;cursor:pointer;color:#555;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <span class="header-title">PsicoFunnel</span>
+      <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+      <span></span>
+    </div>
+    <div class="header-content">
+      <h1>¿Qué contenido subir en cada etapa de un Funnel de Ventas?</h1>
+      <p>La guía PsicoFunnel para atraer, educar y convertir con piezas de valor en TOFU, MOFU y BOFU.</p>
+    </div>
+  </header>
+
+  <!-- POPUP -->
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora tu guía con los 7 sesgos psicológicos que activan ventas y aplica tácticas comprobadas hoy mismo.</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 📚  ÍNDICE MEJORADO -->
+  <nav id="indice" aria-label="Índice de contenidos">
+    <h2>Tabla de contenidos</h2>
+    <ol>
+      <li><a href="#funnel-360">1. Funnel 360°</a></li>
+      <li><a href="#tofu-objetivos">2. TOFU – Objetivos</a></li>
+      <li><a href="#tofu-contenidos">3. Contenidos TOP of Funnel</a></li>
+      <li><a href="#mofu-objetivos">4. MOFU – Objetivos</a></li>
+      <li><a href="#mofu-contenidos">5. Contenidos MID of Funnel</a></li>
+      <li><a href="#bofu-objetivos">6. BOFU – Objetivos</a></li>
+      <li><a href="#bofu-contenidos">7. Contenidos BOTTOM of Funnel</a></li>
+      <li><a href="#herramientas-mapeo">8. Herramientas de Mapeo</a></li>
+      <li><a href="#plan-editorial">9. Plan Editorial 90 Días</a></li>
+      <li><a href="#optimizacion">10. Optimización Continua</a></li>
+    </ol>
+  </nav>
+
+<!-- ===== SECTIONES ===== -->
+
+<section id="funnel-360" class="shadow-box">
+  <h2>1. Funnel 360°: la vista panorámica</h2>
+  <p>
+    El <strong>Funnel 360°</strong> es la brújula que orienta toda tu estrategia de
+    marketing digital. Imagina un mapa que muestra desde el instante en que un
+    desconocido descubre tu marca hasta el momento en que se convierte en fan,
+    compra de nuevo y la recomienda. Esa es la esencia de un funnel de ventas
+    completo y saludable. Para que el funnel sea realmente 360°, cada fase
+    —TOFU, MOFU y BOFU— debe responder a una intención distinta del usuario.
+    En la parte alta (TOFU) la prioridad es educar y generar confianza; en
+    media (MOFU) profundizar y resolver objeciones; en baja (BOFU) facilitar la
+    decisión con argumentos claros y evidencias concretas. Cuando mapeas
+    preguntas, emociones y micro-conversiones en cada tramo, tu <em>contenido
+    full funnel</em> se comporta como un sistema de rieles que conduce al cliente
+    sin fricción. Un <strong>Funnel 360°</strong> bien alineado incrementa la
+    relevancia del mensaje, minimiza costes publicitarios y crea una
+    experiencia de compra congruente, clave para elevar el valor de vida del
+    cliente.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="buyer-journey">Conexión con el Buyer Journey</h3>
+    <p>
+      El <strong>Funnel 360°</strong> se solapa con el buyer journey porque ambos
+      describen el mismo camino con lentes diferentes. El funnel organiza el
+      contenido por nivel de consciencia y el buyer journey por emociones y
+      expectativas. Cuando unes ambos modelos descubres los “momentos de
+      verdad”: puntos críticos donde un dato, una historia o una prueba social
+      bien colocada pueden acelerar la conversión. Identifica esos instantes
+      usando analítica web, encuestas y entrevistas breves. Luego asigna
+      formatos específicos: un vídeo comparativo en MOFU para derribar dudas o
+      un testimonio en BOFU para dar seguridad. Así tu contenido se vuelve una
+      extensión natural de la conversación que el prospecto ya mantiene en su
+      mente.
+    </p>
+  </div>
+</section>
+
+<section id="tofu-objetivos" class="shadow-box">
+  <h2>2. TOFU: objetivos y mentalidad del descubrimiento</h2>
+  <p>
+    En la fase <strong>TOFU</strong> (Top of Funnel) la audiencia apenas es
+    consciente de que existe un problema o una oportunidad. Tu misión como
+    experto en marketing es ofrecer claridad y despertar curiosidad, no vender.
+    El objetivo principal de TOFU es atraer tráfico cualificado mediante
+    contenido educativo que responda dudas básicas: qué, por qué y para qué. Un
+    blog optimizado para SEO, un vídeo explicativo breve o una infografía
+    sencilla pueden posicionarte como referencia en el tema. En TOFU, el éxito
+    se mide con impresiones, clics y tiempo de permanencia. Una tasa de rebote
+    baja y un tiempo en página superior a 45 segundos indican que el contenido
+    cumple la promesa del titular. El <strong>TOFU</strong> efectivo sienta las
+    bases para nutrir al visitante, invitarlo a una suscripción voluntaria y
+    prepararlo para los pasos MOFU y BOFU.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="kpi-tofu">KPI fundamentales en TOFU</h3>
+    <p>
+      Para controlar la salud de <strong>TOFU</strong>, observa el CTR
+      orgánico, el porcentaje de nuevos usuarios y los mapas de scroll.
+      Si menos del 50 % de los visitantes llega a la mitad del artículo,
+      revisa la estructura, agrega subtítulos llamativos y utiliza
+      storytelling. Otra métrica valiosa es el ratio de shares en redes: un
+      alto número de compartidos indica que el contenido conecta a nivel
+      emocional. Ajusta titulares con palabras clave como “guía”, “qué es”
+      o “paso a paso”, porque estas consultas reflejan la búsqueda de
+      información inicial típica de TOFU.
+    </p>
+  </div>
+</section>
+
+<section id="tofu-contenidos" class="shadow-box">
+  <h2>3. Contenidos estrella para TOFU</h2>
+  <p>
+    Los mejores <strong>contenidos TOFU</strong> son fáciles de consumir,
+    visuales y altamente compartibles. Destacan los listículos con cifras
+    (“7 beneficios de…”), los vídeos cortos de TikTok o Reels que explican un
+    concepto en 30 segundos y los posts de blog optimizados para la intención
+    de búsqueda “qué es + palabra clave”. También funcionan las infografías
+    descargables y las plantillas de checklists que ofrecen un primer “mini
+    éxito”. Mantén el CTA ligero: invitar a leer otro artículo relacionado o a
+    unirse a tu newsletter. Cuando tu <strong>contenido TOFU</strong> responde
+    exactamente a la pregunta inicial, el visitante confía y pasa al siguiente
+    escalón sin sentir presión.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="blogs-redes">Blog SEO + Social Snack</h3>
+    <p>
+      Una fórmula probada combina un artículo profundo de 1 500 palabras
+      (SEO-friendly, encabezados H2 y H3 con palabras clave) y un carrusel de
+      Instagram que resume los puntos clave en imágenes. El carrusel dirige
+      tráfico social al blog, donde un enlace interno sugiere otro recurso
+      TOFU. Esta sinergia blog-redes aumenta el tiempo de sesión y siembra
+      cookies para futuras campañas de retargeting.
+    </p>
+  </div>
+</section>
+
+<section id="mofu-objetivos" class="shadow-box">
+  <h2>4. MOFU: objetivos y mentalidad de consideración</h2>
+  <p>
+    En <strong>MOFU</strong> (Middle of Funnel) el prospecto comprende su
+    problema y busca comparativas o métodos concretos para solucionarlo. Tu
+    objetivo es profundizar, demostrar experiencia y reducir incertidumbre.
+    Contenido MOFU típico incluye guías de compra, calculadoras de ROI,
+    webinars efectivos y casos de estudio detallados. Un buen
+    <strong>MOFU</strong> traduce características en beneficios tangibles,
+    responde objeciones frecuentes y presenta tu propuesta como opción lógica,
+    sin forzar la venta. Evalúa el éxito con descargas, asistencia a eventos
+    online y participación en newsletters segmentadas. Cuando los usuarios
+    interactúan activamente —por ejemplo, completan una calculadora o hacen
+    preguntas en un webinar— muestran señales claras de intención de compra.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="kpi-mofu">KPI fundamentales en MOFU</h3>
+    <p>
+      Sigue de cerca la tasa de conversión a MQL (Marketing Qualified Lead), el
+      coste por lead y el engagement de emails educativos. Una apertura superior
+      al 25 % y clics sobre 3 % indican que tu <strong>contenido MOFU</strong>
+      resuena. Analiza los informes de abandono en webinars: si muchos se van
+      antes de la mitad, revisa el ritmo y añade ejemplos prácticos. El objetivo
+      es que cada interacción MOFU reduzca fricción y prepare el cierre BOFU.
+    </p>
+  </div>
+</section>
+
+<section id="mofu-contenidos" class="shadow-box">
+  <h2>5. Contenidos clave para MOFU</h2>
+  <p>
+    Los <strong>contenidos MOFU</strong> ganadores combinan profundidad y
+    utilidad. Los whitepapers que comparan alternativas, las calculadoras de
+    retorno y las series de email con tutoriales paso a paso permiten al
+    prospecto justificar la inversión. Incluye pruebas sociales ligeras:
+    capturas de resultados, testimonios cortos o métricas de éxito
+    verificables. Estructura tu contenido MOFU en formato “problema – solución
+    – beneficio” y añade tablas o gráficos que expliquen por qué tu método
+    destaca. Al final, invita a una demo o a una llamada de descubrimiento,
+    mostrando que el siguiente paso es fácil y sin compromiso.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="whitepapers-comparativas">Whitepapers &amp; Comparativas</h3>
+    <p>
+      Un documento conciso de 8 páginas que compara tres soluciones del mercado
+      con una matriz de decisión clara puede posicionarte como asesor confiable.
+      Aporta datos neutrales, luego subraya tus ventajas con subtítulos como
+      “Tiempo de implementación” o “Soporte post-venta”. Este enfoque ayuda al
+      prospecto a visualizar el valor y fortalece tu argumento sin presionar.
+    </p>
+  </div>
+</section>
+
+<section id="bofu-objetivos" class="shadow-box">
+  <h2>6. BOFU: objetivos y mentalidad de decisión</h2>
+  <p>
+    En la etapa <strong>BOFU</strong> (Bottom of Funnel) el prospecto tiene una
+    lista corta de opciones y busca pruebas definitivas de que tu solución es
+    la correcta. El objetivo de BOFU es convertir interés en acción mediante
+    demostraciones, precios claros, garantías y testimonios detallados. Cada
+    segundo cuenta: formularios abreviados, carga rápida y botones de CTA
+    visibles aumentan el cierre. El éxito se mide con demos agendadas,
+    activaciones de prueba y contratos firmados. Una experiencia BOFU bien
+    pulida reduce el tiempo de decisión y eleva el valor de carrito.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="kpi-bofu">KPI fundamentales en BOFU</h3>
+    <p>
+      Controla la tasa de cierre, el tiempo de ciclo de ventas y la adopción de
+      la oferta de prueba. Si muchos leads prueban pero pocos compran, revisa
+      tu onboarding: ¿reciben instrucciones claras?, ¿saben qué éxito
+      perseguir? Pequeños ajustes, como un email de acompañamiento o un vídeo
+      introductorio de 90 segundos, pueden mejorar el ratio de conversión
+      significativamente.
+    </p>
+  </div>
+</section>
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form action="#" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+<section id="bofu-contenidos" class="shadow-box">
+  <h2>7. Contenidos ganadores para BOFU</h2>
+  <p>
+    Los <strong>contenidos BOFU</strong> más efectivos son demos en vivo, casos
+    de éxito en vídeo y pruebas gratuitas. Estos formatos permiten al lead ver
+    el producto en acción, imaginar su propio resultado y confiar en tu marca.
+    Proporciona un PDF de precios transparente y una comparativa de planes para
+    evitar confusión. Una garantía de devolución de dinero reduce el riesgo
+    percibido. Incluye testimonios de clientes con perfil similar al prospecto
+    para activar la prueba social. Cierra con un calendario de reservas integrado
+    para capitalizar el impulso y facilitar el paso final.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="demos-testimonios">Demos + Testimonios Estratégicos</h3>
+    <p>
+      Programa demos de 15 min que destaquen tareas clave y mantén espacio para
+      preguntas. Combina la presentación con un vídeo-testimonio breve, de un
+      minuto, donde un cliente explique el antes y después. Este mix apela a la
+      lógica y la emoción, creando un argumento de cierre difícil de rechazar.
+    </p>
+  </div>
+</section>
+
+<section id="herramientas-mapeo" class="shadow-box">
+  <h2>8. Herramientas para mapear y orquestar contenido</h2>
+  <p>
+    Para orquestar tu <strong>contenido full funnel</strong>, combina mapas
+    visuales y flujos de trabajo colaborativos. Miro o FigJam sirven para
+    plasmar la ruta del usuario y asignar formatos a cada etapa. Notion o
+    Trello permiten gestionar ideas, fechas y responsables. Automatiza
+    integraciones con Zapier para publicar en redes o programar artículos. Al
+    centralizar analítica de Google Analytics y tu CRM en un panel,
+    visualizarás qué piezas generan más tráfico, leads y ventas. Esto evita
+    duplicidades y asegura coherencia de tono en TOFU, MOFU y BOFU.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="matriz-contenido">Matriz Contenido-Objetivo</h3>
+    <p>
+      Crea una matriz que cruce etapas del funnel con formatos y KPI: TOFU-Post
+      SEO → impresiones; MOFU-Calculadora → MQL; BOFU-Demo → tasa de cierre.
+      Con colores semáforo distinguirás vacíos de contenido y podrás asignar
+      recursos donde generan más impacto.
+    </p>
+  </div>
+</section>
+
+<section id="plan-editorial" class="shadow-box">
+  <h2>9. Plan editorial full funnel en 90 días</h2>
+  <p>
+    Un <strong>plan editorial 90 días</strong> divide tu estrategia en sprints
+    de dos semanas. Cada sprint entrega al menos una pieza por fase: un post
+    SEO (TOFU), un recurso descargable (MOFU) y un testimonio o demo optimizada
+    (BOFU). Este ritmo mantiene el flujo de leads y alimenta campañas de
+    retargeting. Usa un calendario con códigos de color: azul para TOFU,
+    naranja para MOFU y verde para BOFU. Revisa rendimiento semanalmente,
+    prioriza lo que funciona y descarta lo que no conecta. Así sostienes el
+    hilo narrativo, impulsas autoridad y aseguras un embudo siempre activo.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="calendario-90d">Calendario granular 90 D</h3>
+    <p>
+      Días 1-14: investigación y outlines; días 15-30: producción de TOFU;
+      días 31-45: recursos MOFU; días 46-60: testimonios BOFU; días 61-75:
+      optimización SEO on-page; días 76-90: análisis de datos y relanzamiento
+      con ajustes. Documentar cada sprint te permitirá iterar con base en
+      evidencia, no suposiciones.
+    </p>
+  </div>
+</section>
+
+<section id="optimizacion" class="shadow-box">
+  <h2>10. Optimización continua y escalable</h2>
+  <p>
+    La <strong>optimización continua</strong> mantiene tu funnel fresco y
+    rentable. Revisa métricas mensuales: impresiones, CTR, tasa de leads,
+    tiempo en página y, sobre todo, ingresos atribuibles. Implementa tests A/B
+    en títulos, imágenes y CTA. Actualiza estadísticas antiguas cada seis
+    meses, enlaza artículos relacionados y añade contenido multimedia para
+    mejorar SEO. Automatiza la redistribución de posts evergreen en redes para
+    obtener visitas constantes sin crear material nuevo. Documenta cambios en
+    un registro central; así tu equipo aprende y evita repetir errores.
+  </p>
+
+  <div class="subcontent">
+    <h3 id="ab-automatizacion">Tests A/B &amp; Automatización</h3>
+    <p>
+      Empieza con cambios simples: color de botón o longitud de titular.
+      Monitorea resultados durante 14 días y conserva sólo lo que supera al
+      control. Configura alertas de tráfico en Google Analytics para reaccionar
+      rápido ante caídas y mantén tu contenido full funnel optimizado sin
+      esfuerzo manual excesivo.
+    </p>
+  </div>
+</section>
+
+
+
+  
+
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.integromat.com/tu-webhook-aqui">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- ========================================================= -->
+  <!-- 💤  SCRIPTS                                              -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('popup-overlay');
+      const closeBtn = document.getElementById('popup-close');
+      let shown = false;
+      window.addEventListener('scroll', () => {
+        const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (!shown && scrollRatio > 0.3) {
+          overlay.style.display = 'flex';
+          shown = true;
+        }
+      });
+      closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+      });
+      // Previene que el popup vuelva a aparecer
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- ========================================================= -->
+  <!-- 💤  LAZY‑LOAD SCRIPT                                      -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const imgs=[...document.querySelectorAll('img[loading="lazy"]')];
+      if('IntersectionObserver'in window){
+        const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.src||img.src;io.unobserve(img);}});});imgs.forEach(img=>io.observe(img));}
+    });
+  </script>
+</body>
+</html>
