@@ -411,7 +411,9 @@ a:hover,a:focus{
     }
   </style>
 
-<!-- ========================================================= SCRIPTS ========================================================= -->
+<!-- ========================================================= -->
+<!-- 💤  SCRIPTS                                              -->
+<!-- ========================================================= -->
 <script>
   /**
    * Conecta un formulario con un webhook de Make/Integromat
@@ -435,9 +437,11 @@ a:hover,a:focus{
       })
       .then((res) => {
         if (res.ok) {
-          // Redirigir si es ebook o newsletter
-          if (formId === "form-ebook" || formId === "form-newsletter") {
+          // 👉 Redirecciones según formulario
+          if (formId === "form-ebook") {
             window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyou-newsletter.html";
           } else {
             alert("¡Formulario enviado con éxito!");
             this.reset();
@@ -459,6 +463,50 @@ a:hover,a:focus{
     conectarFormulario("form-ebook", WEBHOOK_URL);
     conectarFormulario("form-consultoria", WEBHOOK_URL);
     conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
   });
 </script>
 
