@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>¡Gracias por unirte a PsicoFunnel!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ========= BASE ========= */
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;font-family:'Outfit',sans-serif;background:#0a0f1c;color:#ffffff;text-align:center;padding:50px 20px}
+    h1{font-size:3rem;margin-bottom:15px}
+    p{font-size:1.2rem;margin:0 0 45px;line-height:1.5}
+
+    /* CTA BUTTON */
+    .btn{display:inline-block;background:#00a6e0;color:#0a0f1c;padding:28px 70px;border:none;border-radius:14px;font-weight:700;font-size:1.35rem;text-decoration:none;cursor:pointer;transition:all .3s ease;box-shadow:0 8px 20px rgba(0,166,224,.45);margin-bottom:80px}
+    .btn:hover{background:#33c0f3;box-shadow:0 0 28px rgba(0,166,224,.6);transform:translateY(-3px)}
+
+    /* EMAIL HINT */
+    .email-hint{background:#ffffff10;border:1px solid #ffffff30;border-radius:14px;padding:30px 25px;max-width:800px;margin:0 auto 80px}
+    .email-hint img{width:100%;max-width:480px;border-radius:10px;margin-top:22px;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+
+    /* ABOUT */
+    .about{background:#e5f6ff;color:#0a0f1c;border-radius:14px;padding:40px 35px;width:100%;max-width:700px;box-shadow:0 6px 24px rgba(0,166,224,.15)}
+    .about img{width:150px;height:150px;object-fit:cover;border-radius:100px;margin-bottom:22px}
+
+    /* RESPONSIVE */
+    @media(max-width:480px){h1{font-size:2.2rem}.btn{width:100%;padding:24px;font-size:1.15rem}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>¡Paso 1 completado!</h1>
+    <p>Revisá tu bandeja de entrada: el recurso gratuito ya está en camino.<br>
+       <strong>Paso 2&nbsp;&mdash;&nbsp;Completá todos los pasos:</strong><br>
+       Ahora podés unirte a nuestra comunidad privada de WhatsApp y recibir tips exclusivos.</p>
+
+    <!-- CTA WHATSAPP -->
+    <a href="https://chat.whatsapp.com/I4kQbrpDL2L0XGrHlC7kLr" class="btn" target="_blank" rel="noopener">💬&nbsp;UNIRME AL GRUPO DE WHATSAPP</a>
+
+    <!-- EMAIL HINT -->
+    <div class="email-hint">
+      <h2 style="margin-top:0;font-size:1.5rem">¿No encontrás el correo?</h2>
+      <p style="margin:0 0 10px;font-size:1.05rem">Revisá las carpetas <strong>Spam</strong> o <strong>Promociones</strong>. Así se ve el mensaje en tu inbox:</p>
+      <!-- Reemplazá la imagen con tu captura -->
+      <img src="img/ejemplo-correo.png" alt="Ejemplo de cómo se ve el correo" loading="lazy" />
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <img src="img/benjamin-alegre.JPG" alt="Benjamín Alegre" loading="lazy" />
+      <h2 style="margin:0 0 12px;font-size:1.6rem">¿Quién está detrás de PsicoFunnel?</h2>
+      <p style="margin:0;font-size:1.05rem">Soy <strong>Benjamín Alegre</strong>, especialista en neuroventas y funnels psicológicos. Ayudo a creadores y marcas personales a multiplicar sus ventas sin sacrificar su integridad ni su estilo.</p>
+    </section>
+  </main>
+</body>
+</html>
