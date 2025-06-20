@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- ========================================================= -->
+<!--  SEO BASICS                                               -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Copywriting Antichurn: Retén Usuarios desde el Onboarding | PsicoFunnel</title>
+<meta name="description" content="Guía paso a paso para reducir el churn durante el onboarding con copywriting claro, empático y orientado a resultados. Convierte registros en usuarios fieles y eleva tu retención." />
+<link rel="canonical" href="https://psicofunnel.com/copywriting-antichurn-onboarding" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Copywriting Antichurn: Retén Usuarios desde el Onboarding | PsicoFunnel" />
+<meta property="og:description" content="Aprende a usar copywriting en tu proceso de bienvenida para acelerar el ‘aha moment’ y evitar la fuga temprana de clientes." />
+<meta property="og:image" content="https://psicofunnel.com/assets/img/copywriting-antichurn-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://psicofunnel.com/copywriting-antichurn-onboarding" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Copywriting Antichurn: Retén Usuarios desde el Onboarding | PsicoFunnel" />
+<meta name="twitter:description" content="Reduce el churn con copywriting estratégico: guía práctica para SaaS, apps y productos digitales." />
+<meta name="twitter:image" content="https://psicofunnel.com/assets/img/copywriting-antichurn-cover.webp" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+
+        /* ========================================================= */
+    /* 📚  ÍNDICE MEJORADO                                       */
+    /* ========================================================= */
+    nav#indice{
+      background:#e5f6ff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 20px rgba(0,166,224,0.15);
+      margin:40px auto;
+      max-width:1000px;
+    }
+    nav#indice h2{
+      font-size:1.8rem;
+      margin-bottom:20px;
+      color:#0a0f1c;
+      text-align:center;
+    }
+    nav#indice ol{
+      counter-reset:idx;
+      list-style:none;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:18px;
+    }
+    nav#indice ol li{
+      counter-increment:idx;
+      display:flex;
+      align-items:flex-start;
+    }
+    nav#indice ol li::before{
+      content:counter(idx);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:30px;
+      height:30px;
+      margin-right:10px;
+      background:#00a6e0;
+      color:#fff;
+      font-weight:700;
+      border-radius:50%;
+      flex-shrink:0;
+    }
+    nav#indice ol li a{
+      color:#001a40;
+      font-weight:600;
+      text-decoration:none;
+      transition:color .25s;
+      line-height:1.4;
+    }
+    nav#indice ol li a:hover{
+      color:#00a6e0;
+      text-decoration:underline;
+  </style>
+
+
+  <!-- ========================================================= -->
+  <!-- 🔎  SCHEMA FAQ                                            -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Un funnel, sales pipeline o embudo de ventas es la visualización del proceso por el que pasa un prospecto desde el descubrimiento hasta la compra y la fidelización."}},{"@type":"Question","name":"¿Cuántas etapas tiene un embudo de conversión?","acceptedAnswer":{"@type":"Answer","text":"Clásicamente se divide en TOFU, MOFU y BOFU, aunque modelos avanzados incluyen post‑venta y re‑engagement."}},{"@type":"Question","name":"¿Para qué sirve mapear el customer journey?","acceptedAnswer":{"@type":"Answer","text":"Sirve para identificar cuellos de botella y potenciar las tasas de conversión (CVR) y el retorno sobre la inversión (ROI)."}}]}</script>
+</head>
+<body>
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content">
+    <h1>Copywriting Antichurn: retén usuarios desde el onboarding</h1>
+    <p style="color:#fff;">Convierte cada palabra de bienvenida en valor inmediato y reduce la fuga temprana de clientes con la metodología PsicoFunnel.</p>
+  </div>
+</header>
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+     <!-- ===== ÍNDICE ===== -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ul>
+    <li><a href="#que-es-churn">1. Churn en Onboarding</a></li>
+    <li><a href="#porque-copy">2. Impacto del Copywriting en la Retención</a></li>
+    <li><a href="#voz-cliente">3. Voz de Cliente: escuchar antes de escribir</a></li>
+    <li><a href="#valor-inmediato">4. Matriz de Valor Inmediato (Quick Wins)</a></li>
+    <li><a href="#microcopy">5. Microcopy In-App que guía sin fricción</a></li>
+    <li><a href="#email-bienvenida">6. Emails de Bienvenida que fidelizan</a></li>
+    <li><a href="#push-nudges">7. Nudges &amp; Push para evitar el abandono</a></li>
+    <li><a href="#story-exito">8. Storytelling de Éxito Temprano</a></li>
+    <li><a href="#prueba-social">9. Refuerzo Social y Progreso Visible</a></li>
+    <li><a href="#optimizacion">10. Optimización Continua del Copy</a></li>
+  </ul>
+</nav>
+
+<!-- ===== SECTIONES ===== -->
+
+<section id="que-es-churn" class="shadow-box">
+  <h2>1. Churn en Onboarding</h2>
+  <p>El <strong>churn en onboarding</strong> es la fuga de usuarios durante los primeros días o semanas, justo cuando la curiosidad inicial debería transformarse en hábito. Ocurre cuando el cliente deja de ver valor antes de llegar a su “momento aha”, ese instante en que piensa: “¡Esto sí me sirve!”. Los estudios del sector señalan que, en productos digitales, más del 40 % de las bajas suceden en los primeros treinta días. El detonante casi siempre es el mismo: confusión. Botones poco claros, pasos demasiado largos o textos genéricos que no explican por qué cada acción merece la pena. El copywriting antichurn actúa como un guía turístico que traduce la interfaz en beneficios palpables. Una frase como “Sube tu primer archivo y ahorra tiempo desde hoy” conecta la acción con el resultado, reduciendo la incertidumbre y reforzando la confianza. Medir el “tiempo al valor” (intervalo entre el registro y la primera victoria del usuario) te mostrará si tu mensaje resulta claro: cuanto más corto sea ese tiempo, menor será tu churn. Con palabras sencillas, amigables y llenas de intención, puedes convertir un camino lleno de obstáculos en un paseo fluido hacia la satisfacción.</p>
+</section>
+
+<section id="porque-copy" class="shadow-box">
+  <h2>2. Impacto del Copywriting en la Retención</h2>
+  <p>Un producto excelente pierde usuarios si sus textos no acompañan la experiencia. El <strong>copywriting en la retención</strong> funciona como un entrenador personal: motiva, explica y celebra cada avance. Cuando el botón dice “Siguiente” el cerebro se pregunta “¿Por qué debería?”. Si, en cambio, dice “Ver mi primer reporte ahora”, la intención queda clara y el usuario se anima. Un buen copy también reduce la ansiedad al anticipar lo que ocurrirá después (“Este paso tarda menos de un minuto”). Además, refuerza la decisión de compra recordando beneficios concretos: “Desde hoy tu contabilidad será automática”. Las palabras adecuadas elevan la emoción positiva y bajan la fricción mental. El resultado es doble: menos tickets de soporte —porque las instrucciones están claras— y mayor compromiso —porque el usuario siente que cada clic le acerca a su meta—. En resumen, escribir con empatía y precisión crea un hilo invisible entre expectativa y realidad, evitando que el cliente se frustre y abandone tu servicio en silencio.</p>
+</section>
+
+<section id="voz-cliente" class="shadow-box">
+  <h2>3. Voz de Cliente: escuchar antes de escribir</h2>
+  <p>Para que tu mensaje retenga, primero debes hablar el idioma de tus usuarios. La <strong>voz de cliente</strong> se construye recopilando las frases reales que la gente usa cuando describe sus problemas y logros. Revisa encuestas, chats de soporte y opiniones en foros: subraya palabras repetidas y emociones fuertes. Agrupa esas citas en dos listas: dolores (“pierdo horas en planillas”) y deseos (“quiero reportes listos con un clic”). Luego transpórtalas, tal cual, a tu onboarding: “¿Pierdes horas en planillas? Crea tu primer reporte con un clic”. El usuario sentirá que lo entiendes y confiará en el proceso. Mantén este banco de frases vivo: cada comentario nuevo puede ser la chispa para mejorar un tooltip o un correo. Escuchar antes de escribir asegura relevancia, rompe barreras culturales y convierte una jerga técnica en una conversación cercana y humana.</p>
+</section>
+
+<section id="valor-inmediato" class="shadow-box">
+  <h2>4. Matriz de Valor Inmediato (Quick Wins)</h2>
+  <p>Las primeras horas con tu producto deben ofrecer triunfos fáciles, los llamados <em>quick wins</em>. Crea una <strong>matriz de valor inmediato</strong>: en la columna A anota cada función clave; en la columna B describe el mini-resultado en menos de doce palabras; en la columna C define la frase de celebración. Ejemplo: Función → “Plantilla de facturas”. Resultado → “Emite tu primera factura en 60 s”. Celebración → “🎉 Factura lista, tiempo ahorrado”. Inserta el resultado (columna B) en el botón que inicia la acción y muestra la celebración (columna C) justo al completarla. Esta secuencia de promesa-acción-recompensa genera dopamina y refuerza el hábito de uso. Con unos pocos quick wins bien comunicados, la percepción de valor se dispara y el churn tempranero se desploma.</p>
+</section>
+
+<section id="microcopy" class="shadow-box">
+  <h2>5. Microcopy In-App que guía sin fricción</h2>
+  <p>El <strong>microcopy in-app</strong> son las pequeñas frases que aparecen en botones, tooltips o campos de formulario. Parecen detalles, pero cada uno es una señal que orienta o confunde. Usa verbo + beneficio: “Guardar cambios y ahorrar tiempo”, en lugar de un simple “Guardar”. Prefiere frases directas y positivas; evita tecnicismos. Limita cada tooltip a una idea clara y ofrece siempre la opción de “Saltar por ahora” para no agobiar. Un buen microcopy convierte la interfaz en una conversación amable que dice: “Haz esto y obtén aquello”. Cuando la mente entiende el propósito, la mano hace clic sin dudar y el camino hacia la activación fluye sin sobresaltos.</p>
+</section>
+
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+
+<section id="email-bienvenida" class="shadow-box">
+  <h2>6. Emails de Bienvenida que fidelizan</h2>
+  <p>El primer correo tras el registro marca el tono de la relación. Escribe un asunto centrado en el beneficio (“Tu primer reporte en 2 minutos”) para asegurar apertura. Dentro, combina gratitud (“Gracias por confiar…”) con una instrucción única (“Haz clic en este botón y sube tu archivo”). Incluye una imagen animada de la acción principal para que el usuario visualice el siguiente paso. Termina con un recordatorio sutil de soporte (“Si tienes dudas, responde a este correo”) para generar confianza. Envía dos mensajes más en los días siguientes: uno con un truco rápido y otro celebrando el primer logro alcanzado. Una secuencia breve, clara y orientada a resultados demuestra que estás presente para ayudar, no para vender, y mantiene al usuario motivado a descubrir más.</p>
+</section>
+
+<section id="push-nudges" class="shadow-box">
+  <h2>7. Nudges &amp; Push para evitar el abandono</h2>
+  <p>Un <em>nudge</em> es un empujoncito que recuerda al usuario su meta sin presionarlo. Después de 24 horas de inactividad, envía un mensaje suave: “👋 Te falta un paso para terminar tu primer informe. ¿Continuamos?”. Incluye un enlace directo a la pantalla exacta donde quedó. Límites: máximo tres recordatorios, con intervalos crecientes, para no resultar invasivos. Ajusta el tono al perfil: informal para freelance, formal para grandes empresas. Estos empujes estratégicos reactivan a quienes se distrajeron y reducen el abandono accidental.</p>
+</section>
+
+<section id="story-exito" class="shadow-box">
+  <h2>8. Storytelling de Éxito Temprano</h2>
+  <p>Las historias convierten información en inspiración. Comparte el relato de un cliente que, en su primer día, resolvió un dolor concreto. Sigue el formato Problema → Acción → Resultado. Problema: “Ana tardaba horas en conciliar cifras”. Acción: “Usó la plantilla automática en minutos”. Resultado: “Ahora cierra reportes en 15 minutos”. Acompaña la historia con una imagen antes/después para mayor impacto. Coloca este testimonio en un modal opcional o en el email de día 3. Ver el éxito ajeno hace que el usuario piense: “Yo también puedo”, lo anima a completar el onboarding y refuerza su decisión de quedarse.</p>
+</section>
+
+<section id="prueba-social" class="shadow-box">
+  <h2>9. Refuerzo Social y Progreso Visible</h2>
+  <p>La gente confía en lo que otros ya usan. Muestra un contador vivo (“Más de 6 000 equipos activos”) y badges de logros internos (“Nivel 1 completado”) para que el usuario sienta pertenencia y avance. Añadir una barra de progreso (“75 % del onboarding completado”) transforma un camino largo en una meta clara. Cada vez que suba un porcentaje, felicítalo con un micro-mensaje: “¡Buen trabajo! Ya estás a un paso de dominar los reportes”. Este refuerzo continuo mantiene la motivación alta y reduce la tentación de abandonar.</p>
+</section>
+
+<section id="optimizacion" class="shadow-box">
+  <h2>10. Optimización Continua del Copy</h2>
+  <p>Tu producto evoluciona y tu copy también debe hacerlo. Revisa cada texto trimestralmente. Pregunta a nuevos usuarios qué parte resultó confusa y ajusta de inmediato. Para cambios más grandes, prueba dos versiones a la vez (A/B) y mide cuál lleva a más usuarios al paso clave del onboarding. Documenta cada mejora en una guía de estilo interna para mantener coherencia. Pequeños ajustes —como cambiar “Finalizar” por “Crear mi primer informe”— pueden incrementar la finalización en doble dígito. El ciclo de observar, escribir y refinar mantiene tu mensaje fresco, útil y alineado con las necesidades reales de la audiencia.</p>
+</section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = documen
