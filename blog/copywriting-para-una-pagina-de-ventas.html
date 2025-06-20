@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========================================================= -->
+  <!--  SEO BASICS                                               -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copywriting para una Página de Ventas</title>
+  <meta name="description" content="Convierte cada visita en cliente con textos persuasivos, simples y éticos que disparan tus ventas desde el primer scroll." />
+  <link rel="canonical" href="https://psicofunnel.com/customer-journey" />
+  <!-- Open Graph & Twitter -->
+  <meta property="og:title" content="Customer Journey en Marketing Digital: Guía 2025" />
+  <meta property="og:description" content="Guía completa: definición, fases, ejemplos, métricas y plantilla de customer journey para escalar tu funnel." />
+  <meta property="og:image" content="https://psicofunnel.com/assets/img/customer-journey-cover.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://psicofunnel.com/customer-journey" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+  </style>
+
+
+  <!-- ========================================================= -->
+  <!-- 🔎  SCHEMA FAQ                                            -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Un funnel, sales pipeline o embudo de ventas es la visualización del proceso por el que pasa un prospecto desde el descubrimiento hasta la compra y la fidelización."}},{"@type":"Question","name":"¿Cuántas etapas tiene un embudo de conversión?","acceptedAnswer":{"@type":"Answer","text":"Clásicamente se divide en TOFU, MOFU y BOFU, aunque modelos avanzados incluyen post‑venta y re‑engagement."}},{"@type":"Question","name":"¿Para qué sirve mapear el customer journey?","acceptedAnswer":{"@type":"Answer","text":"Sirve para identificar cuellos de botella y potenciar las tasas de conversión (CVR) y el retorno sobre la inversión (ROI)."}}]}</script>
+</head>
+<body>
+  <!-- ========================================================= -->
+  <!-- 🚀  HEADER                                                -->
+  <!-- ========================================================= -->
+<header>
+  <div class="header-top container">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+  </div>
+  <div class="header-content container">
+    <h1>Copywriting para una Página de Ventas</h1>
+    <p>Convierte cada visita en cliente con textos persuasivos, simples y éticos que disparan tus ventas desde el primer scroll.</p>
+  </div>
+</header>
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+<!-- ========= ÍNDICE ========= -->
+<nav id="indice">
+  <ul>
+    <li><a href="#que-es-copywriting-ventas">1. ¿Qué es el copywriting de ventas?</a></li>
+    <li><a href="#por-que-necesitas-copy">2. ¿Por qué tu negocio lo necesita?</a></li>
+    <li><a href="#perfil-cliente-ideal">3. Perfil del cliente ideal</a></li>
+    <li><a href="#propuesta-valor">4. Propuesta de valor cristalina</a></li>
+    <li><a href="#formula-psicofunnel">5. Fórmula PsicoFunnel&nbsp;5P</a></li>
+    <li><a href="#gatillos-mentales">6. Gatillos mentales estratégicos</a></li>
+    <li><a href="#storyselling">7. Storyselling que emociona</a></li>
+    <li><a href="#titulares-que-venden">8. Titulares que venden</a></li>
+    <li><a href="#prueba-social">9. Prueba social &amp; credibilidad</a></li>
+    <li><a href="#cta-irresistibles">10. CTAs irresistibles</a></li>
+  </ul>
+</nav>
+
+<!-- ========= SECTIONS · COPYWRITING PÁGINA DE VENTAS ========= -->
+
+<section id="que-es-copywriting-ventas" class="shadow-box">
+  <h2>1. ¿Qué es el copywriting de ventas?</h2>
+  <p>El <strong>copywriting de ventas</strong> es la combinación de arte y ciencia que usa palabras para persuadir a tu lector y guiarlo a una acción concreta. No se trata de escribir bonito, sino de conectar con la emoción correcta y explicar cómo tu solución transforma la vida del prospecto. Piensa en tu página como un vendedor incansable: su “discurso” —tu texto— debe ser claro, relevante y empático. Para lograrlo, el copy se apoya en principios psicológicos como reciprocidad, urgencia y prueba social, derribando objeciones y amplificando el deseo. Cada frase funciona como un escalón que acerca al usuario al objetivo final. Cuando aplicas estas técnicas, tu web deja de ser un folleto estático y se convierte en un vendedor 24/7 listo para cerrar ventas. Profundiza en esta disciplina en nuestro [glosario de copywriting](/glosario-copywriting).</p>
+
+  <div class="subcontent">
+    <h3 id="esencia-persuadir">La esencia de persuadir con propósito</h3>
+    <p>Persuadir no es manipular; es alinear tu oferta con lo que tu audiencia ya desea. Implica investigar motivaciones, miedos y aspiraciones y reflejar los hallazgos en tu mensaje. Así el lector siente que le hablas directamente, como si leyeras su mente. Practica la escucha activa en foros, encuestas y reseñas para recopilar “frases espejo” que insertarás en tu copy. Cuando el texto se siente personal, la resistencia baja y la confianza sube. Descubre más en nuestro [post de empatía de cliente](/mapa-empatia).</p>
+  </div>
+</section>
+
+<section id="por-que-necesitas-copy" class="shadow-box">
+  <h2>2. ¿Por qué tu negocio necesita copywriting?</h2>
+  <p>En un mercado saturado, precio y calidad ya no bastan para destacar: lo que vende es la <em>percepción</em>. El copywriting moldea esa percepción, convierte características en beneficios y enciende la urgencia de actuar hoy. Negocios que optimizan su copy han visto hasta 3&nbsp;× más conversiones y menor costo por adquisición. Un mensaje coherente a lo largo del funnel refuerza la marca, mejora la retención y estimula el boca a boca digital. Es la palanca que multiplica el retorno de tus campañas de tráfico y convierte visitas en ingresos mientras duermes. Consulta historias reales en nuestra [biblioteca de casos de éxito](/casos-copy).</p>
+
+  <div class="subcontent">
+    <h3 id="impacto-roi">Impacto directo en el ROI</h3>
+    <p>Un texto persuasivo reduce fricción y objeciones, acortando el ciclo de venta. Al anticipar dudas —precio, garantía, soporte— el usuario siente que su decisión es segura, lo que disminuye carritos abandonados y eleva el ticket promedio. Añade testimonios con cifras (“97&nbsp;% triplicó su conversión”) para reforzar la confianza. El copy no es un gasto: es una inversión con retorno medible. Calcula tu potencial en nuestra [herramienta de métricas](/calculadora-roi).</p>
+  </div>
+</section>
+
+<section id="perfil-cliente-ideal" class="shadow-box">
+  <h2>3. Perfil del cliente ideal</h2>
+  <p>Hablarle a todos es hablarle a nadie. Definir tu cliente ideal te permite afinar cada palabra para que resuene como una conversación uno a uno. Combina datos duros del CRM con entrevistas y social listening para descubrir motivaciones y objeciones reales. Incluye elementos demográficos y psicográficos: creencias, valores y deseos. Con esta base, cada frase de tu página sonará relevante y aumentará la sensación de “esto es justo para mí”. Aprende a crearlo paso a paso en nuestra [guía de buyer persona](/buyer-persona).</p>
+
+  <div class="subcontent">
+    <h3 id="mapa-empatia">Mapa de empatía en acción</h3>
+    <p>El mapa de empatía visualiza qué ve, oye, piensa y siente tu prospecto. Detecta motivadores ocultos —como miedo a quedar atrás o deseo de reconocimiento— y tradúcelos en beneficios emocionales (“gana tiempo libre”, “siente orgullo profesional”). Incluye frases literales y emojis para reflejar su lenguaje cotidiano. Este ejercicio se convierte en un tesoro de copys que conectan al instante. Descarga la plantilla en nuestro [kit de investigación](/kit-investigacion).</p>
+  </div>
+</section>
+
+<section id="propuesta-valor" class="shadow-box">
+  <h2>4. Propuesta de valor cristalina</h2>
+  <p>Tu propuesta de valor responde al “por qué tú y ahora”. Debe ser breve, específica y orientada a un resultado tangible: “Duplica tus ventas en 90&nbsp;días sin invertir más en anuncios”. Ubícala arriba del pliegue y repítela en microcopys clave. Las pruebas A/B demuestran que la claridad vence a la creatividad vacía: mencionar “ahorra 10 horas semanales” supera a “soluciones innovadoras”. Un mensaje nítido polariza —quien necesita el beneficio se queda, el resto se auto-descarta— y eso afina tu tráfico. Inspírate en nuestro [repositorio de propuestas ganadoras](/propuestas-exito).</p>
+
+  <div class="subcontent">
+    <h3 id="beneficio-transformador">Del beneficio a la transformación</h3>
+    <p>Los prospectos compran la transformación, no el producto. Pinta el antes y después con números concretos (“de 2&nbsp;% a 8&nbsp;% de conversión”) o escenas cotidianas (“llegar a casa a las 6&nbsp;p.&nbsp;m. en vez de las 10”). Usa metáforas visuales y testimonios para que el futuro deseado se vea alcanzable. Si logras que el lector se imagine en ese escenario, el precio pierde peso. Amplía la técnica en nuestro [post de storytelling visual](/story-visual).</p>
+  </div>
+</section>
+
+<section id="formula-psicofunnel" class="shadow-box">
+  <h2>5. Fórmula PsicoFunnel&nbsp;5P</h2>
+  <p>La fórmula <strong>5P</strong> —Pain, Promise, Proof, Plan, Push— destila lo mejor de las estructuras clásicas en un flujo que mantiene atención y confianza. Inicia con el dolor (Pain), ofrece una promesa concreta (Promise), respáldala con evidencia (Proof), muestra un plan sencillo (Plan) y cierra con un empuje amable (Push). Esta secuencia guía al lector sin fricciones desde la duda hasta la acción, evitando saltos lógicos que generan resistencia. Aplica los 5P en segmentos: un párrafo para cada etapa, con subtítulos claros y elementos visuales que refuercen cada paso. Descarga el checklist y ejemplos en nuestro [centro de recursos](/formula-5p).</p>
+
+  <div class="subcontent">
+    <h3 id="desglosando-5p">Desglosando cada paso</h3>
+    <p><strong>Pain:</strong> muestra empatía real con el problema. <strong>Promise:</strong> declara un resultado específico. <strong>Proof:</strong> incluye testimonios o métricas. <strong>Plan:</strong> resume la implementación en 3 pasos. <strong>Push:</strong> añade urgencia ética (bono limitado). Al seguir esta progresión, reduces la fatiga cognitiva y mantienes al lector avanzando. Encuentra casos de uso en la [galería 5P](/ejemplos-5p).</p>
+  </div>
+</section>
+
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form action="#" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+  
+<section id="gatillos-mentales" class="shadow-box">
+  <h2>6. Gatillos mentales estratégicos</h2>
+  <p>Los <em>gatillos mentales</em> son atajos de decisión basados en psicología. Urgencia, escasez, autoridad y reciprocidad son los pilares. Úsalos con honestidad: un contador real que finaliza respalda urgencia; inventar escasez erosiona la credibilidad. Al inicio del funnel, ofrece reciprocidad con un [lead magnet](/lead-magnet-convierte). En la fase de decisión, combina autoridad (números, medios) con escasez real (“quedan 7 plazas”). Justifica siempre la limitación: “para garantizar soporte personalizado”. Explora cada gatillo en detalle en nuestra [enciclopedia de neuroventas](/neuroventas).</p>
+
+  <div class="subcontent">
+    <h3 id="urgencia-escasez">Urgencia &amp; escasez sin sobreventa</h3>
+    <p>La urgencia funciona porque tememos perder oportunidades. Usa deadlines fijos (“cierre el viernes a las 23:59”) y explica el motivo. La escasez se apoya en stock o cupos reales; mostrar la cantidad exacta (“7 licencias”) aumenta credibilidad. Evita temporizadores que se reinician —Google y los usuarios penalizan el engaño. Aprende a configurar contadores éticos en nuestra [guía técnica](/contador-etico).</p>
+  </div>
+</section>
+
+<section id="storyselling" class="shadow-box">
+  <h2>7. Storyselling que emociona</h2>
+  <p>El <strong>storyselling</strong> humaniza tu oferta al relatar cómo alguien como tu prospecto superó un obstáculo usando tu producto. Un relato breve con protagonista, conflicto y desenlace activa zonas cerebrales ligadas a la experiencia real, elevando la recordación hasta un 70&nbsp;%. Usa detalles sensoriales (“manos sudorosas”) y datos concretos (“142&nbsp;% más ventas”) para credibilidad. Posiciona a tu cliente como héroe y a tu marca como guía. Finaliza invitando al lector a replicar la transformación con un CTA directo. Revisa modelos en nuestro [archivo de storyselling](/storyselling-casos).</p>
+
+  <div class="subcontent">
+    <h3 id="arco-heroico">El arco heroico aplicado a tu cliente</h3>
+    <p>Presenta la vida “antes”, el reto (dragón), la ayuda de tu solución (espada) y el “después” glorioso. Añade screenshots, audios o fotos para autenticidad. Evita centrarte en tu empresa; el héroe es el cliente. Plantillas descargables en el [taller narrativo](/arco-heroico).</p>
+  </div>
+</section>
+
+<section id="titulares-que-venden" class="shadow-box">
+  <h2>8. Titulares que venden</h2>
+  <p>El titular es la puerta: si no seduce, el visitante se marcha. Usa la fórmula 4U (Útil, Urgente, Único, Ultra-específico) y añade números impares (“7 pasos”) o preguntas retóricas para activar curiosidad. Mantén 6-9 palabras para mobile. Verifica que exprese un resultado (“Duplica tus leads”) y un plazo (“en 14&nbsp;días”). Testea dos versiones con mapas de calor y ajusta la mejor. Encuentra 50 plantillas en nuestra [colección de titulares](/titulares-oro).</p>
+
+  <div class="subcontent">
+    <h3 id="4us-headlines">La magia de las 4U</h3>
+    <p><strong>Useful:</strong> beneficio tangible. <strong>Urgent:</strong> mueve a actuar ya. <strong>Unique:</strong> ángulo diferente. <strong>Ultra-specific:</strong> cifra exacta. Ejemplo: “Gana 3 clientes diarios sin anuncios”. Usa un checklist para asegurar claridad y deseo. Descarga la plantilla 4U en [este enlace](/plantilla-4u).</p>
+  </div>
+</section>
+
+<section id="prueba-social" class="shadow-box">
+  <h2>9. Prueba social &amp; credibilidad</h2>
+  <p>Mostrar que otros confían en ti disipa el miedo a “ser el primero”. Testimonios con nombre, foto y resultado numérico (“+38&nbsp;% de ingresos”) son oro. Añade logos de clientes y cifras verificables (“5 842 usuarios activos”). Coloca la prueba social cerca del CTA para combatir dudas finales. Refuerza con sellos de seguridad y garantías claras. Aprende formatos ganadores en nuestro [post de prueba social](/testimonios-landing).</p>
+
+  <div class="subcontent">
+    <h3 id="formatos-efectivos">Formatos que multiplican impacto</h3>
+    <p>Los testimonios tipo “antes-después” superan a los genéricos. Incluye mini-video, captura de métricas o gráfico. Para SaaS, enlaza a reseñas G2. Solicita testimonios con un guion de tres preguntas: desafío, solución, resultado. Descárgalo en nuestro [kit de testimonios](/guion-testimonios).</p>
+  </div>
+</section>
+
+<section id="cta-irresistibles" class="shadow-box">
+  <h2>10. CTAs irresistibles</h2>
+  <p>El CTA es el momento cumbre: combina verbo fuerte, beneficio inmediato y diseño contrastante. Usa botones var(--pf-accent) con texto en primera persona (“Quiero vender más ahora”). Añade microcopy de seguridad (“Sin tarjeta, acceso inmediato”) y repite el CTA tras secciones clave. El botón ideal mide ≥44&nbsp;px de alto para ser “tappable”. Contrasta con un enlace de salida negativo (“Prefiero seguir improvisando”) para activar el sesgo de pérdida. Inspírate en 25 ejemplos de alta conversión en nuestra [galería de CTAs](/cta-exitosas).</p>
+
+  <div class="subcontent">
+    <h3 id="diseno-microcopy">Diseño &amp; microcopy optimizados</h3>
+    <p>Usa sombras suaves y esquinas redondeadas; el ojo humano asocia curvas con facilidad. El microcopy debe enfatizar el resultado, no la tarea: “Descargar guía gratuita” supera a “Descargar”. Añade un ícono de flecha para dirigir la mirada. Ajusta tamaño y padding para móvil y prueba color alternativo (#ffde66) durante campañas flash. Más trucos en la [masterclass de microcopy](/microcopy-ventas).</p>
+  </div>
+</section>
+
+
+<section id="cta-copywriting" class="pf-light shadow-box">
+  <h2>11. Descarga la plantilla de Copywriting y mejora tu página de ventas hoy</h2>
+  <div class="pf-cta">
+    <p>Haz clic, deja tu correo y recibe la <strong>Plantilla PsicoFunnel de Copywriting</strong> en dos formatos (Google Docs y Notion) más un vídeo de 12 minutos donde te guiamos sección por sección. Integra estas fórmulas en tu página, alinea cada frase con tu <a href="/customer-journey">customer journey</a> y eleva tu tasa de conversión en cuestión de horas. Incluye checklist 4U, ejemplos de titulares probados y una mini-guía de gatillos mentales éticos.</p>
+    <p><a href="https://psicofunnel.com/descargar-plantilla-copywriting" class="cta-button-large">Descargar gratis ahora</a></p>
+  </div>
+</section>
+
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.integromat.com/tu-webhook-aqui">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- ========================================================= -->
+  <!-- 💤  SCRIPTS                                              -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('popup-overlay');
+      const closeBtn = document.getElementById('popup-close');
+      let shown = false;
+      window.addEventListener('scroll', () => {
+        const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (!shown && scrollRatio > 0.3) {
+          overlay.style.display = 'flex';
+          shown = true;
+        }
+      });
+      closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+      });
+      // Previene que el popup vuelva a aparecer
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- ========================================================= -->
+  <!-- 💤  LAZY‑LOAD SCRIPT                                      -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const imgs=[...document.querySelectorAll('img[loading="lazy"]')];
+      if('IntersectionObserver'in window){
+        const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.src||img.src;io.unobserve(img);}});});imgs.forEach(img=>io.observe(img));}
+    });
+  </script>
+</body>
+</html>

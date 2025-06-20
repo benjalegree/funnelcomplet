@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========================================================= -->
+  <!--  SEO BASICS                                               -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Journey en Marketing Digital: Guía 2025 con Fases, Ejemplos, Métricas y Plantilla | PsicoFunnel</title>
+  <meta name="description" content="Aprende qué es el customer journey, sus fases TOFU–BOFU y cómo mapearlo con ejemplos, KPIs y plantilla gratuita. Optimiza tu funnel de ventas hoy." />
+  <link rel="canonical" href="https://psicofunnel.com/customer-journey" />
+  <!-- Open Graph & Twitter -->
+  <meta property="og:title" content="Customer Journey en Marketing Digital: Guía 2025" />
+  <meta property="og:description" content="Guía completa: definición, fases, ejemplos, métricas y plantilla de customer journey para escalar tu funnel." />
+  <meta property="og:image" content="https://psicofunnel.com/assets/img/customer-journey-cover.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://psicofunnel.com/customer-journey" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+  </style>
+
+
+  <!-- ========================================================= -->
+  <!-- 🔎  SCHEMA FAQ                                            -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Un funnel, sales pipeline o embudo de ventas es la visualización del proceso por el que pasa un prospecto desde el descubrimiento hasta la compra y la fidelización."}},{"@type":"Question","name":"¿Cuántas etapas tiene un embudo de conversión?","acceptedAnswer":{"@type":"Answer","text":"Clásicamente se divide en TOFU, MOFU y BOFU, aunque modelos avanzados incluyen post‑venta y re‑engagement."}},{"@type":"Question","name":"¿Para qué sirve mapear el customer journey?","acceptedAnswer":{"@type":"Answer","text":"Sirve para identificar cuellos de botella y potenciar las tasas de conversión (CVR) y el retorno sobre la inversión (ROI)."}}]}</script>
+</head>
+<body>
+  <!-- ========================================================= -->
+  <!-- 🚀  HEADER                                                -->
+  <!-- ========================================================= -->
+<header>
+  <div class="header-top container">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+  </div>
+  <div class="header-content container">
+    <h1>¿Qué es un Customer Journey en Marketing Digital?</h1>
+    <p>Customer Journey en Marketing Digital: Guía 2025 con Fases, Ejemplos, Métricas y Plantilla</p>
+  </div>
+</header>
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora tu guía con los 7 sesgos psicológicos que activan ventas y aplica tácticas comprobadas hoy mismo.</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 📚  ÍNDICE COMPLETO 1‑20                                  -->
+  <!-- ========================================================= -->
+<nav id="indice" aria-label="Índice de contenidos">
+  <h2>Tabla de contenidos</h2>
+
+  <ol>
+    <li><a href="#que-es">1. ¿Qué es el Customer Journey?</a></li>
+    <li><a href="#journey-vs-funnel">2. Customer Journey vs. Embudo de Ventas</a></li>
+    <li><a href="#fases-journey">3. Fases del Customer Journey</a></li>
+    <li><a href="#ejemplos">4. Ejemplos reales de Customer Journey</a></li>
+    <li><a href="#mapa">5. ¿Qué es un Customer Journey Map?</a></li>
+    <li><a href="#crear-mapa">6. Cómo crear tu mapa en 7 pasos</a></li>
+    <li><a href="#metricas">7. Métricas clave para validar tu Journey</a></li>
+    <li><a href="#herramientas">8. Herramientas gratuitas y premium</a></li>
+    <li><a href="#errores">9. Errores comunes y cómo evitarlos</a></li>
+    <li><a href="#optimizar">10. Actualizar tu Customer Journey</a></li>
+    <li><a href="#cta-plantilla">11. Descarga la plantilla gratuita</a></li>
+    <li><a href="#faq">12. Preguntas frecuentes (FAQ)</a></li>
+    <li><a href="#conclusion">13. Conclusiones y próximos pasos</a></li>
+  </ol>
+</nav>
+
+
+<!-- =====================  INICIO PARTE 1/2  ===================== -->
+<section id="que-es" class="shadow-box">
+  <h2>1. ¿Qué es el Customer Journey y por qué es clave en tu funnel de ventas?</h2>
+
+  <!-- 1.1 -->
+  <h3 id="definicion-cj">1.1 Definición clara de Customer Journey</h3>
+  <p>El <strong>customer journey</strong>, también llamado <em>recorrido del cliente</em> o
+     <em>viaje del comprador</em>, es la historia completa de cómo una persona pasa de
+     sentir una necesidad difusa a recomendar tu marca en voz alta. No es solo un
+     diagrama bonito: es una herramienta práctica que describe qué piensa, qué
+     siente y qué hace tu público en cada punto de contacto—buscador, red social,
+     email o chat. Al dibujar ese viaje, descubres vacíos peligrosos: quizá el
+     usuario llega entusiasmado a tu web pero abandona antes de ver la oferta.
+     Cuando conoces esos huecos puedes cerrarlos con contenido útil o un
+     <a href="/lead-magnet-convierte">lead magnet que convierte</a>. Así, el
+     <a href="/errores-funnel-ventas">funnel de ventas</a> se vuelve un camino
+     fluido donde los prospectos avanzan sin fricción y tú reduces el costo por
+     adquisición.</p>
+
+  <!-- 1.2 -->
+  <h3 id="diferencias">1.2 Customer Journey vs. User Journey vs. Buyer Journey</h3>
+  <p>Aunque se parecen, cada término se enfoca en un ángulo distinto del mismo
+     proceso. El <em>buyer journey</em> se centra en la decisión de compra: desde que
+     surge la intención hasta que se paga. El <em>user journey</em> analiza cómo la
+     persona interactúa con el producto o servicio después de comprarlo—por
+     ejemplo, los pasos para activar una cuenta SaaS. El <strong>customer
+     journey</strong> une ambas miradas y añade las fases de fidelización y
+     promoción, creando una vista 360°. Esta visión amplia te ayuda a planear
+     acciones para cada momento: un artículo TOFU, un
+     <a href="/copy-pagina-ventas">email de copy persuasivo</a> en MOFU y un programa
+     de referidos en posventa. Al diferenciar estos mapas evitas confusión y
+     asignas recursos de forma más inteligente.</p>
+
+  <!-- 1.3 -->
+  <h3 id="beneficios">1.3 Beneficios tangibles de mapear el viaje del cliente</h3>
+  <p>Mapear el <strong>customer journey</strong> no es un lujo corporativo, es una
+     palanca directa de crecimiento. Las marcas que documentan su recorrido del
+     cliente reportan hasta un 54 % menos fuga de leads, porque detectan cuellos de
+     botella—por ejemplo, un formulario largo que espanta visitantes. Además, un
+     mapa claro alinea a marketing y ventas con un idioma común, reduciendo malos
+     traspasos entre equipos. Por último, mejora la experiencia percibida:
+     mensajes coherentes generan confianza y elevan el valor de vida del cliente
+     (CLV). ¿Quieres pruebas? Compara las tasas de conversión antes y después de
+     instalar un <a href="/quiz-calificacion-leads">quiz de diagnóstico</a> en la
+     fase MOFU; verás cómo los prospectos llegan más educados a la llamada final y
+     el cierre se vuelve natural.</p>
+</section>
+
+<section id="journey-vs-funnel" class="shadow-box">
+  <h2>2. Customer Journey vs. Embudo de Ventas: cómo se complementan</h2>
+
+  <!-- 2.1 -->
+  <h3>2.1 Dónde encajan TOFU, MOFU y BOFU en el mapa</h3>
+  <p>El embudo divide a los prospectos por nivel de consciencia: TOFU descubre,
+     MOFU compara y BOFU decide. El <strong>customer journey</strong> coloca esas tres
+     etapas dentro de una narrativa más rica: incluye emociones, dudas y canales
+     concretos. Por ejemplo, en TOFU alguien busca “qué es
+     customer journey” y encuentra este artículo; en MOFU descarga un caso de
+     éxito; en BOFU solicita una demo. Al superponer ambos modelos, ves de un
+     vistazo dónde falta contenido. Si el mapa muestra muchos clics en la sección
+     de precios, quizá necesites reforzar tu página de testimonios con pruebas
+     sociales basadas en <a href="/testimonios-landing">testimonios que convierten</a>.
+     Así cada pieza encaja en el momento justo, como si el usuario avanzara por
+     raíles invisibles.</p>
+
+  <!-- 2.2 -->
+  <h3>2.2 Cómo alinear mensajes y canales en cada fase</h3>
+  <p>Para alinear mensajes debes responder tres preguntas sencillas: ¿qué objetivo
+     tiene el visitante aquí?, ¿qué emoción domina?, ¿qué canal prefiere? En
+     TOFU, el objetivo suele ser aprender; la emoción, curiosidad; el canal,
+     Google o TikTok. Crea un clip corto con un tip práctico y enlázalo a un post
+     largo. En MOFU manda una serie de correos con historias de éxito; emoción:
+     esperanza. En BOFU usa urgencia y certeza, tal como explicamos en
+     <a href="/gatillos-urgencia-landing">gatillos de urgencia</a>. Al documentar
+     esto en tu mapa, cada equipo sabe qué tono emplear y en qué plataforma
+     actuar, evitando mensajes duplicados o desconectados.</p>
+</section>
+
+<section id="fases-journey" class="shadow-box">
+  <h2>3. Fases del Customer Journey paso a paso</h2>
+
+  <!-- 3.1 -->
+  <h3>3.1 Descubrimiento (Awareness)</h3>
+  <p>El viaje arranca cuando la persona detecta un problema o desea una
+     mejora—por ejemplo, “quiero vender más cursos online”. Busca definiciones,
+     guías y tips rápidos. Aquí brillan artículos de 1 200 palabras,
+     infografías y episodios de podcast de 10 minutos. Asegúrate de que la
+     keyword principal (“customer journey”, “funnel de ventas”) aparezca en el
+     título y en los primeros 100 caracteres. Ofrece valor sin pedir nada a
+     cambio, salvo quizá un like o un share. Es el momento de generar autoridad
+     y buen karma; la venta vendrá después.</p>
+
+  <!-- 3.2 -->
+  <h3>3.2 Consideración (Evaluation)</h3>
+  <p>Ahora el prospecto compara alternativas: lee reseñas, asiste a webinars y
+     descarga whitepapers. Su pregunta es “¿Cuál es la mejor opción para mí?”.
+     Proporciónale comparativas honestas, calculadoras de ROI y casos de estudio.
+     Un <a href="/guion-webinar-ventas">webinar bien guionado</a> demuestra tu
+     experiencia y resuelve objeciones en vivo. Etiqueta a quienes asisten para
+     enviarles contenido personalizado; por ejemplo, un PDF sobre costes si
+     hicieron preguntas de precio.</p>
+
+  <!-- 3.3 -->
+  <h3>3.3 Decisión y Compra (Purchase)</h3>
+  <p>En esta fase el usuario ya sabe que necesita tu solución o la de un
+     competidor. Busca seguridad: garantías, testimonios y demostraciones
+     concretas. Coloca botones visibles, chat en vivo y temporizadores de oferta
+     limitada—sin caer en spam. Revisa nuestra guía de
+     <a href="/copy-pagina-ventas">copywriting para páginas de ventas</a> para
+     pulir tu mensaje. Cada clic a “Comprar” o “Agendar llamada” debe sentirse
+     como el paso lógico, no un salto al vacío.</p>
+
+  <!-- 3.4 -->
+  <h3>3.4 Experiencia y Fidelización (Retention)</h3>
+  <p>Después de la compra empieza el verdadero trabajo. Un onboarding claro
+     reduce la tasa de abandono y dispara el valor de vida del cliente. Envía un
+     correo de bienvenida con pasos simples, tutorial en vídeo y acceso a soporte
+     24/7. Implementa emails de seguimiento con tips semanales; si vendes SaaS,
+     mira nuestro artículo de <a href="/copy-reducir-churn">copy que reduce churn</a>.
+     La meta es que el usuario obtenga su “primer éxito” rápido y se
+     sienta acompañado.</p>
+
+  <!-- 3.5 -->
+  <h3>3.5 Promoción y Referencia (Advocacy)</h3>
+  <p>Un cliente encantado se convierte en fan y embajador. Incentiva reseñas en
+     Google, casos de estudio y programas de referidos. Pide un testimonio justo
+     después de que el usuario alcance un hito, por ejemplo, “100 leads en 30
+     días”. Ofrece un pequeño regalo: upgrade gratis o acceso a contenido
+     premium. Así transformas tu base de clientes en la mejor fuerza de marketing
+     para atraer nuevos prospectos al <strong>customer journey</strong> otra vez.</p>
+</section>
+
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form action="#" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+<section id="ejemplos" class="shadow-box">
+  <h2>4. Ejemplos reales de Customer Journey</h2>
+
+  <!-- 4.1 -->
+  <h3>4.1 Empresa SaaS B2B</h3>
+  <p>Un software de gestión envía anuncios en LinkedIn a directores de
+     operaciones (TOFU), ofrece un e-book sobre productividad (MOFU) y culmina con
+     una demo personalizada (BOFU). Tras la compra, envía un onboarding gamificado
+     y correos mensuales con tips avanzados. Resultado: tasa de retención del 92 %
+     y crecimiento orgánico gracias a referidos.</p>
+
+  <!-- 4.2 -->
+  <h3>4.2 E-commerce de suplementos deportivos</h3>
+  <p>Empieza con un reel “batido para ganar masa”, enlaza a un artículo sobre
+     proteínas y coloca un cupón emergente del 10 %. Si el cliente abandona el
+     carrito, activa un <a href="/funnel-correos-carrito">funnel de correos para
+     carrito abandonado</a> con recetas extra. Tras la compra, un correo pide
+     reseña con foto; las mejores aparecen en redes, cerrando el círculo.</p>
+
+  <!-- 4.3 -->
+  <h3>4.3 Coach o infoproductor</h3>
+  <p>El coach publica un post “cómo descubrir tu propósito” (TOFU),
+     promociona un webinar gratuito (MOFU) y ofrece un programa premium al
+     final (BOFU). Quien compra recibe sesiones grupales, comunidad privada y un
+     certificado digital para compartir en LinkedIn. Cada fase alimenta la
+     siguiente, demostrando cómo el <strong>customer journey</strong> impulsa no
+     solo la primera venta, sino ingresos recurrentes y recomendaciones.</p>
+</section>
+
+<!-- ============  BLOQUE A – Secciones 5 y 6  ============ -->
+
+<section id="mapa" class="shadow-box">
+  <h2>5. ¿Qué es un Customer Journey Map y cómo se interpreta?</h2>
+
+  <!-- 5.1 -->
+  <h3>5.1 Elementos clave del mapa (Touchpoints, Emociones, KPI)</h3>
+  <p>Un <strong>Customer Journey Map</strong> es un lienzo visual de alto impacto que condensa, en una sola página, la experiencia completa que un cliente vive con tu marca desde el primer clic hasta la recomendación final. La primera columna registra los <em>touchpoints</em> visibles y ocultos: anuncio, blog, email, chatbot, llamada de soporte o incluso un comentario en redes. En la segunda columna anotas lo que la persona piensa y siente en cada uno de esos puntos: “¿Será confiable?”, “¡Qué oferta tan clara!”, “No entiendo el precio”. En la tercera columna identificas los <em>pain points</em> que provocan fricción y, por último, vinculas una métrica objetiva—CTR, tiempo de permanencia, tasa de respuesta, NPS—para medir cada paso. Esta estructura te permite encontrar, en segundos, los baches que detienen la conversión. Si observas emociones negativas y KPI bajos en el mismo renglón, actúas rápido: añades testimonios, optimizas el copy o insertas un vídeo demo. Así tu mapa deja de ser un cuadro estático y se convierte en una herramienta viva que guía mejoras continuas.</p>
+
+  <!-- 5.2 -->
+  <h3>5.2 Plantilla editable paso a paso (descarga gratuita)</h3>
+  <p>Pasar de la teoría a la acción es sencillo con nuestra plantilla gratuita en Google Sheets y Miro: haces clic en “copiar”, personalizas los colores y empiezas a completar celdas guiadas por ejemplos. Cada fila ya incluye sugerencias de emociones (“curiosidad”, “confianza”, “ansiedad”) y KPI base (CTR, scroll, reply rate). Además, verás una columna “Estado” con validación de datos para marcar «Pendiente», «En progreso» o «Optimizado», lo que ayuda a tu equipo a coordinarse sin correos infinitos. El documento genera automáticamente un tablero de calor—verde alto rendimiento, rojo bajo—para que priorices las mejoras sin hacer fórmulas. Incluso incorpora una pestaña con fórmulas preparadas para conectar GA4 y traer datos en tiempo real. Descárgala desde el CTA del punto 11 y combínala con nuestro <a href="/dashboard-funnel-sheets">dashboard de conversiones</a>; en menos de una hora tendrás una radiografía clara de dónde pierdes ventas y qué micro-acción moverá la aguja primero.</p>
+</section>
+
+<section id="crear-mapa" class="shadow-box">
+  <h2>6. Cómo crear tu Customer Journey Map en 7 pasos</h2>
+
+  <!-- 6.1 -->
+  <h3>6.1 Definir objetivos SMART</h3>
+  <p>Antes de dibujar flechas, escribe un objetivo que sea específico, medible, alcanzable, relevante y temporal. Por ejemplo: «Subir la conversión de lead → demo del 8 % al 12 % en 90 días». Este enunciado actúa como brújula y evita que tu equipo se pierda en mejoras irrelevantes. Al ser medible, podrás celebrar avances concretos y no percepciones vagas; al ser temporal, obliga a revisar resultados en una fecha exacta en lugar de “algún día”. Cuando aparezcan ideas nuevas—vídeo explicativo, chatbot, oferta flash—pregunta siempre: «¿Aporta al objetivo SMART o distrae?»; si no suma, posponla. Así tu mapa no se convierte en un mural bonito pero inútil, sino en una hoja de ruta operativa que todos entienden.</p>
+
+  <!-- 6.2 -->
+  <h3>6.2 Construir buyer personas basadas en datos</h3>
+  <p>No fabriques personajes imaginarios con edad, auto y color favorito inventados. Extrae datos de tu CRM: sectores, cargos, tamaño de empresa, tickets promedio y consultas frecuentes de soporte. Luego realiza entrevistas de 15 minutos a clientes reales; pregunta qué los frenó, qué los convenció y qué contenido recuerdan. Con ese material creas perfiles accionables—como “Laura, gerente SaaS que teme perder usuarios en onboarding”—que dictan tono y formato en cada fase. Así evitas hablar de forma genérica y logras mensajes que resuenan porque responden dudas auténticas, no supuestas.</p>
+
+  <!-- 6.3 -->
+  <h3>6.3 Listar touchpoints y micro-momentos</h3>
+  <p>Haz un tormenta de ideas sin filtro: anuncio Meta, resultado Google, reel, newsletter, WhatsApp, reseña, prueba gratis, soporte en vivo. Incluye micro-momentos móviles, como “buscar código de descuento mientras espera el bus”. Luego categoriza cada punto en TOFU, MOFU o BOFU para ver si alguna fase está sobrecargada o descuidada. Este inventario evita que un touchpoint crítico—por ejemplo la página de precios en móvil—quede fuera del radar.</p>
+
+  <!-- 6.4 -->
+  <h3>6.4 Asignar emociones y pain points</h3>
+  <p>En cada touchpoint registra la emoción dominante: 😕 duda, 😍 entusiasmo, 😡 frustración. Luego anota el dolor que provoca la emoción negativa: “Formulario largo”, “Tiempo de carga”, “Precio confuso”. Ese vínculo directo entre sentimiento y obstáculo facilita diseñar soluciones concretas—un <a href="/zapier-vs-make">flow en Make</a> que autocompleta datos, un FAQ emergente o una calculadora de ROI.</p>
+
+  <!-- 6.5 -->
+  <h3>6.5 Identificar brechas y oportunidades</h3>
+  <p>Observa tu mapa como detective: si pasas de entusiasmo a frustración sin un punto intermedio, hay brecha. Pregunta «¿Qué contenido o UX eliminaría ese bajón?». A veces basta un vídeo de 90 segundos; otras, una versión freemium limitada. Cada brecha es una oportunidad de diferenciarte frente a competidores que aún ni la han visto.</p>
+
+  <!-- 6.6 -->
+  <h3>6.6 Priorizar acciones de mejora</h3>
+  <p>Usa la matriz Impacto × Esfuerzo. Cambios de alto impacto y bajo esfuerzo—como renombrar un botón “Enviar” a “Quiero mi guía”—van primero; campañas costosas de branding irán después. Así mantienes victorias rápidas que motivan al equipo y financian mejoras más grandes.</p>
+
+  <!-- 6.7 -->
+  <h3>6.7 Medir y optimizar continuamente</h3>
+  <p>Reserva en tu calendario una “revisión de mapa” mensual. Exporta eventos clave de GA4, analiza tiempo en página y tasa de clic al CTA. Ajusta copy, colores o formatos y lanza un A/B. Documenta el aprendizaje en la misma plantilla; la columna “Estado” pasará de rojo a verde y verás progreso tangible. Con el tiempo, tu <a href="/metricas-funnel-evergreen">funnel evergreen</a> será un proceso vivo que evoluciona con el mercado en lugar de quedarse obsoleto.</p>
+</section>
+
+<!-- ============  BLOQUE B – Secciones 7 a 13  ============ -->
+
+<section id="metricas" class="shadow-box">
+  <h2>7. Métricas clave para validar tu Customer Journey</h2>
+
+  <!-- 7.1 -->
+  <h3>7.1 Tiempo en sitio y profundidad de scroll</h3>
+  <p>Estas métricas revelan si tu contenido engancha o repele. Si un artículo de 1 200 palabras retiene solo 20 segundos y el scroll se estanca al 25 %, el gancho falla. Reescribe la intro con una pregunta directa, añade un vídeo-resumen de 45 segundos o mueve el beneficio principal arriba del fold. Un ajuste pequeño puede elevar la retención al 60 % y preparar a tu lector para avanzar al CTA.</p>
+
+  <!-- 7.2 -->
+  <h3>7.2 Conversiones TOFU → MOFU → BOFU</h3>
+  <p>Configura eventos en GA4: descarga de checklist (TOFU → MOFU), clic en “Agendar demo” (MOFU → BOFU) y compra final. Revisa ratios semanales; si la caída se produce del 40 % al 5 % entre MOFU y BOFU, refuerza testimonios o garantiza devolución.</p>
+
+  <!-- 7.3 -->
+  <h3>7.3 NPS, Retención y CLV</h3>
+  <p>Después de la compra mide NPS—pregunta si te recomendarían. Un NPS &gt; 40 y retención &gt; 85 % son señales de una fase de fidelización sólida. Un CLV creciente indica que tu programa de upsell funciona; si baja, revisa onboarding o soporte.</p>
+</section>
+
+<section id="herramientas" class="shadow-box">
+  <h2>8. Herramientas gratuitas y premium para mapear y automatizar</h2>
+
+  <!-- 8.1 -->
+  <h3>8.1 Miro, Lucidchart y Google Sheets</h3>
+  <p>Miro y Lucidchart aportan lienzos drag-and-drop con plantillas de customer journey listas para editar; ideales si eres visual. Google Sheets brilla cuando necesitas colaboración rápida y fórmula viva sin costo. Empieza en Sheets, valida hipótesis y luego migra a Miro para presentarlo al equipo.</p>
+
+  <!-- 8.2 -->
+  <h3>8.2 Make vs Zapier para automatizar leads</h3>
+  <p><a href="/zapier-vs-make">Make</a> ofrece interfaz visual modular y planes económicos; Zapier presume más integraciones nativas y una curva de aprendizaje mínima. Si tu negocio requiere flujos complejos con ramas y filtros condicionales, Make resulta ideal. Si solo conectas formularios y CRM, Zapier sobra.</p>
+
+  <!-- 8.3 -->
+  <h3>8.3 GA4 y Looker Studio para visualización</h3>
+  <p>GA4 registra eventos (scroll, clic, compra) sin necesidad de etiquetas de UA; Looker Studio convierte esos eventos en dashboards compartibles. Conecta ambos vía conector oficial, arrastra tarjetas y tendrás un panel que muestra conversiones fase-a-fase en tiempo real.</p>
+</section>
+
+<section id="errores" class="shadow-box">
+  <h2>9. 10 errores comunes al diseñar un Customer Journey (y cómo evitarlos)</h2>
+  <p>Errores típicos: asumir un único camino lineal, olvidar la etapa posventa, usar métricas vanidosas (likes en lugar de leads), pedir demasiados datos al inicio, no etiquetar comportamiento, ignorar la navegación móvil, sobrecargar de tecnicismos, no enlazar contenido como <a href="/gatillos-urgencia-landing">gatillos de urgencia</a>, actualizar una vez al año y lanzar campañas sin test A/B. Corrige con encuestas breves, formularios progresivos, plantillas responsive y revisiones trimestrales con datos.</p>
+</section>
+
+<section id="optimizar" class="shadow-box">
+  <h2>10. Cómo actualizar tu Customer Journey tras un lanzamiento o pivotaje</h2>
+  <p>Cada vez que lances un producto nuevo o cambies de mercado, valida las hipótesis originales de tu mapa. Habla con diez clientes recientes, pregunta cómo te descubrieron y qué mejorarían. Ajusta los touchpoints que no existían—quizá TikTok, quizá un marketplace—y crea contenido donde falten respuestas. Usa tu <a href="/dashboard-funnel-sheets">dashboard de conversiones</a> para vigilar tendencias; si la curva de aprendizaje se aplana, significa que tu nuevo camino ya está optimizado.</p>
+</section>
+
+<section id="cta-plantilla" class="pf-light shadow-box">
+  <h2>11. Descarga la plantilla de Customer Journey Map y optimiza tu funnel hoy</h2>
+  <div class="pf-cta">
+    <p>Haz clic, deja tu correo y recibe dos versiones (Sheets y Miro) más un vídeo de 10 minutos donde te guiamos punto a punto. Conecta la plantilla a tu <a href="/metricas-funnel-evergreen">funnel evergreen</a> y detecta fugas en 15 minutos. Incluye checklist de KPIs y tablero de calor automático.</p>
+    <p><a href="https://psicofunnel.com/descargar-customer-journey-map" class="cta-button-large">Descargar gratis ahora</a></p>
+  </div>
+</section>
+
+<section id="faq" class="shadow-box">
+  <h2>12. Preguntas frecuentes sobre Customer Journey</h2>
+
+  <!-- 12.1 -->
+  <h3>12.1 ¿Cada cuánto debo revisar mi mapa?</h3>
+  <p>Revisa cada trimestre o cuando lances un producto, abras un nuevo canal o notes caída de conversiones. Una revisión constante mantiene tu mapa alineado con la realidad.</p>
+
+  <!-- 12.2 -->
+  <h3>12.2 ¿Funciona para negocios locales?</h3>
+  <p>Sí. Un restaurante mapea desde la búsqueda “pizzería cerca de mí”, la reserva por WhatsApp, la visita al local y la reseña en Google. Cambian los canales, no la lógica.</p>
+
+  <!-- 12.3 -->
+  <h3>12.3 ¿Qué hago si tengo múltiples buyer personas?</h3>
+  <p>Crea un mapa maestro con pasos comunes y sub-mapas de detalles. Así mantienes coherencia de marca y personalización precisa para cada segmento.</p>
+</section>
+
+<section id="conclusion" class="shadow-box">
+  <h2>13. Conclusiones y próximos pasos para escalar tu estrategia de Customer Journey</h2>
+  <p>Dominar el <strong>customer journey</strong> revela dónde invertir presupuesto y energías. Con un mapa actualizado, métricas claras y automatización ligera, convertirás visitantes curiosos en clientes fieles y promotores. Descarga la plantilla, detecta brechas y, si quieres ayuda para integrar las <a href="/herramientas-funnels">mejores herramientas de funnel</a>, agenda tu llamada con PsicoFunnel. Juntos convertiremos tu recorrido del cliente en ingresos predecibles y escalables.</p>
+</section>
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.integromat.com/tu-webhook-aqui">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- ========================================================= -->
+  <!-- 💤  SCRIPTS                                              -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('popup-overlay');
+      const closeBtn = document.getElementById('popup-close');
+      let shown = false;
+      window.addEventListener('scroll', () => {
+        const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (!shown && scrollRatio > 0.3) {
+          overlay.style.display = 'flex';
+          shown = true;
+        }
+      });
+      closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+      });
+      // Previene que el popup vuelva a aparecer
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- ========================================================= -->
+  <!-- 💤  LAZY‑LOAD SCRIPT                                      -->
+  <!-- ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const imgs=[...document.querySelectorAll('img[loading="lazy"]')];
+      if('IntersectionObserver'in window){
+        const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;img.src=img.dataset.src||img.src;io.unobserve(img);}});});imgs.forEach(img=>io.observe(img));}
+    });
+  </script>
+</body>
+</html>
