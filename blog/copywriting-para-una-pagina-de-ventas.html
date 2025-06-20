@@ -437,13 +437,13 @@ a:hover,a:focus{
           if (res.ok) {
             // 👉 Comportamientos según formulario
             if (formId === "popup-form") {
-              alert("¡Muchas gracias!");            // cartel de agradecimiento
+              alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
               document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
               this.reset();
-            } else if (formId === "form-consultoria") {
+            } else if (formId === "form-ebook") {
               window.location.href = "thankyoulanding.html";
             } else if (formId === "form-newsletter") {
-              window.location.href = "thankyou-newsletter.html";
+              window.location.href = "thankyoulanding.html";
             } else {
               alert("¡Formulario enviado con éxito!");
               this.reset();
@@ -463,7 +463,7 @@ a:hover,a:focus{
 
     window.addEventListener("DOMContentLoaded", () => {
       conectarFormulario("popup-form", WEBHOOK_URL);
-      conectarFormulario("form-consultoria", WEBHOOK_URL);
+      conectarFormulario("form-ebook", WEBHOOK_URL);
       conectarFormulario("form-newsletter", WEBHOOK_URL);
     });
   </script>
