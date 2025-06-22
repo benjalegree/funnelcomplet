@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- ========================================================= -->
+<!-- 🔎  SEO BASICS — Funnel Evergreen                          -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Funnel Evergreen: Crea un Sistema de Ventas Automático 24/7 | PsicoFunnel</title>
+<meta name="description" content="Guía completa para construir un funnel evergreen que atrae leads, nutre confianza y convierte en piloto automático. Aprende paso a paso a diseñar tu embudo perpetuo y multiplica tus ventas sin lanzamientos agotadores." />
+<link rel="canonical" href="https://psicofunnel.com/funnel-evergreen" />
+
+<!--  Open Graph  -->
+<meta property="og:title" content="Funnel Evergreen: Crea un Sistema de Ventas Automático 24/7" />
+<meta property="og:description" content="Descubre cómo diseñar un funnel evergreen que genera ingresos constantes con lead magnets, webinars y automatización inteligente." />
+<meta property="og:image" content="https://psicofunnel.com/assets/img/funnel-evergreen-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://psicofunnel.com/funnel-evergreen" />
+
+<!--  Twitter  -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Funnel Evergreen: Ventas en Piloto Automático" />
+<meta name="twitter:description" content="Guía paso a paso para activar un embudo evergreen que vende todos los días, incluso mientras duermes." />
+<meta name="twitter:image"       content="https://psicofunnel.com/assets/img/funnel-evergreen-cover.webp" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    /* ========================================================= */
+/* 📚  ÍNDICE MEJORADO – Funnel Carrito Abandonado            */
+/* ========================================================= */
+nav#indice{
+  background:var(--pf-light);
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,166,224,.15);
+  margin:40px auto;
+  max-width:1000px;
+}
+nav#indice h2{
+  font-size:1.8rem;
+  margin-bottom:20px;
+  color:var(--pf-navy);
+  text-align:center;
+}
+nav#indice ol{
+  counter-reset:idx;
+  list-style:none;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+}
+nav#indice ol li{
+  counter-increment:idx;
+  display:flex;
+  align-items:flex-start;
+}
+nav#indice ol li::before{
+  content:counter(idx);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  margin-right:10px;
+  background:var(--pf-accent);
+  color:#fff;
+  font-weight:700;
+  border-radius:50%;
+  flex-shrink:0;
+}
+nav#indice ol li a{
+  color:var(--pf-navy);
+  font-weight:600;
+  text-decoration:none;
+  transition:color .25s;
+  line-height:1.4;
+}
+nav#indice ol li a:hover{
+  color:var(--pf-accent);
+  text-decoration:underline;
+}
+
+@media(max-width:600px){
+  nav#indice ol{grid-template-columns:1fr;}
+}
+
+  </style>
+
+
+<!-- ========================================================= -->
+<!-- ❓  FAQ SCHEMA JSON-LD                                    -->
+<!-- ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"¿Qué es un funnel evergreen?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Es un embudo de ventas automatizado que funciona todos los días del año, convirtiendo visitas en clientes sin fechas de lanzamiento ni ofertas con cuenta atrás."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Necesito un webinar para mi funnel evergreen?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"No es obligatorio, pero un webinar evergreen bien estructurado suele aumentar la conversión porque educa y presenta la oferta de forma persuasiva en un solo paso."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cuánto tiempo tarda en funcionar un funnel evergreen?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Depende del tráfico. Con campañas pagadas puedes ver ventas en la primera semana; si dependes solo de SEO, el resultado puede tardar uno o dos meses."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cada cuánto debo optimizar mi funnel evergreen?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Revisa métricas clave cada 15 días. Si detectas descensos de más del 15 %, lanza un test A/B en la parte afectada (landing, emails o anuncios)."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content">
+    <h1>Funnel Evergreen: activa ventas 24/7 sin lanzamientos agotadores</h1>
+    <p class="subtitle" style="color:#cce3f6;">
+      Diseña un embudo automatizado que atrae leads, construye confianza y convierte en
+      piloto automático, multiplicando tus ingresos sin depender de fechas límite.
+    </p>
+  </div>
+</header>
+
+
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+
+<!-- ========================================================= -->
+<!-- 📚  ÍNDICE DE CONTENIDOS                                  -->
+<!-- ========================================================= -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ol>
+    <li><a href="#que-es">1. Definición estratégica</a></li>
+    <li><a href="#ventajas">2. Beneficios clave</a></li>
+    <li><a href="#avatar">3. Investigación de avatar</a></li>
+    <li><a href="#lead-magnet">4. Lead Magnet irresistible</a></li>
+    <li><a href="#tripwire">5. Tripwire de conversión</a></li>
+    <li><a href="#webinar">6. Webinar evergreen</a></li>
+    <li><a href="#emails">7. Secuencia de nutrición</a></li>
+    <li><a href="#trafico">8. Tráfico perpetuo</a></li>
+    <li><a href="#segmentacion">9. Segmentación dinámica</a></li>
+    <li><a href="#metricas">10. Métricas y optimización</a></li>
+    <li><a href="#stack">11. Stack tecnológico</a></li>
+    <li><a href="#escala">12. Escalabilidad y duplicación</a></li>
+    <li><a href="#objeciones">13. Manejo de objeciones</a></li>
+    <li><a href="#prueba">14. Prueba social y autoridad</a></li>
+    <li><a href="#cta-final">15. CTA y siguientes pasos</a></li>
+  </ol>
+</nav>
+
+
+<!-- ========================================================= -->
+<!-- ✍️  SECCIONES                                             -->
+<!-- ========================================================= -->
+
+<section id="que-es" class="shadow-box">
+  <h2>1. Qué es un funnel evergreen y por qué supera a los lanzamientos efímeros</h2>
+  <p>Un funnel evergreen es un camino de ventas siempre encendido. Funciona los 365 días del año detectando visitantes, capturando correos, educando con mensajes automatizados y presentando la oferta exacta en el momento justo. A diferencia de los lanzamientos aislados, que generan picos de facturación seguidos de silencio, un funnel evergreen mantiene un caudal constante de clientes. Esto te permite prever ingresos, planificar inventario y escalar publicidad sin miedo a quedarte sin liquidez. El secreto está en mezclar contenido atemporal —artículos, guías y videos educativos— con secuencias de email y anuncios de retargeting que responden al comportamiento del usuario, no a un calendario. Al estabilizar métricas como CAC y LTV, tu empresa reduce estrés operativo y gana valor a ojos de inversionistas, porque demuestra predictibilidad y control de costes.</p>
+</section>
+
+<section id="ventajas" class="shadow-box">
+  <h2>2. Beneficios clave del funnel evergreen para tu negocio</h2>
+  <p>El primer beneficio de un funnel evergreen es la previsibilidad: sabes cuántos leads entran, cuántos compran y cuánto gastas por cliente. Con esa claridad puedes reinvertir en anuncios con total seguridad. El segundo beneficio es la eficiencia. Al reciclar la misma estructura, el coste marginal de cada venta disminuye, elevando tu margen de beneficio. Tercero, mejoras tu posicionamiento SEO, ya que el contenido evergreen genera tráfico orgánico constante y señales positivas para Google. Por último, el modelo evergreen libera a tu equipo de la «ansiedad del lanzamiento», permitiéndoles dedicar más tiempo a servicio al cliente y desarrollo de productos. Menos fuegos que apagar, más crecimiento sostenible.</p>
+</section>
+
+<section id="avatar" class="shadow-box">
+  <h2>3. Investigación de avatar: conoce al detalle a tu comprador ideal</h2>
+  <p>La precisión del avatar es el cimiento de cualquier funnel evergreen. Comienza recopilando datos reales: entrevistas con clientes, encuestas y análisis de reseñas. Anota sus metas, temores y objeciones con sus propias palabras; esas frases serán oro para tus anuncios y correos. Divide la información en cuatro bloques: dolor, deseo, obstáculos y momento de uso. Este mapa te guía para crear un mensaje que suene como una conversación, no como una venta forzada. Actualízalo cada trimestre para reflejar nuevas tendencias y evitar que el embudo pierda frescura.</p>
+</section>
+
+<section id="lead-magnet" class="shadow-box">
+  <h2>4. Lead Magnet irresistible que filtra curiosos y atrae compradores</h2>
+  <p>El lead magnet es tu apretón de manos digital. Debe resolver un micro-problema en menos de diez minutos: una calculadora, un checklist o una plantilla editable. Así demuestras valor rápido y disparas el principio de reciprocidad. Asegúrate de que el tema del lead magnet esté alineado con tu oferta principal; de lo contrario atraerás suscriptores que nunca comprarán. Usa un formulario breve y un título centrado en el resultado: “Calcula tu presupuesto de anuncios en 5 min”. Cuanto más específico y accionable, mayor será tu tasa de conversión.</p>
+</section>
+
+<section id="tripwire" class="shadow-box">
+  <h2>5. Tripwire de conversión: convierte leads en clientes con bajo riesgo</h2>
+  <p>Un tripwire es un pequeño producto, entre 7 € y 27 €, que hace que el lead saque la tarjeta y cruce la barrera psicológica de la primera compra. Ofrece un resultado tangible, relacionado con tu oferta principal: por ejemplo, un mini-curso de 30 minutos o una plantilla premium. Añade garantía sin preguntas para eliminar dudas y, si es posible, incluye un order bump complementario que incremente el valor medio del pedido. Este paso convierte a tus suscriptores en compradores activos y cubre parte del gasto publicitario.</p>
+</section>
+
+<section id="webinar" class="shadow-box">
+  <h2>6. Webinar evergreen que vende por ti todos los días</h2>
+  <p>El webinar evergreen es tu presentación de ventas en formato vídeo, disponible 24/7. Graba una sesión de 45 a 60 minutos que aporte valor práctico y, al final, presente tu oferta. Programa varias franjas horarias o una opción “justo ahora” para captar a los visitantes en caliente. Usa un contador de oferta real, sincronizado con la cookie del usuario, para crear urgencia ética. Añade un correo de recordatorio antes y un enlace de replay después para quienes no asistieron. De esta forma maximizas asistencia y conversiones sin repetir la presentación en directo.</p>
+</section>
+
+<section id="emails" class="shadow-box">
+  <h2>7. Secuencia de nutrición: emails que educan y cierran la venta</h2>
+  <p>Tu secuencia evergreen debe mezclar historias, consejos y llamadas a la acción claras. Empieza con un correo de bienvenida que entregue el lead magnet. Sigue con dos o tres correos de contenido que resuelvan dudas frecuentes. Después, introduce prueba social y responde objeciones comunes. Cierra con uno o dos correos de oferta con urgencia suave. Mantén cada asunto corto, usa el nombre del prospecto y destaca el beneficio principal para aumentar aperturas y clics. Segmenta a los compradores para que salgan de la secuencia y entren a la ruta de onboarding.</p>
+</section>
+
+<section id="trafico" class="shadow-box">
+  <h2>8. Tráfico perpetuo: la mezcla ganadora de SEO, anuncios y alianzas</h2>
+  <p>Un funnel evergreen necesita gasolina constante. Combínala así: contenido SEO para atraer buscadores, anuncios pagados para escalar rápido y alianzas con afiliados para llegar a audiencias nuevas. El SEO entrega leads a coste cero a largo plazo; los ads te dan volumen inmediato, y los afiliados añaden autoridad externa. Mantén una regla de puja basada en ROAS para que las campañas se ajusten solas y recuerda actualizar los artículos SEO cada seis meses para mantenerlos en la cima de Google.</p>
+</section>
+
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+<section id="segmentacion" class="shadow-box">
+  <h2>9. Segmentación dinámica que muestra el mensaje justo a la persona justa</h2>
+  <p>La segmentación es el secreto para que tu funnel evergreen parezca hecho a medida. Usa etiquetas de comportamiento: “descargó guía”, “vio 50 % del webinar”, “visitó pricing”. Con ellas, envía correos y anuncios que hablen del paso siguiente, no del anterior. Ejemplo: si alguien ya vio el webinar, envíale testimonios y una oferta limitada; si aún no lo vio, recuérdale la promesa del vídeo. Esta personalización mejora la relevancia, reduce el costo por conversión y aumenta la satisfacción del cliente.</p>
+</section>
+
+<section id="metricas" class="shadow-box">
+  <h2>10. Métricas y optimización: la salud de tu funnel evergreen</h2>
+  <p>Mide cada paso: CPL, CAC, CTR, CVR y ROI. Configura un dashboard en tiempo real con Looker Studio o Databox. Establece alertas que te avisen si el CAC sube 20 % o si la tasa de apertura baja de 25 %. Cuando algo se desvía, revisa primero el mensaje (copy) y después el canal (anuncio o correo). Implementa un test A/B a la vez: cambia el título de la landing o el precio del tripwire, pero nunca ambos juntos. Esta disciplina evita confusión y acelera el aprendizaje.</p>
+</section>
+
+<section id="stack" class="shadow-box">
+  <h2>11. Stack tecnológico sencillo y robusto</h2>
+  <p>No necesitas cien herramientas. Un buen stack evergreen incluye: CRM con automatización (ActiveCampaign, HubSpot), constructor de páginas rápido (Webflow, WordPress + Elementor), plataforma de pagos segura (Stripe) y un conector de integraciones (Zapier o Make). Mantén el stack ligero para minimizar fallos y facilitar el mantenimiento por un equipo pequeño. Asegura SSL y copias de seguridad automáticas para proteger datos y reputación.</p>
+</section>
+
+<section id="escala" class="shadow-box">
+  <h2>12. Escalabilidad: clona y adapta tu funnel evergreen</h2>
+  <p>Cuando tu embudo perpetual funciona, puedes duplicarlo para nuevos productos o mercados. Mantén el 80 % de la estructura y cambia solo el lead magnet, el ángulo del webinar y la oferta final. Así aprovechas lo que ya funciona y reduces tiempo de implementación. Cada nuevo funnel alimenta tu lista de clientes y crea más datos para optimizar anuncios, logrando un crecimiento escalonado pero estable.</p>
+</section>
+
+<section id="objeciones" class="shadow-box">
+  <h2>13. Manejo automático de objeciones</h2>
+  <p>Anticipa dudas comunes —precio, tiempo, soporte— y responde con secciones de preguntas frecuentes en la página de ventas, correos dedicados y pequeños pop-ups de ayuda. Añade un chatbot con respuestas prediseñadas para consultas frecuentes y un enlace a chat en vivo para tickets de alto valor. Al disipar objeciones sin intervención manual, tu funnel evergreen mantiene alta conversión sin cargar a tu equipo de soporte.</p>
+</section>
+
+<section id="prueba" class="shadow-box">
+  <h2>14. Prueba social y autoridad que refuerzan cada decisión</h2>
+  <p>La prueba social es gasolina para la confianza. Muestra reseñas con nombre y foto, logos de prensa y cifras de impacto (“12 000 alumnos satisfechos”). Inserta testimonios cortos en la landing, correos y webinar. Esto recuerda al prospecto que otras personas ya obtuvieron el resultado que busca, inclinando la balanza a tu favor.</p>
+</section>
+
+<section id="cta-final" class="shadow-box">
+  <h2>15. CTA y siguientes pasos: guía clara hacia la acción</h2>
+  <p>Tu llamada final debe ser específica y orientada a resultado: “Empieza hoy tu funnel evergreen y gana ventas mientras duermes”. Usa un botón grande, color var(--pf-accent) y repítelo varias veces en la página para que el usuario nunca pierda el camino. Después de la compra, redirígelo a una secuencia de onboarding que entregue valor rápido y prepare el terreno para futuras ofertas.</p>
+</section>
+
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
