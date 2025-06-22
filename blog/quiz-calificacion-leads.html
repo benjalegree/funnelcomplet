@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  
+<!-- ========================================================= -->
+<!-- 🔎  SEO BASICS – Quiz de Calificación de Leads            -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Quiz de Calificación de Leads | PsicoFunnel</title>
+<meta name="description"
+      content="Guía paso a paso para diseñar un quiz de calificación de leads que filtra prospectos, reduce el CPL y dispara tus ventas con automatización inteligente." />
+<link rel="canonical" href="https://psicofunnel.com/quiz-calificacion-leads" />
+
+<!-- Open Graph -->
+<meta property="og:title"        content="Quiz de Calificación de Leads | PsicoFunnel" />
+<meta property="og:description"  content="Descubre cómo crear un quiz que segmenta, puntúa y convierte prospectos en clientes listos para comprar." />
+<meta property="og:image"        content="https://psicofunnel.com/assets/img/quiz-leads-cover.webp" />
+<meta property="og:type"         content="article" />
+<meta property="og:url"          content="https://psicofunnel.com/quiz-calificacion-leads" />
+
+<!-- Twitter -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Quiz de Calificación de Leads | PsicoFunnel" />
+<meta name="twitter:description" content="Implementa el método PsicoFunnel y convierte cada respuesta de tu quiz en un prospecto calificado." />
+<meta name="twitter:image"       content="https://psicofunnel.com/assets/img/quiz-leads-cover.webp" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    :root{
+  --pf-navy:#001a40;
+  --pf-light:#e5f6ff;
+  --pf-accent:#00a6e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#fafcff;color:var(--pf-navy);line-height:1.6;}
+
+.pf-header{
+  background:linear-gradient(135deg,#0a0f1c 0%,#001a40 100%);
+  color:#fff;text-align:center;padding:3rem 1.5rem;border-bottom:4px solid var(--pf-accent);
+}
+.pf-header img{width:160px;height:auto;margin-bottom:1rem;}
+.header-title{font-size:2.45rem;font-weight:700;margin-bottom:.5rem;}
+.subtitle{font-size:1.05rem;max-width:720px;margin:0 auto;}
+#indice{max-width:940px;margin:2rem auto;}
+#indice ul{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem;counter-reset:item;}
+#indice li{background:var(--pf-light);border-radius:1.25rem;padding:.5rem 1rem;}
+#indice li::before{
+  counter-increment:item;
+  content:counter(item);
+  width:1.6rem;height:1.6rem;
+  background:var(--pf-accent);color:#fff;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.85rem;margin-right:.5rem;
+}
+#indice a{color:var(--pf-navy);text-decoration:none;font-weight:600;font-size:.9rem;}
+#indice a:hover{color:var(--pf-accent);}
+    
+  </style>
+
+<!-- ========================================================= -->
+<!-- ❓  SCHEMA FAQ                                            -->
+<!-- ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type":    "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name" : "¿Qué es un quiz de calificación de leads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text" : "Es una herramienta interactiva que utiliza preguntas estratégicas para puntuar el interés y la idoneidad de un prospecto antes de enviarlo a tu embudo de ventas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name" : "¿Cuántas preguntas debe tener un quiz efectivo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text" : "Lo ideal son entre 6 y 8 preguntas: suficientes para obtener datos valiosos, pero lo bastante breve para evitar abandono."
+      }
+    },
+    {
+      "@type": "Question",
+      "name" : "¿Cómo se calcula el score de un lead en el quiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text" : "Cada respuesta recibe un valor numérico según su afinidad con tu cliente ideal; la suma total ubica al prospecto en rangos (Frío, MQL o SQL) que activan rutas automatizadas en tu CRM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name" : "¿Qué herramientas puedo usar para crear el quiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text" : "Plataformas como Typeform, Interact o Thrive Quiz Builder permiten diseñar, puntuar y conectar el quiz con tu CRM sin necesidad de código."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png"
+         alt="Logo PsicoFunnel"
+         class="header-logo"
+         loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content" style="text-align:center;">
+    <h1>Quiz de Calificación de Leads: Guía Paso a Paso</h1>
+    <p class="subtitle" style="color:#cce3f6; margin:0 auto;">
+      Implementa el método PsicoFunnel y transforma cada respuesta en un prospecto listo para cerrar.
+    </p>
+  </div>
+</header>
+
+
+
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+<!-- ========= ÍNDICE (20 pasos) ========= -->
+<nav id="indice">
+  <ul>
+    <li><a href="#paso1">1&nbsp;– Objetivo SMART</a></li>
+    <li><a href="#paso2">2&nbsp;– Avatar & Dolor</a></li>
+    <li><a href="#paso3">3&nbsp;– Formato de Quiz</a></li>
+    <li><a href="#paso4">4&nbsp;– Preguntas Magnéticas</a></li>
+    <li><a href="#paso5">5&nbsp;– Lógica de Scoring</a></li>
+    <li><a href="#paso6">6&nbsp;– Resultado Personalizado</a></li>
+    <li><a href="#paso7">7&nbsp;– Captura sin Fricción</a></li>
+    <li><a href="#paso8">8&nbsp;– Diseño Mobile-First</a></li>
+    <li><a href="#paso9">9&nbsp;– Promoción Multicanal</a></li>
+    <li><a href="#paso10">10&nbsp;– Analítica & KPI</a></li>
+    <li><a href="#paso11">11&nbsp;– Follow-up Inicial</a></li>
+    <li><a href="#paso12">12&nbsp;– Alertas en CRM</a></li>
+    <li><a href="#paso13">13&nbsp;– Rutas de Nutrición</a></li>
+    <li><a href="#paso14">14&nbsp;– Agendado Automático</a></li>
+    <li><a href="#paso15">15&nbsp;– Upsell en Resultados</a></li>
+    <li><a href="#paso16">16&nbsp;– A/B del Título</a></li>
+    <li><a href="#paso17">17&nbsp;– Control de CPL</a></li>
+    <li><a href="#paso18">18&nbsp;– Expansión Multilingüe</a></li>
+    <li><a href="#paso19">19&nbsp;– Viralidad Social</a></li>
+    <li><a href="#paso20">20&nbsp;– Privacidad & Confianza</a></li>
+  </ul>
+</nav>
+
+<!-- ========= SECCIONES ========= -->
+<section id="paso1" class="shadow-box">
+  <h2>1. Objetivo SMART: la brújula de tu quiz</h2>
+  <p>Antes de escribir la primera pregunta, fija un objetivo SMART que convierta tu quiz de calificación de leads en una herramienta predecible de ventas. Un ejemplo claro es “Generar 120 leads calificados (SQL) en 30 días con un costo por lead ≤ 3 €”. El objetivo SMART dirige el tono del quiz, la longitud, la oferta de resultado y tus anuncios de tráfico. Además, define la métrica de éxito que revisarás cada semana para saber si escalar o optimizar. Esta claridad evita que termines con un test entretenido pero inútil comercialmente. Cuando todo el equipo comparte el mismo KPI entiende qué datos deben recogerse y qué llamadas a la acción priorizar.</p>
+</section>
+
+<section id="paso2" class="shadow-box">
+  <h2>2. Avatar y dolor: habla el idioma de tu prospecto</h2>
+  <p>Un quiz de calificación de leads gana relevancia cuando cada pregunta refleja el dolor real del avatar. Empieza con entrevistas breves a clientes actuales, analiza reseñas de competidores y observa foros del sector. Extrae frases espejo como “pierdo horas cuadrando facturas” y “no sé si mis anuncios funcionan”. Estas expresiones auténticas se convierten en el texto de tus preguntas y opciones de respuesta. El resultado: el usuario siente que el quiz “lee su mente” y responde con honestidad, elevando la fiabilidad del score. Además, al usar sus propias palabras en la página de resultados, refuerzas empatía y motivas el clic al CTA siguiente.</p>
+</section>
+
+<section id="paso3" class="shadow-box">
+  <h2>3. Formato de quiz: diagnóstico, personalidad o ROI</h2>
+  <p>El formato correcto maximiza la tasa de completado y la utilidad del dato. Si vendes software B2B, elige un diagnóstico numérico que calcule pérdidas o ahorros; en productos lifestyle B2C, un test de personalidad genera más engagement. Evalúa el tiempo promedio de tu buyer: directivos prefieren 5 preguntas y un gráfico de resultado rápido, mientras un freelancer creativo acepta 8–10 preguntas con imágenes. Define también si mostrarás un rango (0-100), letras (A-D) o arquetipos (“Growth Hacker”, “Optimizer”). El formato coherente con el avatar simplifica la interpretación y hace el paso al producto lógico y natural.</p>
+</section>
+
+<section id="paso4" class="shadow-box">
+  <h2>4. Preguntas magnéticas: claridad + progresión</h2>
+  <p>Las primeras dos preguntas deben ser fáciles y sin datos sensibles para crear inercia. Por ejemplo: “¿Cuántas horas dedicas al reporte semanal?” con respuestas de selección rápida. Luego introduce una pregunta de reflexión que haga visible el costo del problema: “Si pudieras recuperar ese tiempo, ¿en qué lo invertirías?”. Reserva la pregunta de presupuesto o autoridad para el final, cuando el usuario ya percibe valor en completar. Mantén cada enunciado en lenguaje conversacional y evita jergas técnicas. Un quiz de 6-8 preguntas con progreso visible retiene hasta el 75 % de los participantes hasta el último paso.</p>
+</section>
+
+<section id="paso5" class="shadow-box">
+  <h2>5. Lógica de scoring: del dato al lead calificado</h2>
+  <p>Asigna valores numéricos a cada respuesta en función del Ideal Customer Profile. Por ejemplo, “ingresos anuales &gt; 500 K” suma 30 puntos, mientras “&lt; 100 K” suma 5. Establece rangos: 0-40 p = Lead frío, 41-70 p = MQL, 71-100 p = SQL. Configura la herramienta (Typeform, Interact o Thrive Quiz) para enviar automáticamente el lead a la lista correspondiente en tu CRM. Agrega un campo “score” visible al equipo de ventas para que priorice llamadas y adapten el discurso. Con una lógica transparente todo el equipo entiende por qué un contacto recibe cierto tratamiento y se evitan malentendidos.</p>
+</section>
+
+<section id="paso6" class="shadow-box">
+  <h2>6. Resultado personalizado: diagnóstico + próximo paso</h2>
+  <p>El resultado es tu primer pitch. Combina el puntaje con un mensaje de insight: “Tu empresa desperdicia 12 h al mes en tareas manuales”. Inmediatamente ofrece la solución: “Reserva una demo de 15 min y recupera 80 % de ese tiempo”. Muestra un gráfico o una barra de color para que el usuario visualice la gravedad y añade un mini-incentivo limitado, como una consultoría gratuita válida 48 h. Esta urgencia ética motiva la acción sin presionar. Personalizar el resultado con las respuestas crea relevancia, eleva la tasa de clic y, al ser útil, aumenta las posibilidades de compartirse.</p>
+</section>
+
+<section id="paso7" class="shadow-box">
+  <h2>7. Captura sin fricción: menos campos, más leads</h2>
+  <p>Solicita únicamente nombre y correo justo antes de mostrar el resultado. El momento de máxima curiosidad eleva la tasa de opt-in. Añade un micro-texto bajo el botón: “Te enviaremos tu diagnóstico y un plan de acción rápido”. Esto aclara la expectativa y reduce emails falsos. Integra reCAPTCHA invisible o doble opt-in para proteger tu lista. Cada dato extra que pidas debe tener uso claro; si no, elimínalo. Formulario breve significa CPL más bajo y mejor reputación, pues menos usuarios abandonan la página en el último segundo.</p>
+</section>
+
+<section id="paso8" class="shadow-box">
+  <h2>8. Diseño mobile-first: velocidad y accesibilidad</h2>
+  <p>Más del 70 % de los quizzes se completan desde dispositivos móviles. Usa una sola columna, botones de ancho completo y tipografía mínima de 16 px. Asegura contraste AA, coloca la barra de progreso fija en la parte superior y limita imágenes pesadas. Un quiz que carga en menos de 2 s retiene 30 % más usuarios. Adapta los iconos de opción para pulsar con el pulgar y evita pop-ups invasivos que tapen preguntas. Un diseño limpio y rápido mejora la experiencia, los Core Web Vitals y, en consecuencia, tu posicionamiento SEO.</p>
+</section>
+
+<section id="paso9" class="shadow-box">
+  <h2>9. Promoción multicanal: tráfico con intención</h2>
+  <p>Combina SEO, ads y redes para maximizar el alcance. Crea un artículo optimizado para la palabra clave “quiz de diagnóstico [tu nicho]” e incrusta el test. Usa anuncios de Facebook o LinkedIn dirigidos a intereses afines y remarketing para visitantes que no completaron el quiz. En Instagram, un story con sticker de enlace directo al test convierte curiosos en leads con bajo costo. No olvides incluir el quiz en el menú de tu sitio y como pop-up de salida en tu blog. Cuantos más puntos de entrada relevantes, menor será tu CPL promedio.</p>
+</section>
+
+<section id="paso10" class="shadow-box">
+  <h2>10. Analítica y KPI: mejora lo que mides</h2>
+  <p>Integra Google Analytics 4 o Matomo para rastrear impresiones, inicios, completados y conversiones post-quiz. Configura embudos visuales para detectar drop-offs por pregunta. Revisa semanalmente el CPL calificado, la tasa de demos programadas y el porcentaje de SQL generados. Si la tasa de completado cae por debajo del 50 %, simplifica preguntas o reduce la longitud. Ajusta creatividades de ads cuando el CPL sobrepase tu umbral. Una disciplina de revisión constante mantiene tu quiz rentable y relevante.</p>
+</section>
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+<section id="paso11" class="shadow-box">
+  <h2>11. Follow-up inicial: de curiosidad a confianza</h2>
+  <p>Envía un email de bienvenida en los primeros 5 min. Incluye el diagnóstico completo, un breve tip accionable y un CTA “responde a este correo si tienes dudas”. Esta interacción temprana mejora la entregabilidad y crea lazos. En las siguientes 48 h comparte dos historias de clientes que partían de un diagnóstico similar y alcanzaron resultados visibles. Este contenido social prueba que tu método funciona y prepara el terreno para la oferta.</p>
+</section>
+
+<section id="paso12" class="shadow-box">
+  <h2>12. Alertas automáticas en tu CRM</h2>
+  <p>Conecta el quiz a tu CRM mediante Webhooks o Zapier. Crea reglas que notifiquen a ventas en tiempo real cuando un lead supere el score mínimo. Incluye en la alerta los datos clave: presupuesto, autoridad y dolor principal. Una respuesta humana en menos de 15 min eleva la tasa de cierre hasta un 40 %. Mantén la ficha de contacto actualizada con cada interacción para personalizar futuras comunicaciones.</p>
+</section>
+
+<section id="paso13" class="shadow-box">
+  <h2>13. Rutas de nutrición segmentadas</h2>
+  <p>Diseña secuencias distintas para leads fríos, MQL y SQL. Los fríos reciben contenido educativo top-of-funnel; los MQL obtienen casos de uso y ROI; los SQL, invitaciones a demos o pruebas gratuitas. Usa etiquetas dinámicas para incluir el nombre de su industria en asuntos y encabezados. Esta personalización multiplica las aperturas y refuerza la percepción de que tu solución se adapta a su contexto particular.</p>
+</section>
+
+<section id="paso14" class="shadow-box">
+  <h2>14. Agendado automático y sin fricción</h2>
+  <p>Incluye un botón de calendario en la página de resultados y en los correos de seguimiento. Pre-carga la nota del evento con el resumen del diagnóstico para que el asesor llegue preparado y el prospecto no tenga que repetir información. Cuanto menos pasos existan entre diagnóstico y reunión, mayor será la conversión a demo.</p>
+</section>
+
+<section id="paso15" class="shadow-box">
+  <h2>15. Upsell en la página de resultados</h2>
+  <p>Aprovecha la atención del usuario tras el quiz para ofrecer un recurso de pago de bajo riesgo, como una plantilla premium o un minicurso. Esta venta impulse cubre parte de tu gasto publicitario y filtra a los prospectos con mayor compromiso. Asegúrate de que la oferta complemente el problema detectado para evitar distracciones.</p>
+</section>
+
+<section id="paso16" class="shadow-box">
+  <h2>16. A/B del título y la promesa</h2>
+  <p>Prueba dos versiones de título simultáneamente: una basada en dolor (“¿Cuánto dinero estás perdiendo…?”) y otra en beneficio (“Descubre cuánto puedes ahorrar…”). Mide inicios y completados durante al menos 500 visitas por variante. Mantén todo lo demás igual para aislar la variable del título. Documenta resultados y repite cada mes.</p>
+</section>
+
+<section id="paso17" class="shadow-box">
+  <h2>17. Control de CPL en tiempo real</h2>
+  <p>Usa un dashboard que muestre CPL por campaña y fuente. Configura alertas para pausar anuncios que superen en 20 % el promedio semanal. Redistribuye presupuesto a los mejores ads y mantén así tu coste de adquisición bajo control.</p>
+</section>
+
+<section id="paso18" class="shadow-box">
+  <h2>18. Expansión multilingüe y geográfica</h2>
+  <p>Cuando el CPL sea estable en tu mercado base, traduce el quiz con adaptación cultural, no literal. Ajusta ejemplos y unidades a la realidad local. Crea campañas específicas y píxeles por idioma para optimizar anuncios a cada audiencia.</p>
+</section>
+
+<section id="paso19" class="shadow-box">
+  <h2>19. Viralidad: botones de compartir con incentivo</h2>
+  <p>Añade botones de redes y ofrece un recurso extra a quienes compartan. Las personas disfrutan mostrar sus resultados; aprovecha ese impulso para tráfico gratuito y altamente segmentado. Asegura que la vista previa del enlace sea atractiva con etiquetas Open Graph personalizadas.</p>
+</section>
+
+<section id="paso20" class="shadow-box">
+  <h2>20. Privacidad y confianza: RGPD sin fricción</h2>
+  <p>Incluye banner de cookies, checkbox de consentimiento y enlace claro a tu política de privacidad. Implementa doble opt-in para correos válidos y permite la baja con un clic. La transparencia legal refuerza la confianza y protege tu reputación de dominio, mejorando la entregabilidad a largo plazo.</p>
+</section>
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
