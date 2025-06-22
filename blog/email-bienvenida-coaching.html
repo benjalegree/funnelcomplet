@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- ========================================================= -->
+<!-- 🔎  SEO BASICS                                             -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Plantilla de Email de Bienvenida para Coaches y Vendedores | PsicoFunnel</title>
+<meta name="description"
+      content="Guía paso a paso para crear un email de bienvenida que enamora, segmenta y dispara las ventas de tus programas de coaching o productos high-ticket." />
+<link rel="canonical"
+      href="https://psicofunnel.com/email-bienvenida-coaches" />
+
+<!-- Open Graph -->
+<meta property="og:title"
+      content="Plantilla de Email de Bienvenida para Coaches y Vendedores – Guía PsicoFunnel" />
+<meta property="og:description"
+      content="Domina el primer contacto con tu prospecto y convierte suscriptores en clientes fieles con esta plantilla profesional optimizada para ventas." />
+<meta property="og:image"
+      content="https://psicofunnel.com/assets/img/email-bienvenida-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url"
+      content="https://psicofunnel.com/email-bienvenida-coaches" />
+
+<!-- Twitter -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Email de Bienvenida para Coaches – Plantilla Gratis" />
+<meta name="twitter:description" content="Aprende a estructurar el correo de bienvenida perfecto y aumenta la apertura de tus siguientes emails." />
+<meta name="twitter:image"
+      content="https://psicofunnel.com/assets/img/email-bienvenida-cover.webp" />
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    :root{
+  --pf-navy:#001a40;
+  --pf-light:#e5f6ff;
+  --pf-accent:#00a6e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#fafcff;color:var(--pf-navy);line-height:1.6;}
+
+.pf-header{
+  background:linear-gradient(135deg,#0a0f1c 0%,#001a40 100%);
+  color:#fff;text-align:center;padding:3rem 1.5rem;border-bottom:4px solid var(--pf-accent);
+}
+.pf-header img{width:160px;height:auto;margin-bottom:1rem;}
+.header-title{font-size:2.45rem;font-weight:700;margin-bottom:.5rem;}
+.subtitle{font-size:1.05rem;max-width:720px;margin:0 auto;}
+#indice{max-width:940px;margin:2rem auto;}
+#indice ul{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem;counter-reset:item;}
+#indice li{background:var(--pf-light);border-radius:1.25rem;padding:.5rem 1rem;}
+#indice li::before{
+  counter-increment:item;
+  content:counter(item);
+  width:1.6rem;height:1.6rem;
+  background:var(--pf-accent);color:#fff;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.85rem;margin-right:.5rem;
+}
+#indice a{color:var(--pf-navy);text-decoration:none;font-weight:600;font-size:.9rem;}
+#indice a:hover{color:var(--pf-accent);}
+    
+  </style>
+
+<!-- ========================================================= -->
+<!-- ❓  FAQ SCHEMA (JSON-LD)                                   -->
+<!-- ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Por qué es tan importante el email de bienvenida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El email de bienvenida establece el tono de la relación, activa la reciprocidad y multiplica la apertura de los correos siguientes. Un mensaje claro y útil puede elevar la retención de suscriptores hasta un 40 %."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué debe incluir un asunto efectivo para coaches y vendedores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un asunto efectivo combina curiosidad, beneficio y personalización, por ejemplo: “María, tu mapa de progreso está listo 📈”. Debe ser breve (≤ 45 caracteres) para mostrarse completo en móvil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la longitud ideal de un email de bienvenida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre 150 y 250 palabras. Suficiente para saludar, entregar un Quick Win y presentar un CTA ligero sin abrumar al lector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo segmento a mis nuevos suscriptores con un solo clic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluye una pregunta con enlaces etiquetados. Cada enlace asigna automáticamente una etiqueta en tu CRM y dispara la secuencia adecuada según la necesidad declarada del prospecto."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png"
+         alt="Logo PsicoFunnel"
+         class="header-logo"
+         loading="lazy" />
+    <span></span>
+  </div>
+
+    <div class="header-content" style="text-align:center;">
+    <h1>Plantilla de Email de Bienvenida para Coaches y Vendedores</h1>
+    <p class="subtitle" style="color:#cce3f6;margin:0 auto;">
+      Domina el primer contacto con tu prospecto usando una secuencia de bienvenida que enamora, segmenta y dispara la venta.
+    </p>
+  </div>
+</header>
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+<!-- ========================================================= -->
+<!-- 📚  ÍNDICE DE CONTENIDOS                                   -->
+<!-- ========================================================= -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <ul>
+    <li><a href="#p1">1. Importancia del email de bienvenida</a></li>
+    <li><a href="#p2">2. Asunto magnético: aperturas del 60 %</a></li>
+    <li><a href="#p3">3. Apertura emocional y tono humano</a></li>
+    <li><a href="#p4">4. Quick Win: entrega de valor instantáneo</a></li>
+    <li><a href="#p5">5. Roadmap de la relación y expectativas</a></li>
+    <li><a href="#p6">6. Segmentación dinámica con un clic</a></li>
+    <li><a href="#p7">7. CTA mínimo viable que convierte</a></li>
+    <li><a href="#p8">8. Firma, prueba social y accesibilidad</a></li>
+    <li><a href="#p9">9. Automatización y métricas clave</a></li>
+    <li><a href="#p10">10. Optimización continua A/B</a></li>
+  </ul>
+</nav>
+
+
+<!-- 1 -->
+<section id="p1" class="shadow-box">
+  <h2>1. Importancia del email de bienvenida en el proceso de coaching y venta</h2>
+  <p>El primer correo de bienvenida para coaches y vendedores es el “apretón de manos digital” que marca la experiencia completa del cliente. Cuando el mensaje llega al instante, con tono humano y una promesa concreta, dispara la reciprocidad y la coherencia psicológica: las personas tienden a corresponder cuando reciben valor antes de invertir dinero. Un email de bienvenida claro y útil aumenta la apertura de los siguientes envíos, reduce cancelaciones y posiciona tu marca como guía confiable. Además, al incorporar un recurso accionable en ese primer contacto, conviertes la curiosidad inicial en progreso tangible y estableces la base para futuros upsells o sesiones de venta.</p>
+  <h3>Efecto Compound Trust: por qué cada segundo cuenta</h3>
+  <div class="subcontent">
+    <p>Los estudios de neuroventas muestran que la confianza se acumula exponencialmente. Un saludo personalizado, una promesa específica y un recurso gratis antes de los primeros 30 segundos fijan el recuerdo en la memoria del prospecto. Dejar pasar horas desde la suscripción aumenta un 19 % la tasa de olvido; por eso, automatiza el envío “instant-on” y cimenta una base emocional sólida de cara a tus futuras ofertas.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="p2" class="shadow-box">
+  <h2>2. Asunto magnético: cómo lograr aperturas del 60 %</h2>
+  <p>El asunto del email de bienvenida para coaches y vendedores es tu micro-copy más valioso. Funciona cuando combina curiosidad, beneficio y personalización. Ejemplo: «{Nombre}, tu mapa de progreso está listo 📈». Aquí el nombre crea cercanía, mientras que “mapa de progreso” despierta la expectativa de un resultado concreto. Limita el asunto a 45 caracteres para que se vea completo en móvil y añade un emoji coherente con tu marca para destacar en la bandeja de entrada. Con esta fórmula, las tasas de apertura pueden superar el 60 % y duplicar el tráfico a tu contenido clave.</p>
+  <h3>Fórmula 3C (Curiosidad – Cambio – Claridad)</h3>
+  <div class="subcontent">
+    <p><strong>Curiosidad:</strong> «Descubre tu puntaje de enfoque». <strong>Cambio:</strong> «Convierte distracción en progreso hoy». <strong>Claridad:</strong> «Pasos exactos dentro». Mezcla estos tres ingredientes y tendrás un asunto irresistible que sobresale entre promociones genéricas.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="p3" class="shadow-box">
+  <h2>3. Apertura emocional: la bienvenida que humaniza</h2>
+  <p>Comienza tu email de bienvenida con un saludo cálido y una línea que refleje el reto del lector: «Sé lo abrumador que puede sentirse intentar cerrar más clientes sin sonar insistente…». Este espejo emocional libera oxitocina, el químico de la confianza. A continuación, presenta tu autoridad sin alardear: «Llevo ocho años ayudando a coaches a duplicar su facturación sin anuncios caros». Al combinar empatía y credibilidad, eliminas la barrera inicial de desconfianza y preparas el terreno para un diálogo auténtico.</p>
+  <h3>Puente «Tú + Yo» en 40 palabras</h3>
+  <div class="subcontent">
+    <p>Conecta la experiencia del prospecto con tu misión: «Tú traes la pasión de transformar vidas; yo aporto el sistema probado para llenar tu agenda de sesiones pagadas. Juntos, convertiremos tu talento en un negocio sostenible». Este micro-speech alinea objetivos y refuerza la idea de colaboración.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="p4" class="shadow-box">
+  <h2>4. Entrega de valor instantáneo: tu Quick Win gratuito</h2>
+  <p>Para que el email de bienvenida no sea solo “otro saludo”, adjunta un recurso que el lector pueda aplicar en menos de cinco minutos. Para coaches, puede ser una «Checklist de descubrimiento en 3 preguntas»; para vendedores, un «Guion de follow-up de 60 seg». Este Quick Win genera una sensación inmediata de progreso, refuerza la reciprocidad y aumenta la probabilidad de que el suscriptor abra tus futuros correos. Además, eleva tu posicionamiento como experto que enseña antes de vender.</p>
+  <h3>Diseño del recurso y CTA interno</h3>
+  <div class="subcontent">
+    <p>Opta por un PDF de una página con espacios para completar. Incluye dentro un CTA sutil: «Responde a este correo con tu respuesta número 1». Con un único clic obtienes feedback, calificas al lead y abres un canal de conversación personalizada.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="p5" class="shadow-box">
+  <h2>5. Expectativas claras: roadmap de la relación</h2>
+  <p>Explicar lo que viene a continuación reduce la ansiedad y las bajas de lista. Detalla frecuencia y tipo de contenido: «Durante los próximos siete días recibirás un consejo diario de cierre de ventas. Después, solo un email semanal con casos de éxito y plantillas avanzadas». Esta transparencia genera confianza y ajusta las expectativas de tu nuevo suscriptor, evitando que se sorprenda con tu ritmo de comunicación.</p>
+  <h3>Mini-cronograma visual</h3>
+  <div class="subcontent">
+    <p>Agrega un timeline con emojis para móvil:<br>📆 Día 1 – Checklist<br>📆 Día 2 – Video 3 min<br>📆 Día 7 – Oferta exclusiva.<br>El formato visual se escanea en segundos y mantiene alta la anticipación.</p>
+  </div>
+</section>
+
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+<!-- 6 -->
+<section id="p6" class="shadow-box">
+  <h2>6. Segmentación dinámica: pregunta clave con un clic</h2>
+  <p>Incluye una única pregunta que el lector responde con un clic: «¿Cuál describe mejor tu reto ahora mismo?». Opción A: Prospectar, Opción B: Cerrar, Opción C: Automatizar. Cada enlace lleva parámetros UTM distintos y actualiza la etiqueta del contacto en tu CRM. Así, desde el primer correo sabes qué contenido y oferta mostrar a cada segmento, mejorando relevancia y ventas sin pedir formularios adicionales.</p>
+  <h3>Implementación técnica simple</h3>
+  <div class="subcontent">
+    <p>Configura un Webhook en Zapier o Make que capture los clics y asigne la etiqueta adecuada. El proceso tarda menos de 15 minutos y funciona con cualquier ESP moderno.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="p7" class="shadow-box">
+  <h2>7. CTA principal: acción mínima viable</h2>
+  <p>El email de bienvenida no es el lugar para un pitch agresivo. Ofrece un paso de bajo umbral: «Agenda tu mini-sesión gratuita de 15 min» o «Responde a este correo con tu meta principal». Al centrarte en una única acción clara evitas la parálisis por decisión y multiplicas la conversión. Los datos muestran que un solo CTA aumenta el CTR en un 42 % frente a emails con múltiples enlaces.</p>
+  <h3>Copy CLAR (Claro – Limitado – Acción – Resultado)</h3>
+  <div class="subcontent">
+    <p><strong>Claro:</strong> «Reserva tu sesión». <strong>Limitado:</strong> «Solo 4 cupos esta semana». <strong>Acción:</strong> «Haz clic aquí». <strong>Resultado:</strong> «Saldrás con un plan en PDF». Esta estructura comunica valor, urgencia y siguiente paso de forma directa.</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="p8" class="shadow-box">
+  <h2>8. Firma profesional con prueba social</h2>
+  <p>La firma refuerza tu autoridad y humaniza tu comunicación. Incluye foto profesional, nombre, cargo («María Pérez, Coach de Ventas Certificada») y un mini-testimonio: «Gracias a las tácticas de María, cerré mi primer contrato de 5 k en una semana». Añade iconos de redes donde realmente interactúas para mantener coherencia de marca.</p>
+  <h3>Sello de accesibilidad y cercanía</h3>
+  <div class="subcontent">
+    <p>Cierra con «Si necesitas el contenido en otro formato, responde a este correo». Demuestra inclusión y atención al detalle, fortaleciendo la percepción de marca cuidadosa.</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="p9" class="shadow-box">
+  <h2>9. Automatización y métricas clave</h2>
+  <p>Automatiza un workflow que monitoree apertura (≥ 60 %), clics (≥ 15 %) y respuestas (≥ 5 %). Si el prospecto no abre, reenvía con asunto alternativo tras 48 h. Si hace clic pero no responde, manda recordatorio gentle al día siguiente. Este seguimiento basado en comportamiento protege tu reputación de remitente y optimiza la serie de bienvenida de forma continua.</p>
+  <h3>Dashboard en Looker Studio</h3>
+  <div class="subcontent">
+    <p>Conecta tu ESP por API y visualiza KPIs en tiempo real. Filtra por etiquetas de segmento para descubrir qué buyer personas interactúan mejor y ajusta tu contenido futuro.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="p10" class="shadow-box">
+  <h2>10. Optimización continua: pruebas A/B semanales</h2>
+  <p>Cada semana cambia solo un elemento (asunto, primer párrafo, color del botón) y corre la prueba hasta alcanzar un 95 % de confianza estadística. Documenta resultados en una hoja de cálculo y actualiza la versión ganadora en toda la serie. Esta cultura de mejora incremental garantiza que tu plantilla de email de bienvenida evolucione con las preferencias de tu audiencia y mantenga altas métricas de rendimiento.</p>
+  <h3>Novedad controlada para retener confianza</h3>
+  <div class="subcontent">
+    <p>Introduce variaciones sutiles—un nuevo emoji, un GIF ligero—para mantener la atención sin romper la familiaridad. El cerebro valora la novedad dentro de un marco conocido; así equilibras sorpresa y coherencia de marca.</p>
+  </div>
+</section>
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
