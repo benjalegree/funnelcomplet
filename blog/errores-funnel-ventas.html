@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- ========================================================= -->
+<!-- 🔎  SEO BASICS — Funnel Evergreen                          -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Funnel Evergreen: Crea un Sistema de Ventas Automático 24/7 | PsicoFunnel</title>
+<meta name="description" content="Guía completa para construir un funnel evergreen que atrae leads, nutre confianza y convierte en piloto automático. Aprende paso a paso a diseñar tu embudo perpetuo y multiplica tus ventas sin lanzamientos agotadores." />
+<link rel="canonical" href="https://psicofunnel.com/funnel-evergreen" />
+
+<!--  Open Graph  -->
+<meta property="og:title" content="Funnel Evergreen: Crea un Sistema de Ventas Automático 24/7" />
+<meta property="og:description" content="Descubre cómo diseñar un funnel evergreen que genera ingresos constantes con lead magnets, webinars y automatización inteligente." />
+<meta property="og:image" content="https://psicofunnel.com/assets/img/funnel-evergreen-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://psicofunnel.com/funnel-evergreen" />
+
+<!--  Twitter  -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Funnel Evergreen: Ventas en Piloto Automático" />
+<meta name="twitter:description" content="Guía paso a paso para activar un embudo evergreen que vende todos los días, incluso mientras duermes." />
+<meta name="twitter:image"       content="https://psicofunnel.com/assets/img/funnel-evergreen-cover.webp" />
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    /* ========================================================= */
+/* 📚  ÍNDICE MEJORADO – Funnel Carrito Abandonado            */
+/* ========================================================= */
+nav#indice{
+  background:var(--pf-light);
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,166,224,.15);
+  margin:40px auto;
+  max-width:1000px;
+}
+nav#indice h2{
+  font-size:1.8rem;
+  margin-bottom:20px;
+  color:var(--pf-navy);
+  text-align:center;
+}
+nav#indice ol{
+  counter-reset:idx;
+  list-style:none;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+}
+nav#indice ol li{
+  counter-increment:idx;
+  display:flex;
+  align-items:flex-start;
+}
+nav#indice ol li::before{
+  content:counter(idx);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  margin-right:10px;
+  background:var(--pf-accent);
+  color:#fff;
+  font-weight:700;
+  border-radius:50%;
+  flex-shrink:0;
+}
+nav#indice ol li a{
+  color:var(--pf-navy);
+  font-weight:600;
+  text-decoration:none;
+  transition:color .25s;
+  line-height:1.4;
+}
+nav#indice ol li a:hover{
+  color:var(--pf-accent);
+  text-decoration:underline;
+}
+
+@media(max-width:600px){
+  nav#indice ol{grid-template-columns:1fr;}
+}
+
+  </style>
+
+
+  <!-- ========================================================= -->
+  <!--  SCHEMA FAQ                                               -->
+  <!-- ========================================================= -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"¿Cuáles son los errores más comunes en un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Entre los errores más comunes están la falta de segmentación, CTAs confusos y no medir las métricas correctas."}},
+      {"@type":"Question","name":"¿Cómo arreglo mi embudo si las conversiones son bajas?","acceptedAnswer":{"@type":"Answer","text":"Audita cada etapa: revisa la propuesta de valor, simplifica formularios y usa pruebas A/B para optimizar."}},
+      {"@type":"Question","name":"¿Qué métricas vigilar para mejorar un funnel de ventas?","acceptedAnswer":{"@type":"Answer","text":"Monitorea CPL, CAC, tasa de conversión por etapa y LTV:CAC para ajustes estratégicos."}}
+    ]
+  }
+  </script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content">
+    <h1>Errores en un Funnel de Ventas y Cómo Solucionarlos</h1>
+    <p class="subtitle" style="color:#cce3f6;">
+      Aprende a detectar y corregir los 10 fallos que frenan tus conversiones y transforma tu embudo en una máquina de ventas imparable.
+    </p>
+  </div>
+</header>
+
+
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+
+<!-- ======================= ÍNDICE DE CONTENIDOS ======================= -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <h2>Tabla de contenidos</h2>
+  <ol>
+    <li><a href="#err01">1. Propuesta de valor confusa</a></li>
+    <li><a href="#err02">2. Segmentar mal (o no segmentar) la audiencia</a></li>
+    <li><a href="#err03">3. Formularios eternos que espantan leads</a></li>
+    <li><a href="#err04">4. Secuencia de emails sin storytelling</a></li>
+    <li><a href="#err05">5. CTAs genéricos y mal ubicados</a></li>
+    <li><a href="#err06">6. No medir micro-conversiones</a></li>
+    <li><a href="#err07">7. Escasez falsa que destruye la confianza</a></li>
+    <li><a href="#err08">8. Checkout sin garantías visibles</a></li>
+    <li><a href="#err09">9. Falta de optimización móvil</a></li>
+    <li><a href="#err10">10. No realizar pruebas A/B continuas</a></li>
+    <li><a href="#err11">11. Copiar mensajes de la competencia sin adaptarlos</a></li>
+    <li><a href="#err12">12. Ignorar el retargeting multicanal</a></li>
+    <li><a href="#err13">13. Contenido desalineado con la etapa del funnel</a></li>
+    <li><a href="#err14">14. Olvidar el seguimiento post-compra</a></li>
+    <li><a href="#err15">15. Medir los KPI incorrectos</a></li>
+    <li><a href="#err16">16. Automatizaciones sin personalización</a></li>
+    <li><a href="#err17">17. Marketing y ventas desincronizados</a></li>
+    <li><a href="#err18">18. Landing pages lentas</a></li>
+    <li><a href="#err19">19. Promociones sin estrategia de pricing</a></li>
+    <li><a href="#err20">20. No escuchar el feedback de los usuarios</a></li>
+  </ol>
+</nav>
+
+
+<!-- ============ 20 ERRORES CRÍTICOS EN UN FUNNEL DE VENTAS ============ -->
+
+<section id="err01" class="shadow-box">
+  <h2>1. Propuesta de valor confusa</h2>
+  <p>Un funnel de ventas comienza a fallar cuando la propuesta de valor no se entiende en cinco segundos. Si el visitante llega y se pregunta “¿qué me ofrecen exactamente?”, hará clic en el botón de cerrar. Aclara en una frase el problema que resuelves, el beneficio concreto y el factor diferenciador. Utiliza un subtítulo que amplíe la promesa con cifras o tiempo (“ahorra 3 h al día” o “duplica tus leads en 30 días”). Luego apóyate en bullets con resultados tangibles y evita jerga técnica. Una propuesta de valor clara reduce la tasa de rebote, aumenta el tiempo en página y envía señales positivas a Google, mejorando tu SEO de marca mientras prepara al usuario para avanzar al siguiente paso del embudo.</p>
+</section>
+
+<section id="err02" class="shadow-box">
+  <h2>2. Segmentar mal (o no segmentar) la audiencia</h2>
+  <p>Un funnel genérico trata a todos por igual y, al hacerlo, encarece el costo de adquisición. Segmenta tus campañas por intención de búsqueda, nivel de consciencia y etapa del cliente. Un mensaje para emprendedores no resonará con directores de marketing B2B. Crea audiencias basadas en datos demográficos, intereses y comportamientos y adapta creatividades que hablen su mismo idioma. Con una segmentación fina, aumentas el CTR, filtras leads de baja calidad y mejoras el Quality Score de tus anuncios, lo que reduce el CPC y alimenta un ciclo virtuoso de tráfico cualificado que convierte mejor y más rápido.</p>
+</section>
+
+<section id="err03" class="shadow-box">
+  <h2>3. Formularios eternos que espantan leads</h2>
+  <p>Pedir demasiados datos en la primera interacción es como exigir una primera cita con contrato de matrimonio. Limita los campos a nombre y correo; todo lo demás puede esperar. Implementa formularios progresivos que soliciten información adicional solo cuando el usuario demuestra interés (p. ej., tras descargar un recurso). Cada campo extra reduce la conversión entre un 5 % y un 10 %. Menos fricción significa más leads cualificados y un costo por lead más bajo. Además, los formularios cortos cargan más rápido en móvil, mejoran la experiencia de usuario y contribuyen a un mejor posicionamiento en buscadores.</p>
+</section>
+
+<section id="err04" class="shadow-box">
+  <h2>4. Secuencia de emails sin storytelling</h2>
+  <p>Muchos embudos envían correos que parecen boletines corporativos: fríos, impersonales y repletos de información técnica. El storytelling convierte datos en emociones y emociones en decisiones de compra. Relata la historia de un cliente que partió del mismo punto doloroso que tu prospecto, muestra el conflicto y termina con la transformación gracias a tu solución. Un buen relato eleva la tasa de apertura, mantiene la atención y aumenta el CTR porque el lector se ve reflejado y desea ese mismo resultado. Además, los correos con historias generan respuestas, mejoran tu reputación de dominio y, por ende, tu entregabilidad.</p>
+</section>
+
+<section id="err05" class="shadow-box">
+  <h2>5. CTAs genéricos y mal ubicados</h2>
+  <p>Botones que dicen “Enviar” o “Siguiente” no inspiran acción ni comunican beneficio. Cambia esos textos por verbos fuertes y resultados concretos: “Quiero mi guía gratis” o “Reservar mi plaza ahora”. Asegúrate de que el CTA principal esté visible sin hacer scroll—lo que se conoce como “above the fold”—y repítelo al final de cada bloque de prueba social o sección clave. Un CTA claro guía la mirada, reduce la sobrecarga cognitiva y aumenta la tasa de clics, empujando al prospecto al siguiente paso del funnel.</p>
+</section>
+
+<section id="err06" class="shadow-box">
+  <h2>6. No medir micro-conversiones</h2>
+  <p>Obsesionarte solo con la venta final es como conducir mirando el retrovisor: llegas tarde a los problemas. Configura eventos para descargas, clics en el CTA, tiempo de reproducción en vídeo y visitas a la página de precios. Al mapear micro-conversiones, identificas exactamente dónde se desenganchan los leads. Tal vez tus anuncios funcionan, pero la landing no convence; o la landing es sólida, pero el checkout genera fricción. Con datos granulares, optimizas el eslabón débil y evitas gastar presupuesto donde no hace falta.</p>
+</section>
+
+<section id="err07" class="shadow-box">
+  <h2>7. Escasez falsa que destruye la confianza</h2>
+  <p>Mostrar un contador que se reinicia cada vez que alguien refresca la página es la forma más rápida de perder credibilidad. Usa urgencia ética basada en hechos: un bonus que realmente expira, una subida de precio programada o un stock limitado y verificado. Conecta tu inventario por API para actualizar el número de unidades en tiempo real. Cuando la urgencia es genuina, aumenta la conversión sin comprometer la reputación de tu marca ni generar devoluciones por arrepentimiento.</p>
+</section>
+
+<section id="err08" class="shadow-box">
+  <h2>8. Checkout sin garantías visibles</h2>
+  <p>El momento de pago es el punto de mayor ansiedad para el comprador. Si tu página de checkout carece de sellos de seguridad, certificados SSL y una garantía clara de devolución, muchos leads abandonarán a un paso de la meta. Añade un texto breve: “Garantía 14 días, sin preguntas” y coloca iconos de métodos de pago conocidos. Esta prueba de confianza puede incrementar la tasa de finalización hasta un 20 % sin tocar el precio.</p>
+</section>
+
+<section id="err09" class="shadow-box">
+  <h2>9. Falta de optimización móvil</h2>
+  <p>Más del 60 % del tráfico proviene de dispositivos móviles. Un sitio que tarda más de tres segundos en cargar o botones minúsculos que exigen zoom son un frenazo a las conversiones. Usa imágenes comprimidas, tipografías legibles y botones de al menos 44 px de alto. Un funnel mobile-first mejora el tiempo en página, la experiencia de usuario y las Core Web Vitals, factores que Google valora para posicionarte mejor.</p>
+</section>
+
+<section id="err10" class="shadow-box">
+  <h2>10. No realizar pruebas A/B continuas</h2>
+  <p>Un embudo estático se vuelve obsoleto con rapidez. Programa pruebas A/B permanentes: un titular contra otro, dos diseños de CTA o diferentes precios. Mantén una sola variable por test y espera a alcanzar significancia estadística (95 %). Documenta los aprendizajes y replica los ganadores en otras páginas. Este proceso incremental puede aumentar tu ROI de manera compuesta trimestre tras trimestre.</p>
+</section>
+
+
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+
+
+<section id="err11" class="shadow-box">
+  <h2>11. Copiar mensajes de la competencia sin adaptarlos</h2>
+  <p>Inspirarte en tu competencia es válido; copiar su copy tal cual es un tiro en el pie. Cada audiencia tiene matices de lenguaje, objeciones y deseos distintos. Usa benchmarking para detectar ángulos exitosos, pero traduce el mensaje a la voz de tu marca y, sobre todo, al idioma emocional de tu buyer persona. Un copy auténtico crea conexión real, sube la tasa de respuesta y fortalece el posicionamiento diferencial que necesitas para destacar en un mercado saturado.</p>
+</section>
+
+<section id="err12" class="shadow-box">
+  <h2>12. Ignorar el retargeting multicanal</h2>
+  <p>El 97 % de los visitantes no compra en la primera sesión. Si no implementas retargeting en Facebook, Google y email, desperdicias la mayor parte de tu presupuesto inicial. Crea audiencias basadas en comportamiento (visitas a la página de precios, scroll > 50 %) y muestra anuncios personalizados que respondan a la última objeción. Con un retargeting bien afinado, los leads vuelven calentitos al funnel, y tu CAC global disminuye.</p>
+</section>
+
+<section id="err13" class="shadow-box">
+  <h2>13. Contenido desalineado con la etapa del funnel</h2>
+  <p>Publicar tutoriales detallados en TOFU o, al revés, ofrecer descuentos agresivos a leads que aún están aprendiendo, genera choque y confusión. Mapea tu customer journey y asigna cada pieza de contenido a la fase adecuada: descubrimiento, consideración o decisión. Al alinear contenido y consciencia, acompañas al prospecto con el mensaje indicado, aumentas la relevancia y evitas el síndrome de “info-overload”.</p>
+</section>
+
+<section id="err14" class="shadow-box">
+  <h2>14. Olvidar el seguimiento post-compra</h2>
+  <p>El funnel no termina con la venta; ahí empieza la fidelización y el upsell. Enviar un email de bienvenida, solicitar feedback y ofrecer un producto complementario puede incrementar el LTV hasta un 30 %. Además, los clientes satisfechos generan testimonios y referidos, combustible gratuito para tu top of funnel.</p>
+</section>
+
+<section id="err15" class="shadow-box">
+  <h2>15. Medir los KPI incorrectos</h2>
+  <p>Fijarse solo en likes o impresiones conduce a decisiones erróneas. Define un dashboard con CPL, CAC, CVR y LTV. Estos indicadores muestran la salud real del embudo. Si un KPI crítico se desvía, identifica la causa y ejecuta un plan de acción antes de que el problema escale.</p>
+</section>
+
+<section id="err16" class="shadow-box">
+  <h2>16. Automatizaciones sin personalización</h2>
+  <p>Programar una secuencia idéntica para todos los leads ignora diferencias clave. Usa etiquetas de comportamiento para enviar contenido relevante según clics, descargas y páginas visitadas. La personalización aumenta la tasa de apertura, el CTR y la satisfacción del usuario, creando un ciclo de confianza que empuja a la compra.</p>
+</section>
+
+<section id="err17" class="shadow-box">
+  <h2>17. Marketing y ventas desincronizados</h2>
+  <p>Cuando marketing atrae leads que ventas no considera cualificados, se genera fricción interna y despilfarro de recursos. Define criterios claros de lead scoring y establece reuniones semanales para alinear feedback. Un “Service Level Agreement” entre ambos equipos asegura que los leads reciban seguimiento oportuno y que el embudo funcione como un todo coherente.</p>
+</section>
+
+<section id="err18" class="shadow-box">
+  <h2>18. Landing pages lentas</h2>
+  <p>Cada segundo extra de carga puede reducir la conversión un 20 %. Optimiza imágenes, usa CDN y carga scripts de forma diferida. Una página rápida mejora la experiencia del usuario, reduce la tasa de rebote y aumenta tu ranking SEO, creando un efecto dominó positivo en todo el funnel.</p>
+</section>
+
+<section id="err19" class="shadow-box">
+  <h2>19. Promociones sin estrategia de pricing</h2>
+  <p>Ofrecer descuentos permanentes entrena a la audiencia a esperar rebajas y recorta márgenes. Diseña tu estrategia de pricing con anclaje de valor: muestra el precio estándar y ofrece un incentivo temporal solo cuando aporte urgencia legítima. De este modo, mantienes la percepción de valor alto y proteges la rentabilidad.</p>
+</section>
+
+<section id="err20" class="shadow-box">
+  <h2>20. No escuchar el feedback de los usuarios</h2>
+  <p>Las encuestas post-compra, los chats de soporte y las reseñas son minas de oro. Ignorarlas deja sobre la mesa oportunidades de mejora rápida. Implementa un sistema para recopilar y categorizar feedback, luego prioriza cambios que impacten la experiencia del cliente y las conversiones. Cuando los usuarios sienten que son escuchados, se convierten en embajadores de marca, generando tráfico orgánico y prueba social de forma natural.</p>
+</section>
+  
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
