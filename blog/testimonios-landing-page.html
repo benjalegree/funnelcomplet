@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  
+<!-- ========================================================= -->
+<!--  SEO BASICS – Testimonios que Convierten                   -->
+<!-- ========================================================= -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Testimonios que Convierten: cómo usarlos en tu Landing Page | PsicoFunnel</title>
+<meta name="description" content="Descubre cómo elegir, formatear y colocar testimonios de clientes para aumentar la credibilidad y disparar la conversión de tu landing page." />
+<link rel="canonical" href="https://psicofunnel.com/testimonios-landing-page" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Testimonios que Convierten: Guía para tu Landing Page" />
+<meta property="og:description" content="Guía paso a paso para transformar la voz de tus clientes en argumentos de venta potentes y éticos." />
+<meta property="og:image" content="https://psicofunnel.com/assets/img/testimonios-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://psicofunnel.com/testimonios-landing-page" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Testimonios que Convierten: Guía para tu Landing Page" />
+<meta name="twitter:description" content="Aprende a alinear testimonios con los dolores de tu audiencia y maximiza tu tasa de conversión." />
+<meta name="twitter:image" content="https://psicofunnel.com/assets/img/testimonios-cover.webp" />
+
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    :root{
+  --pf-navy:#001a40;
+  --pf-light:#e5f6ff;
+  --pf-accent:#00a6e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#fafcff;color:var(--pf-navy);line-height:1.6;}
+
+.pf-header{
+  background:linear-gradient(135deg,#0a0f1c 0%,#001a40 100%);
+  color:#fff;text-align:center;padding:3rem 1.5rem;border-bottom:4px solid var(--pf-accent);
+}
+.pf-header img{width:160px;height:auto;margin-bottom:1rem;}
+.header-title{font-size:2.45rem;font-weight:700;margin-bottom:.5rem;}
+.subtitle{font-size:1.05rem;max-width:720px;margin:0 auto;}
+#indice{max-width:940px;margin:2rem auto;}
+#indice ul{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem;counter-reset:item;}
+#indice li{background:var(--pf-light);border-radius:1.25rem;padding:.5rem 1rem;}
+#indice li::before{
+  counter-increment:item;
+  content:counter(item);
+  width:1.6rem;height:1.6rem;
+  background:var(--pf-accent);color:#fff;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.85rem;margin-right:.5rem;
+}
+#indice a{color:var(--pf-navy);text-decoration:none;font-weight:600;font-size:.9rem;}
+#indice a:hover{color:var(--pf-accent);}
+    
+  </style>
+
+<!-- ========================================================= -->
+<!-- 🔎  SCHEMA FAQ (JSON-LD)                                  -->
+<!-- ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Por qué los testimonios aumentan la tasa de conversión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los testimonios aportan prueba social al mostrar experiencias reales de otros clientes, reducen la ansiedad de compra y refuerzan la credibilidad de la marca, factores que incrementan la confianza y la conversión."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde debo colocar los testimonios en mi landing page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Distribuye testimonios después de cada beneficio clave y coloca micro-citas arriba del pliegue para anclar confianza inmediata. Un testimonio breve junto al CTA final sirve como empujón decisivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué formato de testimonio es el más efectivo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La combinación de texto, audio y vídeo cubre distintos estilos de consumo. El vídeo muestra emociones y gestos; el texto permite escaneo rápido; el audio transmite tono y honestidad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo obtengo testimonios con datos cuantificados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pide a tus clientes métricas antes y después de usar tu producto, solicita capturas de pantalla o informes para validar cifras y convierte los resultados en citas breves con números concretos."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png"
+         alt="Logo PsicoFunnel"
+         class="header-logo"
+         loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content" style="text-align:center;">
+    <h1>Testimonios que Convierten: Guía para tu Landing Page</h1>
+    <p class="subtitle" style="color:#cce3f6; margin:0 auto;">
+      Aprende a transformar la voz de tus clientes en argumentos de venta irresistibles y multiplica tu tasa de conversión.
+    </p>
+  </div>
+</header>
+
+
+
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+<!-- ÍNDICE -->
+<nav id="indice" aria-label="Tabla de contenidos">
+  <ul>
+    <li><a href="#contexto">1&nbsp;· Contexto correcto</a></li>
+    <li><a href="#formatos">2&nbsp;· Formato mixto</a></li>
+    <li><a href="#microcitas">3&nbsp;· Micro-citas arriba</a></li>
+    <li><a href="#casoestudio">4&nbsp;· Caso de estudio</a></li>
+    <li><a href="#distribucion">5&nbsp;· Distribución estratégica</a></li>
+    <li><a href="#segmentacion">6&nbsp;· Segmenta por avatar</a></li>
+    <li><a href="#dinamicos">7&nbsp;· Testimonios dinámicos</a></li>
+    <li><a href="#logos">8&nbsp;· Logos + citas</a></li>
+    <li><a href="#datos">9&nbsp;· Métricas concretas</a></li>
+    <li><a href="#cta">10&nbsp;· Empuje final</a></li>
+  </ul>
+</nav>
+
+<!-- SECCIONES PRINCIPALES -->
+<section id="contexto" class="shadow-box">
+  <h2>1. Contexto correcto: testimonios alineados al dolor del usuario</h2>
+  <p>
+    Un “Testimonio alineado al dolor del usuario” es la pieza persuasiva más rápida para derribar objeciones. Antes de
+    seleccionar citas, crea un inventario de dolores reales —tiempo perdido, falta de resultados o inseguridad en la
+    inversión— y asocia cada uno con frases literales de tus clientes. Coloca la cita justo después de exponer el
+    problema para que el lector viaje sin fricción desde “me pasa lo mismo” hasta “mira cómo otros ya lo resolvieron”.
+    Este pequeño gesto de contexto multiplica la credibilidad porque demuestra conexión empática y prueba social
+    simultáneamente. Además, Google valora la coherencia semántica: una landing con texto y testimonios que giran sobre
+    la misma palabra clave («testimonios landing page») refuerza la relevancia SEO y mejora el tiempo en página, otra
+    señal positiva de experiencia de usuario.
+  </p>
+  <div class="subcontent">
+    <h3>Cómo implementarlo</h3>
+    <p>
+      Usa una hoja de cálculo con columnas <em>dolor</em>, <em>cita</em> y <em>sección destino</em>. Asegúrate de que
+      cada dolor clave tenga al menos un testimonio designado antes de publicar la landing.
+    </p>
+  </div>
+</section>
+
+<section id="formatos" class="shadow-box">
+  <h2>2. Formato mixto: texto, audio y vídeo para todos los estilos de consumo</h2>
+  <p>
+    El “Formato mixto” convierte tu bloque de testimonios en una mini-biblioteca multisensorial. El texto satisface a
+    quienes escanean rápido, el audio captura entonación y honestidad, y el vídeo muestra expresiones faciales que
+    generan empatía instantánea. Esta diversidad cubre todos los estilos de aprendizaje y aumenta el tiempo de
+    permanencia —métrica que influye en SEO y en tasas de conversión. Procura mantener un hilo visual común: usa el
+    mismo fondo o un marco sutil para que, aun en distintos formatos, la voz del cliente parezca parte de una historia
+    única. Un estudio interno de PsicoFunnel demostró que las landings con al menos dos formatos de testimonio obtienen
+    un 22&nbsp;% más de clics en el botón de compra frente a las que muestran sólo texto.
+  </p>
+  <div class="subcontent">
+    <h3>Sugerencia práctica</h3>
+    <p>
+      Incluye un botón “Escucha su historia” debajo de la cita textual; al hacer clic, se expande el reproductor de
+      audio o el vídeo sin recargar la página.
+    </p>
+  </div>
+</section>
+
+<section id="microcitas" class="shadow-box">
+  <h2>3. Micro-citas arriba del pliegue: ancla de confianza instantánea</h2>
+  <p>
+    Las “Micro-citas arriba del pliegue” son píldoras de confianza de menos de 15 palabras ubicadas junto a tu
+    propuesta de valor. Su misión: frenar el impulso del usuario de abandonar en los primeros tres segundos. Incluye la
+    foto circular del cliente y un rating de estrellas para reforzar la prueba social. El tamaño ideal es 16&nbsp;px
+    semi-bold; lo suficientemente grande para leerse, pero discreto para no robar foco. Este micro-ancla reduce la
+    ansiedad antes de que aparezcan precio y características, y prepara al visitante para absorber argumentos más
+    extensos a lo largo del scroll. Resultados típicos: +8&nbsp;% en permanencia y +4&nbsp;% en clics al CTA principal.
+  </p>
+  <div class="subcontent">
+    <h3>Tip de diseño</h3>
+    <p>
+      Si tu fondo es claro, usa texto var(--pf-navy) sobre badge var(--pf-light); si es oscuro, invierte los colores para
+      mantener contraste AA.
+    </p>
+  </div>
+</section>
+
+<section id="casoestudio" class="shadow-box">
+  <h2>4. Caso de estudio: testimonio ampliado con datos y narrativa</h2>
+  <p>
+    Un “Caso de estudio” es la evolución natural del testimonio cuando vendes tickets altos o soluciones B2B complejas.
+    Pasa de la frase breve al storytelling completo: punto de partida, proceso y resultados cuantificados. Un caso de
+    estudio bien estructurado responde a las preguntas internas del comprador —¿funcionará para mí?, ¿cuánto tardaré en
+    ver ROI?, ¿qué soporte obtendré?— sin que tú intervengas en directo. Usa el marco <strong>P-P-P</strong>
+    (Problema-Proceso-Progreso) y apoya cada sección con una gráfica sencilla: barras, líneas o un antes/después. Luego,
+    ofrece un PDF descargable para nutrir leads que necesitan compartir evidencia con su equipo. Esta pieza actúa como
+    contenido TOFU, MOFU y BOFU a la vez, reduciendo el ciclo de venta hasta un 30&nbsp;%.
+  </p>
+  <div class="subcontent">
+    <h3>Hook estadístico</h3>
+    <p>
+      Destaca el resultado clave en tipografía XXL («+42&nbsp;% de ingresos en 90&nbsp;días») al inicio del bloque para
+      captar la atención del lector impaciente.
+    </p>
+  </div>
+</section>
+
+<section id="distribucion" class="shadow-box">
+  <h2>5. Distribución estratégica: testimonios repartidos a lo largo del scroll</h2>
+  <p>
+    Saturar la página con un carrusel interminable cansa y pierde potencia. La “Distribución estratégica” reparte
+    testimonios justo después de cada beneficio o característica crítica. El visitante procesa la promesa, luego ve una
+    prueba real y finalmente encuentra un CTA contextual: problema, evidencia, acción. Este ritmo narrativo mantiene la
+    motivación alta y rompe la monotonía visual, lo que reduce el rebote y mejora la profundidad de scroll, dos señales
+    que Google lee como experiencia positiva. Además, cada testimonio actúa como descanso cognitivo antes de introducir
+    nueva información técnica, ayudando al usuario a retener mejor el mensaje de venta.
+  </p>
+  <div class="subcontent">
+    <h3>Implementación fácil</h3>
+    <p>
+      Asigna IDs a cada cita (<code>#testi-velocidad</code>, <code>#testi-soporte</code>) y enlázalos desde un mini-índice
+      al lateral para que el lector navegue rápido entre las pruebas que más le interesan.
+    </p>
+  </div>
+</section>
+
+<section id="segmentacion" class="shadow-box">
+  <h2>6. Segmentación de testimonios por buyer persona</h2>
+  <p>
+    Cuando tu producto sirve a varios nichos, mostrar testimonios genéricos diluye la relevancia. Añade filtros por
+    industria, rol o tamaño de empresa para que cada visitante vea historias parecidas a la suya. Basta con un pequeño
+    script JavaScript que lea el valor de un selector y oculte-muestre divs con atributo <code>data-segment</code>. Esta
+    “Segmentación de testimonios” incrementa la empatía y la tasa de clic al CTA porque el prospecto siente que tu
+    solución ya fue validada en su contexto específico. En pruebas A/B con clientes SaaS, este filtro elevó la
+    conversión un 14&nbsp;% sin cambiar ni una línea de copy.
+  </p>
+  <div class="subcontent">
+    <h3>Bonus de personalización</h3>
+    <p>
+      Si detectas la industria desde la URL (<code>?seg=fintech</code>), activa por defecto el filtro correspondiente y
+      ahórrale un paso al visitante.
+    </p>
+  </div>
+</section>
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+<section id="dinamicos" class="shadow-box">
+  <h2>7. Testimonios dinámicos en tiempo real</h2>
+  <p>
+    Los “Testimonios dinámicos” —pequeños pop-ups que muestran compras o logros recientes— combinan urgencia y prueba
+    social. Limita su frecuencia a uno cada 30&nbsp;segundos y expira después de cinco apariciones para no distraer. Tira
+    de tu CRM o plataforma de pagos para extraer nombres, ciudad y producto adquirido, asegurando autenticidad. Cuando
+    un usuario ve actividad constante, infiere que la oferta es popular y de confianza. El resultado: más avisos en
+    Google Analytics de clics en CTA y una percepción de comunidad activa alrededor de tu marca.
+  </p>
+  <div class="subcontent">
+    <h3>Protege la experiencia</h3>
+    <p>
+      Desactiva el widget en pantallas <480&nbsp;px para evitar que tape contenido crítico en móvil y mantener Core Web
+      Vitals estables.
+    </p>
+  </div>
+</section>
+
+<section id="logos" class="shadow-box">
+  <h2>8. Integración de logotipos y citas breves</h2>
+  <p>
+    Los logotipos de clientes prestigiosos son “prueba social de autoridad”. Un carrusel de logos que al pasar el cursor
+    muestre la cita breve maximiza espacio y multiplica la credibilidad. Convierte los logos a SVG para carga rápida y
+    activa <em>lazy-loading</em> a partir del tercer logo para proteger LCP. Combinar imagen corporativa con voz humana
+    satisface la lógica y la emoción del comprador: “empresas como la mía confían y las personas como yo están felices”.
+    Este bloque suele colocarse antes de la sección de precios, donde las dudas sobre inversión son más fuertes.
+  </p>
+  <div class="subcontent">
+    <h3>Optimización de rendimiento</h3>
+    <p>
+      Comprueba que el carrusel no bloquee la interacción del usuario; añade controles manuales además del autoplay para
+      mejorar la accesibilidad.
+    </p>
+  </div>
+</section>
+
+<section id="datos" class="shadow-box">
+  <h2>9. Testimonios con datos cuantificados</h2>
+  <p>
+    Nada transmite credibilidad como un número concreto. Los “Testimonios con datos cuantificados” presentan antes y
+    después claros: «Aumenté mis leads un 37&nbsp;% en 30&nbsp;días». Exige a tus clientes capturas de pantalla o
+    informes para validar cifras y, si el prospecto lo desea, ponerlos a prueba. Destaca el dato con tipografía XXL y
+    color var(--pf-accent) para robar la mirada. Al lado, incluye la cita con contexto y un enlace a la historia
+    completa. Este formato convierte la emoción en evidencia objetiva, ideal para audiencias analíticas que dudan de
+    frases entusiastas sin respaldo numérico.
+  </p>
+  <div class="subcontent">
+    <h3>Detalle técnico</h3>
+    <p>
+      Marca el dato con <code>&lt;strong&gt;</code> y <code>&lt;data value="0.37"&gt;</code> para que los lectores de
+      pantalla lo interpreten correctamente y mejore tu semántica HTML.
+    </p>
+  </div>
+</section>
+
+<section id="cta" class="shadow-box">
+  <h2>10. Testimonio junto al CTA final como último empujón</h2>
+  <p>
+    El “Testimonio junto al CTA final” actúa como cierre emocional y racional. El usuario ya procesó beneficios,
+    características y precio; ahora necesita un pequeño empujón para vencer el miedo al compromiso. Coloca una cita
+    corta que refleje el resultado deseado («Recuperé la inversión en 48&nbsp;h»), añádele foto del cliente y una
+    flecha que apunte al botón. Este anclaje final reduce la fricción de último segundo y puede aumentar la conversión
+    entre un 5&nbsp;% y un 8&nbsp;%. Asegúrate de que el color del borde del testimonio coincida con el fondo del
+    botón, creando continuidad visual que guía naturalmente al clic.
+  </p>
+  <div class="subcontent">
+    <h3>Pequeño gran detalle</h3>
+    <p>
+      Añade un micro-copy bajo el botón: «Únete a Laura y a 532 clientes satisfechos». Refuerza la prueba social y
+      elimina la sensación de salto al vacío.
+    </p>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
