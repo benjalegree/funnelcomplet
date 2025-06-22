@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- SEO BASICS -->
+<title>Métricas Funnel SaaS: 12 Indicadores que Impulsan tu ARR | PsicoFunnel</title>
+<meta name="description" content="Aprende las 12 métricas funnel SaaS que revelan la eficiencia de tu embudo y cómo optimizarlas para escalar ARR con precisión quirúrgica.">
+<link rel="canonical" href="https://psicofunnel.com/metricas-funnel-saas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Métricas Funnel SaaS: 12 Indicadores que Impulsan tu ARR">
+<meta property="og:description" content="Guía práctica para dominar las métricas funnel SaaS y acelerar tu crecimiento con datos accionables.">
+<meta property="og:url" content="https://psicofunnel.com/metricas-funnel-saas">
+<meta property="og:image" content="https://psicofunnel.com/assets/img/metricas-funnel-saas-cover.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Métricas Funnel SaaS: 12 Indicadores que Impulsan tu ARR">
+<meta name="twitter:description" content="Descubre las métricas clave para optimizar tu funnel SaaS y aumentar tu ARR.">
+<meta name="twitter:image" content="https://psicofunnel.com/assets/img/metricas-funnel-saas-cover.webp">
+
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Outfit',sans-serif;background:#fff;color:#0a0f1c}
+    header{background:linear-gradient(to right,#0a0f1c 0%,#001a40 100%);color:#fff;padding:60px 20px;text-align:center}
+    .header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;padding:0 10px;margin-bottom:25px}
+    .header-title{font-size:1.8rem;font-weight:600;text-align:left}
+    .header-logo{width:70px;height:70px;object-fit:contain}
+    .header-content h1{font-size:2.6rem;margin:0 0 15px;line-height:1.2}
+    .header-content p{font-size:1.2rem;color:#cce3f6;margin:0 0 35px}
+    nav#indice{padding:40px 20px;max-width:1000px;margin:auto}
+    nav#indice h2{font-size:1.6rem;margin-bottom:15px}
+    nav#indice ol{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    nav#indice a{color:#001a40;font-weight:600;text-decoration:none}
+    nav#indice a:hover{text-decoration:underline}
+    section{padding:80px 20px;max-width:1000px;margin:auto}
+    .shadow-box{background:#e5f6ff;padding:45px 40px;border-radius:14px;box-shadow:0 8px 30px rgba(0,166,224,.18);margin-top:40px}
+    h2{font-size:2rem;margin-bottom:20px;color:#0a0f1c}
+    p{font-size:1.05rem;line-height:1.8;margin-bottom:16px}
+    strong{font-weight:700}
+    /* =============================================================
+   ENLACES GENÉRICOS – Brand color PsicoFunnel
+   ============================================================= */
+a{
+  color:#00a6e0;                /* celeste corporativo */
+  text-decoration:none;         /* sin subrayado por defecto */
+  transition:color .25s ease;
+}
+a:hover,a:focus{
+  color:#33c0f3;                /* tono claro al pasar el cursor */
+  text-decoration:underline;    /* subrayado solo al hover/focus */
+}
+
+    .cta-button-large{display:block;width:100%;max-width:400px;margin:60px auto 0;background:#00a6e0;color:#0a0f1c;padding:20px 32px;border:none;border-radius:12px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .35s ease;box-shadow:0 4px 18px rgba(0,166,224,.35)}
+    .cta-button-large:hover{background:#33c0f3;box-shadow:0 0 24px rgba(0,166,224,.6);transform:translateY(-2px)}
+    footer{background:#0a0f1c;text-align:center;padding:50px 20px 60px;color:#aaa;font-size:.9rem}
+    footer a{color:#00a6e0;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:600px){
+      nav#indice ol{grid-template-columns:1fr}
+      .header-content h1{font-size:2rem}
+      .header-top{justify-content:flex-start}
+      .header-logo{margin-left:auto}
+    }
+
+    /* Estilos para el popup */
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #popup {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease;
+    }
+    #popup-overlay.show #popup {
+      transform: translateY(0);
+    }
+    #popup h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0a0f1c;
+    }
+    #popup p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0a0f1c;
+      line-height: 1.6;
+    }
+    #popup input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #popup button {
+      background: #00a6e0;
+      color: #0a0f1c;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);
+      transition: background .3s ease, transform .3s ease;
+    }
+    #popup button:hover {
+      background: #33c0f3;
+      transform: translateY(-2px);
+    }
+    #popup .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    /* ========== FIX MOBILE OVERFLOW & ZOOM ========== */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 600px;
+    }
+    :root{
+  --pf-navy:#001a40;
+  --pf-light:#e5f6ff;
+  --pf-accent:#00a6e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#fafcff;color:var(--pf-navy);line-height:1.6;}
+
+.pf-header{
+  background:linear-gradient(135deg,#0a0f1c 0%,#001a40 100%);
+  color:#fff;text-align:center;padding:3rem 1.5rem;border-bottom:4px solid var(--pf-accent);
+}
+.pf-header img{width:160px;height:auto;margin-bottom:1rem;}
+.header-title{font-size:2.45rem;font-weight:700;margin-bottom:.5rem;}
+.subtitle{font-size:1.05rem;max-width:720px;margin:0 auto;}
+#indice{max-width:940px;margin:2rem auto;}
+#indice ul{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem;counter-reset:item;}
+#indice li{background:var(--pf-light);border-radius:1.25rem;padding:.5rem 1rem;}
+#indice li::before{
+  counter-increment:item;
+  content:counter(item);
+  width:1.6rem;height:1.6rem;
+  background:var(--pf-accent);color:#fff;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.85rem;margin-right:.5rem;
+}
+#indice a{color:var(--pf-navy);text-decoration:none;font-weight:600;font-size:.9rem;}
+#indice a:hover{color:var(--pf-accent);}
+    
+  </style>
+
+<!-- FAQ SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"¿Qué métricas funnel SaaS son imprescindibles para escalar ARR?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Lead Velocity Rate, Activation Rate y Net Revenue Retention son métricas funnel SaaS esenciales para asegurar crecimiento sostenible y rentable."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cómo interpreto la Magic Number en un funnel SaaS?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Una Magic Number superior a 1 indica que tu gasto en ventas y marketing se recupera en un año, señal de eficiencia en tu funnel SaaS."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Cuál es una buena ratio CLV:CAC en SaaS?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Se recomienda un CLV:CAC igual o mayor a 3 para garantizar rentabilidad y poder reinvertir en adquisición sin riesgo."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"¿Qué es el Lead Velocity Rate y por qué importa?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"El Lead Velocity Rate mide el crecimiento mensual de leads calificados y predice el MRR futuro, siendo un termómetro del top-funnel SaaS."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ========================================================= -->
+<!-- 🚀  HEADER                                                -->
+<!-- ========================================================= -->
+<header>
+  <div class="header-top">
+    <span class="header-title">PsicoFunnel</span>
+    <img src="/img/logo-psicofunnelb.png" alt="Logo PsicoFunnel" class="header-logo" loading="lazy" />
+    <span></span>
+  </div>
+
+  <div class="header-content">
+    <h1>Métricas de Eficiencia en un Funnel SaaS: 12 Indicadores que Impulsan</h1>
+    <p class="subtitle" style="color:#cce3f6;">
+     Descubre las 12 métricas que revelan la salud real de tu embudo y cómo optimizarlas
+    </p>
+  </div>
+</header>
+
+
+
+  
+  <div id="popup-overlay">
+    <div id="popup">
+      <button class="close-btn" id="popup-close" aria-label="Cerrar popup">×</button>
+      <h3>📘 Ebook Gratuito</h3>
+      <p>Descarga ahora 23 textos persuasivos y comienza a vender</p>
+      <form id="popup-form">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Descargar Ahora</button>
+      </form>
+    </div>
+  </div>
+
+<nav id="indice">
+  <ul>
+    <li><a href="#met01">Lead Velocity Rate</a></li>
+    <li><a href="#met02">Conversión MQL → PQL</a></li>
+    <li><a href="#met03">Activation Rate</a></li>
+    <li><a href="#met04">Payback de CAC</a></li>
+    <li><a href="#met05">Net Revenue Retention</a></li>
+    <li><a href="#met06">Customer Health Score</a></li>
+    <li><a href="#met07">Expansion MRR</a></li>
+    <li><a href="#met08">Magic Number</a></li>
+    <li><a href="#met09">Ratio CLV:CAC</a></li>
+    <li><a href="#met10">Sales Cycle Length</a></li>
+    <li><a href="#met11">Product Stickiness</a></li>
+    <li><a href="#met12">Referral Conversion</a></li>
+  </ul>
+</nav>
+
+<!-- ===== SECCIONES ===== -->
+<section id="met01" class="shadow-box">
+  <h2>1. Lead Velocity Rate (LVR)</h2>
+  <p>El Lead Velocity Rate revela qué tan rápido se expande la parte superior de tu embudo al comparar la cantidad de leads calificados generados este mes frente al anterior. Si el porcentaje crece por encima del ritmo de tu ciclo de ventas, garantizas combustible constante para el MRR futuro. Divide el LVR por fuente para descubrir canales estrella y reasigna presupuesto a los que superen el 20&nbsp;% de crecimiento. Cuando notes una meseta, crea nuevos lead magnets o ajusta tu targeting antes de que la falta de prospectos golpee tu flujo de caja dos trimestres después. Haz seguimiento semanal en tu dashboard para reaccionar con agilidad.</p>
+</section>
+
+<section id="met02" class="shadow-box">
+  <h2>2. Tasa de Conversión MQL → PQL</h2>
+  <p>Esta métrica mide el salto de un lead que mostró interés de marketing a uno que realmente prueba tu producto. Un rango óptimo entre 15&nbsp;% y 25&nbsp;% indica que tu promesa publicitaria coincide con la experiencia dentro de la app. Para mejorarla, alinea los beneficios destacados en tus anuncios con el primer caso de uso que ve el usuario tras registrarse. Implementa un onboarding interactivo que muestre un resultado concreto en menos de cinco minutos y añade correos de refuerzo con GIFs o vídeos cortos. Cada punto porcentual ganado reduce la dependencia de paid media y acelera la generación de MRR.</p>
+</section>
+
+<section id="met03" class="shadow-box">
+  <h2>3. Activation Rate</h2>
+  <p>La Activation Rate señala qué proporción de cuentas nuevas alcanza el "momento aha", la acción que correlaciona con retención, dentro de la primera semana. Puede ser crear un proyecto, integrar una herramienta o invitar a un colega. Define ese hito junto a tu equipo de producto y mide a diario el avance. Usa mensajes in‑app contextuales, tooltips progresivos y campañas de email behavioral para empujar al usuario hasta completar la acción. Cada 10&nbsp;% de mejora suele traducirse en 20&nbsp;% más de expansión MRR a seis meses, ya que usuarios activados compran planes superiores y recomiendan tu solución.</p>
+</section>
+
+<section id="met04" class="shadow-box">
+  <h2>4. Payback de CAC</h2>
+  <p>El Payback de CAC indica cuántos meses necesitas para recuperar el costo de adquisición de un nuevo cliente. Divide tu CAC promedio entre el MRR neto generado en el primer mes. En modelos SaaS enterprise es aceptable un payback de hasta doce meses, pero en Product‑Led Growth deberías aspirar a menos de seis. Para acortar el plazo, combina estrategias: recorta CAC potenciando canales orgánicos, incrementa ARPU con planes anuales prepagados e incentiva upgrades tempranos. Cuanto más corto sea el payback, menos capital externo requieres para escalar y mayor será tu valoración ante inversores.</p>
+</section>
+
+<section id="met05" class="shadow-box">
+  <h2>5. Net Revenue Retention (NRR)</h2>
+  <p>La NRR fusiona expansión, downsell y churn para mostrar cuánto crecen tus ingresos dentro de la base instalada. Un valor del 120&nbsp;% o superior significa que, aun perdiendo algunas cuentas, el upsell compensa con creces y tu ARR aumenta sin adquirir nuevos clientes. Refuerza este KPI identificando indicadores de uso que preceden a un upgrade y automatizando mensajes personalizados cuando el cliente supera esos umbrales. Introduce módulos premium o pricing por consumo que se activen naturalmente conforme la empresa crece. Una buena NRR transforma tu negocio en una máquina compuesta de ingresos predecibles y crecientes.</p>
+</section>
+
+<section id="met06" class="shadow-box">
+  <h2>6. Customer Health Score</h2>
+  <p>El Customer Health Score combina variables de uso, frecuencia, valor percibido y soporte para anticipar si una cuenta está en riesgo de cancelación. Diseña un modelo ponderado que incluya logins semanales, adopción de features clave, Net Promoter Score y volumen de tickets. Segmenta las cuentas en verde, amarillo y rojo. Cuando un cliente pase a amarillo, lanza playbooks de re‑engagement; si cae a rojo, programa una llamada de rescate con Customer Success. Aumentar el puntaje medio cinco puntos puede reducir el churn voluntario hasta un 30&nbsp;% y elevar tu NPS, creando un círculo virtuoso de retención y referidos.</p>
+</section>
+  <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+<section id="met07" class="shadow-box">
+  <h2>7. Expansion MRR</h2>
+  <p>El Expansion MRR captura los ingresos adicionales procedentes de upgrades, seats extra y cross‑sell. En mercados SaaS maduros se espera que represente al menos el 30&nbsp;% del nuevo MRR mensual. Para impulsarlo, fija límites de uso que generen necesidad natural de ampliar el plan e introduce funciones premium que resuelvan problemas emergentes del cliente. Complementa con notificaciones in‑app que muestren el valor de la mejora justo cuando el usuario se acerca al tope. Esta fuente de crecimiento es altamente rentable porque aprovecha relaciones ya establecidas y requiere poca inversión adicional.</p>
+</section>
+
+<section id="met08" class="shadow-box">
+  <h2>8. Magic Number</h2>
+  <p>La Magic Number se calcula multiplicando por cuatro el incremento de ARR en un trimestre y dividiendo el resultado por el gasto de ventas y marketing del trimestre anterior. Una cifra mayor a 1 indica que recuperas tu inversión en un año; menos de 0,6 revela ineficiencia. Para mejorarla, depura tu ICP para reducir desperdicio de anuncios, fortalece el contenido que acelera la fase de consideración y renegocia comisiones si tu estructura de ventas resulta demasiado costosa. Este indicador es clave para captar capital, ya que los inversores lo utilizan como medida rápida de eficiencia.</p>
+</section>
+
+<section id="met09" class="shadow-box">
+  <h2>9. Ratio CLV:CAC</h2>
+  <p>Comparar el Customer Lifetime Value con el CAC te dice cuánto valor genera cada dólar invertido en adquisición. La regla de oro es mantener la relación 3:1 o superior, considerando el margen bruto para no inflar cifras. Si el ratio cae, indaga si el problema es un CAC al alza o un CLV en descenso por churn. Ajusta pricing, elimina descuentos excesivos y enfócate en retener a clientes de alto valor mediante programas de éxito. Un CLV:CAC saludable te concede músculo financiero para reinvertir con seguridad y crecer de forma escalable.</p>
+</section>
+
+<section id="met10" class="shadow-box">
+  <h2>10. Sales Cycle Length</h2>
+  <p>El Sales Cycle Length mide los días transcurridos desde el primer contacto hasta el cierre de la venta. Un ciclo largo ata recursos y ralentiza el retorno de inversión. Para acortarlo, presenta demos grupales en lugar de 1:1, ofrece pruebas de concepto preconfiguradas y proporciona calculadoras de ROI que los decisores puedan mostrar internamente. Alinea marketing y ventas compartiendo materiales personalizados por industria para reducir objeciones temprano. Cada semana recortada libera capital y mejora la moral del equipo comercial.</p>
+</section>
+
+<section id="met11" class="shadow-box">
+  <h2>11. Product Stickiness</h2>
+  <p>La stickiness, expresada como DAU/MAU, refleja la frecuencia con que los usuarios regresan. Un valor superior al 25&nbsp;% indica hábito; menos del 15&nbsp;% sugiere adopción superficial. Analiza los flujos que retienen a los power users y replica sus patrones de onboarding al resto. Elimina fricciones ocultas en tareas recurrentes y prioriza mejoras en las features que más impulsan engagement. Aumentar la stickiness reduce la dependencia de Customer Success para forzar el uso y se traduce en mayores métricas de retención y expansión.</p>
+</section>
+
+<section id="met12" class="shadow-box">
+  <h2>12. Referral Conversion Rate</h2>
+  <p>Este indicador mide el porcentaje de clientes activos que refieren nuevos usuarios y la tasa de conversión de esos referidos a planes pagos. Implementa programas de referidos que ofrezcan créditos o funcionalidades premium temporales para incentivar la acción sin comprometer márgenes permanentes. Integra el proceso dentro del producto, mostrando un botón "Invita y gana" en momentos de alta satisfacción, como justo después de alcanzar un hito clave. Aumentar la tasa de referidos un par de puntos porcentuales puede equivaler a añadir un canal de adquisición pago completo, pero con costo casi nulo.</p>
+</section>
+
+
+    <!-- Bloques 9-12 -->
+   <section id="ebook" class="shadow-box" style="background:#0a0f1c;color:#fff;text-align:center">
+      <h2 style="color:#00a6e0;margin-bottom:18px">📘 Ebook gratuito: "Conviertete en un experto en funnels de venta"</h2>
+      <p style="max-width:640px;margin:0 auto 28px;font-size:1.1rem">Descarga esta guía práctica y aprende como multiplicar conversiones con ejemplos fáciles de implementar.</p>
+      <form id="form-ebook" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii" method="post" style="max-width:520px;margin:auto">
+        <input type="email" name="email" placeholder="Tu email para recibir el ebook" required style="width:100%;padding:14px 18px;border:none;border-radius:10px;margin-bottom:18px;font-size:1rem" />
+        <button type="submit" class="cta-button-large" style="max-width:100%">Descargar gratis</button>
+      </form>
+    </section>
+  <!-- ===================================================== -->
+
+
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ✉️  NEWSLETTER                                            -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; background-color: #0a0f1c; color: white; margin-top: 60px; margin-bottom: 80px;">
+  <img src="/img/newsletter-imagefr.png" alt="Imagen Fraternidad" style="width: 200px; border-radius: 12px; margin: auto;">
+  
+  <div style="flex: 1; padding-right: 20px;">
+    <h2 style="color: white;">📩 Unite a <strong>La Fraternidad</strong></h2>
+    <p>Tips, psicología, creatividad y comunidad. Todo lo que necesitás para crecer con cabeza y corazón. ✨🤝</p>
+  </div>
+  
+  <form id="form-newsletter" style="flex: 1; min-width: 260px;" method="post" action="https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii">
+    <input type="email" name="email" placeholder="Tu email para sumarte" required
+      style="width: 100%; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(0, 166, 224, 0.1); color: #0a0f1c; font-size: 1rem; outline: none; transition: background-color 0.3s;">
+    
+    <input type="hidden" name="origen" value="newsletter">
+    
+    <button class="cta-button" type="submit" style="width: 100%; background: #00a6e0; color: #0a0f1c; padding: 15px 32px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 4px 12px rgba(0, 166, 224, 0.35);">Quiero unirme</button>
+  </form>
+</section>
+
+  <!-- ========================================================= -->
+<!-- 👤 SOBRE MÍ - BENJAMÍN                                   -->
+<!-- ========================================================= -->
+<section class="shadow-box" style="margin-top: 80px; background: #e5f6ff; color: #0a0f1c; border-radius: 14px; padding: 40px 30px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center;">
+  <img src="/img/benjamin-alegre.JPG" alt="Foto de Benjamín Alegre" style="width: 150px; height: 150px; object-fit: cover; border-radius: 100px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy" />
+  <h2 style="font-size: 1.6rem; margin-bottom: 10px;">¿Quién está detrás de PsicoFunnel?</h2>
+  <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
+    Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
+  </p>
+</section>
+
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<div style="text-align: center; margin-bottom: 40px;">
+  <a href="#top" style="display: inline-block; background: #00a6e0; color: #0a0f1c; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,166,224,0.3); transition: all 0.3s ease;">
+    🔝 Volver arriba
+  </a>
+</div>
+
+  <!-- ========================================================= -->
+  <!-- 🔚 FOOTER CON TICKER PSICOFUNNEL                          -->
+  <!-- ========================================================= -->
+  <footer>
+    <p>&copy; 2025 PsicoFunnel by Benjamín Alegre | Todos los derechos reservados</p>
+    <div class="ticker-container">
+      <div class="ticker">
+        <span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span><span>Benjamin E. Alegre</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .ticker-container {
+      margin-top: 30px;
+      background-color: #00a6e0;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker {
+      display: inline-block;
+      animation: tickerMove 20s linear infinite;
+      width: 100%;
+    }
+    .ticker span {
+      display: inline-block;
+      padding: 0 40px;
+      color: #0a0f1c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    @keyframes tickerMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+<!-- ========================================================= SCRIPTS ========================================================= -->
+<script>
+  /**
+   * Conecta un formulario con un webhook de Make/Integromat
+   * @param {string} formId - ID del formulario
+   * @param {string} webhookUrl - URL del webhook
+   */
+  function conectarFormulario(formId, webhookUrl) {
+    const formulario = document.getElementById(formId);
+    if (!formulario) {
+      console.warn("Formulario no encontrado:", formId);
+      return;
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      // 👉 Agregar origen "ebook" para pop-up y ebook
+      if (formId === "popup-form" || formId === "form-ebook") {
+        formData.append("origen", "ebook");
+      }
+
+      fetch(webhookUrl, {
+        method: "POST",
+        body: formData,
+      })
+      .then((res) => {
+        if (res.ok) {
+          // 👉 Comportamientos según formulario
+          if (formId === "popup-form") {
+            alert("¡Muchas gracias! Ya puedes revisar tu correo.");            // cartel de agradecimiento
+            document.getElementById('popup-overlay').style.display = 'none';  // cierra popup
+            this.reset();
+          } else if (formId === "form-ebook") {
+            window.location.href = "thankyoulanding.html";
+          } else if (formId === "form-newsletter") {
+            window.location.href = "thankyoulanding.html";
+          } else {
+            alert("¡Formulario enviado con éxito!");
+            this.reset();
+          }
+        } else {
+          alert("Hubo un problema. Intentá nuevamente.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error al enviar el formulario.");
+      });
+    });
+  }
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    conectarFormulario("popup-form", WEBHOOK_URL);
+    conectarFormulario("form-ebook", WEBHOOK_URL);
+    conectarFormulario("form-newsletter", WEBHOOK_URL);
+  });
+</script>
+
+<script>
+  // Popup que cae al 30% de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('popup-overlay');
+    const closeBtn = document.getElementById('popup-close');
+    let shown = false;
+    window.addEventListener('scroll', () => {
+      const scrollRatio = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (!shown && scrollRatio > 0.3) {
+        overlay.style.display = 'flex';
+        shown = true;
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Lazy-load de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            io.unobserve(img);
+          }
+        });
+      });
+      imgs.forEach(img => io.observe(img));
+    }
+  });
+</script>
+
+</body>
+</html>
