@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========================================================= -->
+  <!-- ✨  META & PERFORMANCE                                     -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | PsicoFunnel · Hablemos de tu Funnel</title>
+  <meta name="description" content="Agenda tu llamada con Benja: embudos 1-a-1 con ciencia y corazón. WhatsApp, email y formulario directo.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <script src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS                                               -->
+  <!-- ========================================================= -->
+  <style>
+    :root{
+      --pf-navy:#001a40;
+      --pf-light:#e9f7ff;
+      --pf-accent:#00a6e0;
+      --radius-xl:1.75rem;
+      --shadow-card:0 10px 25px rgba(0,0,0,.14);
+      --transition-fast:.25s cubic-bezier(.4,.2,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Outfit',sans-serif;line-height:1.6;
+      background:#fff;color:#0a0f1c;text-align:center;overflow-x:hidden
+    }
+    img{max-width:100%;display:block;margin-inline:auto}
+
+    /* ---------- Gradiente animado de fondo ---------- */
+    body::before{
+      content:"";position:fixed;inset:0;z-index:-1;
+      background:linear-gradient(-45deg,#003a8c,#001a40,#000e20,#003a8c);
+      background-size:400% 400%;animation:bgmove 24s ease infinite
+    }
+    @keyframes bgmove{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+
+    .container{width:min(1180px,92%);margin-inline:auto}
+
+    /* ---------- ENLACES (celeste de marca) ---------- */
+    a{color:var(--pf-accent);}
+    a:hover{opacity:.8;}
+
+    /* ---------- Botón ---------- */
+    .btn{
+      display:inline-block;background:var(--pf-accent);color:#fff;
+      padding:.9rem 1.7rem;border-radius:3rem;font-weight:600;text-decoration:none;
+      transition:var(--transition-fast)
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,166,224,.4)}
+
+    /* ---------- NavBar ---------- */
+    .header-inner{width:100%;position:absolute;top:0;left:0;z-index:1000;background:transparent}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px min(4vw,32px);font-size:1rem
+    }
+    .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+    .nav-links a{
+      margin-left:24px;color:var(--pf-accent);text-decoration:none;transition:opacity .25s
+    }
+    .nav-links a:hover{opacity:.75}
+    #toggle{display:none}
+    .hamburger{display:none;cursor:pointer;width:26px;height:22px;position:relative}
+    .hamburger span,
+    .hamburger span::before,
+    .hamburger span::after{
+      content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s
+    }
+    .hamburger span{top:9px}
+    .hamburger span::before{top:-8px}
+    .hamburger span::after{top:8px}
+    #toggle:checked + .hamburger span{background:transparent}
+    #toggle:checked + .hamburger span::before{transform:rotate(45deg) translate(5px,5px)}
+    #toggle:checked + .hamburger span::after{transform:rotate(-45deg) translate(5px,-5px)}
+    @media(max-width:780px){
+      .nav-links{
+        position:fixed;top:0;right:-100%;height:100vh;width:200px;
+        background:#001a40;display:flex;flex-direction:column;
+        padding-top:80px;transition:.4s
+      }
+      #toggle:checked ~ .nav-links{right:0}
+      .nav-links a{margin:18px;font-size:1.05rem}
+      .hamburger{display:block}
+    }
+
+    /* ---------- Hero ---------- */
+    header{
+      padding:120px 1rem 160px;color:#fff;position:relative;overflow:hidden
+    }
+    header h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;margin-bottom:1rem}
+    header p{font-size:1.15rem;max-width:620px;margin-inline:auto}
+
+    /* ---------- Formulario ---------- */
+    .contact-section{padding:100px 0}
+    .form-wrap{
+      background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);
+      padding:2.2rem 1.8rem;margin-inline:auto;max-width:620px;text-align:left;
+      transition:transform .35s ease,box-shadow .35s ease
+    }
+    .form-wrap:hover{
+      transform:translateY(-8px) scale(1.02) rotateX(3deg);
+      box-shadow:0 24px 48px rgba(0,0,0,.20)
+    }
+    .form-group{display:flex;flex-direction:column;margin-bottom:1.1rem}
+    .form-group label{font-weight:600;font-size:.95rem;margin-bottom:.4rem;color:var(--pf-navy)}
+    .form-group input,
+    .form-group textarea{
+      padding:.8rem;border:1px solid #c4d0ee;border-radius:.5rem;font-size:.95rem;font-family:inherit
+    }
+    .form-group textarea{min-height:130px;resize:vertical}
+    .form-group input:focus,
+    .form-group textarea:focus{outline:2px solid var(--pf-accent)}
+    .form-wrap .btn{margin-top:.6rem;width:100%}
+
+    /* ---------- Otros canales ---------- */
+    .channels{padding:80px 0;background:#f7fbfe}
+    .channel-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.6rem}
+    .channel-card{
+      width:min(260px,90%);background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);
+      padding:1.7rem 1.4rem;transition:var(--transition-fast)
+    }
+    .channel-card:hover{transform:translateY(-5px)}
+    .channel-card i{font-size:1.9rem;color:var(--pf-accent);margin-bottom:.9rem}
+
+    /* ---------- Mapa ---------- */
+    .map-wrap iframe{width:100%;height:420px;display:block;border:none}
+
+    /* ---------- FAQ (alto contraste) ---------- */
+    .faq{padding:90px 0}
+    .faq h2{color:#fff}
+    .accordion{
+      max-width:680px;margin-inline:auto;border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-card);overflow:hidden;text-align:left
+    }
+    .faq-item{border-bottom:1px solid #e5e5e5}
+    .faq-btn{
+      display:flex;justify-content:space-between;align-items:center;width:100%;
+      background:#002859;color:#fff;padding:1.2rem 1.4rem;font-size:1rem;font-weight:600;cursor:pointer
+    }
+    .faq-btn i{color:var(--pf-accent);transition:var(--transition-fast)}
+    .faq-content{
+      max-height:0;overflow:hidden;background:#001a40;padding:0 1.4rem;transition:max-height .4s ease
+    }
+    .faq-content p{padding:1.1rem 0;font-size:.95rem;color:#e9f7ff}
+    .faq-item.open .faq-content{max-height:200px}
+    .faq-item.open .faq-btn i{transform:rotate(45deg)}
+
+    /* ---------- CTA ---------- */
+    .cta{
+      background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:80px 1rem
+    }
+    .cta h2{font-size:2rem;margin-bottom:1rem}
+    .cta p{font-size:1.05rem;margin-bottom:2rem}
+    .cta .btn{background:#fff;color:var(--pf-navy);font-weight:700}
+    .cta .btn:hover{box-shadow:0 8px 18px rgba(255,255,255,.35);transform:translateY(-4px)}
+
+    /* ---------- Footer ---------- */
+    footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font-size:.85rem}
+    footer a{color:#8fb1df;text-decoration:none}
+  </style>
+</head>
+<body>
+
+<!-- ╭──────────────────── NAV BAR ────────────────────╮ -->
+<div class="header-inner">
+  <nav class="nav">
+    <a class="logo" href="/">PsicoFunnel</a>
+
+    <input type="checkbox" id="toggle" aria-label="Menú" />
+    <label for="toggle" class="hamburger"><span></span></label>
+
+    <div class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/servicio.html">Servicios</a>
+      <a href="/BLOG.html" style="font-weight:600">Blog</a>
+      <a href="/contacto.html">Contacto</a>
+    </div>
+  </nav>
+</div>
+<!-- ╰─────────────────────────────────────────────────╯ -->
+
+<!-- ⛑️ HERO ----------------------------------------- -->
+<header data-aos="fade-down">
+  <div class="container">
+    <h1>¡Hablemos de tu <span style="color:#00a6e0">Funnel</span>!</h1>
+    <p>Completa el formulario o contáctame por el canal que prefieras:<br>respondo personalmente en menos de 24&nbsp;h.</p>
+  </div>
+</header>
+
+<!-- 📝 FORMULARIO ----------------------------------- -->
+<section class="contact-section" data-aos="fade-up">
+  <div class="container">
+    <div class="form-wrap" data-tilt>
+      <form id="contact-form">
+        <!-- 🔖 filtro para Make -->
+        <input type="hidden" name="tag" value="contacto">
+
+        <div class="form-group">
+          <label for="name">Nombre *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono (opcional)</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensaje *</label>
+          <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto…"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 📲 OTROS CANALES -------------------------------- -->
+<section class="channels" data-aos="fade-up">
+  <div class="container">
+    <h2 style="font-size:2rem;margin-bottom:2rem;color:var(--pf-navy)">Otros canales directos</h2>
+    <div class="channel-grid">
+      <div class="channel-card" data-tilt>
+        <i class="fab fa-whatsapp"></i>
+        <h4>WhatsApp</h4>
+        <p><a href="https://wa.me/3624216821" target="_blank">+54&nbsp;9&nbsp;388&nbsp;476-5256</a></p>
+      </div>
+      <div class="channel-card" data-tilt>
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <p><a href="mailto:benjamin.alegre@psicofunnel.com">benjamin.alegre@psicofunnel.com</a></p>
+      </div>
+      <div class="channel-card" data-tilt>
+        <i class="fab fa-linkedin"></i>
+        <h4>LinkedIn</h4>
+        <p><a href="https://www.linkedin.com/in/benjamin-alegre-2b8272317/" target="_blank">@benja</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ❓ FAQ ------------------------------------------ -->
+<section class="faq">
+  <div class="container" data-aos="fade-up">
+    <h2 style="font-size:2rem;margin-bottom:2.2rem">Preguntas Frecuentes</h2>
+    <div class="accordion">
+      <div class="faq-item">
+        <button class="faq-btn">¿Cuánto tarda la respuesta? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>De lunes a viernes respondo en menos de 24&nbsp;h. Fines de semana: 48&nbsp;h.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">¿Podemos agendar una llamada? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>¡Claro! Indícalo en el mensaje y te envío mi calendario.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 📣 CTA ------------------------------------------ -->
+<section class="cta" data-aos="zoom-in">
+  <h2>¿Prefieres agendar ya mismo?</h2>
+  <p>Reserva tu Diagnóstico Gratuito de 30&nbsp;min y recibe <strong>3 ideas accionables</strong>.</p>
+  <a href="https://calendly.com/" target="_blank" class="btn">Reservar ahora</a>
+</section>
+
+<!-- 🔚 FOOTER --------------------------------------- -->
+<footer>
+  <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón. · <a href="#top">Subir ↑</a></p>
+</footer>
+
+<!-- 🧩 SCRIPTS --------------------------------------- -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  /* Init animaciones */
+  AOS.init({duration:800,once:true});
+  VanillaTilt.init(document.querySelectorAll("[data-tilt]"),
+                   {max:6,speed:400,glare:true,"max-glare":.25});
+
+  /* ---------- Formulario → Make/Integromat ---------- */
+  const form=document.getElementById('contact-form');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=new FormData(form);
+
+    fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{   // ✅ webhook real
+      method:'POST',
+      body:data
+    })
+    .then(res=>{
+      if(res.ok){
+        alert('¡Gracias! Mensaje enviado, responderé pronto.');
+        form.reset();
+      }else{
+        alert('Ups, algo salió mal. Prueba de nuevo.');
+      }
+    })
+    .catch(()=>alert('Error de conexión. Intenta más tarde.'));
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
+  });
+
+  /* Año dinámico */
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
