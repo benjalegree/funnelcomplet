@@ -149,6 +149,57 @@
     /* ------------------- Footer ------------------- */
     footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font-size:.85rem}
     footer a{color:#8fb1df;text-decoration:none}
+
+/* ── NAV BAR ──────────────────────────────────────────────── */
+.header-inner{
+  width:100%;
+  position:absolute;          /* se superpone al hero */
+  top:0;left:0;z-index:1000;
+  background:transparent;     /* fondo del hero visible */
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px min(4vw,32px);
+  font-size:1rem;
+}
+.logo{
+  font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none;
+}
+.nav-links a{
+  margin-left:24px;color:#e9f7ff;text-decoration:none;transition:opacity .25s;
+}
+.nav-links a:hover{opacity:.75}
+ /* -------- Hamburguesa -------- */
+#toggle{display:none}
+.hamburger{
+  display:none;cursor:pointer;width:26px;height:22px;position:relative;
+}
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after{
+  content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;
+  transition:.3s
+}
+.hamburger span{top:9px}
+.hamburger span::before{top:-8px}
+.hamburger span::after{top:8px}
+/* animación X */
+#toggle:checked + .hamburger span{background:transparent}
+#toggle:checked + .hamburger span::before{transform:rotate(45deg) translate(5px,5px)}
+#toggle:checked + .hamburger span::after{transform:rotate(-45deg) translate(5px,-5px)}
+/* responsive */
+@media(max-width:780px){
+  .nav-links{
+    position:fixed;top:0;right:-100%;height:100vh;width:200px;
+    background:#001a40;display:flex;flex-direction:column;
+    padding-top:80px;transition:.4s
+  }
+  #toggle:checked ~ .nav-links{right:0}
+  .nav-links a{margin:18px;font-size:1.05rem}
+  .hamburger{display:block}
+}
+
+    
   </style>
 </head>
 <body>
@@ -156,6 +207,26 @@
 <!-- ⛑️ HERO --------------------------------------------------- -->
 <header data-aos="fade-down">
   <div class="container">
+    <!-- ╭───────────────────────── NAV BAR ─────────────────────────╮ -->
+<div class="header-inner">
+  <nav class="nav">
+    <a class="logo" href="/">PsicoFunnel</a>
+
+    <!-- Hamburguesa (solo mobile) -->
+    <input type="checkbox" id="toggle" aria-label="Menú" />
+    <label for="toggle" class="hamburger"><span></span></label>
+
+    <!-- Enlaces -->
+    <div class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/servicio.html">Servicios</a>
+      <a href="/BLOG.html" style="font-weight:600">Blog</a>
+      <a href="/contacto.html">Contacto</a>
+    </div>
+  </nav>
+</div>
+<!-- ╰────────────────────────────────────────────────────────────╯ -->
+
     <span class="tag">PsicoFunnel · Funnels hechos a mano</span>
     <h1 class="hero-title">Potencia tu crecimiento con funnels<br> diseñados para <span style="color:var(--pf-accent)">enamorar, convertir y escalar</span></h1>
        <p data-aos="fade-up" data-aos-delay="200">
