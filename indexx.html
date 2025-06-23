@@ -1,0 +1,407 @@
+<!-- ========================================================= -->
+<!--  INDEX · PSICOFUNNEL  |  Benjamín Alegre (FINAL)          -->
+<!--  Sustituye los marcadores:                                -->
+<!--   IMG_URL_FOTO_BENJA · IMG_BLOG1/2/3 · IMG_EBOOK_COVER    -->
+<!--   IMG_NEWSLETTER_LOGO · IMG_SOCIAL_PHOTO                  -->
+<!--   VIDEO_ID_1/2/3                                          -->
+<!-- ========================================================= -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PsicoFunnel · Embudos con ciencia & corazón</title>
+<meta name="description" content="Benjamín Alegre · funnels 1-a-1, neuro-ventas, blog, ebook, newsletter y más." />
+
+<!-- Fuentes & libs -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+<script src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+<!-- ====================== ESTILOS ====================== -->
+<style>
+:root{
+  --pf-navy:#001a40;
+  --pf-accent:#00a6e0;
+  --radius-xl:1.8rem;
+  --shadow-card:0 14px 34px rgba(0,0,0,.17);
+  --glow:0 0 12px rgba(0,166,224,.55);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;line-height:1.6;color:#0a0f1c;text-align:center;overflow-x:hidden}
+
+/* Fondo animado */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(-45deg,#0043a3,#001a40,#000e20,#0043a3);
+  background-size:400% 400%;animation:bgmove 25s ease infinite}
+@keyframes bgmove{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+
+.container{width:min(1180px,92%);margin-inline:auto}
+
+/* Botón */
+.btn{display:inline-block;padding:.95rem 1.9rem;border-radius:3rem;font-weight:700;background:var(--pf-accent);color:#fff;text-decoration:none;transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:var(--glow)}
+
+/* NAV glass */
+.header-inner{position:fixed;top:0;left:0;width:100%;z-index:1000;backdrop-filter:blur(12px);background:rgba(0,15,40,.6)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px min(4vw,32px)}
+.logo{font-size:1.3rem;font-weight:700;color:#fff;text-decoration:none}
+.nav-links a{margin-left:22px;color:#fff;font-weight:600;transition:.25s}
+.nav-links a:hover{opacity:.75}
+#toggle{display:none}
+.burger{display:none;width:28px;height:22px;cursor:pointer;position:relative}
+.burger span,.burger::before,.burger::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s}
+.burger span{top:9px}.burger::before{top:0}.burger::after{bottom:0}
+#toggle:checked + .burger span{background:transparent}
+#toggle:checked + .burger::before{transform:rotate(45deg) translate(5px,5px)}
+#toggle:checked + .burger::after{transform:rotate(-45deg) translate(5px,-5px)}
+@media(max-width:780px){
+  .burger{display:block}
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:210px;background:#000e20;
+    display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:.4s}
+  #toggle:checked ~ .nav-links{right:0}
+  .nav-links a{margin:18px;font-size:1.1rem}
+}
+
+/* -------- HERO -------- */
+header{padding:180px 1rem 220px;color:#fff;position:relative}
+header h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:700;line-height:1.12}
+header p{font-size:1.18rem;max-width:640px;margin:.85rem auto 0}
+header .btn{margin-top:2.5rem;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{transform:translateY(-3px) scale(1.04)}}
+header::before{content:"";position:absolute;right:-120px;top:-120px;width:460px;height:460px;border-radius:50%;
+  background:radial-gradient(circle,var(--pf-accent) 0%,#60dcff 40%,transparent 75%);opacity:.13;animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(50px)}}
+
+/* -------- Secciones genéricas -------- */
+section{padding:110px 0}
+h2{font-size:2.1rem;margin-bottom:1.3rem}
+
+/* ABOUT */
+.about{background:#fff}
+.about-inner{display:grid;gap:2.6rem;align-items:center}
+@media(min-width:940px){.about-inner{grid-template-columns:1fr 1fr}}
+.about img{border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
+.about p{text-align:left;font-size:1rem}
+
+/* TIMELINE */
+.timeline{max-width:700px;margin-inline:auto;position:relative}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--pf-accent)}
+.tl-item{width:50%;padding:1.2rem 1rem;position:relative}
+.tl-item:nth-child(odd){left:0;text-align:right}
+.tl-item:nth-child(even){left:50%}
+.tl-item::before{content:"";position:absolute;top:22px;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--pf-accent)}
+.tl-item:nth-child(odd)::before{right:-12px}.tl-item:nth-child(even)::before{left:-12px}
+.tl-item h4{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;color:var(--pf-navy)}
+.tl-item p{font-size:.9rem}
+
+/* BENEFITS */
+.benefits-grid{display:grid;gap:1.8rem}
+@media(min-width:900px){.benefits-grid{grid-template-columns:repeat(3,1fr)}}
+.benefit{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:1.9rem 1.5rem;transition:.35s}
+.benefit:hover{transform:translateY(-8px);box-shadow:var(--glow)}
+.benefit h3{font-size:1.15rem;margin-bottom:.7rem}
+
+/* BLOG */
+.blog{background:#fff}
+.blog-grid{display:grid;gap:1.9rem}
+@media(min-width:860px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
+.post{background:#fff;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-card);transition:.35s;text-align:left}
+.post:hover{transform:translateY(-8px);box-shadow:var(--glow)}
+.post img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.post h4{font-size:1.05rem;margin:1rem 1rem .6rem;color:var(--pf-navy)}
+.post p{font-size:.9rem;margin:0 1rem 1rem}
+.post a{display:block;width:max-content;margin:0 auto 1.4rem;font-weight:600}
+
+/* NEWSLETTER */
+.newsletter{background:#001a40;color:#fff}
+.nl-inner{max-width:540px;margin-inline:auto}
+.nl-logo{width:90px;margin-inline:auto;margin-bottom:.8rem}
+.newsletter form{display:flex;gap:.65rem;margin-top:1.4rem}
+@media(max-width:580px){.newsletter form{flex-direction:column}}
+.newsletter input{flex:1;padding:.85rem;border:1px solid #3c4e7a;border-radius:2rem;font-family:inherit;color:#fff;background:#001a40}
+.newsletter input::placeholder{color:#cfd8ff}
+
+/* EBOOK */
+.ebook{background:#fff}
+.ebook-inner{max-width:600px;margin-inline:auto;text-align:center}
+.ebook img{width:260px;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);margin-bottom:1.4rem}
+
+/* YOUTUBE */
+.yt-section{background:#f7fbfe}
+.yt-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.6rem}
+.yt-card{width:320px;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow-card);transition:.35s}
+.yt-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:var(--glow)}
+.yt-card iframe{width:100%;aspect-ratio:16/9;border:0}
+
+/* SOCIAL */
+.social{background:#fff}
+.social img.photo{width:180px;border-radius:50%;box-shadow:var(--shadow-card);margin-bottom:1rem}
+.social-links{display:flex;justify-content:center;gap:1.4rem;margin-top:1rem}
+.social-links a{width:58px;height:58px;display:flex;justify-content:center;align-items:center;border-radius:50%;
+  background:var(--pf-accent);color:#fff;font-size:1.8rem;transition:.3s}
+.social-links a:hover{transform:translateY(-4px);background:#008ccd}
+
+/* FAQ */
+.faq{background:#001a40;color:#fff}
+.accordion{max-width:720px;margin-inline:auto}
+.faq-item{margin-bottom:14px;border-radius:var(--radius-xl);background:rgba(0,15,40,.4);backdrop-filter:blur(6px);box-shadow:var(--shadow-card)}
+.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.15rem 1.4rem;font-weight:600;font-size:1rem;background:none;color:#fff;border:none;cursor:pointer}
+.faq-btn i{transition:.3s;color:var(--pf-accent)}
+.faq-content{max-height:0;overflow:hidden;padding:0 1.4rem;transition:max-height .4s ease}
+.faq-content p{padding:1rem 0;font-size:.9rem;color:#e9f7ff}
+.faq-item.open .faq-btn i{transform:rotate(45deg)}
+
+/* CTA services & principal */
+.svc{background:#001a40;color:#fff;text-align:center}
+.cta{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:95px 1rem}
+.cta .btn{background:#fff;color:var(--pf-navy);font-weight:900;animation:breathe 4s ease-in-out infinite}
+
+/* Footer & scrollTop */
+footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font-size:.85rem}
+.scrolltop{position:fixed;right:22px;bottom:-60px;width:46px;height:46px;border-radius:50%;background:var(--pf-accent);color:#fff;
+  display:flex;justify-content:center;align-items:center;font-size:1.2rem;cursor:pointer;transition:.4s;box-shadow:var(--shadow-card);z-index:999}
+.scrolltop.show{bottom:22px}
+</style>
+</head>
+<body>
+
+<!-- ============== NAVBAR ============== -->
+<div class="header-inner">
+  <nav class="nav">
+    <a class="logo" href="/">PsicoFunnel</a>
+    <input type="checkbox" id="toggle" />
+    <label for="toggle" class="burger"><span></span></label>
+    <div class="nav-links">
+      <a href="/">Inicio</a><a href="/servicio.html">Servicios</a><a href="/BLOG.html">Blog</a><a href="/contacto.html">Contacto</a>
+    </div>
+  </nav>
+</div>
+
+<!-- ============== HERO ============== -->
+<header id="top">
+  <div class="container" data-aos="fade-down">
+    <h1>Hola, soy <span style="color:var(--pf-accent)">Benjamín Alegre</span></h1>
+    <p>Estratega de funnels & psicología del consumidor.<br>Convierto curiosos en clientes fieles con ciencia y corazón.</p>
+    <a href="/servicio.html" class="btn">Ver servicios</a>
+  </div>
+</header>
+
+<!-- ============== SOBRE MÍ ============== -->
+<section class="about">
+  <div class="container about-inner" data-aos="fade-up">
+    <img src="IMG_URL_FOTO_BENJA" alt="Benjamín Alegre" />
+    <div>
+      <h2 style="background:#001a40;color:#fff;padding:.4rem 1rem;border-radius:var(--radius-xl);display:inline-block">Quién soy</h2>
+      <p>🚀 Fundador de <strong>PsicoFunnel</strong>, taller artesanal de embudos donde <u>yo mismo</u> diseño, escribo, integro y optimizo cada pieza.</p>
+      <p>🎓 Formación continua en neuroventas, psicología del consumidor y analítica.</p>
+      <p>🔍 Obsesión por el detalle: solo 3 proyectos simultáneos, feedback 24/7 vía Slack y videollamadas honestas.</p>
+      <p><a href="#historia">Lee mi historia completa ↓</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HISTORIA ============== -->
+<section id="historia" style="background:#f7fbfe">
+  <div class="container">
+    <h2 data-aos="fade-up" style="color:var(--pf-navy)">Mi historia (en 5 hitos)</h2>
+    <div class="timeline" data-aos="fade-up">
+      <div class="tl-item"><h4>🌟 Niño con un sueño (9 años)</h4><p>Intenté posicionar mi primer canal de YouTube.</p></div>
+      <div class="tl-item"><h4>💻 Secundaria técnica</h4><p>Aprendí programación e informática.</p></div>
+      <div class="tl-item"><h4>📚 Mentalidad ganadora</h4><p>Lectura diaria para crecer y tomar acción.</p></div>
+      <div class="tl-item"><h4>🏋️ Coach fitness</h4><p>Ayudé a otros con disciplina y constancia.</p></div>
+      <div class="tl-item"><h4>🚀 Funnel strategist (18 años)</h4><p>Encontré mi pasión en marketing & neuro-ventas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BENEFICIOS ============== -->
+<section style="background:#001a40">
+  <div class="container" data-aos="fade-up">
+    <h2 style="color:#fff">Beneficios de trabajar conmigo</h2>
+    <div class="benefits-grid">
+      <div class="benefit" data-tilt>
+        <h3>🚀 Impacto directo</h3>
+        <ul><li>+ Leads calificados en 4–6&nbsp;sem</li><li>CAC ↓ &nbsp;LTV ↑</li><li>Embudos evergreen 24/7</li></ul>
+      </div>
+      <div class="benefit" data-tilt>
+        <h3>⏰ En tu día a día</h3>
+        <ul><li>Recuperas horas → foco</li><li>Operación sin urgencias</li><li>Dashboard semanal = claridad</li></ul>
+      </div>
+      <div class="benefit" data-tilt>
+        <h3>🌱 A mediano plazo</h3>
+        <ul><li>Posicionamiento experto</li><li>Innovación continua</li><li>Efecto compuesto en cada test</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BLOG ============== -->
+<section class="blog">
+  <div class="container" data-aos="fade-up">
+    <h2 style="color:var(--pf-navy)">Últimos artículos</h2>
+    <div class="blog-grid">
+      <article class="post" data-tilt>
+        <img src="/img/que-es-un-funnel.jpg" alt="Post 1" />
+        <h4>¿Qué es un funnel de ventas?</h4>
+        <p>Guía paso a paso para entender y aplicar embudos en 2025.</p>
+        <a href="/blog/que-es-un-funnel.html" class="btn">Leer</a>
+      </article>
+      <article class="post" data-tilt>
+        <img src="/img/cover-customer-journey.jpg" alt="Post 2" />
+        <h4>Copywriting neuro-persuasivo</h4>
+        <p>Sesgos y ejemplos para que tu mensaje sea irresistible.</p>
+        <a href="/blog/copywriting-para-una-pagina-de-ventas.html" class="btn">Leer</a>
+      </article>
+      <article class="post" data-tilt>
+        <img src="/img/cover-customer-journey.jpg" alt="Post 3" />
+        <h4>Tráfico de calidad con menos CAC</h4>
+        <p>Mis micro-tests Meta/Google favoritos explicados.</p>
+        <a href="/blog/que_es_un_customer_journey.html" class="btn">Leer</a>
+      </article>
+    </div>
+    <a href="/BLOG.html" class="btn" style="margin-top:2rem">Ver Blog completo</a>
+  </div>
+</section>
+
+<!-- ============== NEWSLETTER ============== -->
+<section class="newsletter" data-aos="fade-up">
+  <div class="container nl-inner">
+    <img src="/img/newsletter-imagefr.png" alt="Logo newsletter" class="nl-logo" />
+    <h2 style="color:#fff">Únete a <span style="color:var(--pf-accent)">La Fraternidad</span></h2>
+    <p>Newsletter dominical con hacks de psicología, funnels y mindset. Sin spam. Solo valor.</p>
+    <form id="newsletter-form">
+      <input type="hidden" name="tag" value="newsletter" />
+      <input type="email" name="email" placeholder="Tu email" required />
+      <button class="btn" type="submit">Suscribirme</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============== EBOOK ============== -->
+<section class="ebook" data-aos="fade-up">
+  <div class="container ebook-inner">
+    <img src="/img/ebook.jpg" alt="Portada Ebook" />
+    <h3>Ebook gratuito de mi último vídeo</h3>
+    <p>Descarga la plantilla paso a paso que utilicé para crear un quiz que <strong>triplica</strong> las conversiones MOFU.</p>
+    <a href="/squeeze-page.html" class="btn">Descargar ahora</a>
+  </div>
+</section>
+
+<!-- ============== YOUTUBE ============== -->
+<section class="yt-section">
+  <div class="container" data-aos="fade-up">
+    <h2 style="color:var(--pf-navy)">Últimos vídeos</h2>
+    <div class="yt-grid">
+      <div class="yt-card" data-tilt><iframe src="https://www.youtube.com/embed/VIDEO_ID_1?rel=0" loading="lazy" title="Video 1"></iframe></div>
+      <div class="yt-card" data-tilt><iframe src="https://youtu.be/05Ff6_yXji8" loading="lazy" title="Video 2"></iframe></div>
+      <div class="yt-card" data-tilt><iframe src="https://www.youtube.com/embed/VIDEO_ID_3?rel=0" loading="lazy" title="Video 3"></iframe></div>
+    </div>
+    <a href="https://www.youtube.com/@BenjaminAlegre317" target="_blank" class="btn" style="margin-top:2.3rem">Visitar canal</a>
+  </div>
+</section>
+
+<!-- ============== SOCIAL ============== -->
+<section class="social" data-aos="fade-up">
+  <div class="container">
+    <img src="benjamin-alegre.JPG" alt="Foto Benjamín" class="photo" />
+    <h2 style="color:var(--pf-navy)">Sígueme en redes</h2>
+    <p>Para ver de cerca mi lifestyle, recibir contenido de valor y estar al tanto de todo:</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/benja" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/benjalegree" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@BenjaminAlegre317" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA SERVICIOS ============== -->
+<section class="svc" data-aos="zoom-in">
+  <div class="container">
+    <h2>¿Quieres un embudo hecho 1-a-1 por Benja?</h2>
+    <p style="max-width:640px;margin-inline:auto">Embudo artesanal, KPIs claros y atención sin intermediarios.<br>Descubre la propuesta completa.</p>
+    <a href="/servicio.html" class="btn">Ir a Servicios</a>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="faq" data-aos="fade-up">
+  <div class="container">
+    <h2>Preguntas frecuentes</h2>
+    <div class="accordion">
+      <div class="faq-item">
+        <button class="faq-btn">¿Necesito experiencia previa en funnels? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>No. Partimos de cero y te guío paso a paso para acelerar resultados.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">¿Cuándo veré retorno de inversión? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Primeros leads en 4–6 semanas y ROI total en ~90 días (depende de tu ticket).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">¿Trabajas solo o con equipo? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Trabajo personalmente tu funnel y solo involucro partners senior cuando es imprescindible.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">¿Qué hace diferente a PsicoFunnel? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Diagnóstico neuro-persuasivo, máximo 3 clientes, KPIs claros y trato humano 1-a-1.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">¿Puedo aprender gratis? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Sí: Blog, canal YouTube y la newsletter “La Fraternidad” son gratuitos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA PRINCIPAL ============== -->
+<section class="cta" data-aos="zoom-in">
+  <h2>Multipliquemos tus conversiones</h2>
+  <p>Reserva tu Diagnóstico Gratuito de 30&nbsp;min y recibe <strong>3 ideas accionables</strong> para tu embudo.<br><em>Solo 3 proyectos simultáneos – plaza prioritaria.</em></p>
+  <a href="/contacto.html" class="btn">Agenda ahora</a>
+</section>
+
+<!-- ============== FOOTER & SCROLLTOP ============== -->
+<footer><p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#top">Subir ↑</a></p></footer>
+<div class="scrolltop" id="topbtn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></div>
+
+<!-- =============== SCRIPTS =============== -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:800,once:true});
+VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{max:6,speed:400,glare:true,"max-glare":.25});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* Newsletter */
+document.getElementById('newsletter-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{method:'POST',body:new FormData(e.target)})
+    .then(r=>r.ok?alert('¡Bienvenido a La Fraternidad! Revisa tu correo 📬'):alert('Ups, intenta de nuevo.'))
+    .then(()=>e.target.reset())
+    .catch(()=>alert('Error de conexión. Intenta más tarde.'));
+});
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const content=item.querySelector('.faq-content');
+    item.classList.toggle('open');
+    if(item.classList.contains('open')){
+      content.style.maxHeight=content.scrollHeight+'px';
+    }else{
+      content.style.maxHeight='0';
+    }
+  });
+});
+
+/* Scroll-top */
+const topbtn=document.getElementById('topbtn');
+window.addEventListener('scroll',()=>topbtn.classList.toggle('show',window.scrollY>500));
+topbtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
