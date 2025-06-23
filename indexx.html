@@ -190,6 +190,45 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
   from{opacity:0;transform:translateY(14px)}
   to{opacity:1;transform:translateY(0)}
 }
+/* =========  OPTIMIZACIÓN MOBILE  ========= */
+
+/* 1. Mata cualquier desborde horizontal global */
+html,body{max-width:100%;overflow-x:hidden}
+
+/* 2. Asegura que todas las medias se encogen correctamente */
+img,iframe{max-width:100%;height:auto}
+
+/* 3. Ajustes granulares para ≤ 480 px */
+@media(max-width:480px){
+
+  /* hero más compacto */
+  header{padding:140px 1rem 160px}
+  header h1{font-size:2.2rem}
+  .subtitle{font-size:1.35rem}
+  .slogan{font-size:.85rem}
+
+  /* botones un poco más pequeños */
+  .btn{padding:.8rem 1.5rem;font-size:.95rem}
+
+  /* About en columna */
+  .about-inner{grid-template-columns:1fr}
+  .about img{margin-inline:auto}
+
+  /* Timeline en columna (sin “salirse”) */
+  .timeline::before{left:20px}
+  .tl-item{width:100%;left:0!important;text-align:left;padding-left:54px}
+  .tl-item::before{left:0!important;right:auto}
+
+  /* YT cards 100 % de ancho */
+  .yt-card{width:100%}
+
+  /* Newsletter: logo y texto full-width */
+  .nl-inner{max-width:90%}
+  .nl-logo{width:120px}
+
+  /* Blog cards columna única (ya se fuerza, pero por si acaso) */
+  .blog-grid{grid-template-columns:1fr}
+}
 
 </style>
 </head>
