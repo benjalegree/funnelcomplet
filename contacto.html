@@ -282,7 +282,6 @@
   <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón. · <a href="#top">Subir ↑</a></p>
 </footer>
 
-<!-- 🧩 SCRIPTS --------------------------------------- -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   /* Init animaciones */
@@ -290,20 +289,21 @@
   VanillaTilt.init(document.querySelectorAll("[data-tilt]"),
                    {max:6,speed:400,glare:true,"max-glare":.25});
 
-  /* ---------- Formulario → Make/Integromat ---------- */
-  const form=document.getElementById('contact-form');
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const data=new FormData(form);
+  /* ---------- Formulario → Make/Integromat y redirección ---------- */
+  const form  = document.getElementById('contact-form');
+  const thanksURL = '/gracias.html';          // ✅ URL de destino
 
-    fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{   // ✅ webhook real
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const data = new FormData(form);
+
+    fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
       method:'POST',
       body:data
     })
     .then(res=>{
       if(res.ok){
-        alert('¡Gracias! Mensaje enviado, responderé pronto.');
-        form.reset();
+        window.location.href = thanksURL;     // 🚀 redirige al “gracias”
       }else{
         alert('Ups, algo salió mal. Prueba de nuevo.');
       }
@@ -317,7 +317,8 @@
   });
 
   /* Año dinámico */
-  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
