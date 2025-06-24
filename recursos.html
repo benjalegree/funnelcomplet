@@ -11,62 +11,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
-  <!-- Supabase JS (UMD) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <!-- AOS & VanillaTilt -->
+  <!-- Supabase UMD -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <!-- AOS y VanillaTilt -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
 
   <style>
-    :root {
-      --navy: #001a40;
-      --accent: #00a6e0;
-      --radius: 1.8rem;
-      --shadow: 0 14px 34px rgba(0,0,0,.17);
-      --glow: 0 0 12px rgba(0,166,224,.55);
-      --white: #fff;
-      --dark-bg: #000e20;
-    }
+    :root{--navy:#001a40;--accent:#00a6e0;--radius:1.8rem;--shadow:0 14px 34px rgba(0,0,0,.17);--glow:0 0 12px rgba(0,166,224,.55);--white:#fff;--dark-bg:#000e20}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html,body{max-width:100%;overflow-x:hidden;scroll-behavior:smooth;
-      font-family:'Outfit',sans-serif;color:#0a0f1c;text-align:center}
+    html,body{max-width:100%;overflow-x:hidden;scroll-behavior:smooth;font-family:'Outfit',sans-serif;color:#0a0f1c;text-align:center}
     .container{width:min(1180px,92%);margin-inline:auto}
 
     /* Fondo animado */
-    body::before{
-      content:"";position:fixed;inset:0;z-index:-2;
-      background:linear-gradient(-45deg,#0043a3,var(--navy),#000e20,#0043a3);
-      background-size:400% 400%;animation:bg 25s ease infinite
-    }
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(-45deg,#0043a3,var(--navy),var(--dark-bg),#0043a3);background-size:400% 400%;animation:bg 25s ease infinite}
     @keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
 
     /* Botón */
-    .btn{display:inline-block;padding:.9rem 1.8rem;border-radius:3rem;
-      font-weight:700;background:var(--accent);color:var(--white);
-      text-decoration:none;transition:.3s}
+    .btn{display:inline-block;padding:.9rem 1.8rem;border-radius:3rem;font-weight:700;background:var(--accent);color:var(--white);text-decoration:none;transition:.3s}
     .btn:hover{transform:translateY(-3px);box-shadow:var(--glow)}
 
+    /* Login overlay */
+    #login-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;display:flex;align-items:center;justify-content:center}
+    #login-box{background:var(--white);padding:2rem;border-radius:var(--radius);width:90%;max-width:360px;box-shadow:var(--shadow);text-align:left}
+    #login-box h2{margin-bottom:1rem;font-size:1.4rem;color:#001a40}
+    #login-box input{width:100%;padding:.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:.5rem;font-family:inherit}
+    #login-box .btn{width:100%}
+
     /* Navbar */
-    .header{position:fixed;top:0;left:0;width:100%;
-      backdrop-filter:blur(12px);background:rgba(0,15,40,.6);z-index:1000}
-    .nav{display:flex;justify-content:space-between;align-items:center;
-      padding:16px min(4vw,32px)}
+    .header{position:fixed;top:0;left:0;width:100%;backdrop-filter:blur(12px);background:rgba(0,15,40,.6);z-index:900}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px min(4vw,32px)}
     .logo{color:var(--white);font-size:1.3rem;font-weight:700;text-decoration:none}
     .nav-links a{color:var(--white);margin-left:22px;font-weight:600;transition:.25s}
     .nav-links a:hover{opacity:.75}
     #toggle{display:none}
     .burger{display:none;width:28px;height:22px;cursor:pointer;position:relative}
-    .burger span,.burger::before,.burger::after{content:"";position:absolute;
-      left:0;width:100%;height:3px;background:#fff;transition:.3s}
+    .burger span,.burger::before,.burger::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s}
     .burger span{top:9px}.burger::before{top:0}.burger::after{bottom:0}
     #toggle:checked + .burger span{background:transparent}
     #toggle:checked + .burger::before{transform:rotate(45deg) translate(5px,5px)}
     #toggle:checked + .burger::after{transform:rotate(-45deg) translate(5px,-5px)}
     @media(max-width:780px){
       .burger{display:block}
-      .nav-links{position:fixed;top:0;right:-80vw;width:80vw;height:100vh;
-        background:var(--dark-bg);display:flex;flex-direction:column;
-        align-items:center;padding-top:100px;transition:right .4s}
+      .nav-links{position:fixed;top:0;right:-80vw;width:80vw;height:100vh;background:var(--dark-bg);display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:right .4s}
       #toggle:checked ~ .nav-links{right:0}
       .nav-links a{margin:18px;font-size:1.15rem}
     }
@@ -85,8 +72,7 @@
     @media(min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}}
 
     /* Tarjetas recursos */
-    .resources .card{background:var(--white);border-radius:var(--radius);
-      box-shadow:var(--shadow);overflow:hidden;transition:.3s;text-align:left}
+    .resources .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:.3s;text-align:left}
     .resources .card:hover{transform:translateY(-6px);box-shadow:var(--glow)}
     .resources .card img{width:100%;height:180px;object-fit:cover}
     .resources .card-content{padding:1.5rem}
@@ -96,23 +82,33 @@
     /* Newsletter */
     .newsletter{background:var(--navy);color:var(--white)}
     .newsletter form{display:flex;gap:.7rem;justify-content:center;margin-top:1rem}
-    .newsletter input{flex:1;padding:.8rem;border:1px solid #3c4e7a;
-      border-radius:2rem;background:var(--navy);color:var(--white)}
+    .newsletter input{flex:1;padding:.8rem;border:1px solid #3c4e7a;border-radius:2rem;background:var(--navy);color:var(--white)}
     .newsletter input::placeholder{color:#cfd8ff}
     @media(max-width:580px){.newsletter form{flex-direction:column}}
 
     /* Footer & scrollTop */
-    footer{background:var(--dark-bg);color:#8fb1df;text-align:center;
-      padding:24px 1rem;font-size:.85rem}
-    .scrolltop{position:fixed;right:18px;bottom:-60px;width:46px;height:46px;
-      border-radius:50%;background:var(--accent);color:var(--white);
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.2rem;cursor:pointer;transition:.4s;box-shadow:var(--shadow);
-      z-index:999}
+    footer{background:var(--dark-bg);color:#8fb1df;text-align:center;padding:24px 1rem;font-size:.85rem}
+    .scrolltop{position:fixed;right:18px;bottom:-60px;width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:.4s;box-shadow:var(--shadow);z-index:999}
     .scrolltop.show{bottom:18px}
   </style>
 </head>
 <body>
+
+  <!-- Login Overlay -->
+  <div id="login-overlay">
+    <div id="login-box">
+      <div id="stage-email">
+        <h2>Ingresa tu email</h2>
+        <input type="email" id="login-email" placeholder="tu@correo.com" />
+        <button class="btn" id="login-btn">Enviar código</button>
+      </div>
+      <div id="stage-code" style="display:none">
+        <h2>Ingresa el código</h2>
+        <input type="text" id="verify-code" placeholder="Código de 6 dígitos" />
+        <button class="btn" id="verify-btn">Verificar</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Navbar -->
   <div class="header">
@@ -121,10 +117,7 @@
       <input type="checkbox" id="toggle">
       <label for="toggle" class="burger"><span></span></label>
       <div class="nav-links">
-        <a href="/">Inicio</a>
-        <a href="/servicio.html">Servicios</a>
-        <a href="/BLOG.html">Blog</a>
-        <a href="/contacto.html">Contacto</a>
+        <a href="/">Inicio</a><a href="/servicio.html">Servicios</a><a href="/BLOG.html">Blog</a><a href="/contacto.html">Contacto</a>
       </div>
     </nav>
   </div>
@@ -152,18 +145,16 @@
       <h2>Únete a La Fraternidad</h2>
       <p>Recibe hacks de psicología y funnels cada domingo. ¡Gratis!</p>
       <form id="newsletter-form">
-        <input type="hidden" name="tag" value="recursos">
-        <input type="email" name="email" placeholder="Tu email" required>
+        <input type="hidden" name="tag" value="recursos" />
+        <input type="email" name="email" placeholder="Tu email" required />
         <button class="btn" type="submit">Suscribirme</button>
       </form>
     </div>
   </section>
 
   <!-- Footer & scrollTop -->
-  <footer>
-    <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#recursos">Subir ↑</a></p>
-  </footer>
-  <div class="scrolltop" id="topbtn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></div>
+  <footer><p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#recursos">Subir ↑</a></p></footer>
+  <div class="scrolltop" id="topbtn">↑</div>
 
   <script>
     // 1) Inicializa Supabase
@@ -171,74 +162,118 @@
     const SUPA_KEY = 'TU_ANON_PUBLIC_KEY'; // reemplaza con tu anon public key
     const supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
 
-    // 2) Función para guardar suscriptor
-    async function saveSubscriber(email) {
-      const { error } = await supabase
-        .from('DB-SUBS')
-        .insert([{ email, code: '' }]);
-      if (error) console.error('Supabase error:', error);
-      return !error;
+    // 2) Lógica de login
+    const overlay = document.getElementById('login-overlay');
+    const stageEmail = document.getElementById('stage-email');
+    const stageCode  = document.getElementById('stage-code');
+
+    // Si ya hay email en sessionStorage, ocultamos overlay
+    function checkLogin() {
+      if (sessionStorage.getItem('login_email')) {
+        overlay.style.display = 'none';
+        initPage();
+      }
     }
 
-    // 3) Recursos por defecto
+    // Enviar código
+    document.getElementById('login-btn').onclick = () => {
+      const email = document.getElementById('login-email').value.trim();
+      if (!/^\S+@\S+\.\S+$/.test(email)) return alert('Email inválido');
+      const code = Math.floor(100000 + Math.random()*900000).toString();
+      sessionStorage.setItem('login_email', email);
+      sessionStorage.setItem('login_code', code);
+      // Disparamos webhook para enviar el código
+      const f = new FormData();
+      f.append('email', email);
+      f.append('code', code);
+      f.append('tag', 'verify_email');
+      fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{method:'POST',body:f});
+      stageEmail.style.display = 'none';
+      stageCode.style.display  = 'block';
+      alert('Código enviado. Revisa tu correo.');
+    };
+
+    // Verificar código
+    document.getElementById('verify-btn').onclick = async () => {
+      const entered = document.getElementById('verify-code').value.trim();
+      const actual  = sessionStorage.getItem('login_code');
+      if (entered !== actual) return alert('Código incorrecto');
+      // Guardamos el login en Supabase también
+      const email = sessionStorage.getItem('login_email');
+      const { error } = await supabase.from('DB-SUBS').insert([{ email, code: entered }]);
+      if (error) console.error('Supabase error:', error);
+      overlay.style.display = 'none';
+      initPage();
+    };
+
+    // 3) Función de inicialización tras login
+    function initPage() {
+      // AOS
+      if (window.AOS) AOS.init({ duration:800, once:true });
+      // Tilt
+      if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{max:6,speed:400,glare:true,'max-glare':.25});
+      // Año en footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+      // Render recursos
+      renderResources();
+      // Newsletter
+      setupNewsletter();
+      // Scroll top
+      setupScroll();
+    }
+
+    // 4) Recursos y render
     const defaultResources = [
       { title:'Ebook: Plantillas de Funnel', desc:'Plantillas TOFU/MOFU/BOFU listas para usar.', img:'IMG_EBOOK_COVER', link:'/squeeze-page.html' },
-      { title:'Pack de Templates',      desc:'Landing, emails y pop-ups personalizables.',         img:'IMG_TEMPLATE_PACK', link:'/templates.html' },
-      { title:'Webinar Grabado',        desc:'Cómo diseñar funnels que convierten.',               img:'IMG_WEBINAR', link:'/webinar.html' }
+      { title:'Pack de Templates', desc:'Landing, emails y pop-ups personalizables.', img:'IMG_TEMPLATE_PACK', link:'/templates.html' },
+      { title:'Webinar Grabado', desc:'Cómo diseñar funnels que convierten.', img:'IMG_WEBINAR', link:'/webinar.html' }
     ];
-
     function loadResources() {
       const extras = JSON.parse(localStorage.getItem('resources')||'[]');
       return [...defaultResources, ...extras];
     }
-
     function renderResources() {
-      const container = document.getElementById('resources-container');
-      container.innerHTML = '';
-      loadResources().forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'card'; card.setAttribute('data-tilt','');
-        card.innerHTML = `
+      const c = document.getElementById('resources-container');
+      c.innerHTML = '';
+      loadResources().forEach(r=>{
+        const d = document.createElement('div');
+        d.className = 'card'; d.setAttribute('data-tilt','');
+        d.innerHTML = `
           <img src="${r.img}" alt="${r.title}">
           <div class="card-content">
             <h3>${r.title}</h3>
             <p>${r.desc}</p>
             <a href="${r.link}" class="btn">Acceder</a>
           </div>`;
-        container.appendChild(card);
+        c.appendChild(d);
       });
-      if (window.VanillaTilt) {
-        VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{max:6,speed:400,glare:true,'max-glare':.25});
-      }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.AOS) AOS.init({ duration:800, once:true });
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Newsletter: Supabase + Webhook
-      document.getElementById('newsletter-form').addEventListener('submit', async e => {
+    // 5) Newsletter
+    function setupNewsletter() {
+      document.getElementById('newsletter-form').onsubmit = async e => {
         e.preventDefault();
         const email = e.target.email.value.trim();
-        if (!email) return alert('Ingresa un email válido');
-        if (!await saveSubscriber(email)) return alert('Error suscribiendo');
-        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
-          method:'POST',
-          body:new FormData(e.target)
-        })
-        .then(r => r.ok ? alert('¡Correo enviado!') : alert('Error enviando correo'))
-        .catch(_ => alert('Error de conexión'));
+        if (!email) return alert('Email inválido');
+        await supabase.from('DB-SUBS').insert([{ email, code: '' }]);
+        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{method:'POST',body:new FormData(e.target)})
+          .then(r=>r.ok?alert('¡Correo enviado!'):alert('Error enviando correo'))
+          .catch(_=>alert('Error de conexión'));
         e.target.reset();
-      });
+      };
+    }
 
-      // Scroll-top
-      const topBtn = document.getElementById('topbtn');
-      window.addEventListener('scroll', () => topBtn.classList.toggle('show', window.scrollY > 400));
-      topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+    // 6) Scroll top
+    function setupScroll() {
+      const btn = document.getElementById('topbtn');
+      window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 400));
+      btn.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
+    }
 
-      renderResources();
-    });
+    // Al cargar
+    document.addEventListener('DOMContentLoaded', checkLogin);
   </script>
 </body>
 </html>
+
 
