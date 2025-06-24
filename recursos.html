@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
-  <!-- Supabase UMD CORRECTO -->
+  <!-- Supabase UMD -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
   <!-- AOS & VanillaTilt -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
@@ -144,7 +144,7 @@
       <h2>Únete a La Fraternidad</h2>
       <p>Recibe hacks de psicología y funnels cada domingo. ¡Gratis!</p>
       <form id="newsletter-form">
-        <input type="hidden" name="tag" value="recursos" />
+        <input type="hidden" name="origen" value="recursos" />
         <input type="email" name="email" placeholder="Tu email" required />
         <button class="btn" type="submit">Suscribirme</button>
       </form>
@@ -156,127 +156,139 @@
   <div class="scrolltop" id="topbtn">↑</div>
 
   <script>
-    // 1) Inicializa Supabase
-    const SUPA_URL = 'https://ysjbznqgcxhvrkraxmsh.supabase.co';
-    const SUPA_KEY = 'TU_ANON_PUBLIC_KEY'; // pon aquí tu anon key
-    const supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inicializa Supabase
+      const SUPA_URL = 'https://ysjbznqgcxhvrkraxmsh.supabase.co';
+      const SUPA_KEY = 'TU_ANON_PUBLIC_KEY'; // tu anon key
+      const supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
 
-    const overlay    = document.getElementById('login-overlay');
-    const stageEmail = document.getElementById('stage-email');
-    const stageCode  = document.getElementById('stage-code');
+      const overlay    = document.getElementById('login-overlay');
+      const stageEmail = document.getElementById('stage-email');
+      const stageCode  = document.getElementById('stage-code');
 
-    // TTL de re-login (24 h)
-    const LOGIN_TTL = 24 * 60 * 60 * 1000;
+      // TTL de re-login (24 h)
+      const LOGIN_TTL = 24 * 60 * 60 * 1000;
 
-    // Comprueba login
-    function checkLogin() {
-      const loginTime = parseInt(sessionStorage.getItem('login_time')||'0',10);
-      if (sessionStorage.getItem('login_email') && Date.now() - loginTime < LOGIN_TTL) {
-        overlay.style.display = 'none';
-        initPage();
-      } else {
-        sessionStorage.removeItem('login_email');
-        sessionStorage.removeItem('login_time');
+      // Comprueba login
+      function checkLogin() {
+        const loginTime = parseInt(sessionStorage.getItem('login_time')||'0',10);
+        if (sessionStorage.getItem('login_email') && Date.now() - loginTime < LOGIN_TTL) {
+          overlay.style.display = 'none';
+          initPage();
+        } else {
+          sessionStorage.removeItem('login_email');
+          sessionStorage.removeItem('login_time');
+        }
       }
-    }
 
-    // Enviar código
-    document.getElementById('login-btn').onclick = () => {
-      const email = document.getElementById('login-email').value.trim();
-      if (!/^\S+@\S+\.\S+$/.test(email)) return alert('Email inválido');
-      const code = Math.floor(100000 + Math.random()*900000).toString();
-      sessionStorage.setItem('login_email_temp', email);
-      sessionStorage.setItem('login_code', code);
+      // Enviar código
+      document.getElementById('login-btn').addEventListener('click', () => {
+        const email = document.getElementById('login-email').value.trim();
+        if (!/^\S+@\S+\.\S+$/.test(email)) return alert('Email inválido');
+        const code = Math.floor(100000 + Math.random()*900000).toString();
+        sessionStorage.setItem('login_email_temp', email);
+        sessionStorage.setItem('login_code', code);
 
-      // Webhook con origin=verify-email
-      const f = new FormData();
-      f.append('email', email);
-      f.append('code', code);
-      f.append('origen', 'verify-email');
-      fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', { method:'POST', body:f })
+        // Webhook con origin=verify-email
+        const f = new FormData();
+        f.append('email', email);
+        f.append('code', code);
+        f.append('origen', 'verify-email');
+        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
+          method:'POST', body:f
+        })
         .then(r => r.ok ? alert('Código enviado. Revisa tu correo.') : alert('Error enviando código'))
         .catch(()=>alert('Error de conexión'));
 
-      stageEmail.style.display = 'none';
-      stageCode.style.display  = 'block';
-    };
-
-    // Verificar código
-    document.getElementById('verify-btn').onclick = async () => {
-      const entered = document.getElementById('verify-code').value.trim();
-      const actual  = sessionStorage.getItem('login_code');
-      if (entered !== actual) return alert('Código incorrecto');
-
-      const email = sessionStorage.getItem('login_email_temp');
-      sessionStorage.setItem('login_email', email);
-      sessionStorage.setItem('login_time', Date.now().toString());
-      sessionStorage.removeItem('login_email_temp');
-
-      // Guarda en Supabase (opcional)
-      await supabase.from('DB-SUBS').insert([{ email, code: entered }]).catch(console.error);
-
-      overlay.style.display = 'none';
-      initPage();
-      document.getElementById('recursos').scrollIntoView({ behavior:'smooth' });
-    };
-
-    // Inicialización tras login
-    function initPage() {
-      if (window.AOS) AOS.init({ duration:800, once:true });
-      if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{max:6,speed:400,glare:true,'max-glare':.25});
-      document.getElementById('year').textContent = new Date().getFullYear();
-      renderResources();
-      setupNewsletter();
-      setupScroll();
-    }
-
-    // Recursos
-    const defaultResources = [
-      { title:'Ebook Funnel', desc:'Plantillas TOFU/MOFU/BOFU.', img:'IMG_EBOOK_COVER', link:'/squeeze-page.html' },
-      { title:'Pack Templates', desc:'Landing, emails y pop-ups.', img:'IMG_TEMPLATE_PACK', link:'/templates.html' },
-      { title:'Webinar', desc:'Cómo diseñar funnels.', img:'IMG_WEBINAR', link:'/webinar.html' }
-    ];
-    function loadResources() {
-      return [...defaultResources, ...JSON.parse(localStorage.getItem('resources')||'[]')];
-    }
-    function renderResources() {
-      const c = document.getElementById('resources-container');
-      c.innerHTML = '';
-      loadResources().forEach(r=>{
-        const d = document.createElement('div');
-        d.className='card'; d.setAttribute('data-tilt','');
-        d.innerHTML = `
-          <img src="${r.img}" alt="${r.title}">
-          <div class="card-content"><h3>${r.title}</h3><p>${r.desc}</p><a href="${r.link}" class="btn">Acceder</a></div>`;
-        c.appendChild(d);
+        stageEmail.style.display = 'none';
+        stageCode.style.display  = 'block';
       });
-    }
 
-    // Newsletter
-    function setupNewsletter() {
-      document.getElementById('newsletter-form').onsubmit = async e => {
-        e.preventDefault();
-        const email = e.target.email.value.trim();
-        if (!email) return alert('Email inválido');
-        await supabase.from('DB-SUBS').insert([{ email, code: '' }]);
-        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{method:'POST',body:new FormData(e.target)})
+      // Verificar código
+      document.getElementById('verify-btn').addEventListener('click', async () => {
+        const entered = document.getElementById('verify-code').value.trim();
+        const actual  = sessionStorage.getItem('login_code');
+        if (entered !== actual) return alert('Código incorrecto');
+
+        const email = sessionStorage.getItem('login_email_temp');
+        sessionStorage.setItem('login_email', email);
+        sessionStorage.setItem('login_time', Date.now().toString());
+        sessionStorage.removeItem('login_email_temp');
+
+        // Guarda en Supabase
+        await supabase.from('DB-SUBS').insert([{ email, code: entered }]).catch(console.error);
+
+        overlay.style.display = 'none';
+        initPage();
+        document.getElementById('recursos').scrollIntoView({ behavior:'smooth' });
+      });
+
+      // Inicializa todo tras login
+      function initPage() {
+        if (window.AOS) AOS.init({ duration:800, once:true });
+        if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { max:6, speed:400, glare:true, 'max-glare':.25 });
+        document.getElementById('year').textContent = new Date().getFullYear();
+        renderResources();
+        setupNewsletter();
+        setupScroll();
+      }
+
+      // Recursos
+      const defaultResources = [
+        { title:'Ebook: Plantillas de Funnel', desc:'Plantillas TOFU/MOFU/BOFU listas para usar.', img:'IMG_EBOOK_COVER', link:'/squeeze-page.html' },
+        { title:'Pack de Templates', desc:'Landing, emails y pop-ups personalizables.', img:'IMG_TEMPLATE_PACK', link:'/templates.html' },
+        { title:'Webinar Grabado', desc:'Cómo diseñar funnels que convierten.', img:'IMG_WEBINAR', link:'/webinar.html' }
+      ];
+      function loadResources() {
+        return [...defaultResources, ...JSON.parse(localStorage.getItem('resources')||'[]')];
+      }
+      function renderResources() {
+        const c = document.getElementById('resources-container');
+        c.innerHTML = '';
+        loadResources().forEach(r => {
+          const d = document.createElement('div');
+          d.className='card'; d.setAttribute('data-tilt','');
+          d.innerHTML = `
+            <img src="${r.img}" alt="${r.title}">
+            <div class="card-content">
+              <h3>${r.title}</h3>
+              <p>${r.desc}</p>
+              <a href="${r.link}" class="btn">Acceder</a>
+            </div>`;
+          c.appendChild(d);
+        });
+      }
+
+      // Newsletter
+      function setupNewsletter() {
+        document.getElementById('newsletter-form').onsubmit = async e => {
+          e.preventDefault();
+          const email = e.target.email.value.trim();
+          if (!email) return alert('Email inválido');
+          await supabase.from('DB-SUBS').insert([{ email, code: '' }]);
+          fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
+            method:'POST', body:new FormData(e.target)
+          })
           .then(r=>r.ok?alert('¡Correo enviado!'):alert('Error enviando correo'))
           .catch(()=>alert('Error de conexión'));
-        e.target.reset();
-      };
-    }
+          e.target.reset();
+        };
+      }
 
-    // Scroll-top
-    function setupScroll() {
-      const btn = document.getElementById('topbtn');
-      window.addEventListener('scroll',()=>btn.classList.toggle('show',window.scrollY>400));
-      btn.onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
-    }
+      // Scroll-top
+      function setupScroll() {
+        const btn = document.getElementById('topbtn');
+        window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 400));
+        btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+      }
 
-    document.addEventListener('DOMContentLoaded', checkLogin);
+      // Comprueba login al inicio
+      checkLogin();
+    });
   </script>
 </body>
 </html>
+
 
 
 
