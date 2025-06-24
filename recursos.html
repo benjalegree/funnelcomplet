@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Recursos Gratuitos · PsicoFunnel</title>
-  <meta name="description" content="Accede a plantillas, ebooks, webinar y más recursos gratuitos para tus embudos.">
+  <meta name="description" content="Accede a plantillas, ebooks y webinars gratuitos para optimizar tus funnels.">
 
   <!-- Fuentes y librerías -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <style>
     :root {
@@ -24,14 +27,14 @@
       --white: #fff;
       --dark-bg: #000e20;
     }
-    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-    html, body { max-width:100%; overflow-x:hidden; scroll-behavior:smooth; font-family:'Outfit',sans-serif; color:#0a0f1c; text-align:center; }
-    .container { width:min(1180px,92%); margin-inline:auto; }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    html, body { max-width:100%; overflow-x:hidden; scroll-behavior:smooth; font-family:'Outfit',sans-serif; color:#0a0f1c; text-align:center }
+    .container { width:min(1180px,92%); margin-inline:auto }
 
     /* Fondo animado */
     body::before {
       content:""; position:fixed; inset:0; z-index:-2;
-      background: linear-gradient(-45deg,#0043a3,var(--navy),#000e20,#0043a3);
+      background:linear-gradient(-45deg,#0043a3,var(--navy),#000e20,#0043a3);
       background-size:400% 400%; animation:bg 25s ease infinite;
     }
     @keyframes bg {0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
@@ -55,8 +58,7 @@
     #toggle:checked + .burger::after{transform:rotate(-45deg) translate(5px,-5px)}
     @media(max-width:780px){
       .burger{display:block}
-      .nav-links{position:fixed;top:0;right:-80vw;width:80vw;height:100vh;background:var(--dark-bg);
-                 display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:right .4s}
+      .nav-links{position:fixed;top:0;right:-80vw;width:80vw;height:100vh;background:var(--dark-bg);display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:right .4s}
       #toggle:checked ~ .nav-links{right:0}
       .nav-links a{margin:18px;font-size:1.15rem}
     }
@@ -97,7 +99,7 @@
     #admin-panel h3{margin-bottom:1rem}
     #admin-panel input,#admin-panel textarea{width:100%;margin-bottom:.8rem;padding:.6rem;border:1px solid #ccc;border-radius:.5rem;font-family:inherit}
     #admin-panel label{font-weight:600;text-align:left;display:block;margin-bottom:.3rem}
-    #admin-panel .btn{width:100%;}
+    #admin-panel .btn{width:100%}
 
     /* Overlay */
     #overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none}
@@ -129,7 +131,7 @@
     </div>
   </header>
 
-  <!-- Recursos (dinámico) -->
+  <!-- Recursos -->
   <section id="recursos" class="resources">
     <div class="container" data-aos="fade-up">
       <h2>Elige tu recurso</h2>
@@ -176,6 +178,21 @@
 
   <!-- Scripts -->
   <script>
+    // 1) Inicializa Supabase
+    const SUPA_URL = 'https://ysjbznqgcxhvrkraxmsh.supabase.co';
+    const SUPA_KEY = 'eyJTU_ANON_KEY_AQUÍ';  // reemplaza con tu anon public key
+    const supabase = supabasejs.createClient(SUPA_URL, SUPA_KEY);
+
+    // 2) Función para guardar suscriptor + webhook
+    async function saveSubscriber(email) {
+      // Supabase insert
+      const { error } = await supabase
+        .from('DB-SUBS')
+        .insert([{ email, code: '' }]);
+      if (error) console.error('Supabase error:', error);
+      return !error;
+    }
+
     // Recursos por defecto
     const defaultResources = [
       { title:'Ebook: Plantillas de Funnel', desc:'Plantillas TOFU/MOFU/BOFU listas para usar.', img:'IMG_EBOOK_COVER', link:'/squeeze-page.html' },
@@ -195,8 +212,7 @@
       container.innerHTML = '';
       loadResources().forEach(r => {
         const card = document.createElement('div');
-        card.className = 'card';
-        card.setAttribute('data-tilt','');
+        card.className = 'card'; card.setAttribute('data-tilt','');
         card.innerHTML = `
           <img src="${r.img}" alt="${r.title}">
           <div class="card-content">
@@ -210,7 +226,7 @@
     }
 
     // Admin panel lógica
-    const ADMIN_PW = 'MiPassword123';  // Cambia aquí tu contraseña
+    const ADMIN_PW = 'MiPassword123';
     const adminBtn = document.getElementById('admin-btn');
     const overlay  = document.getElementById('overlay');
     const panel    = document.getElementById('admin-panel');
@@ -224,7 +240,6 @@
     overlay.addEventListener('click',()=>{
       overlay.style.display='none'; panel.style.display='none';
     });
-
     document.getElementById('add-resource').addEventListener('click',()=>{
       const title = document.getElementById('res-title').value.trim();
       const desc  = document.getElementById('res-desc').value.trim();
@@ -242,26 +257,38 @@
       }
     });
 
-    // Inicialización
     document.addEventListener('DOMContentLoaded',()=>{
       AOS.init({duration:800,once:true});
       document.getElementById('year').textContent=new Date().getFullYear();
 
-      // Newsletter
-      document.getElementById('newsletter-form').addEventListener('submit',e=>{
+      // Newsletter: Supabase + Webhook
+      document.getElementById('newsletter-form').addEventListener('submit', async e=>{
         e.preventDefault();
-        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
-          method:'POST', body:new FormData(e.target)
+        const email = e.target.email.value.trim();
+        if (!email) return alert('Ingresa un email válido');
+
+        // 1) Guardar en Supabase
+        const ok = await saveSubscriber(email);
+        if (!ok) return alert('Error al suscribir. Intenta más tarde.');
+
+        // 2) Disparar webhook para enviar email
+        fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
+          method: 'POST',
+          body: new FormData(e.target)
         })
-        .then(r=>r.ok?alert('¡Te enviamos los recursos al correo!'):alert('Error, intenta más tarde.'))
-        .then(()=>e.target.reset())
-        .catch(()=>alert('Error de conexión.'));
+        .then(r => r.ok
+          ? alert('¡Te enviamos los recursos al correo!')
+          : alert('Error enviando el correo.')
+        )
+        .catch(()=> alert('Error de conexión.'));
+
+        e.target.reset();
       });
 
       // Scroll-top
       const topBtn = document.getElementById('topbtn');
-      window.addEventListener('scroll',()=>topBtn.classList.toggle('show',window.scrollY>400));
-      topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+      window.addEventListener('scroll',()=> topBtn.classList.toggle('show',window.scrollY>400));
+      topBtn.addEventListener('click',()=> window.scrollTo({top:0,behavior:'smooth'}));
 
       // Render final
       renderResources();
@@ -269,3 +296,4 @@
   </script>
 </body>
 </html>
+
