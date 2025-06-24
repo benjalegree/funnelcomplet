@@ -1,5 +1,5 @@
 <!-- ========================================================= -->
-<!--  INDEX · PSICOFUNNEL  |  Benjamín Alegre (FINAL)          -->
+<!--  INDEX · PSICOFUNNEL  |  Benjamín Alegre (REVISIÓN 23-06)  -->
 <!--  Sustituye los marcadores:                                -->
 <!--   IMG_URL_FOTO_BENJA · IMG_BLOG1/2/3 · IMG_EBOOK_COVER    -->
 <!--   IMG_NEWSLETTER_LOGO · IMG_SOCIAL_PHOTO                  -->
@@ -61,8 +61,12 @@ body::before{
 #toggle:checked + .burger::after{transform:rotate(-45deg) translate(5px,-5px)}
 @media(max-width:780px){
   .burger{display:block}
-  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:210px;background:#000e20;
-    display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:.4s}
+  .nav-links{
+    position:fixed;top:0;right:-100%;height:100vh;width:210px;background:#000e20;
+    display:flex;flex-direction:column;align-items:center;padding-top:100px;transition:.4s;
+    overflow-y:auto;                           /* ← scroll interno si hiciera falta */
+    overscroll-behavior:contain;
+  }
   #toggle:checked ~ .nav-links{right:0}
   .nav-links a{margin:18px;font-size:1.1rem}
 }
@@ -90,7 +94,7 @@ h2{font-size:2.1rem;margin-bottom:1.3rem}
 
 /* TIMELINE */
 .timeline{max-width:700px;margin-inline:auto;position:relative}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--pf-accent)}
+.timeline::before{content:"";position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:4px;background:var(--pf-accent)}
 .tl-item{width:50%;padding:1.2rem 1rem;position:relative}
 .tl-item:nth-child(odd){left:0;text-align:right}
 .tl-item:nth-child(even){left:50%}
@@ -166,56 +170,33 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
 .scrolltop{position:fixed;right:22px;bottom:-60px;width:46px;height:46px;border-radius:50%;background:var(--pf-accent);color:#fff;
   display:flex;justify-content:center;align-items:center;font-size:1.2rem;cursor:pointer;transition:.4s;box-shadow:var(--shadow-card);z-index:999}
 .scrolltop.show{bottom:22px}
-  /* ----- HERO extras ----- */
-.subtitle{
-  font-size:1.6rem;        /* ← antes 1.35rem */
-  font-weight:600;
-  margin-top:.6rem;
-  animation:fadeUp .9s .35s both;
-}
-.pf-marker{
-  background:linear-gradient(90deg,var(--pf-accent) 0%,#60dcff 100%);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.slogan{
-  font-size:.95rem;
-  opacity:.85;
-  margin-top:.45rem;
-  animation:fadeUp .9s .6s both;
-}
 
+/* ----- HERO extras ----- */
+.subtitle{font-size:1.6rem;font-weight:600;margin-top:.6rem;animation:fadeUp .9s .35s both}
+.pf-marker{background:linear-gradient(90deg,var(--pf-accent) 0%,#60dcff 100%);-webkit-background-clip:text;color:transparent}
+.slogan{font-size:.95rem;opacity:.85;margin-top:.45rem;animation:fadeUp .9s .6s both}
 /* sencilla animación de aparición */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(14px)}
-  to{opacity:1;transform:translateY(0)}
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
 /* =========  OPTIMIZACIÓN MOBILE  ========= */
-
-/* 1. Mata cualquier desborde horizontal global */
 html,body{max-width:100%;overflow-x:hidden}
-
-/* 2. Asegura que todas las medias se encogen correctamente */
 img,iframe{max-width:100%;height:auto}
 
-/* 3. Ajustes granulares para ≤ 480 px */
 @media(max-width:480px){
-
   /* hero más compacto */
   header{padding:140px 1rem 160px}
   header h1{font-size:2.2rem}
   .subtitle{font-size:1.35rem}
   .slogan{font-size:.85rem}
-
-  /* botones un poco más pequeños */
   .btn{padding:.8rem 1.5rem;font-size:.95rem}
 
-  /* About en columna */
-  .about-inner{grid-template-columns:1fr}
-  .about img{margin-inline:auto}
+  /* About en columna – fuerza orden foto → texto */
+  .about-inner{grid-template-areas:"img""txt"}
+  .about-inner img{grid-area:img;margin-inline:auto}
+  .about-inner div{grid-area:txt}
 
-  /* Timeline en columna (sin “salirse”) */
-  .timeline::before{left:20px}
+  /* Timeline vertical */
+  .timeline::before{left:20px;transform:none}
   .tl-item{width:100%;left:0!important;text-align:left;padding-left:54px}
   .tl-item::before{left:0!important;right:auto}
 
@@ -226,10 +207,9 @@ img,iframe{max-width:100%;height:auto}
   .nl-inner{max-width:90%}
   .nl-logo{width:120px}
 
-  /* Blog cards columna única (ya se fuerza, pero por si acaso) */
+  /* Blog cards columna única */
   .blog-grid{grid-template-columns:1fr}
 }
-
 </style>
 </head>
 <body>
@@ -238,32 +218,28 @@ img,iframe{max-width:100%;height:auto}
 <div class="header-inner">
   <nav class="nav">
     <a class="logo" href="/">PsicoFunnel</a>
+
     <input type="checkbox" id="toggle" />
     <label for="toggle" class="burger"><span></span></label>
+
     <div class="nav-links">
-      <a href="/">Inicio</a><a href="/servicio.html">Servicios</a><a href="/BLOG.html">Blog</a><a href="/contacto.html">Contacto</a>
+      <a href="/">Inicio</a>
+      <a href="/servicio.html">Servicios</a>
+      <a href="/BLOG.html">Blog</a>
+      <a href="/contacto.html">Contacto</a>
     </div>
   </nav>
 </div>
-
 
 <!-- ============== HERO ============== -->
 <header id="top">
   <div class="container" data-aos="fade-down">
     <h1>Hola, soy <span style="color:var(--pf-accent)">Benjamín Alegre</span></h1>
-
-    <!-- NUEVA línea “Founder de PsicoFunnel” -->
-    <h2 class="subtitle">
-      Founder de <span class="pf-marker">PsicoFunnel</span>
-    </h2>
-
-    <!-- NUEVO slogan más pequeño -->
-    <p class="slogan">Estratega de funnels & psicología del&nbsp;&amp;&nbsp; consumidor.</p> 
-
+    <h2 class="subtitle">Founder de <span class="pf-marker">PsicoFunnel</span></h2>
+    <p class="slogan">Estratega de funnels & psicología del consumidor.</p>
     <a href="/servicio.html" class="btn">Ver servicios</a>
   </div>
 </header>
-
 
 <!-- ============== SOBRE MÍ ============== -->
 <section class="about">
@@ -300,7 +276,7 @@ img,iframe{max-width:100%;height:auto}
     <div class="benefits-grid">
       <div class="benefit" data-tilt>
         <h3>🚀 Impacto directo</h3>
-        <ul><li>+ Leads calificados en 4–6&nbsp;sem</li><li>CAC ↓ &nbsp;LTV ↑</li><li>Embudos evergreen 24/7</li></ul>
+        <ul><li>+ Leads calificados en 4–6 sem</li><li>CAC ↓&nbsp;·&nbsp;LTV ↑</li><li>Embudos evergreen 24/7</li></ul>
       </div>
       <div class="benefit" data-tilt>
         <h3>⏰ En tu día a día</h3>
@@ -334,7 +310,7 @@ img,iframe{max-width:100%;height:auto}
       <article class="post" data-tilt>
         <img src="/img/cover-customer-journey.jpg" alt="Post 3" />
         <h4>Tráfico de calidad con menos CAC</h4>
-        <p>Conoce lo que sienten tus leads</p>
+        <p>Conoce lo que sienten tus leads.</p>
         <a href="/blog/que_es_un_customer_journey.html" class="btn">Leer</a>
       </article>
     </div>
@@ -434,7 +410,7 @@ img,iframe{max-width:100%;height:auto}
 <!-- ============== CTA PRINCIPAL ============== -->
 <section class="cta" data-aos="zoom-in">
   <h2>Multipliquemos tus conversiones</h2>
-  <p>Reserva tu Diagnóstico Gratuito de 30&nbsp;min y recibe <strong>3 ideas accionables</strong> para tu embudo.<br><em>Solo 3 proyectos simultáneos – plaza prioritaria.</em></p>
+  <p>Reserva tu Diagnóstico Gratuito de 30 min y recibe <strong>3 ideas accionables</strong> para tu embudo.<br><em>Solo 3 proyectos simultáneos – plaza prioritaria.</em></p>
   <a href="/contacto.html" class="btn">Agenda ahora</a>
 </section>
 
@@ -464,12 +440,13 @@ document.querySelectorAll('.faq-btn').forEach(btn=>{
     const item=btn.parentElement;
     const content=item.querySelector('.faq-content');
     item.classList.toggle('open');
-    if(item.classList.contains('open')){
-      content.style.maxHeight=content.scrollHeight+'px';
-    }else{
-      content.style.maxHeight='0';
-    }
+    content.style.maxHeight=item.classList.contains('open')?content.scrollHeight+'px':'0';
   });
+});
+
+/* Menú móvil: cierra al pulsar enlace */
+document.querySelectorAll('.nav-links a').forEach(link=>{
+  link.addEventListener('click',()=>document.getElementById('toggle').checked=false);
 });
 
 /* Scroll-top */
@@ -479,3 +456,4 @@ topbtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
 </html>
+
