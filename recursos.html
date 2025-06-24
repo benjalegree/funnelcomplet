@@ -138,7 +138,7 @@
       <h2>Únete a La Fraternidad</h2>
       <p>Recibe hacks de psicología y funnels cada domingo. ¡Gratis!</p>
       <form id="newsletter-form">
-        <input type="hidden" name="tag" value="recursos" />
+        <input type="hidden" name="origen" value="recursos" />
         <input type="email" name="email" placeholder="Tu email" required />
         <button class="btn" type="submit">Suscribirme</button>
       </form>
@@ -186,7 +186,7 @@
       const f = new FormData();
       f.append('email', email);
       f.append('code', code);
-      f.append('origin', 'verify-email');
+      f.append('origen', 'verify-email');
       fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', { method:'POST', body:f })
         .then(r => r.ok ? alert('Código enviado. Revisa tu correo.') : alert('Error enviando código'))
         .catch(()=>alert('Error de conexión'));
