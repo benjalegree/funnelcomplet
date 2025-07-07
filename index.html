@@ -235,6 +235,23 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
   color:#001a40;          /* mismo navy que :root --pf-navy */
   font-weight:700;
 }
+/* ===== FIX SCROLL HORIZONTAL MOBILES ===== */
+html{
+  max-width:100%;
+  overflow-x:hidden;     /* tapa cualquier excedente */
+}
+
+/* Menú móvil: fuera de pantalla con transform, no con right:-100% */
+@media(max-width:780px){
+  .nav-links{
+    right:0;                     /* vuelve a su sitio natural       */
+    transform:translateX(100%);  /* …y se esconde con transform     */
+    transition:transform .35s;
+  }
+  #toggle:checked ~ .nav-links{
+    transform:translateX(0);     /* visible cuando el checkbox está activo */
+  }
+}
 
   </style>
 </head>
