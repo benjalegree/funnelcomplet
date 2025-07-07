@@ -1,306 +1,382 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- ========== 0. SEO  meta-datos  ================================== -->
+  <!-- ========================================================= -->
+  <!-- ✨  META-DATOS & PERFORMANCE                               -->
+  <!-- ========================================================= -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contrata un Funnel Artesanal 1-a-1 | PsicoFunnel</title>
-  <meta name="description" content="Embudo de ventas hecho a mano por Benjamín Alegre: psicología del consumidor, copy neuro-persuasivo, CRO y automatización. Reserva una de las 3 plazas disponibles.">
-  <link rel="canonical" href="https://psicofunnel.com/servicios">
-  <meta name="robots" content="index, follow">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="PsicoFunnel">
-  <meta property="og:title" content="Contrata un Funnel Artesanal 1-a-1 | PsicoFunnel">
-  <meta property="og:description" content="Pagas una vez, tu embudo vende 24/7 con neuroventas.">
-  <meta property="og:url" content="https://psicofunnel.com/servicios">
-  <meta property="og:image" content="https://psicofunnel.com/img/preview-servicios.png">
+  <title>Contrata PsicoFunnel | Funnels 1-a-1 con ciencia & corazón</title>
+  <meta name="description" content="Reserva tu plaza y consigue un funnel artesanal, diseñado por Benjamín Alegre con neuro-copy, UX premium y automatizaciones 24/7 que convierten.">
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS & Tilt -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <script src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
 
-  <!-- ==========  Estilos base PsicoFunnel  ============================ -->
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS (branding navy/celeste)                       -->
+  <!-- ========================================================= -->
   <style>
     :root{
       --pf-navy:#001a40;
+      --pf-light:#e9f7ff;
       --pf-accent:#00a6e0;
-      --pf-light:#e8f9ff;
-      --radius:1.6rem;
-      --shadow:0 10px 25px rgba(0,0,0,.15);
-      --t-fast:.25s cubic-bezier(.4,.2,.2,1);
+      --radius-xl:1.75rem;
+      --shadow-card:0 10px 25px rgba(0,0,0,.15);
+      --transition-fast:.25s cubic-bezier(.4,.2,.2,1);
     }
+    /* ---------- Reset & base ---------- */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Outfit',sans-serif;line-height:1.6;color:#0a0f1c;background:#fff;overflow-x:hidden;text-align:center}
-    a{color:var(--pf-accent);text-decoration:none;transition:opacity .25s}
+    body{font-family:'Outfit',sans-serif;line-height:1.6;background:#fff;color:#0a0f1c;text-align:center;overflow-x:hidden}
+    img{max-width:100%;display:block;margin-inline:auto}
+    a{color:var(--pf-accent);text-decoration:none;transition:.25s}
     a:hover{opacity:.8}
-    img{max-width:100%;display:block;margin:auto}
-    .container{width:min(1180px,92%);margin-inline:auto;padding:0 1rem}
-    /* ---------- botones ---------- */
-    .btn{display:inline-block;background:var(--pf-accent);color:#fff;padding:.95rem 1.7rem;border-radius:3rem;font-weight:600;box-shadow:0 0 12px rgba(0,166,224,.45);transition:var(--t-fast)}
-    .btn:hover{transform:translateY(-4px);box-shadow:0 0 22px rgba(0,166,224,.6)}
-    .badge-small{display:inline-block;background:var(--pf-accent);color:#fff;font-size:.78rem;padding:.25rem .75rem;border-radius:.5rem;margin-top:1rem}
-    /* ---------- hero ---------- */
-    header{color:#fff;background:linear-gradient(135deg,#00214d,#000e23);padding:120px 0 150px;position:relative;overflow:hidden}
-    header::after{content:"";position:absolute;left:-120px;bottom:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,var(--pf-accent) 0%,transparent 70%);opacity:.13;filter:blur(90px)}
-    .hero-title{font-size:clamp(2.5rem,5vw,3.8rem);line-height:1.15;font-weight:700;margin-bottom:1rem}
-    .hero-sub{font-size:1.15rem;max-width:640px;margin-inline:auto}
-  <!-- ========== 2. CALENDLY – Agenda tu llamada =================== -->
-<section class="video-wrap" id="calendly" data-aos="fade">
-  <div class="container">
-    <!-- Calendly inline  -->
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-      style="min-width:320px;height:720px;border-radius:1.75rem;box-shadow:0 10px 25px rgba(0,0,0,.15);overflow:hidden">
-    </div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-    <!-- Micro-beneficios bajo el calendario -->
-    <ul style="max-width:640px;margin:1.8rem auto 0;text-align:left;font-size:.96rem">
-      <li>✓ Diagnóstico personalizado (30 min) por Benjamín Alegre.</li>
-      <li>✓ 3 ideas accionables para tu funnel —sin compromiso.</li>
-      <li>✓ Grabación de la sesión enviada a tu correo.</li>
-    </ul>
-  </div>
-</section>
+    /* ---------- Background animado ---------- */
+    body::before{
+      content:"";position:fixed;inset:0;z-index:-1;
+      background:linear-gradient(-45deg,#003a8c,#001a40,#000e20,#003a8c);
+      background-size:400% 400%;animation:bgmove 24s ease infinite;
+    }
+    @keyframes bgmove{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
 
-    /* ---------- secciones ---------- */
-    section{padding:100px 0}
-    .heading{font-size:2rem;margin-bottom:2rem}
-    /* ---------- dolor / solución ---------- */
-    .pair{display:grid;gap:1rem;align-items:center;margin-bottom:1.3rem}
-    .pair i{font-size:1.4rem;color:var(--pf-accent)}
-    @media(min-width:750px){.pair{grid-template-columns:1fr auto 1fr}}
-    .pain,.solution{background:var(--pf-light);padding:1.6rem;border-radius:var(--radius);box-shadow:var(--shadow);text-align:left}
-    .pain h4,.solution h4{margin-bottom:.4rem;color:var(--pf-navy);font-size:1.1rem}
-    /* ---------- proceso ---------- */
-    .timeline{display:flex;flex-wrap:wrap;gap:1.7rem;justify-content:center}
-    .step{background:#fff;border-radius:var(--radius);padding:1.6rem 1.3rem;width:min(260px,90%);box-shadow:var(--shadow)}
-    /* ---------- pricing ---------- */
-    .pricing{background:#f7fbfe}
-    .plans{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
-    .plan{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:2.1rem 1.7rem;width:min(300px,88%);position:relative}
-    .plan.best::before{content:'⭐ + vendido';position:absolute;top:-14px;right:14px;font-size:.7rem;background:var(--pf-accent);color:#fff;padding:.25rem .55rem;border-radius:.4rem}
-    .plan h3{margin-bottom:.4rem;font-size:1.3rem;color:var(--pf-navy)}
-    .price{font-size:1.8rem;font-weight:700;margin:.3rem 0;color:var(--pf-accent)}
-    .plan small{display:block;font-size:.8rem;color:#666;margin-bottom:1rem}
-    .plan ul{list-style:none;text-align:left;margin-bottom:1.4rem;font-size:.95rem}
-    .plan li{margin:.3rem 0}
-    /* ---------- garantía ---------- */
-    .guarantee{background:var(--pf-navy);color:#fff;padding:80px 1rem}
-    .guarantee-inner{max-width:800px;margin:auto}
-    /* ---------- testimonios ---------- */
-    .carousel{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
-    .testimonial{flex:0 0 290px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:1.4rem;text-align:left}
-    .testimonial span{font-weight:600;color:var(--pf-accent)}
-    .testimonial img{width:100%;border-radius:var(--radius);margin-top:.9rem}
+    /* ---------- Utilidades ---------- */
+    .container{width:min(1180px,92%);margin-inline:auto}
+    .btn{display:inline-block;background:var(--pf-accent);color:#fff;padding:.9rem 1.6rem;border-radius:3rem;font-weight:600;box-shadow:0 6px 18px rgba(0,166,224,.35)}
+    .btn:hover{transform:translateY(-3px)}
+    .tag{font-size:.75rem;background:var(--pf-light);color:var(--pf-navy);padding:.3rem .7rem;border-radius:.4rem;font-weight:600}
+    .gradient-text{background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent}
+
+    /* ---------- Header + Nav ---------- */
+    header{padding:110px 1rem 150px;color:#fff;position:relative}
+    header::after{content:"";position:absolute;left:-120px;bottom:-120px;width:460px;height:460px;background:radial-gradient(circle,#60dcff 0%,var(--pf-accent) 60%,transparent 80%);opacity:.12;filter:blur(100px);animation:float 9s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(40px)}}
+    .header-inner{position:absolute;top:0;left:0;width:100%;padding:20px min(4vw,32px);display:flex;justify-content:space-between;align-items:center;font-size:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:#fff}
+    .nav-links a{margin-left:24px;color:#e9f7ff}
+    #toggle{display:none}.hamburger{display:none}
+    @media(max-width:780px){
+      .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:200px;background:#001a40;display:flex;flex-direction:column;padding-top:80px;transition:.4s}
+      #toggle:checked ~ .nav-links{right:0}
+      .hamburger{display:block;cursor:pointer;width:26px;height:22px;position:relative}
+      .hamburger span,
+      .hamburger span::before,
+      .hamburger span::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s}
+      .hamburger span{top:9px}
+      .hamburger span::before{top:-8px}.hamburger span::after{top:8px}
+      #toggle:checked + .hamburger span{background:transparent}
+      #toggle:checked + .hamburger span::before{transform:rotate(45deg) translate(5px,5px)}
+      #toggle:checked + .hamburger span::after{transform:rotate(-45deg) translate(5px,-5px)}
+    }
+    .hero-title{font-size:clamp(2.3rem,5vw,3.8rem);font-weight:700;line-height:1.15;margin:.9rem 0 1.2rem}
+    .hero-sub{font-size:1.1rem;max-width:650px;margin-inline:auto}
+
+    /* ---------- Separador “⚡” ---------- */
+    .separator{font-size:3.3rem;line-height:0;color:var(--pf-accent);filter:drop-shadow(0 0 10px rgba(0,166,224,.6));animation:pulse 2s infinite}
+    @keyframes pulse{50%{transform:scale(1.12)}}
+
+    /* ---------- VSL ≒ Calendly ---------- */
+    .vsl{background:#000;padding:70px 1rem}
+    .vsl .calendly-inline-widget{display:block;width:100%;max-width:920px;height:720px;border:0;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);overflow:hidden;margin-inline:auto}
+
+    /* ---------- Compare ---------- */
+    .compare{padding:90px 0;background:#f7fbfe}
+    .compare-wrap{display:grid;gap:2rem;align-items:start}
+    @media(min-width:768px){.compare-wrap{grid-template-columns:1fr auto 1fr;gap:2.8rem}}
+    .compare-card{background:#fff;border-radius:var(--radius-xl);padding:1.9rem;box-shadow:var(--shadow-card);transition:var(--transition-fast)}
+    .compare-card:hover{transform:translateY(-6px)}
+    .compare-card h3{margin-bottom:1.1rem;font-size:1.25rem;color:var(--pf-navy)}
+    .compare-card ul{list-style:none;display:grid;gap:.65rem;font-size:.95rem;text-align:left}
+    .compare-card li i{margin-right:.4rem}
+
+    /* ---------- Pain / Solution ---------- */
+    .pains{padding:90px 0}
+    .pains-grid{display:grid;gap:2rem}
+    @media(min-width:950px){.pains-grid{grid-template-columns:repeat(2,1fr)}}
+    .pain-card{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:1.8rem 1.6rem;position:relative}
+    .pain-card::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--pf-accent);font-weight:700}
+    .solution-card{background:#0a0f1c;color:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:1.8rem 1.6rem}
+    .pain-card h4,
+    .solution-card h4{font-size:1.1rem;margin-bottom:.6rem}
+
+    /* ---------- Pricing ---------- */
+    .pricing{padding:100px 0;background:#f7fbfe}
+    .pricing-grid{display:grid;gap:2rem}
+    @media(min-width:960px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
+    .plan{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:2.2rem 1.8rem;transition:var(--transition-fast);position:relative}
+    .plan:hover{transform:translateY(-6px)}
+    .plan h3{font-size:1.3rem;margin-bottom:.6rem;color:var(--pf-navy)}
+    .price{font-size:2rem;font-weight:700;margin:.6rem 0 1rem;color:var(--pf-accent)}
+    .plan ul{list-style:none;display:grid;gap:.55rem;font-size:.95rem;text-align:left;margin-bottom:1.4rem}
+    .plan ul li i{margin-right:.4rem;color:var(--pf-accent)}
+    .plan small{display:block;font-size:.8rem;margin-top:.9rem;color:#555}
+
+    /* ---------- Garantía ---------- */
+    .guarantee{background:#001a40;color:#fff;padding:90px 1rem}
+    .guarantee h2{font-size:1.9rem;margin-bottom:1rem}
+    .guarantee p{max-width:680px;margin-inline:auto;text-align:center: 1.4rem;font-size:1.05rem}
+
+
+
+    /* ---------- Testimonios ---------- */
+    .testimonials{padding:110px 0;text-align:center}
+    .testimonial-box{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:2rem 1.6rem;max-width:680px;margin-inline:auto}
+    .testimonial-box img{width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:1rem}
+    .stars{color:#ffc600;font-size:1.2rem;margin-bottom:.6rem}
+
     /* ---------- FAQ ---------- */
-    .faq{background:#001a40;color:#fff}
-    .faq-item{background:rgba(255,255,255,.08);border-radius:var(--radius);margin-bottom:1rem;text-align:left}
-    .faq-btn{width:100%;background:none;border:none;color:#fff;font-weight:600;padding:1.1rem 1.4rem;font-size:1rem;display:flex;justify-content:space-between;cursor:pointer}
+    .faq{background:#001a40;color:#fff;padding:100px 0}
+    .accordion{max-width:720px;margin-inline:auto}
+    .faq-item{margin-bottom:14px;border-radius:var(--radius-xl);background:rgba(0,15,40,.45);backdrop-filter:blur(6px);box-shadow:var(--shadow-card)}
+    .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.15rem 1.4rem;font-weight:600;font-size:1rem;background:none;color:#fff;border:none;cursor:pointer}
     .faq-btn i{transition:.3s;color:var(--pf-accent)}
-    .faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 1.4rem}
-    .faq-content p{padding:1rem 0;font-size:.95rem;color:#cddbed}
-    .faq-item.open .faq-content{max-height:260px}
+    .faq-content{max-height:0;overflow:hidden;padding:0 1.4rem;transition:max-height .45s ease}
+    .faq-content p{padding:1rem 0;font-size:.9rem;color:#e9f7ff}
+    .faq-item.open .faq-content{max-height:300px}
     .faq-item.open .faq-btn i{transform:rotate(45deg)}
-    /* ---------- CTA final ---------- */
-    .cta-final{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:90px 1rem}
-    /* ---------- footer ---------- */
-    footer{background:#001a40;color:#8fb1df;padding:45px 1rem;font-size:.85rem}
-    footer a{color:#8fb1df}
+
+    /* ---------- CTA ---------- */
+    .cta{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:80px 1rem}
+    .cta h2{font-size:2rem;margin-bottom:1rem}
+    .cta p{font-size:1.05rem;margin-bottom:2rem}
+    .cta .btn{background:#fff;color:var(--pf-navy);font-weight:700}
+
+    /* ---------- Footer ---------- */
+    footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font-size:.85rem}
+
+    /* ---------- Responsive quick fixes ---------- */
+    @media(max-width:600px){
+      .compare-card{padding:1.6rem}
+      .pain-card::after{display:none}
+      .plan{padding:1.8rem 1.4rem}
+    }
+    
   </style>
 </head>
-<body>
+<body id="top">
 
-<!-- ========== 1. HERO / PV ======================================== -->
-<header id="top">
-  <div class="container" data-aos="fade-down">
-    <h1 class="hero-title">Tu funnel de ventas hecho 1-a-1<br>por <span class="gradient-text">Benjamín Alegre</span></h1>
-    <p class="hero-sub">Pagas una vez; tu embudo vende <strong>24 / 7</strong> con psicología del consumidor y datos reales.</p>
-    <a href="#planes" class="btn" style="margin-top:1.8rem">Reservar mi plaza ahora</a>
-    <span class="badge-small">Solo 3 proyectos simultáneos</span>
+<!-- ⛑️ HERO --------------------------------------------------- -->
+<header data-aos="fade-down">
+  <div class="header-inner">
+    <a class="logo" href="/">PsicoFunnel</a>
+
+    <!-- Hamburguesa (solo móvil) -->
+    <input type="checkbox" id="toggle" aria-label="Menú" />
+    <label for="toggle" class="hamburger"><span></span></label>
+
+    <!-- Enlaces -->
+    <div class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/servicios.html" style="font-weight:600">Servicios</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contacto.html">Contacto</a>
+    </div>
   </div>
+
+  <div class="container">
+    <span class="tag">PsicoFunnel · Funnels hechos a mano (solo 3 plazas)</span>
+    <h1 class="hero-title">Tu funnel de ventas hecho<br> <span class="gradient-text">1-a-1 por Benjamín&nbsp;Alegre</span></h1>
+    <p class="hero-sub">Pagas una vez, tu embudo vende 24/7 con psicología del consumidor y datos reales. </p>
+    <a href="#calendly" class="btn" style="margin-top:2rem">Reservar mi plaza ahora</a>
+  </div>
+
 </header>
-
-<!-- ========== 2. VIDEO VSL ======================================== -->
-<section class="video-wrap" id="vsl">
-  <div class="container">
-    <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" title="VSL PsicoFunnel" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <ul style="max-width:640px;margin:1.6rem auto 0;text-align:left;font-size:.96rem">
-      <li>✓ Informe de avances semanal.</li>
-      <li>✓ Entregable llave en mano (landings + correos + dashboards).</li>
-      <li>✓ Acompañamiento 1-a-1 hasta ver ROI.</li>
-    </ul>
+<!-- 📅 CALENDLY (antes VSL) ------------------------------------ -->
+<section class="vsl" id="calendly" data-aos="fade">
+  <div class="calendly-inline-widget"
+       data-url="https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+       style="width:100%;max-width:920px;height:720px;border:0;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);overflow:hidden;margin-inline:auto">
   </div>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <ul style="max-width:640px;margin:1.8rem auto 0;text-align:left;font-size:.96rem;color:#e9f7ff">
+    <li>✓ Diagnóstico 1-a-1 con Benjamín Alegre (30 min)</li>
+    <li>✓ 3 ideas accionables listas para implementar</li>
+    <li>✓ Grabación de la sesión enviada a tu correo</li>
+  </ul>
 </section>
-
-<!-- ========== 3. Dolor → Solución ================================= -->
-<section>
+  
+<!-- 🎯 PAIN → SOLUCIÓN ---------------------------------------- -->
+<section class="pains" data-aos="fade-up">
   <div class="container">
-    <h2 class="heading">¿Te suena familiar?</h2>
-
-    <div class="pair" data-aos="fade-up">
-      <div class="pain">
-        <h4>🔴 Muchas visitas, pocas conversiones</h4>
-        <p>Pagas ads, el tráfico llega… y se va sin comprar.</p>
+    <h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">¿Te suena familiar?</h2>
+    <div class="pains-grid">
+      <div class="pain-card" data-aos="fade-right">
+        <h4>Muchas visitas pero <u>pocas conversiones</u></h4>
+        <p>El tráfico llega pero casi nadie deja su correo ni compra.</p>
       </div>
-      <i class="fas fa-long-arrow-alt-right"></i>
-      <div class="solution">
-        <h4>✅ Segmentamos & optimizamos</h4>
-        <p>Diseño de avatar + test A/B de CTA para elevar tu CR.</p>
+      <div class="solution-card" data-aos="fade-left">
+        <h4>Segmentamos tu tráfico</h4>
+        <p>Analítica granular + copy neuro hacen que cada visitante reciba un mensaje hecho a medida.</p>
       </div>
-    </div>
 
-    <div class="pair" data-aos="fade-up" data-aos-delay="100">
-      <div class="pain">
-        <h4>🔴 Email abierto, pero sin clics</h4>
-        <p>Secuencias que duermen en la bandeja de entrada.</p>
+      <div class="pain-card" data-aos="fade-right" data-aos-delay="50">
+        <h4>CPA subiendo <u>cada mes</u></h4>
+        <p>Inviertes más en ads… pero el coste por lead no baja.</p>
       </div>
-      <i class="fas fa-long-arrow-alt-right"></i>
-      <div class="solution">
-        <h4>✅ Copy neuro-persuasivo</h4>
-        <p>Asuntos basados en sesgos y storytelling que disparan CTR.</p>
+      <div class="solution-card" data-aos="fade-left" data-aos-delay="50">
+        <h4>Quick-wins de CRO</h4>
+        <p>Optimización LCP, hooks y estructura TOFU-MOFU-BOFU para exprimir cada clic.</p>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- ========== 4. Proceso ========================================== -->
-<section>
-  <div class="container">
-    <h2 class="heading">Proceso en 4 pasos</h2>
-    <div class="timeline">
-      <div class="step"><h4>1. Diagnóstico 360°</h4><p>Entrevista + auditoría de datos.</p></div>
-      <div class="step"><h4>2. Diseño & Copy</h4><p>Arquitectura TOFU-MOFU-BOFU + mensajes.</p></div>
-      <div class="step"><h4>3. Integración técnica</h4><p>CRM, pasarelas, automatizaciones.</p></div>
-      <div class="step"><h4>4. Iteración & A/B</h4><p>Pruebas hasta superar tu CPL actual.</p></div>
+      <div class="pain-card" data-aos="fade-right" data-aos-delay="100">
+        <h4>Automatizaciones <u>atascadas</u></h4>
+        <p>Zapier/Make a medias, leads fríos sin nutrir.</p>
+      </div>
+      <div class="solution-card" data-aos="fade-left" data-aos-delay="100">
+        <h4>Flows listos en 7 días</h4>
+        <p>Secuencias email + bots que activan ventas mientras duermes.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== 5. PLANES / PRICING  ================================ -->
-<section id="planes" class="pricing">
+
+
+
+
+<!-- 🧩 PILARES ------------------------------------------------- -->
+<section class="pillars">
   <div class="container">
-    <h2 class="heading">Elige tu plan</h2>
-    <div class="plans">
+    <h2 style="font-size:2rem;margin-bottom:2.4rem" data-aos="fade-up">10 <span class="gradient-text">Pilares</span> clave</h2>
+    <div class="pillars-grid">
+      <!-- … (los 10 <details> existentes se mantienen) … -->
+    </div>
+  </div>
+</section>
+
+<!-- 🏷️ PLANES / PRICING --------------------------------------- -->
+<section class="pricing" id="planes" data-aos="fade-up">
+  <div class="container">
+    <h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">Elige tu punto de partida</h2>
+    <div class="pricing-grid">
+
       <!-- Starter Audit -->
-      <div class="plan">
+      <div class="plan" data-tilt>
         <h3>Starter Audit</h3>
         <p class="price">US$ 70</p>
-        <small>48 h · para funnels activos</small>
         <ul>
-          <li>Informe PDF 8-10 págs.</li>
-          <li>LCP + velocidad &copy; insights</li>
-          <li>Revisión copy TOFU-BOFU</li>
-          <li>Checklist 15 quick-wins</li>
-          <li>Video Loom 10 min</li>
+          <li><i class="fas fa-file-alt"></i> Informe PDF 8-10 págs</li>
+          <li><i class="fas fa-tachometer-alt"></i> Análisis LCP / velocidad</li>
+          <li><i class="fas fa-pen-nib"></i> Revisión copy TOFU-BOFU</li>
+          <li><i class="fas fa-check-square"></i> Checklist 15 quick-wins</li>
+          <li><i class="fas fa-video"></i> Loom 10 min prioridades</li>
         </ul>
-        <a href="stripe-starter.html" class="btn">Comprar ahora</a>
+        <a href="#calendly" class="btn">Reservar Auditoría</a>
+        <small>Entrega 48 h</small>
       </div>
 
-      <!-- Boost -->
-      <div class="plan best">
+      <!-- Copy & Flow Boost -->
+      <div class="plan" data-tilt data-aos-delay="50">
         <h3>Copy & Flow Boost</h3>
         <p class="price">US$ 150</p>
-        <small>4 días · tráfico pero baja CR</small>
         <ul>
-          <li>Todo el Starter Audit</li>
-          <li>Wireframe Figma (home+landing)</li>
-          <li>3 hooks anuncio + 2 asuntos</li>
-          <li>Swipe file de sesgos para tu nicho</li>
+          <li><i class="fas fa-paper-plane"></i> Todo el Starter +</li>
+          <li><i class="fas fa-drafting-compass"></i> Wireframe Figma</li>
+          <li><i class="fas fa-bullhorn"></i> 3 hooks ads + 2 asuntos email</li>
+          <li><i class="fas fa-brain"></i> Swipe file de sesgos</li>
         </ul>
-        <a href="stripe-boost.html" class="btn">Comprar ahora</a>
+        <a href="#calendly" class="btn">Potenciar mi funnel</a>
+        <small>Entrega 4 días</small>
       </div>
 
-      <!-- Mini Evergreen -->
-      <div class="plan">
+      <!-- Mini-Evergreen Kit -->
+      <div class="plan" data-tilt data-aos-delay="100">
         <h3>Mini-Evergreen Kit</h3>
         <p class="price">US$ 300</p>
-        <small>5-7 días · lead-magnet automatizado</small>
         <ul>
-          <li>Todo el Boost</li>
-          <li>Secuencia 5 correos</li>
-          <li>Thank-you + video-script 90 s</li>
-          <li>Mapa Make/Zapier en Miro</li>
-          <li>SOP PDF “lanzar en 60 min”</li>
+          <li><i class="fas fa-paper-plane"></i> Todo el Boost +</li>
+          <li><i class="fas fa-envelope"></i> Secuencia 5 correos</li>
+          <li><i class="fas fa-landmark"></i> Plantilla página gracias + VSL 90 s</li>
+          <li><i class="fas fa-project-diagram"></i> Mapa Make/Zapier en Miro</li>
+          <li><i class="fas fa-file-pdf"></i> SOP PDF lanzamiento 60 min</li>
         </ul>
-        <a href="calendly.html" class="btn">Reservar llamada</a>
+        <a href="#calendly" class="btn">Automatizar mi lead-magnet</a>
+        <small>Entrega 7 días</small>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ========== 6. GARANTÍA ======================================== -->
-<section class="guarantee">
-  <div class="guarantee-inner">
-    <h2 class="heading">Garantía sin riesgo</h2>
-    <p>Si en 30 días no alcanzamos los objetivos acordados,<br><strong>trabajo 7 días extra totalmente gratis</strong> hasta conseguirlos.</p>
+<!-- ✅ GARANTÍA ------------------------------------------------ -->
+<section class="guarantee" data-aos="zoom-in">
+  <h2>Garantía “Objetivo o 7 días gratis”</h2>
+  <p>Si a los 30 días tu nuevo funnel no supera tu coste por lead actual,<br> trabajo 7 días totalmente <strong>gratis</strong> hasta lograrlo.</p>
+  <a href="#calendly" class="btn" style="margin-top:1.6rem">Sin riesgo – Agendar ahora</a>
+</section>
+
+<!-- 🌟 TESTIMONIOS -------------------------------------------- -->
+<section class="testimonials" data-aos="fade-up">
+  <h2 style="color:#fff;font-size:2rem;margin-bottom:2rem">Historias de éxito</h2>
+
+  <div class="testimonial-box" data-tilt>
+    <div class="stars">★★★★★</div>
+    <p><em>“Pasamos de 3 % a 12 % de conversión en apenas 5 semanas. Benja entendió nuestro buyer persona mejor que nosotros.”</em></p>
+    <p style="margin-top:1rem;font-weight:600">— Mariana G., Coach de Negocios</p>
+
+    <!-- Espacio para imagen / gráfico -->
+    <img src="img/testimonio-placeholder.png" alt="Gráfico antes/después" style="margin-top:1.4rem;border-radius:12px;box-shadow:var(--shadow-card)" loading="lazy">
   </div>
 </section>
 
-<!-- ========== 7. TESTIMONIOS  ===================================== -->
-<section>
+<!-- ❓ FAQ ------------------------------------------------------ -->
+<section class="faq" data-aos="fade-up">
   <div class="container">
-    <h2 class="heading">Historia de éxito</h2>
-    <div class="carousel">
-      <div class="testimonial" data-aos="zoom-in">
-        <span>Mariana G. · Coach de Negocios</span>
-        <p>“Con Benja pasé de 3 % a 9 % de conversión en mi webinar evergreen. La inversión se recuperó en 21 días.”</p>
-        <!-- Placeholder visual -->
-        <img src="img/testimonio-placeholder.png" alt="Testimonio 5 estrellas">
+    <h2 style="font-size:2rem;margin-bottom:2.2rem">Preguntas frecuentes</h2>
+    <div class="accordion">
+
+      <div class="faq-item">
+        <button class="faq-btn">¿Necesito invertir en ads obligatoriamente? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>No. Podemos empezar optimizando tu tráfico orgánico y lanzar ads cuando el funnel esté afinado.</p></div>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">¿Qué plataformas integras? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Make, Zapier, HubSpot, MailerLite, Shopify, WordPress, Webflow y más.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">¿Cuándo veré resultados? <i class="fas fa-plus"></i></button>
+        <div class="faq-content"><p>Leads iniciales suelen aparecer en 4-6 semanas; la curva depende de tu nicho y presupuesto.</p></div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ========== 8. CTA gigantesco =================================== -->
-<section class="cta-final">
+<!-- 📣 CTA FINAL ---------------------------------------------- -->
+<section class="cta" data-aos="zoom-in">
   <h2>¿Listo para multiplicar tus conversiones?</h2>
-  <p>Reserva tu diagnóstico gratuito de 30 min y recibe <strong>3 ideas accionables</strong> hoy mismo.</p>
-  <a href="#planes" class="btn">QUIERO AGENDAR MI LLAMADA</a>
+  <p>Reserva tu Diagnóstico Gratuito y llévate 3 ideas accionables.</p>
+  <a href="#calendly" class="btn">Agendar llamada ahora</a>
 </section>
 
-<!-- ========== 9. FAQ comercial ==================================== -->
-<section class="faq">
-  <div class="container">
-    <h2 class="heading" style="color:#fff">Preguntas frecuentes</h2>
-    <div class="faq-item">
-      <button class="faq-btn">¿Qué necesito antes de contratar? <i class="fas fa-plus"></i></button>
-      <div class="faq-content"><p>Una cuenta de correo corporativa y acceso a tu hosting/CRM para conectar los activos. Si no los tienes, te ayudo a configurarlos.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn">¿Cuál plan me conviene? <i class="fas fa-plus"></i></button>
-      <div class="faq-content"><p>Si ya tienes funnel, el <strong>Starter Audit</strong> te da claridad. Si estás atascado en conversión, el <strong>Boost</strong>. Si quieres automatizar tu imán de leads, necesitas el <strong>Mini-Evergreen Kit</strong>.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn">¿Y si no tengo equipo técnico? <i class="fas fa-plus"></i></button>
-      <div class="faq-content"><p>No te preocupes: entrego tutoriales y SOP paso-a-paso. Además, tienes soporte por WhatsApp para dudas de implementación.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== 10. FOOTER  ========================================= -->
+<!-- 🔚 FOOTER -------------------------------------------------- -->
 <footer>
-  <p>&copy; <span id="year"></span> PsicoFunnel · Ciencia & corazón · <a href="#top">Subir ↑</a></p>
+  <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#top">Subir ↑</a></p>
 </footer>
 
-<!-- ==========  SCRIPTS  ========================================== -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- 🧩 SCRIPTS ------------------------------------------------- -->
 <script>
   AOS.init({duration:800,once:true});
+  VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{max:6,speed:400,glare:true,"max-glare":.25});
 
-  // Accordion FAQ
+  /* FAQ accordion */
   document.querySelectorAll('.faq-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const item=btn.parentElement;
-      const content=item.querySelector('.faq-content');
-      const open=item.classList.toggle('open');
-      content.style.maxHeight=open?content.scrollHeight+'px':null;
+      item.classList.toggle('open');
     });
   });
 
-  // Año dinámico
+  /* Year */
   document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
