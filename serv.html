@@ -1,334 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- ==========================================================
-      PsicoFunnel · Landing de Servicios  (Jun-2025)
-      Autor: Benjamín Alegre  —  ¡Listo para producción!
-  ========================================================== -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios Funnel · PsicoFunnel</title>
-  <meta name="description" content="Potencia tu crecimiento con embudos diseñados para enamorar, convertir y escalar. Diagnóstico express gratis.">
+  <!-- ========================================================= -->
+  <!-- ✨  META-DATOS & PERFORMANCE                               -->
+  <!-- ========================================================= -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Servicios | PsicoFunnel · Funnels con ciencia & corazón</title>
+  <meta name="description" content="Landing de servicios PsicoFunnel: embudos 1-a-1 por Benja, psicología del consumidor, copy neuro, tráfico y CRO.">
+  <meta http-equiv="Cache-Control" content="public,max-age=604800">
+  <link rel="icon" type="image/png" href="/img/favicon150.png">
 
-  <!-- Google Font -->
+  <!-- ========== PRECONNECT & PRELOAD ========== -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-  <!-- Iconos -->
-  <script src="https://kit.fontawesome.com/3d7b9142f4.js" crossorigin="anonymous"></script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Animate.css & AOS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="preload" as="style" href="https://unpkg.com/aos@2.3.4/dist/aos.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.min.css">
 
-  <!-- ===================================================  ESTILOS -->
-  <style>
-  :root{
-    --pf-navy:#001a40;
-    --pf-accent:#00a6e0;
-    --pf-light:#f1f9ff;
-    --pf-gray:#5c6675;
-    --pf-radius:1.5rem;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Outfit',sans-serif;
-    color:var(--pf-navy);
-    background:#fff;
-    scroll-behavior:smooth;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
+  <!-- FontAwesome solo-CSS (más ligero que el kit JS) -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" integrity="sha512-Fo3rlrZj/k7ujzRq4t7W3F8VQhMNfa3KpHdUUZldb1Y8li+F5Nv4jplIWopt+86eJr/wbTHRtH6zYUwxdsZ3Yg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  /* ========== NAV */
-  nav{
-    position:sticky;top:0;z-index:999;
-    background:#ffffffcc;backdrop-filter:blur(6px);
-    border-bottom:1px solid #e8edf3;
-  }
-  .nav-wrap{
-    max-width:1140px;margin:auto;display:flex;justify-content:space-between;align-items:center;
-    padding:0.9rem 1rem;
-  }
-  .nav-wrap ul{display:flex;gap:1.25rem;font-weight:600;font-size:0.9rem;}
-  .nav-wrap li{list-style:none;}
-  .btn-nav{
-    padding:0.6rem 1rem;background:var(--pf-accent);color:#fff;border:none;border-radius:0.65rem;font-weight:700;
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .btn-nav:hover{transform:translateY(-2px);box-shadow:0 6px 14px -5px rgba(0,166,224,.45);}
+  <!-- ========================================================= -->
+  <!-- 🖌️  ESTILOS (CSS inline MINIFICADO)                       -->
+  <!-- ========================================================= -->
+  <style>:root{--pf-navy:#001a40;--pf-light:#e9f7ff;--pf-accent:#00a6e0;--radius-xl:1.75rem;--shadow-card:0 10px 25px rgba(0,0,0,.15);--transition-fast:.25s cubic-bezier(.4,.2,.2,1)}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Outfit',sans-serif;line-height:1.6;background:#fff;color:#0a0f1c;text-align:center;overflow-x:hidden}img{max-width:100%;display:block;margin-inline:auto}body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(-45deg,#003a8c,#001a40,#000e20,#003a8c);background-size:400% 400%;animation:bgmove 24s ease infinite}@keyframes bgmove{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}.container{width:min(1180px,92%);margin-inline:auto}.btn{display:inline-block;background:var(--pf-accent);color:#fff;padding:.9rem 1.5rem;border-radius:3rem;font-weight:600;text-decoration:none;transition:var(--transition-fast)}.btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,166,224,.4)}.tag{font-size:.75rem;background:var(--pf-light);color:var(--pf-navy);padding:.25rem .7rem;border-radius:.4rem;font-weight:600}.gradient-text{background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent}header{padding:110px 1rem 150px;color:#fff;position:relative;overflow:hidden}header::after{content:"";position:absolute;left:-120px;bottom:-120px;width:460px;height:460px;background:radial-gradient(circle,#60dcff 0%,var(--pf-accent) 60%,transparent 80%);opacity:.12;filter:blur(100px);animation:float 9s ease-in-out infinite}@keyframes float{50%{transform:translateY(40px)}}.hero-title{font-size:clamp(2.3rem,5vw,4rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem}.separator{font-size:3.3rem;line-height:0;margin:0 auto 2.5rem;color:var(--pf-accent);filter:drop-shadow(0 0 10px rgba(0,166,224,.6));animation:pulse 2s infinite}@keyframes pulse{50%{transform:scale(1.12)}}.compare{padding:90px 0;background:#f7fbfe}.compare-wrap{display:grid;gap:2rem;align-items:start}@media(min-width:768px){.compare-wrap{grid-template-columns:1fr auto 1fr;gap:2.8rem}}.compare-card{background:#fff;border-radius:var(--radius-xl);padding:1.9rem;box-shadow:var(--shadow-card);transition:var(--transition-fast);display:inline-block}.compare-card:hover{transform:translateY(-6px)}.compare-card h3{margin-bottom:1.1rem;font-size:1.25rem;color:var(--pf-navy)}.compare-card ul{list-style:none;display:grid;gap:.65rem;font-size:.95rem;text-align:left}.compare-card li i{margin-right:.35rem}.vsl{background:#000;padding:70px 1rem}.vsl iframe{width:100%;max-width:920px;height:518px;border:none;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}.pillars{padding:100px 0}.pillars-grid{display:grid;gap:1.8rem}.pillars h2{color:#fff}@media(min-width:900px){.pillars-grid{grid-template-columns:repeat(3,1fr)}}details.pillar{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:1.7rem 1.4rem;cursor:pointer;transition:var(--transition-fast);position:relative;overflow:hidden}details.pillar:hover{transform:translateY(-4px)}details.pillar[open]{box-shadow:0 14px 34px rgba(0,0,0,.18)}details.pillar summary{list-style:none;font-size:1.05rem;font-weight:600;color:var(--pf-navy);display:flex;justify-content:center;align-items:center;gap:.6rem}details.pillar summary::-webkit-details-marker{display:none}details.pillar p{font-size:.95rem;margin-top:.9rem}details.pillar i{font-size:1.7rem}.founder{padding:90px 0;background:var(--pf-navy);color:#fff}.founder-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-top:2.4rem}.founder-item{background:#00122e;border-radius:var(--radius-xl);padding:1.6rem 1.4rem;box-shadow:var(--shadow-card);width:min(230px,90%)}.founder-item i{font-size:1.8rem;margin-bottom:.6rem;color:var(--pf-accent)}.process{padding:100px 0;background:#f7fbfe}.timeline{position:relative;max-width:550px;margin-inline:auto}.timeline::before{content:"";position:absolute;left:50%;transform:translateX(-50%);width:4px;height:100%;background:var(--pf-accent)}.step{position:relative;padding:1.8rem 1rem;width:50%}.left{left:0;text-align:right}.right{left:50%}.step::before{content:"";position:absolute;top:25px;width:18px;height:18px;border-radius:50%;background:var(--pf-navy);border:4px solid #fff}.left::before{right:-9px}.right::before{left:-9px}.step h4{font-size:1rem;font-weight:600;color:var(--pf-navy)}.step p{font-size:.9rem}.faq{background:#001a40;color:#fff}.accordion{max-width:720px;margin-inline:auto}.faq-item{margin-bottom:14px;border-radius:var(--radius-xl);background:rgba(0,15,40,.4);backdrop-filter:blur(6px);box-shadow:var(--shadow-card)}.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.15rem 1.4rem;font-weight:600;font-size:1rem;background:none;color:#fff;border:none;cursor:pointer}.faq-btn i{transition:.3s;color:var(--pf-accent)}.faq-content{max-height:0;overflow:hidden;padding:0 1.4rem;transition:max-height .4s ease}.faq-content p{padding:1rem 0;font-size:.9rem;color:#e9f7ff}.faq-item.open .faq-content{max-height:350px;padding:1rem 1.4rem}.faq-item.open .faq-btn i{transform:rotate(45deg)}.cta{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:80px 1rem}.cta h2{font-size:2rem;margin-bottom:1rem}.cta p{font-size:1.05rem;margin-bottom:2rem}.cta .btn{background:#fff;color:var(--pf-navy);font-weight:700}.cta .btn:hover{box-shadow:0 8px 18px rgba(255,255,255,.35);transform:translateY(-4px)}.testimonials{padding:110px 0;text-align:center}.testimonials h2{font-size:1.8rem;margin-bottom:1.2rem;color:#fff}.testimonials p{font-size:1.05rem;color:#fff}.header-inner{width:100%;position:absolute;top:0;left:0;z-index:1000;background:transparent}.nav{display:flex;align-items:center;justify-content:space-between;padding:20px min(4vw,32px);font-size:1rem}.logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}.nav-links a{margin-left:24px;color:#e9f7ff;text-decoration:none;transition:opacity .25s}.nav-links a:hover{opacity:.75}#toggle{display:none}.hamburger{display:none;cursor:pointer;width:26px;height:22px;position:relative}.hamburger span,.hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s}.hamburger span{top:9px}.hamburger span::before{top:-8px}.hamburger span::after{top:8px}#toggle:checked+.hamburger span{background:transparent}#toggle:checked+.hamburger span::before{transform:rotate(45deg) translate(5px,5px)}#toggle:checked+.hamburger span::after{transform:rotate(-45deg) translate(5px,-5px)}@media(max-width:780px){.nav-links{position:fixed;top:0;right:-100%;height:100vh;width:200px;background:#001a40;display:flex;flex-direction:column;padding-top:80px;transition:.35s}.nav-links a{margin:18px;font-size:1.05rem}.hamburger{display:block}#toggle:checked~.nav-links{right:0}}.cta-container{margin:60px 0;text-align:center}.big-glow-btn{display:inline-block;padding:1.4rem 3.4rem;font-size:1.45rem;font-weight:900;letter-spacing:.5px;text-transform:uppercase;border-radius:60px;color:#fff;background:#00a6e0;box-shadow:0 0 20px rgba(0,166,224,.65),0 0 40px rgba(0,166,224,.45),0 0 60px rgba(0,166,224,.25);transition:.35s ease;position:relative;overflow:hidden}.big-glow-btn::before{content:"";position:absolute;inset:-120%;background:radial-gradient(circle,rgba(255,255,255,.55) 0%,transparent 70%);animation:glow 4s linear infinite}@keyframes glow{0%{transform:translate(-50%,-50%) scale(.7)}50%{transform:translate(150%,150%) scale(1)}100%{transform:translate(-50%,-50%) scale(.7)}}.big-glow-btn:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 0 28px rgba(0,166,224,.85),0 0 60px rgba(0,166,224,.55)}html{max-width:100%;overflow-x:hidden}@media(max-width:780px){.nav-links{right:0;transform:translateX(100%);transition:transform .35s}#toggle:checked~.nav-links{transform:translateX(0)}}</style>
 
-  /* ========== UTILIDADES */
-  .container{width:min(92%,1140px);margin:auto;}
-  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-  .section{padding:4.5rem 0;}
-  h2.section-title{
-    font-size:clamp(1.9rem,5vw,2.75rem);font-weight:900;margin-bottom:1.1rem;
-    background:linear-gradient(90deg,var(--pf-navy),var(--pf-accent));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    text-align:center;
-  }
-  .lead{font-size:clamp(1.05rem,2.5vw,1.25rem);color:var(--pf-gray);text-align:center;max-width:700px;margin:0 auto 2.8rem;}
-
-  /* ========== HERO con parallax */
-  .hero{
-    position:relative;overflow:hidden;padding:7rem 0 6rem;
-    background:radial-gradient(circle at top right,#eaf6ff 0%,#ffffff 50%);
-  }
-  .hero::after{
-    content:'';position:absolute;top:-30%;left:50%;width:120%;height:140%;
-    background:url('https://images.unsplash.com/photo-1550565119-4220e55af7b4?auto=format&fit=crop&w=1400&q=60') center/cover;
-    opacity:.05;transform:translateX(-50%) scale(1.2);will-change:transform;
-  }
-  .hero-inner{position:relative;z-index:1;text-align:center;}
-  .hero h1{
-    font-size:clamp(2.2rem,6vw,3.65rem);font-weight:900;line-height:1.12;margin-bottom:1.2rem;
-  }
-  .hero p{color:var(--pf-gray);font-size:1.15rem;max-width:750px;margin:0 auto 2.5rem;}
-
-  .btn-primary{
-    padding:1rem 1.4rem;font-size:1.15rem;font-weight:800;color:#fff;background:var(--pf-accent);border:none;border-radius:var(--pf-radius);
-    position:relative;overflow:hidden;
-  }
-  .btn-primary::after{
-    content:'»';position:absolute;right:1rem;top:50%;transform:translateY(-50%);
-    transition:transform .25s ease;
-  }
-  .btn-primary:hover::after{transform:translate(6px,-50%);}
-  .btn-primary:hover{box-shadow:0 12px 24px -10px rgba(0,166,224,.55);transform:translateY(-2px);}
-
-  /* KPI counters */
-  .kpi-wrap{display:flex;justify-content:center;gap:3.5rem;flex-wrap:wrap;margin-top:2.8rem;}
-  .kpi{font-weight:900;font-size:2.2rem;color:var(--pf-navy);text-align:center;}
-  .kpi span{display:block;font-size:.9rem;font-weight:600;color:var(--pf-gray);}
-
-  /* ========== POR QUÉ ELEGIRNOS */
-  .why-card{
-    background:#fff;border-radius:var(--pf-radius);padding:2rem 1.75rem;border:1px solid #e3ecf4;
-    box-shadow:0 10px 20px -12px rgba(0,0,0,.05);display:flex;gap:1rem;align-items:flex-start;
-  }
-  .why-card i{font-size:1.7rem;color:var(--pf-accent);}
-  .why-card h3{font-size:1.1rem;font-weight:800;margin-bottom:0.4rem;}
-  .why-card p{font-size:.93rem;color:var(--pf-gray);}
-
-  /* ========== FÓRMULA */
-  .step{
-    background:var(--pf-light);border-left:5px solid var(--pf-accent);padding:2rem 1.6rem;border-radius:var(--pf-radius);
-    box-shadow:0 6px 16px -10px rgba(0,0,0,.08);
-  }
-  .step h4{font-size:1.1rem;font-weight:800;margin-bottom:.5rem;}
-  .step small{font-size:0.8rem;color:var(--pf-gray);display:block;margin-bottom:.6rem;font-weight:600;}
-  .step p{font-size:.94rem;color:var(--pf-gray);}
-
-  /* ========== VSL */
-  .vsl-wrapper{
-    background:#000;border-radius:var(--pf-radius);overflow:hidden;aspect-ratio:16/9;box-shadow:0 15px 28px -12px rgba(0,0,0,.4);
-  }
-
-  /* ========== BENEFICIOS */
-  .benefit{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.2rem;}
-  .benefit i{color:var(--pf-accent);font-size:1.4rem;margin-top:2px;}
-  .benefit p{font-size:1rem;color:var(--pf-navy);}
-
-  /* ========== TESTIMONIAL */
-  .testimonial{
-    background:linear-gradient(145deg,var(--pf-navy),#023066);
-    color:#fff;border-radius:var(--pf-radius);
-    padding:3rem 2rem;position:relative;overflow:hidden;
-  }
-  .testimonial:before{
-    content:'“';font-size:14rem;line-height:0;color:#ffffff15;
-    position:absolute;top:-40px;left:calc(50% - 70px);z-index:0;
-  }
-  .testimonial p{position:relative;z-index:1;font-size:1.05rem;max-width:800px;margin:auto 0 1.8rem auto;text-align:center;}
-  .testimonial cite{display:block;text-align:center;font-weight:700;font-size:.95rem;}
-
-  /* ========== CTA FINAL */
-  .cta{
-    text-align:center;padding:4rem 1rem;background:var(--pf-accent);color:#fff;position:relative;overflow:hidden;
-  }
-  .cta h2{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;margin-bottom:1rem;}
-  .cta p{font-size:1.1rem;margin-bottom:2.2rem;max-width:650px;margin-inline:auto;}
-  .cta::after{
-    content:'';position:absolute;left:-30%;bottom:-40%;width:160%;height:160%;background:radial-gradient(circle at center,#ffffff35 0%,transparent 60%);
-    animation:rotate 16s linear infinite;pointer-events:none;
-  }
-  @keyframes rotate{from{transform:rotate(0);}to{transform:rotate(360deg);}}
-
-  /* ========== SLOTS LIMITADOS */
-  .slots{
-    background:#fff;border:2px dashed var(--pf-accent);padding:1.5rem;border-radius:var(--pf-radius);
-    display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:2.5rem;
-  }
-  .slots span{font-size:3rem;font-weight:900;color:var(--pf-accent);line-height:1;}
-
-  /* Footer */
-  footer{font-size:.8rem;color:var(--pf-gray);text-align:center;padding:2rem 0;}
-
-  /* Responsive tweaks */
-  @media(max-width:640px){
-    .kpi-wrap{gap:2rem;}
-    .why-card{flex-direction:column;}
-  }
-  </style>
+  <!-- ========================================================= -->
+  <!-- 📜  LIBRERÍAS JS (minificadas + defer)                    -->
+  <!-- ========================================================= -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
 </head>
+
 <body>
-
-<!-- ========== NAV ========== -->
-<nav>
-  <div class="nav-wrap">
-    <strong style="font-size:1.2rem;color:var(--pf-navy);">PsicoFunnel</strong>
-    <ul>
-      <li><a href="#porque">Servicios</a></li>
-      <li><a href="#formula">Método</a></li>
-      <li><a href="#beneficios">Beneficios</a></li>
-      <li><a href="#agenda">Agenda</a></li>
-    </ul>
-    <a class="btn-nav" href="#agenda">Quiero escalar 🚀</a>
-  </div>
-</nav>
-
-<!-- ========== HERO ========== -->
-<section class="hero" id="inicio">
-  <div class="container hero-inner">
-    <h1 class="animate__animated animate__fadeInDown">Potencia tu crecimiento con funnels<br> diseñados para <span style="color:var(--pf-accent)">enamorar, convertir y escalar</span></h1>
-    <p data-aos="fade-up" data-aos-delay="130">
-      Soy Benja 👋 — el artesano detrás de PsicoFunnel. No prometo cifras mágicas (todavía),
-      pero sí me comprometo a poner <b>100 % de mi foco y experiencia</b> en tu startup.
-      Serás uno de mis <b>Casos Fundadores</b>; tú recibes trabajo senior a precio beta,
-      yo obtengo feedback brutal y testimonios reales. <i>Win-win.</i>
-    </p>
-    <a href="#piloto" class="btn-primary" data-aos="zoom-in" data-aos-delay="260">Quiero ser Caso Fundador 🚀</a>
-
-    <div class="kpi-wrap" data-aos="fade-up" data-aos-delay="450">
-      <div class="kpi">1<span>Experto full-time</span></div>
-      <div class="kpi">∞<span>Curiosidad & pruebas</span></div>
-      <div class="kpi">0<span>Subcontratas junior</span></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ==============================  WHY  ============================== -->
-<section id="porque" class="section">
-  <h2 class="section-title" data-aos="fade-up">¿Por qué yo y no una agencia?</h2>
-  <p class="lead" data-aos="fade-up" data-aos-delay="110">🧠 Especialización real · 🤝 Trato 1-a-1 · 🚀 Mentalidad de crecimiento continuo</p>
-
-  <div class="container grid-2">
-    <div class="why-card" data-aos="fade-right"><span class="emoji">🧑‍🔬</span><div><h3>Neuro-copy obsesivo</h3><p>500 h+ entre papers y tests A/B aplicados a hooks, historias y CTA que activan sesgos.</p></div></div>
-    <div class="why-card" data-aos="fade-left" data-aos-delay="80"><span class="emoji">🛠️</span><div><h3>Todo hecho a mano</h3><p>Cada tramo del embudo lo construyo yo; nada se delega a juniors ni a IA genérica.</p></div></div>
-    <div class="why-card" data-aos="fade-right" data-aos-delay="160"><span class="emoji">🎯</span><div><h3>Enfoque full-time</h3><p>Máximo 5 startups simultáneas = más iteraciones, más cariño y menos burocracia.</p></div></div>
-    <div class="why-card" data-aos="fade-left" data-aos-delay="240"><span class="emoji">🔄</span><div><h3>Iteración constante</h3><p>Ciclo rápido hipótesis → prueba → mejora. Si algo no funciona, lo cambiamos sin drama.</p></div></div>
-  </div>
-</section>
-
-<!-- ==============================  MÉTODO (5 + IMG + 5)  ============================== -->
-<section id="formula" class="section" style="background:var(--pf-light)">
-  <h2 class="section-title" data-aos="fade-up">Mi método en 10 pasos</h2>
-  <div class="container grid-2" style="gap:2rem">
-    <!-- primeros 5 -->
-    <div>
-      <div class="step" data-aos="fade-up"><span class="emoji">🔍</span><div><h4>1. Investigación profunda</h4><p>Entro en la mente de tu buyer: dolores, deseos y fricciones.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="60"><span class="emoji">🗺️</span><div><h4>2. Arquitectura de funnel</h4><p>Diseño el mapa completo para que el prospecto avance sin obstáculos.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="120"><span class="emoji">✍️</span><div><h4>3. Copy magnético</h4><p>Hooks, historias y CTA respaldados por sesgos de curiosidad y pertenencia.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="180"><span class="emoji">🎨</span><div><h4>4. Diseño UX rápido</h4><p>Velocidad de carga &lt; 1 s y micro-interacciones que guían la acción.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="240"><span class="emoji">🔌</span><div><h4>5. Integración sin dolor</h4><p>CRM, pasarelas y analítica listos desde el día 1. Adiós caos técnico.</p></div></div>
-    </div>
-
-    <!-- ilustración central -->
-    <div style="display:flex;justify-content:center;align-items:center" data-aos="zoom-in" data-aos-delay="300">
-      <img src="/img/funnel-illustration.svg" alt="Ilustración del funnel" style="max-width:420px">
-    </div>
-
-    <!-- últimos 5 -->
-    <div>
-      <div class="step" data-aos="fade-up" data-aos-delay="360"><span class="emoji">🤖</span><div><h4>6. Automatización smart</h4><p>Email + SMS que venden incluso a las 03:00.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="420"><span class="emoji">💰</span><div><h4>7. Tráfico pagado eficiente</h4><p>IA + retargeting: leads al costo más bajo posible.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="480"><span class="emoji">📈</span><div><h4>8. Tráfico orgánico & SEO</h4><p>Calendarios y guiones que posicionan tu marca como referente.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="540"><span class="emoji">🧪</span><div><h4>9. Growth & CRO</h4><p>Heatmaps + test A/B: cada euro se exprime al máximo.</p></div></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="600"><span class="emoji">📚</span><div><h4>10. Formación & hand-off</h4><p>Dejo manuales y workshops para que tu equipo siga volando.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== VSL ========== -->
-<section class="section">
+<!-- ⛑️ HERO --------------------------------------------------- -->
+<header data-aos="fade-down">
   <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Descubre cómo lo hacemos (VSL)</h2>
-    <p class="lead" data-aos="fade-up" data-aos-delay="120">Mira este video de 3 minutos y comprueba por qué nuestros funnels se convierten en historias de éxito.</p>
+    <!-- ╭── NAV BAR ───────────────────────────────────────────╮ -->
+    <div class="header-inner">
+      <nav class="nav">
+        <a class="logo" href="/">PsicoFunnel</a>
 
-    <div class="vsl-wrapper" data-aos="zoom-in" data-aos-delay="250">
-      <!-- Reemplaza src por tu enlace -->
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen style="width:100%;height:100%;"></iframe>
+        <!-- Hamburguesa (solo mobile) -->
+        <input type="checkbox" id="toggle" aria-label="Menú">
+        <label for="toggle" class="hamburger"><span></span></label>
+
+        <!-- Enlaces -->
+        <div class="nav-links">
+          <a href="/">Inicio</a>
+          <a href="/servicio.html">Servicios</a>
+          <a href="/BLOG.html" style="font-weight:600">Blog</a>
+          <a href="/contacto.html">Contacto</a>
+        </div>
+      </nav>
+    </div>
+    <!-- ╰──────────────────────────────────────────────────────╯ -->
+
+    <span class="tag">PsicoFunnel · Funnels hechos a mano</span>
+    <h1 class="hero-title">Potencia tu crecimiento con funnels<br> diseñados para <span style="color:var(--pf-accent)">enamorar, convertir y escalar</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200">En PsicoFunnel transformamos la psicología del consumidor y la ciencia de los datos en experiencias de compra irresistibles. Tu startup ya es increíble; nosotros la ponemos en vitrina para que el mercado lo note, lo entienda y actúe.</p>
+    <a href="#diagnostico" class="btn" style="margin-top:2rem">Quiero mi diagnóstico 🎯</a>
+  </div>
+</header>
+
+<!-- ⚖️ COMPARATIVA -------------------------------------------- -->
+<section class="compare" data-aos="fade-up">
+  <div class="container">
+    <h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">Por qué esta propuesta es diferente</h2>
+    <div class="compare-wrap">
+      <div class="compare-card" data-tilt data-aos="flip-left">
+        <h3><i class="fas fa-industry"></i> Lo típico</h3>
+        <ul>
+          <li><i class="fas fa-times-circle"></i> Equipos fragmentados</li>
+          <li><i class="fas fa-times-circle"></i> Plantillas rígidas</li>
+          <li><i class="fas fa-times-circle"></i> KPIs confusos</li>
+          <li><i class="fas fa-times-circle"></i> Comunicación fría</li>
+        </ul>
+      </div>
+      <div class="separator" aria-hidden="true">⚡</div>
+      <div class="compare-card" data-tilt data-aos="flip-right">
+        <h3><i class="fas fa-user-astronaut"></i> PsicoFunnel</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Atención 1-a-1</li>
+          <li><i class="fas fa-check-circle"></i> Embudo artesanal</li>
+          <li><i class="fas fa-check-circle"></i> KPIs claros</li>
+          <li><i class="fas fa-check-circle"></i> Feedback directo</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== BENEFICIOS QUE OBTENDRÁS ========== -->
-<section id="beneficios" class="section" style="background:var(--pf-light)">
-  <h2 class="section-title" data-aos="fade-up">Lo que obtendrás</h2>
-  <div class="container" data-aos="fade-up" data-aos-delay="120">
-    <div class="benefit"><i class="fas fa-user-check"></i><p>Leads que llegan pre-calificados y listos para comprar.</p></div>
-    <div class="benefit"><i class="fas fa-sync"></i><p>Mayor LTV gracias a nurturing inteligente y upsells sutiles.</p></div>
-    <div class="benefit"><i class="fas fa-heart"></i><p>Una marca que inspira confianza y deseo en cada punto de contacto.</p></div>
-    <div class="benefit"><i class="fas fa-chart-pie"></i><p>Datos accionables en tiempo real para afinar tu estrategia sin adivinanzas.</p></div>
+<!-- 🎞️ VSL ----------------------------------------------------- -->
+<section class="vsl" data-aos="fade">
+  <!-- Cargamos el iframe SOLO cuando entra en viewport (facade) -->
+  <div class="yt-wrapper" style="position:relative;padding-top:56.25%">
+    <iframe data-src="https://www.youtube.com/embed/VIDEO_ID" title="VSL PsicoFunnel" allow="autoplay; encrypted-media" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)"></iframe>
+  </div>
+
+  <!-- BOTÓN “AGENDAR LLAMADA” -->
+  <div class="cta-container">
+    <a href="/agenda.html" class="big-glow-btn">¡QUIERO AGENDAR MI LLAMADA!</a>
   </div>
 </section>
 
-<!-- ========== TESTIMONIAL ========= -->
-<section class="section">
-  <div class="container testimonial" data-aos="zoom-in">
-    <p>«PsicoFunnel nos triplicó la tasa de conversión en 60 días y posicionó nuestra app como líder en el sector salud digital.»</p>
-    <cite>— Mariana R., CEO &amp; Founder</cite>
+<!-- 🧩 PILARES ------------------------------------------------- -->
+<section class="pillars">
+  <div class="container">
+    <h2 style="font-size:2rem;margin-bottom:2.4rem" data-aos="fade-up">10 <span class="gradient-text">Pilares</span> clave</h2>
+    <div class="pillars-grid">
+      <!-- ejemplo -->
+      <details class="pillar" data-tilt data-aos="zoom-in"><summary><i class="fas fa-search"></i> Diagnóstico Profundo<span class="tag">Especificidad</span></summary><p>Detecto frenos y motivaciones reales de tu buyer persona. <strong>Beneficio:</strong> invertimos solo en lo que mueve la aguja.</p></details>
+      <!-- duplicados -->
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="50"><summary><i class="fas fa-sitemap"></i> Arquitectura a Medida<span class="tag">Cercanía</span></summary><p>Estructura TOFU-MOFU-BOFU óptima. <strong>Beneficio:</strong> recorrido fluido que impulsa acción.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="100"><summary><i class="fas fa-pen-nib"></i> Copy Neuro-Persuasivo<span class="tag">Reciprocidad</span></summary><p>Hooks, historias y CTAs basados en sesgos. <strong>Beneficio:</strong> tu mensaje se vuelve irresistible.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="150"><summary><i class="fas fa-gift"></i> Lead Magnets WOW<span class="tag">Anticipación</span></summary><p>Ebooks, quizzes o minicursos deseados. <strong>Beneficio:</strong> lista pre-calificada desde el día 1.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="200"><summary><i class="fas fa-paint-brush"></i> Diseño UX/UI Premium<span class="tag">Prueba Rápida</span></summary><p>Landings veloces y elegantes. <strong>Beneficio:</strong> más conversiones con el mismo tráfico.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="250"><summary><i class="fas fa-cogs"></i> Integración Técnica<span class="tag">Autoridad</span></summary><p>CRM, pasarelas y analytics listos. <strong>Beneficio:</strong> tú te concentras en el negocio.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="300"><summary><i class="fas fa-robot"></i> Automatización 24/7<span class="tag">Consistencia</span></summary><p>Emails y chatbots que venden mientras duermes. <strong>Beneficio:</strong> ingresos predecibles.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="350"><summary><i class="fas fa-bullseye"></i> Tráfico Pago Smart<span class="tag">Oportunidad</span></summary><p>Micro-tests Meta/Google/TikTok. <strong>Beneficio:</strong> leads al menor CAC.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="400"><summary><i class="fas fa-seedling"></i> Tráfico Orgánico SEO<span class="tag">Confianza</span></summary><p>Authority stacking sin depender siempre de ads.</p></details>
+      <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="450"><summary><i class="fas fa-chart-line"></i> CRO & Dashboards<span class="tag">Prueba Social</span></summary><p>Tests A/B + paneles en tiempo real. <strong>Beneficio:</strong> cada euro rinde más.</p></details>
+    </div>
   </div>
 </section>
 
-<!-- ========== CTA FINAL ========== -->
-<section id="agenda" class="cta">
-  <h2 data-aos="fade-up">Próximo paso: convierte curiosos en clientes fieles</h2>
-  <p data-aos="fade-up" data-aos-delay="120">🎁 Diagnóstico Express Gratis · Analizamos tu funnel actual y te damos 3 quick-wins personalizados —sin compromiso.</p>
-  <a href="https://calendly.com/tu-enlace" class="btn-primary" data-aos="zoom-in" data-aos-delay="220">Quiero escalar mi funnel 🚀</a>
-
-  <div class="slots" data-aos="fade-up" data-aos-delay="320">
-    <span id="slotsLeft">-</span>
-    <strong>Cupos limitados a 5 proyectos nuevos por mes.</strong>
-    <small>(Escasez positiva: asegura tu plaza sin presión.)</small>
+<!-- 🚀 PERKS FUNDADOR ------------------------------------------ -->
+<section class="founder" data-aos="fade-up">
+  <div class="container">
+    <h2>Ventajas <span class="gradient-text">Founder</span></h2>
+    <div class="founder-grid">
+      <div class="founder-item" data-tilt><i class="fas fa-star"></i><h4>Plaza Prioritaria</h4><p>Solo 3 proyectos simultáneos.</p></div>
+      <div class="founder-item" data-tilt><i class="fas fa-comments"></i><h4>Feedback Ilimitado</h4><p>Reuniones semanales + chat.</p></div>
+      <div class="founder-item" data-tilt><i class="fas fa-tags"></i><h4>Precio de Lanzamiento</h4><p>Tarifa congelada de por vida.</p></div>
+      <div class="founder-item" data-tilt><i class="fas fa-road"></i><h4>Hoja de Ruta</h4><p>SOPs y entrenamientos incluidos.</p></div>
+    </div>
   </div>
 </section>
-<!-- ========== FOOTER ========== -->
+
+<!-- 🗺️ PROCESO ------------------------------------------------ -->
+<section class="process" data-aos="fade">
+  <div class="container">
+    <h2 class="gradient-text" style="font-size:2rem;margin-bottom:2.6rem">Cómo trabajaremos</h2>
+    <div class="timeline">
+      <div class="step left" data-aos="fade-right"><h4>Kick-off (Día 0)</h4><p>Inmersión 1,5 h.</p></div>
+      <div class="step right" data-aos="fade-left"><h4>Research (Sem 1-2)</h4><p>Diagnóstico + plan visual.</p></div>
+      <div class="step left" data-aos="fade-right"><h4>Producción (Sem 3-6)</h4><p>Copy, diseño, integraciones.</p></div>
+      <div class="step right" data-aos="fade-left"><h4>Piloto (Sem 7)</h4><p>Versión online.</p></div>
+      <div class="step left" data-aos="fade-right"><h4>Optimización (Sem 8-12)</h4><p>Iteraciones con datos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ❓ FAQ ------------------------------------------------------ -->
+<section class="faq">
+  <div class="container" data-aos="fade-up">
+    <h2 style="font-size:2rem;margin-bottom:2.2rem">Preguntas Frecuentes</h2>
+    <div class="accordion">
+      <div class="faq-item"><button class="faq-btn">¿Nunca tuve funnel? <i class="fas fa-plus"></i></button><div class="faq-content"><p>Genial: partimos en limpio, sin vicios heredados.</p></div></div>
+      <div class="faq-item"><button class="faq-btn">¿Ads desde el día uno? <i class="fas fa-plus"></i></button><div class="faq-content"><p>Podemos iniciar con SEO y escalar ads cuando convenga.</p></div></div>
+      <div class="faq-item"><button class="faq-btn">¿Cuándo veo resultados? <i class="fas fa-plus"></i></button><div class="faq-content"><p>Leads iniciales en 4-6 semanas, depende del nicho.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 📣 CTA ----------------------------------------------------- -->
+<section class="cta" id="diagnostico" data-aos="zoom-in">
+  <h2>¿Listo para multiplicar tus conversiones?</h2>
+  <p>Reserva tu Diagnóstico Gratuito de 30 min y llévate <strong>3 ideas accionables</strong>.</p>
+  <a href="https://calendly.com/" target="_blank" class="btn">Quiero mi diagnóstico 🎯</a>
+</section>
+
+<!-- 🏟️ TESTIMONIOS ------------------------------------------- -->
+<section class="testimonials" data-aos="fade-up">
+  <h2>Tribuna de testimonios… por ahora.</h2>
+  <p><em>¿Serás tú quien inaugure los casos de éxito de PsicoFunnel?</em></p>
+</section>
+
+<!-- 🔚 FOOTER -------------------------------------------------- -->
 <footer>
-  <p>© 2025 PsicoFunnel · Neuroventas, datos y creatividad al servicio de tu crecimiento.</p>
-  <!-- ANTI-SPAM & PRIVACIDAD REUTILIZABLE -->
-  <p>🔒 Prometemos cero spam. Consulta nuestra <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a>. Dispones de baja 1-clic.</p>
+  <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón. · <a href="#top">Subir ↑</a></p>
 </footer>
 
-<!-- =================================================  SCRIPTS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({once:true,duration:800,easing:'ease-out-cubic'});
+<!-- ========================================================= -->
+<!-- 🚀  JS PROPIO – módulo moderno                            -->
+<!-- ========================================================= -->
+<script type="module">
+/* ---------- Helper: cargar iframe YouTube cuando sea visible ---------- */
+const io=window.IntersectionObserver?new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){const ifr=e.target;if(ifr.dataset.src){ifr.src=ifr.dataset.src;delete ifr.dataset.src;}io.unobserve(ifr);}});
+},{rootMargin:"200px"}):null;
+document.querySelectorAll('iframe[data-src]').forEach(el=>io&&io.observe(el));
 
-/* KPI COUNT-UP EFFECT */
-function animateValue(id,start,end,dur){
-  const obj=document.getElementById(id);
-  let startTimestamp=null;
-  const step=t=>{
-    if(!startTimestamp)startTimestamp=t;
-    const progress=Math.min((t-startTimestamp)/dur,1);
-    obj.textContent=Math.floor(progress*(end-start)+start);
-    if(progress<1)window.requestAnimationFrame(step);
-  };
-  window.requestAnimationFrame(step);
-}
-window.addEventListener('load',()=>{animateValue('kpi1',0,42,1200);animateValue('kpi2',0,28,1200);animateValue('kpi3',0,10,1200);});
+/* ---------- Lazy images extra ---------- */
+document.querySelectorAll('img:not([loading])').forEach(img=>{
+  img.setAttribute('loading','lazy');img.setAttribute('decoding','async');
+});
 
-/* SLOTS LIMITADOS – contador random entre 1 y 5  */
-const slotsLeft=document.getElementById('slotsLeft');
-slotsLeft.textContent=Math.floor(Math.random()*5)+1;
+/* ---------- Passive listeners patch ---------- */
+['touchstart','touchmove','wheel'].forEach(ev=>{window.addEventListener(ev,()=>{}, {passive:true,capture:false})});
 
-/* Parallax scroll hero bg  */
-const hero=document.querySelector('.hero::after'); // fallback no JS por CSS
+/* ---------- Init AOS + VanillaTilt cuando el hilo esté ocioso ---------- */
+const initHeavy=()=>{AOS.init({duration:800,once:true});VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{max:6,speed:400,glare:true,"max-glare":.25});};
+'requestIdleCallback'in window?requestIdleCallback(initHeavy,{timeout:2500}):setTimeout(initHeavy,500);
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-btn').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
+
+/* ---------- Año en footer ---------- */
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
