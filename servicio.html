@@ -9,14 +9,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios | PsicoFunnel · Funnels con ciencia & corazón</title>
   <meta name="description" content="Landing de servicios PsicoFunnel: embudos 1-a-1 por Benja, psicología del consumidor, copy neuro, tráfico y CRO.">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-  <script src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+  <!-- Alienta a los navegadores a conservar recursos por 7 días -->
+  <meta http-equiv="Cache-Control" content="public, max-age=604800">
 
   <!-- Íconos -->
   <link rel="icon" type="image/png" href="/img/favicon150.png">  
+
+  <!-- ========================================================= -->
+  <!-- 🔗  PRECONNECT / PRELOAD                                  -->
+  <!-- ========================================================= -->
+  <!-- Fuentes Google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style">
+  <!-- hoja real (se mantiene la línea original) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <!-- CDNs extra -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
   <!-- ========================================================= -->
   <!-- 🖌️  ESTILOS                                               -->
   <!-- ========================================================= -->
@@ -266,6 +286,14 @@ html{
 
     
   </style>
+
+  <!-- ========================================================= -->
+  <!-- 📜  SCRIPTS (head)                                        -->
+  <!-- ========================================================= -->
+  <script src="https://kit.fontawesome.com/a3f4e7b8d1.js"
+          crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"
+          defer></script>
 </head>
 <body>
 
@@ -337,7 +365,11 @@ html{
 
 <!-- 🎞️ VSL ----------------------------------------------------- -->
 <section class="vsl" data-aos="fade">
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="VSL PsicoFunnel" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+          title="VSL PsicoFunnel"
+          loading="lazy"
+          allow="autoplay; encrypted-media"
+          allowfullscreen></iframe>
   <!-- BOTÓN “AGENDAR LLAMADA” -->
 <div class="cta-container">
   <a href="/agenda.html" class="big-glow-btn">¡QUIERO AGENDAR MI LLAMADA!</a>
@@ -462,22 +494,18 @@ html{
   <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón. · <a href="#top">Subir ↑</a></p>
 </footer>
 
-<!-- 🧩 SCRIPTS ------------------------------------------------- -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- 🧩 SCRIPTS (fin de <body>) --------------------------------- -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 <script>
-  AOS.init({duration:800,once:true});
-  VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{max:6,speed:400,glare:true,"max-glare":.25});
-
-  /* FAQ accordion */
-  document.querySelectorAll('.faq-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const item=btn.parentElement;
-      item.classList.toggle('open');
+  /* AOS, Tilt, FAQ y año dinámico */
+  window.addEventListener('DOMContentLoaded',()=>{
+    AOS.init({duration:800,once:true});
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{max:6,speed:400,glare:true,"max-glare":.25});
+    document.querySelectorAll('.faq-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
     });
+    document.getElementById('year').textContent=new Date().getFullYear();
   });
-
-  /* Year */
-  document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
