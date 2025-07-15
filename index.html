@@ -270,17 +270,78 @@ html{
   </nav>
 </div>
 
-<!-- ========== HERO ========== -->
-<header id="top">
-  <div class="container" data-aos="fade-down">
-    <h1>Esto es <span style="color:var(--pf-accent)">Psicofunnel</span></h1>
-    <h2 class="subtitle">Hola, soy <span style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent">Benjamin E. Alegre</span></h2>
-    <p class="slogan">Estratega de funnels &amp; psicología del consumidor.</p>
-    <p class="slogan">Aqui ofrecemos un servicio de creacion de funnels de venta a medida para VOS!</p>
-        <p class="slogan">Donde gracias a los procesos de venta podras ver ingresos predecibles en tu profucto y convertir a tu comunidad en clientes</p>
-    <a href="/servicio.html" class="btn">Ver servicios</a>
+<!-- ========== HERO revisado ========== -->
+<header id="top" style="padding:140px 1rem 160px;color:#fff;position:relative;text-align:center;">
+  <div class="container" data-aos="fade-down" style="max-width:900px;margin:auto;">
+
+    <!-- HEADLINE -->
+    <h1 style="
+        font-size:clamp(2.4rem,5.8vw,4.2rem);
+        font-weight:800;
+        line-height:1.15;
+        margin-bottom:1rem;
+        text-wrap:balance;          /* centra y reparte palabras (Chrome/Edge 120+, Safari 17+)   */
+        word-break:break-word;      /* fallback para navegadores antiguos                         */
+      ">
+      Vende tus CONOCIMIENTOS <br>
+      <span style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent;">
+        con ingresos predecibles
+      </span>
+    </h1>
+
+    <!-- SUBTÍTULO -->
+    <p style="font-size:1.25rem;font-weight:600;max-width:680px;margin:0 auto 2.4rem;">
+      Embudos hechos para vos que convierten comunidad en <strong>alumnos premium</strong> —
+      vos solo enfocáte en mejorar el producto.
+    </p>
+
+    <!-- BULLETS -->
+    <ul style="
+        display:flex;flex-wrap:wrap;justify-content:center;
+        gap:1.1rem;font-size:.96rem;list-style:none;
+        margin:0 0 3rem;padding:0;">
+      <li style="display:flex;align-items:center;gap:.45rem;">
+        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Ventas evergreen
+      </li>
+      <li style="display:flex;align-items:center;gap:.45rem;">
+        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Leads calientes
+      </li>
+      <li style="display:flex;align-items:center;gap:.45rem;">
+        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Potencia lanzamientos
+      </li>
+    </ul>
+
+    <!-- CTA con glow -->
+    <a href="/servicio.html"
+       style="
+         display:inline-block;padding:1.1rem 2.6rem;
+         font-size:1.12rem;font-weight:900;border-radius:60px;
+         color:#001a40;background:#fff;
+         box-shadow:0 0 20px rgba(0,166,224,.55);
+         transition:.3s ease;position:relative;overflow:hidden;"
+       onmouseover="this.style.transform='translateY(-4px)'"
+       onmouseout ="this.style.transform='none'">
+      ¡QUIERO MI EMBUDO!
+      <span style="content:'';position:absolute;inset:-120%;
+        background:radial-gradient(circle,rgba(255,255,255,.55) 0%,transparent 70%);
+        animation:glow 4s linear infinite;"></span>
+    </a>
+    <p style="font-size:.82rem;margin-top:.9rem;opacity:.88;">
+      Diagnóstico gratuito · Sin compromiso
+    </p>
   </div>
 </header>
+
+<style>
+@keyframes glow{
+  0%{transform:translate(-50%,-50%) scale(.7);}
+  50%{transform:translate(150%,150%) scale(1);}
+  100%{transform:translate(-50%,-50%) scale(.7);}
+}
+@media(prefers-reduced-motion:reduce){
+  header a span{animation:none}
+}
+</style>
 
 <!-- ========== PSICOFUNNEL · BLOQUE TRANSACCIONAL COMPLETO ========== -->
 <section id="pf-wow" class="pf-wow">
