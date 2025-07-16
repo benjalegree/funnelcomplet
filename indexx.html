@@ -580,6 +580,33 @@ footer{
   .hero-bullets{ font-size: .88rem; gap: .7rem; }
   .hero-img img{ max-width: 340px; }
 }
+/* ===== FIX definitivo: ancho + columna =================== */
+@media (max-width: 900px){
+  .hero-wrapper{
+    max-width:100%;          /* <- clave: impide zoom-out      */
+    flex-direction:column;   /* texto arriba · foto abajo      */
+    align-items:center;
+    gap:2.2rem;
+    padding:80px 1rem 120px; /* aire extra abajo               */
+  }
+  .hero-content{text-align:center;}
+  .hero-title{font-size:2.4rem;}
+  .hero-sub  {font-size:1.05rem;}
+
+  /* imagen contenida */
+  .hero-img img{
+    width:92%;               /* nunca forza scrolling          */
+    max-width:420px;
+  }
+}
+
+/* ≤600 px – todavía más compacto -------------------------- */
+@media (max-width:600px){
+  .hero-title{font-size:2.1rem;}
+  .hero-sub{font-size:.95rem;}
+  .hero-bullets{font-size:.85rem;gap:.7rem;}
+  .hero-img img{max-width:340px;}
+}
 
 </style>
 
