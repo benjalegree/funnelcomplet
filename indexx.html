@@ -482,60 +482,73 @@ footer{
 .pf-fireBtn{background:#fff;color:var(--pf-navy)!important;font-weight:900;padding:1.2rem 2.8rem}
 #fireCanvas{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
 
-/* ------------------------------------------------------------------
-   180 · MOBILE FIXES EXTRA
------------------------------------------------------------------- */
-@media(max-width:640px){
-  .about-inner>div{text-align:center}
-  .pf-row{margin:0 auto 90px}
-  .pf-fireCard{margin:90px auto 0;padding:40px 20px}
-}
-  /* Mantiene la frase en una sola línea a partir de 700 px de ancho.
-   Debajo de ese punto permitimos que se ajuste normalmente. */
-@media (min-width:700px){
-  .nowrap-lg{white-space:nowrap;}
-}
-
-/* -------- 1. Pantallas ≤ 600 px -------- */
+/* ===========================================================
+   200 · MOBILE OVERRIDES  – ajustes globales ≤ 600 px
+=========================================================== */
 @media (max-width:600px){
 
-  /* Fuente base un poco menor */
+  /* Fuente base un poco menor para caber mejor */
   body{font-size:15px;}
 
-  /* Hero más compacto */
-  header#top{
-    padding:70px 1rem 25px;      /* ya lo tenías, lo reforzamos */
-  }
-  .hero-title{font-size:2.25rem;line-height:1.18;}
-  .hero-sub  {font-size:1rem;margin-bottom:1.8rem;}
+  /* --- HERO --- */
+  header#top{padding:70px 1rem 25px;}
+  .hero-title{font-size:2.3rem;line-height:1.18;}
+  .hero-sub{font-size:1rem;margin-bottom:1.8rem;}
   .hero-bullets{gap:.7rem;font-size:.88rem;margin-bottom:2rem;}
   .hero-img img{max-width:440px;}
 
-  /* Grids a una columna */
+  /* Grids de 3 → 1 columna */
+  .compare-wrap,
   .benefits-grid,
-  .blog-grid,
-  .yt-grid{grid-template-columns:1fr!important;}
+  .pillars-grid,
+  .founder-grid,
+  .blog-grid{grid-template-columns:1fr!important;}
 
-  /* Cards espaciadas */
+  /* Comparativa: esconde el separador “⚡” y añade margen */
+  .separator{display:none;}
+  .compare-card{margin-bottom:1.2rem;}
+
+  /* Timeline vertical */
+  .timeline::before{left:4px;}
+  .step{width:100%;padding-left:2.4rem;}
+  .step.left,.step.right{left:0;text-align:left;}
+  .step::before{left:0;}
+
+  /* YouTube responsive (alturas menores) */
+  .vsl{padding:60px 1rem;}
+  .vsl iframe{height:300px;}
+
+  /* Cards PF-WOW más compactas */
   .pf-row{gap:28px;margin:0 auto 80px;}
+  .pf-card{padding:1.9rem 1.6rem;}
 
-  /* Margen menor bajo bono especial */
-  .pf-fireCard{margin:90px auto 0;padding:40px 22px;}
+  /* Newsletter formulario vertical */
+  .newsletter form{flex-direction:column;gap:.7rem;}
+
+  /* FAQ botones más pequeños */
+  .faq-btn{font-size:.92rem;padding:1rem 1.15rem;}
+
+  /* CTA padding menor */
+  .cta{padding:75px 1rem;}
 }
 
-/* -------- 2. Pantallas muy estrechas ≤ 420 px -------- */
+/* ===========================================================
+   210 · VERY NARROW  – ajustes extra ≤ 420 px
+=========================================================== */
 @media (max-width:420px){
 
-  /* Redondeamos aún más tipografías */
-  .hero-title{font-size:1.85rem;}
-  .hero-sub  {font-size:.95rem;}
+  .hero-title{font-size:1.9rem;}
+  .hero-sub{font-size:.92rem;}
   .hero-img img{max-width:320px;}
 
-  /* Apretamos padding secciones globales */
   section{padding:70px 0;}
 
-  /* Newsletter input stack vertical for tiny phones */
-  .newsletter form{flex-direction:column;gap:.5rem;}
+  /* Botón grande se reduce un poco */
+  .big-glow-btn{font-size:1rem;padding:1rem 2.4rem;}
+
+  /* FAQ texto más compacto */
+  .faq-content p{font-size:.82rem;}
+}
 }
 
 </style>
