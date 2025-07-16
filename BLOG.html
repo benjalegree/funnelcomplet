@@ -120,9 +120,11 @@
 <section class="newsletter">
   <h2>Suscríbete para más neuro-ideas</h2>
   <p>Cada semana, tips accionables de funnels, copywriting y automatización directamente en tu bandeja de entrada.</p>
-  <form action="https://hook.make.com/tu-webhook" method="POST">
-    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+
+  <form id="nlForm" novalidate>
+    <input type="email" name="email" id="nlEmail" placeholder="Tu correo corporativo" required>
     <button type="submit">Quiero aprender más</button>
+    <span id="nlError" style="color:#ffb4b4;font-size:.9rem;min-height:1em"></span>
   </form>
 </section>
 
@@ -135,6 +137,7 @@
 
 <!-- ============================== SCRIPTS =========================== -->
 <script>
+
   /* -------- Datos -------- */
   const categories=["Empresa","Usuario"];
   const articles=[
@@ -163,50 +166,41 @@
     {title:"Cómo crear un funnel de ventas evergreen",slug:"funnel-evergreen.html",cover:"/img/cover-funnel-evergreen.jpg",category:"Usuario"}
   ];
 
-  /* -------- Filtros -------- */
-  const filterBar=document.getElementById('filterBar');
-  const btnAll=document.createElement('button');
-  btnAll.className='filter-btn active';btnAll.dataset.cat='Todos';btnAll.textContent='Todos';filterBar.appendChild(btnAll);
-  categories.forEach(c=>{const b=document.createElement('button');b.className='filter-btn';b.dataset.cat=c;b.textContent=c;filterBar.appendChild(b)});
 
-  /* -------- Cards -------- */
-  const grid=document.getElementById('articlesGrid');
-  const renderCards=list=>{
-    grid.innerHTML='';
-    list.forEach(a=>{
-      const el=document.createElement('article');
-      el.className='card';
-      el.innerHTML=`<a href="/blog/${a.slug}">
-        <img src="${a.cover}" alt="${a.title}" loading="lazy">
-        <div class="card-body">
-          <span class="tag">${a.category}</span>
-          <h3>${a.title}</h3>
-        </div>
-      </a>`;grid.appendChild(el);
+/* ---------- Filtros y grid ---------- */
+const filterBar=document.getElementById('filterBar');
+const btnAll=document.createElement('button');
+btnAll.className='filter-btn active';btnAll.dataset.cat='Todos';btnAll.textContent='Todos';filterBar.appendChild(btnAll);
+categories.forEach(c=>{const b=document.createElement('button');b.className='filter-btn';b.dataset.cat=c;b.textContent=c;filterBar.appendChild(b)});
+const grid=document.getElementById('articlesGrid');
+const renderCards=list=>{grid.innerHTML='';list.forEach(a=>{const el=document.createElement('article');el.className='card';el.innerHTML=`<a href="/blog/${a.slug}"><img src="${a.cover}" alt="${a.title}" loading="lazy"><div class="card-body"><span class="tag">${a.category}</span><h3>${a.title}</h3></div></a>`;grid.appendChild(el);});};
+renderCards(articles);
+const filter=(cat,q)=>{let res=[...articles];if(cat&&cat!=='Todos')res=res.filter(a=>a.category===cat);if(q)res=res.filter(a=>a.title.toLowerCase().includes(q.toLowerCase()));renderCards(res);};
+filterBar.addEventListener('click',e=>{if(!e.target.matches('.filter-btn'))return;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');filter(e.target.dataset.cat,document.getElementById('searchInput').value);});
+document.getElementById('searchInput').addEventListener('input',e=>{const cat=document.querySelector('.filter-btn.active').dataset.cat;filter(cat,e.target.value);});
+
+/* ---------- Newsletter ---------- */
+const nlForm=document.getElementById('nlForm'),nlEmail=document.getElementById('nlEmail'),nlErr=document.getElementById('nlError');
+const badDomains=['gmail.com','hotmail.com','outlook.com','yahoo.com','icloud.com'];
+nlForm.addEventListener('submit',async e=>{
+  e.preventDefault();nlErr.textContent='';
+  const email=nlEmail.value.trim().toLowerCase();
+  if(!email){nlErr.textContent='Por favor escribe tu email 🙂';return;}
+  if(badDomains.some(d=>email.endsWith('@'+d))){nlErr.textContent='Usa tu email de trabajo 🙌';return;}
+  try{
+    await fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({origen:'newsletter',email})
     });
-  };
-  renderCards(articles);
+    window.location.href='/thankyoulanding.html';
+  }catch{
+    nlErr.textContent='Ups, algo falló. Inténtalo de nuevo.';
+  }
+});
 
-  /* -------- Filtrado & búsqueda -------- */
-  const filter=(cat,q)=>{
-    let res=[...articles];
-    if(cat&&cat!=='Todos')res=res.filter(a=>a.category===cat);
-    if(q)res=res.filter(a=>a.title.toLowerCase().includes(q.toLowerCase()));
-    renderCards(res);
-  };
-  filterBar.addEventListener('click',e=>{
-    if(!e.target.matches('.filter-btn'))return;
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    e.target.classList.add('active');
-    filter(e.target.dataset.cat,document.getElementById('searchInput').value);
-  });
-  document.getElementById('searchInput').addEventListener('input',e=>{
-    const cat=document.querySelector('.filter-btn.active').dataset.cat;
-    filter(cat,e.target.value);
-  });
-
-  /* Año dinámico */
-  document.getElementById('year').textContent=new Date().getFullYear();
+/* Año footer */
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
