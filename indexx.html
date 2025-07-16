@@ -43,6 +43,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <script defer src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
 
+
+
 <!-- ======================  E S T I L O S  ====================== -->
 <style>
 /* ------------------------------------------------------------------
@@ -492,6 +494,48 @@ footer{
    Debajo de ese punto permitimos que se ajuste normalmente. */
 @media (min-width:700px){
   .nowrap-lg{white-space:nowrap;}
+}
+
+/* -------- 1. Pantallas ≤ 600 px -------- */
+@media (max-width:600px){
+
+  /* Fuente base un poco menor */
+  body{font-size:15px;}
+
+  /* Hero más compacto */
+  header#top{
+    padding:70px 1rem 25px;      /* ya lo tenías, lo reforzamos */
+  }
+  .hero-title{font-size:2.25rem;line-height:1.18;}
+  .hero-sub  {font-size:1rem;margin-bottom:1.8rem;}
+  .hero-bullets{gap:.7rem;font-size:.88rem;margin-bottom:2rem;}
+  .hero-img img{max-width:440px;}
+
+  /* Grids a una columna */
+  .benefits-grid,
+  .blog-grid,
+  .yt-grid{grid-template-columns:1fr!important;}
+
+  /* Cards espaciadas */
+  .pf-row{gap:28px;margin:0 auto 80px;}
+
+  /* Margen menor bajo bono especial */
+  .pf-fireCard{margin:90px auto 0;padding:40px 22px;}
+}
+
+/* -------- 2. Pantallas muy estrechas ≤ 420 px -------- */
+@media (max-width:420px){
+
+  /* Redondeamos aún más tipografías */
+  .hero-title{font-size:1.85rem;}
+  .hero-sub  {font-size:.95rem;}
+  .hero-img img{max-width:320px;}
+
+  /* Apretamos padding secciones globales */
+  section{padding:70px 0;}
+
+  /* Newsletter input stack vertical for tiny phones */
+  .newsletter form{flex-direction:column;gap:.5rem;}
 }
 
 </style>
