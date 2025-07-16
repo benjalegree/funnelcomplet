@@ -179,23 +179,27 @@ const filter=(cat,q)=>{let res=[...articles];if(cat&&cat!=='Todos')res=res.filte
 filterBar.addEventListener('click',e=>{if(!e.target.matches('.filter-btn'))return;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');filter(e.target.dataset.cat,document.getElementById('searchInput').value);});
 document.getElementById('searchInput').addEventListener('input',e=>{const cat=document.querySelector('.filter-btn.active').dataset.cat;filter(cat,e.target.value);});
 
-/* ---------- Newsletter ---------- */
-const nlForm=document.getElementById('nlForm'),nlEmail=document.getElementById('nlEmail'),nlErr=document.getElementById('nlError');
-const badDomains=['gmail.com','hotmail.com','outlook.com','yahoo.com','icloud.com'];
-nlForm.addEventListener('submit',async e=>{
-  e.preventDefault();nlErr.textContent='';
-  const email=nlEmail.value.trim().toLowerCase();
-  if(!email){nlErr.textContent='Por favor escribe tu email 🙂';return;}
-  if(badDomains.some(d=>email.endsWith('@'+d))){nlErr.textContent='Usa tu email de trabajo 🙌';return;}
-  try{
-    await fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({origen:'newsletter',email})
+/* ---------- Newsletter sin filtro corporativo ---------- */
+const nlForm  = document.getElementById('nlForm');
+const nlEmail = document.getElementById('nlEmail');
+const nlErr   = document.getElementById('nlError');
+
+nlForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  nlErr.textContent = '';
+
+  const email = nlEmail.value.trim();
+  if (!email) { nlErr.textContent = 'Por favor, escribe tu email 🙂'; return; }
+
+  try {
+    await fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ origen: 'newsletter', email })
     });
-    window.location.href='/thankyoulanding.html';
-  }catch{
-    nlErr.textContent='Ups, algo falló. Inténtalo de nuevo.';
+    window.location.href = '/thankyoulanding.html';
+  } catch {
+    nlErr.textContent = 'Ups, algo falló. Inténtalo otra vez.';
   }
 });
 
