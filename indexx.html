@@ -550,6 +550,36 @@ footer{
   .faq-content p{font-size:.82rem;}
 }
 }
+/* ======   MOBILE HERO   ================================= */
+@media (max-width: 900px){
+
+  /* 1 · Fuerza la columna */
+  .hero-wrapper{
+    flex-direction: column;        /* texto arriba, foto abajo   */
+    align-items: center;           /* centra ambos ejes          */
+    gap: 2.2rem;                   /* respiro entre secciones    */
+    padding: 80px 1rem 110px;      /* menos aire vertical        */
+  }
+
+  /* 2 · Centra y compacta texto */
+  .hero-content{ text-align:center; }
+  .hero-title  { font-size: 2.4rem; }
+  .hero-sub    { font-size: 1.05rem; }
+
+  /* 3 · Imagen más contenida   */
+  .hero-img img{
+    max-width: 420px;              /* iPhone 11 = 414 px         */
+    width: 92%;
+  }
+}
+
+/* ≤ 600 px: todavía más compacto ------------------------- */
+@media (max-width: 600px){
+  .hero-title{ font-size: 2.1rem; }
+  .hero-sub  { font-size: .95rem; }
+  .hero-bullets{ font-size: .88rem; gap: .7rem; }
+  .hero-img img{ max-width: 340px; }
+}
 
 </style>
 
