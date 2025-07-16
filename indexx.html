@@ -332,21 +332,26 @@ html{
   .hero-wrapper{padding:90px 1rem 120px}
   .hero-img{margin-top:2rem}
 }
-/* ====== AJUSTE DEFINITIVO DEL HERO ====== */
+/* ================= HERO – ajuste final ================= */
 
-/* 1. Más grande el texto y la imagen */
-.hero-title{font-size:clamp(2.6rem,6vw,4.1rem);}
-.hero-sub  {font-size:1.25rem;}
-.hero-img img{max-width:600px;}        /* antes 500 */
+/* ► Texto aún más grande */
+.hero-title{font-size:clamp(2.9rem,7vw,4.6rem);}   /* antes 2.6–4.1 */
+.hero-sub  {font-size:1.32rem;}
 
-/* 2. Ocupa mejor el alto: menos padding abajo  */
-.hero-wrapper{padding:80px 1rem 40px;} /* ↓ de 90 → 40  */
+/* ► Imagen más grande */
+.hero-img img{max-width:680px;}                    /* antes 600 */
 
-/* 3. Móvil: evita hueco y mantiene proporción */
+/* ► Mucho menos alto (paddings ↓) */
+.hero-wrapper{padding:60px 1rem 15px;}             /* antes 80 / 40 */
+
+/* ► Móvil: controla que no desborde y mantiene compacto */
 @media(max-width:600px){
-  .hero-wrapper{padding:70px 1rem 30px;} /* aún más compacto */
-  .hero-img img{max-width:480px;}        /* controla que no desborde */
+  .hero-wrapper{padding:55px 1rem 10px;}
+  .hero-title {font-size:2.2rem;}
+  .hero-sub   {font-size:1.05rem;}
+  .hero-img img{max-width:480px;}
 }
+
 
   </style>
 </head>
