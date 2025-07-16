@@ -249,6 +249,89 @@ html{
     transform:translateX(0);     /* visible cuando el checkbox está activo */
   }
 }
+/* =============== HERO ================= */
+.hero-wrapper{
+  display:flex;
+  flex-wrap:wrap;           /* stack en móvil, lado-a-lado en desktop */
+  align-items:center;
+  gap:3rem;
+  max-width:1200px;
+  margin-inline:auto;
+  padding:100px 1rem 140px; /* alto total ↓   (antes 140-160) */
+}
+
+/* CONTENIDO (texto) */
+.hero-content{
+  flex:1 1 360px;           /* ancho mínimo 360px, crece */
+  text-align:center;
+}
+
+/* TÍTULO */
+.hero-title{
+  font-size:clamp(2.1rem,5vw,3.4rem);  /* más pequeño pero responsivo */
+  line-height:1.15;
+  margin-bottom:1.1rem;
+  font-weight:800;
+}
+.nowrap{white-space:nowrap}            /* evita salto de línea */
+
+/* SUBTÍTULO */
+.hero-sub{
+  font-size:1.15rem;
+  max-width:540px;
+  margin:0 auto 2.3rem;
+  font-weight:600;
+}
+
+/* BULLETS */
+.hero-bullets{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1rem;
+  font-size:.95rem;
+  margin:0 0 2.7rem;
+  padding:0;
+}
+.hero-bullets li{
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+}
+.hero-bullets i{color:var(--pf-accent)}
+
+/* BOTÓN CTA */
+.hero-btn{
+  display:inline-block;
+  padding:1.05rem 2.6rem;
+  font-size:1.05rem;
+  font-weight:900;
+  border-radius:60px;
+  color:#001a40;
+  background:#fff;
+  text-decoration:none;
+  transition:.3s;
+  box-shadow:0 0 20px rgba(0,166,224,.55);
+}
+.hero-btn:hover{transform:translateY(-4px)}
+
+/* NOTA bajo CTA */
+.hero-note{
+  font-size:.8rem;
+  margin-top:.85rem;
+  opacity:.88;
+}
+
+/* IMAGEN */
+.hero-img{flex:1 1 320px;text-align:center}
+.hero-img img{width:100%;max-width:420px;height:auto;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
+
+/* BREAKPOINT móvil — se centra todo */
+@media(max-width:900px){
+  .hero-wrapper{padding:90px 1rem 120px}
+  .hero-img{margin-top:2rem}
+}
 
   </style>
 </head>
@@ -270,65 +353,45 @@ html{
   </nav>
 </div>
 
-<!-- ========== HERO revisado ========== -->
-<header id="top" style="padding:140px 1rem 160px;color:#fff;position:relative;text-align:center;">
-  <div class="container" data-aos="fade-down" style="max-width:900px;margin:auto;">
+<header id="top" style="color:#fff;position:relative;background:none;">
+  <div class="hero-wrapper">
 
-    <!-- HEADLINE -->
-    <h1 style="
-        font-size:clamp(2.4rem,5.8vw,4.2rem);
-        font-weight:800;
-        line-height:1.15;
-        margin-bottom:1rem;
-        text-wrap:balance;          /* centra y reparte palabras (Chrome/Edge 120+, Safari 17+)   */
-        word-break:break-word;      /* fallback para navegadores antiguos                         */
-      ">
-      Vende tus CONOCIMIENTOS <br>
-      <span style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent;">
-        con ingresos predecibles
-      </span>
-    </h1>
+    <!-- ░░ TEXTO ░░ -->
+    <div class="hero-content" data-aos="fade-down">
+      <h1 class="hero-title">
+        <span class="nowrap">Vende tus&nbsp;conocimientos</span><br>
+        <span style="
+          background:linear-gradient(90deg,var(--pf-accent),#60dcff);
+          -webkit-background-clip:text;color:transparent;">
+          con ingresos predecibles
+        </span>
+      </h1>
 
-    <!-- SUBTÍTULO -->
-    <p style="font-size:1.25rem;font-weight:600;max-width:680px;margin:0 auto 2.4rem;">
-      Embudos hechos para vos que convierten comunidad en <strong>alumnos premium</strong> —
-      vos solo enfocáte en mejorar el producto.
-    </p>
+      <p class="hero-sub">
+        Embudos hechos&nbsp;para&nbsp;vos que convierten comunidad
+        en <strong>alumnos premium</strong> — vos solo enfocáte en mejorar el producto.
+      </p>
 
-    <!-- BULLETS -->
-    <ul style="
-        display:flex;flex-wrap:wrap;justify-content:center;
-        gap:1.1rem;font-size:.96rem;list-style:none;
-        margin:0 0 3rem;padding:0;">
-      <li style="display:flex;align-items:center;gap:.45rem;">
-        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Ventas evergreen
-      </li>
-      <li style="display:flex;align-items:center;gap:.45rem;">
-        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Leads calientes
-      </li>
-      <li style="display:flex;align-items:center;gap:.45rem;">
-        <i class="fas fa-check-circle" style="color:var(--pf-accent);font-size:.95rem;"></i> Potencia lanzamientos
-      </li>
-    </ul>
+      <ul class="hero-bullets">
+        <li><i class="fas fa-check-circle"></i> Ventas evergreen</li>
+        <li><i class="fas fa-check-circle"></i> Leads calientes</li>
+        <li><i class="fas fa-check-circle"></i> Potencia lanzamientos</li>
+      </ul>
 
-    <!-- CTA con glow -->
-    <a href="/agenda.html"
-       style="
-         display:inline-block;padding:1.1rem 2.6rem;
-         font-size:1.12rem;font-weight:900;border-radius:60px;
-         color:#001a40;background:#fff;
-         box-shadow:0 0 20px rgba(0,166,224,.55);
-         transition:.3s ease;position:relative;overflow:hidden;"
-       onmouseover="this.style.transform='translateY(-4px)'"
-       onmouseout ="this.style.transform='none'">
-      ¡QUIERO MI EMBUDO!
-      <span style="content:'';position:absolute;inset:-120%;
-        background:radial-gradient(circle,rgba(255,255,255,.55) 0%,transparent 70%);
-        animation:glow 4s linear infinite;"></span>
-    </a>
-    <p style="font-size:.82rem;margin-top:.9rem;opacity:.88;">
-       Aqui no se agendan los diganosticos gratuitos
-    </p>
+      <a href="/agenda.html" class="hero-btn">¡QUIERO MI EMBUDO!</a>
+      <p class="hero-note">Aquí no se agendan los diagnósticos gratuitos</p>
+    </div>
+
+    <!-- ░░ IMAGEN ░░ -->
+    <div class="hero-img" data-tilt data-aos="zoom-in" data-aos-delay="120">
+      <picture>
+        <source srcset="/img/benjamin-hero.webp" type="image/webp">
+        <img src="/img/benjamin-hero.png"
+             alt="Benjamín Alegre — Funnel Strategist"
+             loading="lazy" decoding="async">
+      </picture>
+    </div>
+
   </div>
 </header>
 
