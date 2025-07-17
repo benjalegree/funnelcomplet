@@ -221,7 +221,13 @@ header#top{
   .hero-bullets{font-size:.88rem;gap:.7rem}
   .hero-img img{max-width:340px}
 }
-
+@media (min-width:901px){
+  .hero-title .nowrap-lg{
+    display:inline-block;   /* crea ancho propio */
+    max-width:22ch;         /* <── ajusta si quieres más o menos estrecho  */
+    text-align:center;      /* sigue centrada dentro del h1 */
+  }
+}
 /* Evita overflow si el viewport es muy estrecho */
 @media(max-width:500px){
   .nowrap{white-space:normal;}   /* permite corte de línea */
