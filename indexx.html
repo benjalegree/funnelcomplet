@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <!---- 1· RESPONSIVE ---->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <!-- Pre-conexiones y DNS-prefetch: reducen TTFB -->
+  <!-- Pre-conexiones y DNS-prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -17,7 +16,7 @@
   <link rel="icon" type="image/png" href="/img/favicon150.png">
   <link rel="manifest" href="/img/site.webmanifest">
 
-  <!-- Windows/Safari -->
+  <!-- Windows / Safari -->
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
@@ -32,14 +31,14 @@
   <noscript><link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"></noscript>
 
-  <!-- AOS CSS (versión 2.3.4) – preload -->
+  <!-- AOS CSS (2.3.4) – preload -->
   <link rel="preload" as="style"
         href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"
         onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"></noscript>
 
-  <!-- Scripts externos (defer = no bloquean render) -->
+  <!-- Scripts externos (defer) -->
   <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <script defer src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
@@ -47,7 +46,7 @@
 <!-- ======================  E S T I L O S  ====================== -->
 <style>
 /* ------------------------------------------------------------------
-   000 · VARIABLES, RESET & FIXES
+   000 · VARIABLES, RESET & BASE
 ------------------------------------------------------------------ */
 :root{
   --pf-navy:#001a40;
@@ -58,16 +57,16 @@
   --glow:0 0 12px rgba(0,166,224,.55);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;max-width:100vw}         /* 🔧 anti-zoom-out */
+html,body{width:100%;max-width:100vw}     /* evita zoom-out / scroll horiz. */
 html{scroll-behavior:smooth}
 body{
   font-family:'Outfit',sans-serif;
   line-height:1.6;
   color:#0a0f1c;
   text-align:center;
-  overflow-x:hidden;                          /* evita scroll lat. */
+  overflow-x:hidden;
 }
-img,iframe{max-width:100%;display:block;margin-inline:auto;height:auto}
+img,iframe{max-width:100%;height:auto;display:block;margin-inline:auto}
 a{color:var(--pf-accent);text-decoration:none;transition:.25s}
 a:hover{opacity:.8}
 
@@ -137,7 +136,7 @@ header#top{color:#fff;position:relative;background:none;padding:100px 1rem 40px}
 .hero-btn:hover{transform:translateY(-4px)}
 .hero-note{font-size:.8rem;margin-top:.8rem;opacity:.88}
 .hero-img{flex:1 1 340px;text-align:center}
-.hero-img img{width:100%;max-width:700px;height:auto;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
+.hero-img img{width:100%;max-width:700px;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
 @media(max-width:900px){
   .hero-wrapper{flex-direction:column;align-items:center;gap:2.2rem;padding:80px 1rem 120px;max-width:100%}
   .hero-title{font-size:2.4rem}.hero-sub{font-size:1.05rem}
@@ -149,6 +148,10 @@ header#top{color:#fff;position:relative;background:none;padding:100px 1rem 40px}
   .hero-bullets{font-size:.88rem;gap:.7rem}
   .hero-img img{max-width:340px}
 }
+
+/* Animación glow (solo para keyframes) */
+@keyframes glow{0%{transform:translate(-50%,-50%) scale(.7)}50%{transform:translate(150%,150%) scale(1)}100%{transform:translate(-50%,-50%) scale(.7)}}
+@media(prefers-reduced-motion:reduce){header a span{animation:none}}
 
 /* ------------------------------------------------------------------
    050 · SECCIONES
@@ -176,7 +179,9 @@ section{padding:110px 0}
 .tl-item h4{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;color:var(--pf-navy)}
 .tl-item p{font-size:.9rem}
 @media(max-width:600px){
-  .tl-item{padding:1rem .55rem;width:50%}
+  .timeline::before{left:4px}
+  .tl-item{width:100%;padding-left:2.4rem;text-align:left!important;left:0!important}
+  .tl-item::before{left:0!important}
   .tl-item h4{font-size:.92rem}.tl-item p{font-size:.78rem;line-height:1.42}
 }
 
@@ -290,35 +295,32 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
 .pf-fireBtn{background:#fff;color:var(--pf-navy)!important;font-weight:900;padding:1.2rem 2.8rem}
 #fireCanvas{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
 
-/* ===========================================================
-   200 · GLOBAL MOBILE ≤ 600 px (compacta todo)
-=========================================================== */
-@media (max-width:600px){
-  body{font-size:15px}
-  /* Grids 1 col */
-  .benefits-grid,.blog-grid{grid-template-columns:1fr!important}
-  /* Timeline ajusta */
-  .timeline::before{left:4px}
-  .tl-item{width:100%;padding-left:2.4rem}.tl-item:nth-child(odd),.tl-item:nth-child(even){left:0;text-align:left}
-  .tl-item::before{left:0}
-  /* Newsletter vertical */
-  .newsletter form{flex-direction:column;gap:.7rem}
-  /* FAQ compacta */
-  .faq-btn{font-size:.92rem;padding:1rem 1.15rem}
-  /* CTA menos padding */
-  .cta{padding:75px 1rem}
+/* ------------------------------------------------------------------
+   180 · MOBILE FIXES EXTRA
+------------------------------------------------------------------ */
+@media(max-width:640px){
+  .about-inner>div{text-align:center}
+  .pf-row{margin:0 auto 90px}
+  .pf-fireCard{margin:90px auto 0;padding:40px 20px}
+}
+@media(min-width:700px){.nowrap-lg{white-space:nowrap}}
+@media(max-width:480px){
+  .hero-title{font-size:clamp(1.9rem,7vw,3rem)}
+  .hero-sub{font-size:1.05rem}
+  .hero-img img{max-width:320px}
 }
 </style>
 </head>
 
 <body>
+
 <!-- ========== NAVBAR ========== -->
 <div class="header-inner">
-  <nav class="nav">
+  <nav class="nav" aria-label="Menú principal">
     <a class="logo" href="/">PsicoFunnel</a>
-    <input type="checkbox" id="toggle">
+    <input type="checkbox" id="toggle" aria-label="Abrir / cerrar menú" aria-controls="menu" aria-expanded="false">
     <label for="toggle" class="burger"><span></span></label>
-    <div class="nav-links">
+    <div class="nav-links" id="menu">
       <a href="/">Inicio</a>
       <a href="/servicio.html">Servicios</a>
       <a href="/BLOG.html">Blog</a>
@@ -335,9 +337,7 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
     <div class="hero-content" data-aos="fade-down">
       <h1 class="hero-title">
         <span class="nowrap">Vende tus&nbsp;conocimientos</span><br>
-        <span class="nowrap"
-              style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);
-                     -webkit-background-clip:text;color:transparent;">
+        <span class="nowrap-lg" style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent;">
           con&nbsp;ingresos&nbsp;predecibles
         </span>
       </h1>
@@ -358,8 +358,7 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
     <div class="hero-img" data-tilt data-aos="zoom-in" data-aos-delay="120">
       <picture>
         <source srcset="/img/benjamin-hero.webp" type="image/webp">
-        <img src="/img/benjamin-hero.png"
-             alt="Benjamín Alegre — Funnel Strategist" loading="lazy" decoding="async">
+        <img src="/img/benjamin-hero.png" alt="Benjamín Alegre — Funnel Strategist" loading="lazy" decoding="async">
       </picture>
     </div>
   </div>
@@ -375,7 +374,7 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
   <div class="pf-row">
     <article class="pf-card pf-blue" data-aos="fade-left" data-aos-delay="100">
       <h3>¿Qué es PsicoFunnel?</h3>
-      <p>PsicoFunnel es un servicio de embudos de venta enfocado <strong>100 % en cómo funciona la mente del consumidor</strong>. Cada funnel se crea desde cero, conecta con tu cliente ideal y convierte emoción en acción real.</p>
+      <p>PsicoFunnel es un servicio de embudos de venta enfocado <strong>100&nbsp;% en cómo funciona la mente del consumidor</strong>. Cada funnel se crea desde cero, conecta con tu cliente ideal y convierte emoción en acción real.</p>
     </article>
 
     <article class="pf-card pf-blue" data-aos="fade-left" data-aos-delay="150">
@@ -392,13 +391,13 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
 
   <article class="pf-card pf-white pf-diagnosis" data-aos="fade-up" data-aos-delay="450">
     <h3>Auditoría de tu funnel</h3>
-    <p class="pf-micro">Un buen funnel no es un lujo: <strong>es el sistema que sostiene tu negocio</strong> mientras vos vivís, creás o escalás. Agenda una llamada conmigo y veamos tu funnel de principio a fin; si aún no tenés uno lo creo por vos para que dispongas de un sistema predecible de ventas. <em>El diagnóstico es totalmente gratuito.</em></p>
+    <p class="pf-micro">Un buen funnel no es un lujo: <strong>es el sistema que sostiene tu negocio</strong> mientras vos vivís, creás o escalás. Agenda una llamada conmigo y veamos tu funnel de principio a fin; si aún no tenés uno lo creo por vos para que dispongas de un sistema predecible de ventas. ¡El diagnóstico es totalmente gratuito!</p>
     <a href="/servicio.html" class="btn pf-btn">Quiero un funnel que venda con psicología</a>
   </article>
 
   <article class="pf-fireCard" id="fireCard">
     <h3>🎉 BONO ESPECIAL</h3>
-    <p>🧠 Regalo <strong>3 consultorías GRATUITAS</strong> cada mes para auditar tu sistema y potenciar tus campañas.</p>
+    <p>🧠 Regalo <strong>3 consultorías gratuitas</strong> cada mes para auditar tu sistema y potenciar tus campañas.</p>
     <a href="/contacto.html#consultoria" class="btn pf-fireBtn">¡Quiero mi consulta GRATIS!</a>
     <canvas id="fireCanvas"></canvas>
   </article>
@@ -513,7 +512,7 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
       <div class="tl-item"><h4>💻 Secundaria técnica</h4><p>Aprendí programación e informática.</p></div>
       <div class="tl-item"><h4>📚 Mentalidad ganadora</h4><p>Lectura diaria para crecer y tomar acción.</p></div>
       <div class="tl-item"><h4>🏋️ Coach fitness</h4><p>Ayudé a otros con disciplina y constancia.</p></div>
-      <div class="tl-item"><h4>🚀 Funnel strategist (18 años)</h4><p>Encontré mi pasión en marketing & neuro-ventas.</p></div>
+      <div class="tl-item"><h4>🚀 Funnel strategist (18 años)</h4><p>Encontré mi pasión en marketing &amp; neuro-ventas.</p></div>
     </div>
   </div>
 </section>
@@ -583,89 +582,94 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
   <a href="/contacto.html" class="btn">Agenda ahora</a>
 </section>
 
-<!-- ========== FOOTER & SCROLLTOP ========== -->
+<!-- ========== FOOTER ========== -->
 <footer><p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#top">Subir ↑</a></p></footer>
 <div class="scrolltop" id="topbtn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></div>
 
-<!----  TRACKING  ---->
+<!-- ─── TRACKING ───────────────────────────────────────────── -->
 <!-- Clarity -->
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "scfdh6p42a");
+<script defer>
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","scfdh6p42a");
 </script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCDK50V329"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TCDK50V329');
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-TCDK50V329');
 </script>
 
-<!-- ========== LIBRERÍA CONFETTI (deferred) ========== -->
+<!-- Confetti library (defer) -->
 <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <!-- ====================== SCRIPTS PRINCIPALES ====================== -->
 <script defer>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',()=>{
 
   /* AOS & VANILLA-TILT */
-  if (window.AOS) AOS.init({ duration: 800, once: true });
-  if (window.VanillaTilt) {
-    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+  if(window.AOS) AOS.init({duration:800,once:true});
+  if(window.VanillaTilt){
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{
       max:6,speed:400,glare:true,'max-glare':.25
     });
   }
 
   /* NEWSLETTER */
-  const form = document.getElementById('newsletter-form');
-  if (form) {
-    form.addEventListener('submit', e => {
+  const form=document.getElementById('newsletter-form');
+  if(form){
+    form.addEventListener('submit',e=>{
       e.preventDefault();
-      fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii', {
+      fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
         method:'POST',body:new FormData(form)
       })
-      .then(r => r.ok ? alert('¡Bienvenido! Revisa tu correo 📬') : alert('Ups, intenta de nuevo.'))
-      .then(() => form.reset())
-      .catch(() => alert('Error de conexión.'));
+      .then(r=>r.ok?alert('¡Bienvenido! Revisa tu correo 📬'):alert('Ups, intenta de nuevo.'))
+      .then(()=>form.reset())
+      .catch(()=>alert('Error de conexión.'));
     });
   }
 
-  /* FAQ ACCORDION */
-  document.querySelectorAll('.faq-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const content = item.querySelector('.faq-content');
-      item.classList.toggle('open');
-      content.style.maxHeight = item.classList.contains('open') ? content.scrollHeight+'px' : '0';
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement;
+      const content=item.querySelector('.faq-content');
+      const open=item.classList.toggle('open');
+      content.style.maxHeight=open?content.scrollHeight+'px':'0';
+      btn.setAttribute('aria-expanded',open);
     });
   });
 
-  /* NAV MÓVIL */
+  /* Nav móvil toggle */
   const chk=document.getElementById('toggle'),
         overlay=document.querySelector('.nav-overlay'),
         menu=document.querySelector('.nav-links');
-  if (overlay && chk) overlay.addEventListener('click',()=>chk.checked=false);
-  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>chk.checked=false));
-  let startX;
-  menu.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
-  menu.addEventListener('touchend',e=>{
-    if(e.changedTouches[0].clientX-startX<-60) chk.checked=false;
-  },{passive:true});
+  if(chk){
+    const toggleAria=()=>chk.setAttribute('aria-expanded',chk.checked);
+    chk.addEventListener('change',toggleAria);
+    overlay?.addEventListener('click',()=>{chk.checked=false;toggleAria()});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{chk.checked=false;toggleAria()}));
+    let startX;
+    menu.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
+    menu.addEventListener('touchend',e=>{
+      if(e.changedTouches[0].clientX-startX<-60){chk.checked=false;toggleAria()}
+    },{passive:true});
+  }
 
-  /* SCROLL TOP */
+  /* Scroll-top */
   const topbtn=document.getElementById('topbtn');
   window.addEventListener('scroll',()=>topbtn.classList.toggle('show',window.scrollY>500),{passive:true});
   topbtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-  /* AÑO FOOTER */
+  /* Año autom. */
   document.getElementById('year').textContent=new Date().getFullYear();
 
-  /* FIREWORKS EN BONO */
+  /* Fireworks bonus */
   const fireCard=document.getElementById('fireCard');
   if(fireCard && window.confetti){
     const canvas=fireCard.querySelector('#fireCanvas');
