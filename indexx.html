@@ -367,6 +367,19 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
   .hero-sub{font-size:1.05rem}
   .hero-img img{max-width:320px}
 }
+/* Ajuste de tamaño SOLO para el H1 del hero
+   (“Vende tus conocimientos / con ingresos predecibles”) */
+.hero-title{
+  font-size:clamp(2.4rem,6vw,3.6rem);   /* ↓ antes era 3.1 – 4.8 rem */
+}
+
+/* Si también quieres que en móviles sea un poco menor: */
+@media (max-width:600px){
+  .hero-title{
+    font-size:clamp(1.8rem,6vw,2.4rem); /* ↓ antes era 2.1 rem máx */
+  }
+}
+
 </style>
 
 </head>
