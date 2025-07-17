@@ -145,10 +145,11 @@ header#top{
   min-width:0;
 }
 
-/* TÍTULO HERO (ajustado) */
+/* TÍTULO HERO — centrado real y “forma de embudo” */
 .hero-title{
-  margin-inline:auto;          /* centra realmente el bloque */
-  max-width:900px;             /* evita que se “estire” demasiado */
+  display:inline-block;      /* bloque del ancho justo del texto */
+  margin-inline:auto;        /* centra el bloque dentro de hero-content */
+  text-align:center;
   font-size:clamp(3.1rem,7vw,4.8rem);
   font-weight:800;
   line-height:1.12;
@@ -156,6 +157,14 @@ header#top{
 }
 
 .nowrap{white-space:nowrap}
+
+/* Segunda línea: más estrecha pero también centrada */
+@media (min-width:901px){
+  .hero-title .nowrap-lg{
+    display:inline-block;
+    max-width:22ch;          /* ajústalo si quieres más o menos “embudo” */
+  }
+}
 
 .hero-sub{
   font-size:1.32rem;
@@ -173,7 +182,6 @@ header#top{
   font-size:.97rem;
   margin:0 0 2.5rem;
 }
-
 .hero-bullets li{display:flex;align-items:center;gap:.45rem}
 .hero-bullets i{color:var(--pf-accent)}
 
@@ -201,7 +209,7 @@ header#top{
 }
 
 /* ----- Breakpoints ----- */
-@media(max-width:900px){
+@media (max-width:900px){
   .hero-wrapper{
     flex-direction:column;
     align-items:center;
@@ -214,23 +222,17 @@ header#top{
   .hero-img img{width:92%;max-width:420px}
 }
 
-@media(max-width:600px){
+@media (max-width:600px){
   header#top{padding:70px 1rem 25px}
   .hero-title{font-size:2.1rem}
   .hero-sub{font-size:.95rem}
   .hero-bullets{font-size:.88rem;gap:.7rem}
   .hero-img img{max-width:340px}
 }
-@media (min-width:901px){
-  .hero-title .nowrap-lg{
-    display:inline-block;   /* crea ancho propio */
-    max-width:22ch;         /* <── ajusta si quieres más o menos estrecho  */
-    text-align:center;      /* sigue centrada dentro del h1 */
-  }
-}
-/* Evita overflow si el viewport es muy estrecho */
-@media(max-width:500px){
-  .nowrap{white-space:normal;}   /* permite corte de línea */
+
+/* Evita overflow extremo en móviles muy angostos */
+@media (max-width:500px){
+  .nowrap{white-space:normal;}
 }
 
 /* Animación glow (solo keyframes) */
@@ -433,7 +435,8 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
       <h1 class="hero-title">
         <span class="nowrap">Vende tus&nbsp;conocimientos</span><br>
         <span class="nowrap-lg"
-              style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent">
+              style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);
+                     -webkit-background-clip:text;color:transparent">
           con&nbsp;ingresos&nbsp;predecibles
         </span>
       </h1>
@@ -457,7 +460,9 @@ footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font
     <div class="hero-img" data-tilt data-aos="zoom-in" data-aos-delay="120">
       <picture>
         <source srcset="/img/benjamin-hero.webp" type="image/webp">
-        <img src="/img/benjamin-hero.png" alt="Benjamín Alegre — Funnel Strategist" loading="lazy" decoding="async">
+        <img src="/img/benjamin-hero.png"
+             alt="Benjamín Alegre — Funnel Strategist"
+             loading="lazy" decoding="async">
       </picture>
     </div>
   </div>
