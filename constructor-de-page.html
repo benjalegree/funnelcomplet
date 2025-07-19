@@ -1,343 +1,385 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Template Hub + Visual Builder (v2)</title>
-<meta name="description" content="Crea landings arrastrando secciones o tocando para añadir.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-/* ─────────────────────────────────────────────────────────
-   000 · BASE & VARIABLES
-───────────────────────────────────────────────────────── */
+  <meta charset="UTF-8">
+  <title>PsicoFunnel · Constructor de Landings</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- ==========  PALETA & ESTILOS BÁSICOS  ========== -->
+  <style>
+    :root{
+      --navy:#0a0f2c;
+      --celeste:#00c3ff;
+      --grad:linear-gradient(135deg,var(--navy) 0%,var(--celeste) 100%);
+      --radius:16px;
+      --shadow:0 4px 14px rgba(0,0,0,.18);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Outfit',sans-serif}
+    html,body{height:100%;background:#f4f7ff;overflow:hidden}
+
+    /* ——— Constructor ——— */
+    .panel-top{display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:#fff;height:50px;padding:8px 14px}
+    .panel-top h1{font-size:15px;font-weight:600;letter-spacing:.4px}
+    .panel-buttons{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+    .panel-buttons::-webkit-scrollbar{display:none}
+    .panel-buttons button{flex:0 0 auto;border:none;border-radius:var(--radius);background:var(--celeste);color:#fff;padding:7px 14px;font-size:12px;cursor:pointer;white-space:nowrap;box-shadow:var(--shadow);transition:filter .2s}
+    .panel-buttons button:hover{filter:brightness(1.15)}
+    .export-btn{background:#fff;color:var(--navy);font-weight:700}
+    #editor{height:calc(100vh - 50px)}
+
+    /* ——— Estética PsicoFunnel ——— */
+    .glow-btn{
+      background:var(--celeste);border:none;border-radius:var(--radius);
+      padding:16px 32px;color:#fff;font-size:18px;font-weight:600;
+      box-shadow:0 0 14px var(--celeste);cursor:pointer;
+      transition:box-shadow .3s,transform .2s
+    }
+    .glow-btn:hover{box-shadow:0 0 28px var(--celeste);transform:translateY(-2px)}
+
+    .psy-hero{
+      position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:120px 20px;color:#fff;background-size:cover;background-position:center
+    }
+    .psy-hero::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(10,15,44,.93) 0%,rgba(0,195,255,.35) 100%);
+      z-index:-1
+    }
+    .psy-hero h1{font-size:52px;margin-bottom:22px;line-height:1.15}
+    .psy-hero p{font-size:22px;margin-bottom:36px;max-width:760px}
+    .psy-hero small{margin-top:28px;font-size:16px;opacity:.85}
+
+    .pf-form, .pf-form-vertical{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:14px
+    }
+    .pf-form input,.pf-form-vertical input{
+      padding:16px 20px;border-radius:var(--radius);border:none;min-width:260px
+    }
+    .pf-form-vertical{flex-direction:column;align-items:center}
+    .pf-form-vertical input{width:260px}
+
+    .pf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+    .pf-cards article,.pf-cards-zone article{
+      background:#fff;padding:26px;border-radius:var(--radius);box-shadow:var(--shadow)
+    }
+    .pf-cards-zone{padding:80px 20px;background:#fff}
+    .pf-cards-zone h2{font-size:36px;text-align:center;margin-bottom:46px}
+
+    .pf-video{position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:30px}
+    .pf-video iframe{position:absolute;inset:0;width:100%;height:100%}
+
+    .pf-bar{width:280px;height:16px;border-radius:12px;background:#e0e0e0;margin:34px auto;overflow:hidden}
+    .pf-bar .bar{height:100%;width:0;background:var(--celeste)}
+
+    .pf-links{display:flex;flex-direction:column;gap:20px;max-width:360px;margin:auto}
+    /* ===== PsicoFunnel core ===== */
 :root{
-  --navy:#001a40;--accent:#00a6e0;--gray:#f4fbff;
-  --r:18px;--shadow:0 10px 26px rgba(0,0,0,.14);--tr:.3s cubic-bezier(.4,.2,.2,1);
-  --grid:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3ccircle cx='1' cy='1' r='.4' fill='%2300a6e0'/%3e%3c/svg%3e");
+  --pf-navy:#001a40;
+  --pf-accent:#00a6e0;
+  --pf-light:#e9f7ff;
+  --radius-xl:1.8rem;
+  --shadow-card:0 14px 34px rgba(0,0,0,.17);
+  --glow-btn:0 0 16px rgba(0,166,224,.55);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',sans-serif;line-height:1.55;text-align:center;color:#0a0f1c;overflow-x:hidden}
-img{max-width:100%;display:block;margin-inline:auto}
-a{color:inherit;text-decoration:none}
+body{font-family:'Outfit',sans-serif}
 
-/* ─────────────────────────────────────────────────────────
-   010 · HERO
-───────────────────────────────────────────────────────── */
-header{
-  background:linear-gradient(135deg,var(--accent),#60dcff);color:#fff;
-  padding:130px 1rem 160px;position:relative;overflow:hidden
+/* Hero universal */
+.pf-hero{
+  position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px 20px;color:#fff;background-size:cover;background-position:center
 }
-header h1{font-size:clamp(2.6rem,5vw,4.1rem);font-weight:800;line-height:1.1}
-header p{font-size:1.26rem;max-width:620px;margin:1rem auto 2.8rem}
-.btn{
-  display:inline-block;padding:1rem 2.6rem;border-radius:60px;font-weight:700;
-  background:#fff;color:var(--navy);box-shadow:var(--shadow);transition:var(--tr)
+.pf-hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(135deg,rgba(0,15,40,.92) 0%,rgba(0,166,224,.34) 100%);
 }
-.btn:hover{transform:translateY(-4px)}
-header::after{content:"";position:absolute;inset:0;opacity:.12;background:var(--grid);background-size:120px 120px}
 
-/* ─────────────────────────────────────────────────────────
-   020 · FILTER BAR
-───────────────────────────────────────────────────────── */
-.filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:-56px}
-.filter-btn{
-  padding:.55rem 1.4rem;border-radius:40px;font-size:.9rem;font-weight:600;letter-spacing:.2px;
-  border:2px solid var(--accent);background:#fff;color:var(--accent);cursor:pointer;transition:var(--tr)
+/* Botón glow idéntico al index */
+.pf-btn{
+  display:inline-block;padding:1rem 2.2rem;border-radius:60px;font-weight:900;
+  background:#fff;color:var(--pf-navy);box-shadow:var(--glow-btn);transition:.3s
 }
-.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff}
+.pf-btn:hover{transform:translateY(-4px)}
 
-/* ─────────────────────────────────────────────────────────
-   030 · WRAPPER
-───────────────────────────────────────────────────────── */
-.wrapper{display:grid;gap:40px;width:min(1500px,94%);margin:80px auto 120px}
-@media(min-width:1080px){.wrapper{grid-template-columns:1fr 420px}}
+/* Botón primario celeste */
+.pf-btn-accent{
+  background:var(--pf-accent);color:#fff;box-shadow:var(--glow-btn)
+}
+.pf-btn-accent:hover{transform:translateY(-4px);box-shadow:0 0 26px var(--pf-accent)}
 
-/* ------ Galería ------ */
-.gallery{display:grid;gap:28px}
-@media(min-width:740px){.gallery{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1180px){.gallery{grid-template-columns:repeat(3,1fr)}}
+/* Form squeeze / login */
+.pf-form{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.pf-form input{padding:16px 20px;border-radius:var(--radius-xl);border:none;min-width:260px}
 
-.card{
-  background:var(--gray);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);
-  transition:var(--tr);display:flex;flex-direction:column
-}
-.card:hover{transform:translateY(-6px)}
-.card img{aspect-ratio:16/9;object-fit:cover}
-.card-body{padding:20px;display:flex;flex-direction:column;flex:1}
-.tag{
-  align-self:flex-start;background:var(--accent);color:#fff;border-radius:12px;
-  font-size:.7rem;font-weight:700;padding:4px 10px;margin-bottom:12px
-}
-.card h3{font-size:1.1rem;margin-bottom:auto}
-.actions{display:flex;gap:8px;margin-top:18px}
-.actions button{
-  flex:1;border:none;border-radius:50px;padding:.65rem;font-weight:600;font-size:.88rem;cursor:pointer;transition:var(--tr)
-}
-.preview{background:#fff;color:var(--navy);border:2px solid var(--navy)}
-.add{background:var(--accent);color:#fff}
-.preview:hover{background:var(--navy);color:#fff}
-.add:hover{filter:brightness(1.08)}
+/* Cards */
+.pf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:60px}
+.pf-card{background:#fff;padding:32px;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);transition:.35s}
+.pf-card:hover{transform:translateY(-8px);box-shadow:var(--glow-btn)}
 
-/* ------ BUILDER ------ */
-.builder{
-  position:sticky;top:100px;background:var(--navy);color:#fff;border-radius:var(--r);
-  padding:26px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:18px
-}
-.builder h2{font-size:1.35rem}
-.canvas{
-  min-height:280px;max-height:54vh;overflow:auto;padding:14px;
-  background:rgba(255,255,255,.04);border:2px dashed #8fb1df;border-radius:var(--r);
-  display:flex;flex-direction:column;gap:10px
-}
-.block{
-  background:#fff;color:#001a40;border-radius:12px;padding:10px 12px;
-  display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;
-  box-shadow:0 4px 12px rgba(0,0,0,.12);cursor:pointer;user-select:none
-}
-.block.selected{outline:3px solid var(--accent)}
-.block span{flex:1;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.block .tool{background:none;border:none;font-size:1.1rem;cursor:pointer;transition:var(--tr)}
-.move{color:#008ccd}.edit{color:#e09100}.del{color:#c61f1f}
-.block .tool:hover{transform:scale(1.25)}
+.pf-video{position:relative;padding-top:56.25%;width:100%;max-width:900px;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-card);margin:40px auto}
+.pf-video iframe{position:absolute;inset:0;width:100%;height:100%}
 
-.controls{display:flex;gap:10px;margin-top:10px}
-.controls button{
-  flex:1;padding:.75rem;border:none;border-radius:50px;font-weight:700;font-size:.9rem;cursor:pointer;transition:var(--tr)
-}
-.clear{background:#fff;color:var(--navy)}
-.clear:hover{background:#cbd5e1}
-.export{background:var(--accent);color:#fff}
-.export:hover{filter:brightness(1.08)}
+.pf-count{margin-top:26px;font-size:18px;font-weight:600}
 
-/* ─────────────────────────────────────────────────────────
-   040 · MODAL
-───────────────────────────────────────────────────────── */
-.modal{
-  position:fixed;inset:0;display:flex;justify-content:center;align-items:center;
-  background:rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:.4s
-}
-.modal.open{opacity:1;pointer-events:auto}
-.modal-content{
-  background:#fff;border-radius:var(--r);width:92%;max-width:900px;max-height:94vh;
-  overflow:auto;box-shadow:var(--shadow);position:relative;padding:30px
-}
-.modal img{border-radius:var(--r);margin-bottom:22px}
-.modal textarea{
-  width:100%;min-height:340px;font-family:Consolas,monospace;font-size:.84rem;
-  background:#1e1e1e;color:#c9d1d9;border:none;border-radius:var(--r);padding:18px;line-height:1.45
-}
-.save-btn{
-  margin-top:16px;background:var(--accent);color:#fff;border:none;border-radius:50px;
-  padding:.7rem 1.6rem;font-weight:700;cursor:pointer;transition:var(--tr)
-}
-.save-btn:hover{filter:brightness(1.08)}
-.close{
-  position:absolute;top:16px;right:18px;font-size:1.6rem;background:none;border:none;
-  color:#555;cursor:pointer;transition:var(--tr)
-}
-.close:hover{color:#000}
+  </style>
 
-/* ─────────────────────────────────────────────────────────
-   050 · FOOTER
-───────────────────────────────────────────────────────── */
-footer{background:#001a40;color:#8fb1df;padding:60px 1rem;font-size:.85rem}
-footer a{color:#a8c6ff}
-
-/* ─────────────────────────────────────────────────────────
-   060 · MOBILE ≤600
-───────────────────────────────────────────────────────── */
-@media(max-width:600px){
-  header{padding:110px 1rem 130px}
-  header h1{font-size:2.3rem}
-  header p{font-size:1.05rem}
-  .filters{margin-top:-40px}
-  .wrapper{grid-template-columns:1fr}
-  .builder{position:static}
-}
-</style>
+  <!-- ==========  LIBRERÍAS  ========== -->
+  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/grapesjs"></script>
+  <script src="https://unpkg.com/grapesjs-preset-webpage"></script>
 </head>
 <body>
 
-<!-- =================================================== HERO -->
-<header id="top">
-  <div class="container">
-    <h1>Template Hub&nbsp;+&nbsp;Buildeeeer</h1>
-    <p>Arrastra o toca «Añadir», edita al vuelo y exporta una landing completa.</p>
-    <a href="#hub" class="btn">Explorar plantillas</a>
+  <!-- ==========  PANEL  ========== -->
+  <div class="panel-top">
+    <h1>🧠 PsicoFunnel · Constructor</h1>
+    <div class="panel-buttons" id="buttons"></div>
+    <button class="export-btn" onclick="exportHTML()">Exportar</button>
   </div>
-</header>
 
-<!-- =================================================== FILTER BAR -->
-<div class="filters" id="filterBar"></div>
+  <!-- ==========  EDITOR  ========== -->
+  <div id="editor"></div>
 
-<!-- =================================================== WRAPPER -->
-<section class="wrapper" id="hub">
-
-  <!-- ------------- GALLERY ------------- -->
-  <div class="gallery" id="gallery"></div>
-
-  <!-- ------------- BUILDER PANEL ------------- -->
-  <aside class="builder">
-    <h2>Tu landing</h2>
-    <div class="canvas" id="canvas" aria-label="Área para secciones"></div>
-    <div class="controls">
-      <button class="clear" id="clearBtn">Vaciar</button>
-      <button class="export" id="exportBtn">Exportar</button>
-    </div>
-  </aside>
+  <!-- ==========  SCRIPTS  ========== -->
+  <script>
+const TEMPLATES = {
+/* 1 ───── Captación */
+captacion:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?marketing,funnel');">
+  <h1>¡Descubre tu Funnel Perfecto!</h1>
+  <p>Plan ⚡ personalizado en 24 h basado en neuroventas.</p>
+  <form class="pf-form">
+    <input type="email" placeholder="Tu correo…" required>
+    <button class="pf-btn-accent" type="submit">Quiero mi Estrategia</button>
+  </form>
+  <div class="pf-count">⏰ Expira en <span class="countdown" data-minutes="1440"></span></div>
 </section>
-
-<!-- =================================================== MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <button class="close" aria-label="Cerrar">&times;</button>
-    <img id="modalImg" src="" alt="preview">
-    <textarea id="codeArea"></textarea>
-    <button class="save-btn" id="saveSnippet">Guardar cambios</button>
+<section style="background:#fff;padding:90px 20px">
+  <h2 style="color:var(--pf-navy);font-size:2.2rem">Beneficios inmediatos</h2>
+  <div class="pf-cards">
+    <article class="pf-card"><h3>🚀 Acción rápida</h3><p>Plan listo en 24 h.</p></article>
+    <article class="pf-card"><h3>🧠 Neuroventas</h3><p>Disparadores testados.</p></article>
+    <article class="pf-card"><h3>📊 Métricas claras</h3><p>KPI que importan.</p></article>
   </div>
-</div>
+</section>`,
 
-<!-- =================================================== FOOTER -->
-<footer>
-  <p>&copy; <span id="year"></span> Template Hub • Benjamín Alegre</p>
-  <p><a href="#top">Volver arriba ↑</a></p>
-</footer>
+/* 2 ───── Squeeze */
+squeeze:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?ebook');">
+  <h1>PDF «Neuroventas 2025»</h1>
+  <p>Descarga gratis las 10 tácticas que duplican tu conversión.</p>
+  <form class="pf-form">
+    <input type="email" placeholder="Tu email…" required>
+    <button class="pf-btn-accent">Descargar PDF</button>
+  </form>
+</section>`,
 
-<!-- =================================================== SCRIPT -->
-<script>
-/* --------------- DATA --------------- */
-const cats   =["Todos","Captación","Squeeze","Thank-You","Venta","Webinar","Checkout","Upsell"];
-const tpls   =[
-  /* === 7 objetos con title, cat, img, code (igual que antes) === */
-];
+/* 3 ───── Thank-You */
+thankyou:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?celebration');">
+  <h1>¡Gracias por registrarte! 🙌</h1>
+  <p>Revisa tu bandeja de entrada. Si no lo ves, mira en «Promociones»/«Spam».</p>
+  <a href="/" class="pf-btn">Volver al inicio</a>
+</section>`,
 
-/* --------------- FILL FILTERS --------------- */
-const fb=document.getElementById('filterBar');
-cats.forEach((c,i)=>{
-  const b=document.createElement('button');
-  b.className='filter-btn'+(i===0?' active':'');b.textContent=c;b.dataset.cat=c;fb.appendChild(b);
-});
+/* 4 ───── Sales */
+sales:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?startup,teamwork');">
+  <h1>Embudo Completo a Medida</h1>
+  <p>Convierte tráfico frío en compradores fieles.</p>
+  <button class="pf-btn-accent">Reservar mi Plaza</button>
+  <div class="pf-count">🔥 Quedan <span class="stock" data-total="10"></span> proyectos este mes</div>
+</section>
+<section style="background:#fff;padding:90px 20px">
+  <h2 style="color:var(--pf-navy);font-size:2.2rem">Lo que obtienes</h2>
+  <div class="pf-cards">
+    <article class="pf-card"><h3>🔍 Research Psicológico</h3><p>Mapa de sesgos.</p></article>
+    <article class="pf-card"><h3>📝 Copy Science</h3><p>Textos A/B.</p></article>
+    <article class="pf-card"><h3>🎨 Diseño Emocional</h3><p>UI-UX premium.</p></article>
+    <article class="pf-card"><h3>⚙️ Integraciones</h3><p>CRM · Pagos · E-mail.</p></article>
+  </div>
+</section>`,
 
-/* --------------- GALLERY --------------- */
-const gallery=document.getElementById('gallery');
-function render(list){
-  gallery.innerHTML='';
-  list.forEach(t=>{
-    const card=document.createElement('article');
-    card.className='card';card.draggable=true;
-    card.innerHTML=`
-      <img src="${t.img}" alt="${t.title}">
-      <div class="card-body">
-        <span class="tag">${t.cat}</span>
-        <h3>${t.title}</h3>
-        <div class="actions">
-          <button class="preview">Ver</button>
-          <button class="add">Añadir</button>
-        </div>
-      </div>`;
-    /* Desktop drag */
-    card.addEventListener('dragstart',e=>{
-      e.dataTransfer.setData('text/plain',JSON.stringify(t));
-    });
-    /* Preview */
-    card.querySelector('.preview').onclick=()=>openModal(t,true);
-    /* Añadir (mobile safe) */
-    card.querySelector('.add').onclick=()=>addBlock(t);
-    gallery.appendChild(card);
+/* 5 ───── VSL */
+vsl:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?video,studio');">
+  <h1>[VSL] Método 3× ROAS</h1>
+  <div class="pf-video"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe></div>
+  <button class="pf-btn-accent">Aplicar Estrategia</button>
+</section>`,
+
+/* 6 ───── Webinar */
+webinar:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?webinar,conference');">
+  <h1>Webinar Gratis: Funnel 360°</h1>
+  <p>Domina captación, nutrición y cierre en 60 min.</p>
+  <button class="pf-btn-accent">Reservar Asiento</button>
+  <div class="pf-count">🪑 <span class="stock" data-total="35"></span> plazas disponibles</div>
+</section>`,
+
+/* 7 ───── Checkout */
+checkout:`
+<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?payment,online');">
+  <h1>Finaliza tu Compra Segura</h1>
+</section>
+<section style="padding:100px 20px;max-width:1040px;margin:auto">
+  <div class="pf-cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <article class="pf-card">
+      <h2>Resumen</h2>
+      <img src="https://source.unsplash.com/600x360?website" loading="lazy">
+      <p style="font-size:1.1rem"><strong>Embudo Premium — USD 997</strong></p>
+      <ul style="list-style:inside;margin:14px 0 0">
+        <li>Diseño personalizado</li><li>Copy experto</li><li>Integraciones</li>
+      </ul>
+    </article>
+    <form class="pf-card" style="text-align:left">
+      <label>Nombre completo</label><input required>
+      <label>Email</label><input type="email" required>
+      <label>N.º tarjeta</label><input placeholder="1234 5678 9012 3456" required>
+      <button class="pf-btn-accent" style="width:100%;margin-top:12px">Pagar y Acceder</button>
+      <p style="font-size:.9rem;margin-top:10px;text-align:center">🔒 Pago cifrado SSL</p>
+    </form>
+  </div>
+</section>`,
+
+/* 8 ───── Upsell */
+upsell:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?email,copywriting');">
+  <h1>¡Añade Email-Pack PRO!</h1>
+  <p>30 secuencias por −50 % solo aquí.</p>
+  <button class="pf-btn-accent">Añadir ahora</button>
+</section>`,
+
+/* 9 ───── Downsell */
+downsell:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?discount,offer');">
+  <h1>Plan Lite Especial</h1>
+  <p>Versión esencial por USD 297.</p>
+  <button class="pf-btn-accent">Elegir Lite</button>
+</section>`,
+
+/* 10 ───── Wait */
+wait:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?progress,loading');">
+  <h1>Procesando tu Pedido…</h1>
+  <div class="pf-bar"><div class="bar"></div></div>
+  <p>No cierres esta ventana.</p>
+</section>`,
+
+/* 11 ───── Confirmación */
+confirmacion:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?success,fireworks');">
+  <h1>✅ Pedido Confirmado</h1>
+  <p>En breve recibirás un email con tus accesos.</p>
+  <a href="/" class="pf-btn">Volver al inicio</a>
+</section>`,
+
+/* 12 ───── Calendly */
+calendly:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?calendar,meeting');">
+  <h1>Agenda tu Llamada Estratégica</h1>
+  <div class="pf-video" style="padding-top:80%"><iframe src="https://calendly.com/" loading="lazy"></iframe></div>
+</section>`,
+
+/* 13 ───── Lead Magnet */
+leadmagnet:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?gift,box');">
+  <h1>Descarga tu Recurso 🎁</h1>
+  <a href="#" download class="pf-btn-accent">Descargar PDF</a>
+</section>`,
+
+/* 14 ───── 404 */
+error404:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?404,glitch');">
+  <h1 style="font-size:5rem">404</h1><p>Página no encontrada</p>
+  <a href="/" class="pf-btn">Ir al inicio</a>
+</section>`,
+
+/* 15 ───── Testimonios */
+testimonios:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?people,success');">
+  <h1>Casos de Éxito</h1></section>
+<section style="background:#fff;padding:100px 20px">
+  <div class="pf-cards" style="max-width:1080px;margin:auto">
+    <article class="pf-card"><img src="https://source.unsplash.com/90x90?woman,success" loading="lazy" style="border-radius:50%;margin-bottom:14px"><p>“Leads 3× en 30 d.”<br><strong>- Laura</strong></p></article>
+    <article class="pf-card"><img src="https://source.unsplash.com/90x90?man,win" loading="lazy" style="border-radius:50%;margin-bottom:14px"><p>“ROI 500 %.”<br><strong>- Jorge</strong></p></article>
+    <article class="pf-card"><img src="https://source.unsplash.com/90x90?girl,smile" loading="lazy" style="border-radius:50%;margin-bottom:14px"><p>“Ventas × 4.”<br><strong>- Mariana</strong></p></article>
+  </div>
+</section>`,
+
+/* 16 ───── Encuesta */
+encuesta:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?survey,question');">
+  <h1>Quiz de Pre-Calificación</h1></section>
+<section style="padding:100px 20px;max-width:720px;margin:auto;text-align:center">
+  <form class="pf-form" style="flex-direction:column;max-width:500px;margin:auto">
+    <input placeholder="Industria" required>
+    <select required><option value="">Objetivo principal</option><option>Ventas</option><option>Leads</option></select>
+    <input placeholder="Presupuesto mensual" required>
+    <button class="pf-btn-accent" type="submit">Enviar</button>
+  </form>
+</section>`,
+
+/* 17 ───── Link-in-Bio */
+linkbio:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?abstract,gradient');">
+  <img src="https://source.unsplash.com/120x120?logo" loading="lazy" style="border-radius:50%;margin-bottom:24px">
+  <h1>@PsicoFunnel</h1>
+  <div class="pf-links">
+    <a class="pf-btn" href="#">Web Oficial</a>
+    <a class="pf-btn" href="#">E-book Gratis</a>
+    <a class="pf-btn" href="#">Newsletter</a>
+  </div>
+</section>`,
+
+/* 18 ───── Login */
+login:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?secure,lock');">
+  <h1>Acceso Privado</h1>
+  <form class="pf-form" style="flex-direction:column;max-width:360px">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Código">
+    <button class="pf-btn-accent">Ingresar</button>
+  </form>
+</section>`,
+
+/* 19 ───── Comunidad */
+comunidad:`<section class="pf-hero" style="background-image:url('https://source.unsplash.com/1600x900?community');">
+  <h1>Únete a la Comunidad</h1>
+  <p>Contenido exclusivo y lives semanales.</p>
+  <button class="pf-btn-accent">Entrar al Grupo</button>
+</section>`
+}; // FIN TEMPLATES
+
+
+  /* -------------------- 2. Inicializar GrapesJS -------------------- */
+  const editor = grapesjs.init({
+    container:'#editor',
+    height:'100%',
+    width:'auto',
+    storageManager:false,
+    plugins:['gjs-preset-webpage'],
+    pluginsOpts:{'gjs-preset-webpage':{}}
   });
-}
-render(tpls);
 
-/* --------------- FILTER LOGIC --------------- */
-fb.onclick=e=>{
-  if(!e.target.matches('.filter-btn'))return;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  const cat=e.target.dataset.cat;
-  render(cat==='Todos'?tpls:tpls.filter(t=>t.cat===cat));
-};
+  /* -------------------- 3. Funciones -------------------- */
+  function loadTemplate(k){
+    editor.DomComponents.clear();
+    editor.setComponents(TEMPLATES[k]);
+    initDynamics();
+  }
+  function exportHTML(){
+    const html=editor.getHtml(),css=editor.getCss();
+    const code=`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css}</style></head><body>${html}</body></html>`;
+    const blob=new Blob([code],{type:'text/html'});const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download='landing.html';a.click();URL.revokeObjectURL(url);
+  }
+  function initDynamics(){
+    document.querySelectorAll('.countdown').forEach(el=>{
+      const mins=+el.dataset.minutes||60,end=Date.now()+mins*60000;
+      const tick=()=>{const d=end-Date.now();if(d<0){el.textContent='00:00:00';return}
+        const h=String(Math.floor(d/3.6e6)).padStart(2,'0'),m=String(Math.floor(d%3.6e6/60000)).padStart(2,'0'),s=String(Math.floor(d%60000/1000)).padStart(2,'0');
+        el.textContent=`${h}:${m}:${s}`};tick();setInterval(tick,1000);
+    });
+    document.querySelectorAll('.stock').forEach(el=>el.textContent=el.dataset.total||10);
+    document.querySelectorAll('.bar').forEach(bar=>{let w=0;const t=setInterval(()=>{w+=2;bar.style.width=w+'%';if(w>=100)clearInterval(t)},120)});
+  }
 
-/* --------------- BUILDER --------------- */
-const canvas=document.getElementById('canvas');
-canvas.ondragover=e=>e.preventDefault();
-canvas.ondrop=e=>{
-  e.preventDefault();
-  addBlock(JSON.parse(e.dataTransfer.getData('text/plain')));
-};
-/* helper to deselect */
-canvas.onclick=e=>{
-  [...canvas.children].forEach(b=>b.classList.remove('selected'));
-};
-/* Add block function */
-function addBlock(tpl){
-  const block=document.createElement('div');
-  block.className='block';block.tabIndex=0;              /* focusable */
-  block.dataset.code=tpl.code;block.innerHTML=`
-    <i class="fas fa-up-down move tool" draggable="false"></i>
-    <span>${tpl.title}</span>
-    <i class="fas fa-pen edit tool"></i>
-    <i class="fas fa-xmark del tool"></i>`;
-  canvas.appendChild(block);
-  select(block);
+  /* -------------------- 4. Botones -------------------- */
+  const btnWrap=document.getElementById('buttons');
+  Object.keys(TEMPLATES).forEach(k=>{const b=document.createElement('button');b.textContent=k; b.onclick=(()=>loadTemplate(k));btnWrap.appendChild(b);});
 
-  /* Selección visual + botones ↑↓ */
-  block.onclick=e=>{
-    e.stopPropagation();
-    select(block);
-    if(e.target.classList.contains('edit')) openModal({img:tpl.img,code:block.dataset.code},false,block);
-    if(e.target.classList.contains('del'))  block.remove();
-    if(e.target.classList.contains('move')){
-      const dir=confirm('Aceptar = arriba · Cancelar = abajo');
-      dir ? canvas.insertBefore(block,block.previousElementSibling):canvas.insertBefore(block,block.nextElementSibling?.nextSibling);
-    }
-  };
-  /* Arrastre desktop reorder */
-  block.draggable=true;
-  block.ondragstart=e=>{canvas.dragSrc=block;e.dataTransfer.setData('text','reorder')};
-  block.ondragover=e=>{
-    if(e.dataTransfer.getData('text')!=='reorder')return;
-    e.preventDefault();
-    const after=(e.clientY-block.getBoundingClientRect().top)>(block.offsetHeight/2);
-    canvas.insertBefore(canvas.dragSrc,after?block.nextSibling:block);
-  };
-}
-function select(b){
-  [...canvas.children].forEach(i=>i.classList.remove('selected'));
-  b.classList.add('selected');
-}
-
-/* --------------- EXPORT --------------- */
-document.getElementById('exportBtn').onclick=()=>{
-  if(!canvas.children.length) return alert('Agrega secciones primero');
-  let html='';[...canvas.children].forEach(b=>html+=b.dataset.code+"\n\n");
-  openModal({img:'/img/export.png',code:html.trim()},true);
-};
-/* --------------- CLEAR --------------- */
-document.getElementById('clearBtn').onclick=()=>{if(confirm('¿Vaciar lienzo?'))canvas.innerHTML='';};
-
-/* --------------- MODAL --------------- */
-const modal=document.getElementById('modal'),
-      modalImg=document.getElementById('modalImg'),
-      codeArea=document.getElementById('codeArea');
-let editingBlock=null;
-function openModal(t,viewOnly,block){
-  modalImg.src=t.img;codeArea.value=t.code;editingBlock=block||null;
-  document.getElementById('saveSnippet').style.display=viewOnly?'none':'inline-block';
-  modal.classList.add('open');
-}
-modal.onclick=e=>{
-  if(e.target===modal||e.target.classList.contains('close')) modal.classList.remove('open');
-};
-document.getElementById('saveSnippet').onclick=()=>{
-  if(editingBlock) editingBlock.dataset.code = codeArea.value.trim();
-  modal.classList.remove('open');
-};
-
-/* --------------- YEAR --------------- */
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+  /* -------------------- 5. Inicial -------------------- */
+  loadTemplate('captacion');
+  </script>
 </body>
 </html>
+
