@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Template Hub + Visual Builder (v2)</title>
+<meta name="description" content="Crea landings arrastrando secciones o tocando para añadir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ─────────────────────────────────────────────────────────
+   000 · BASE & VARIABLES
+───────────────────────────────────────────────────────── */
+:root{
+  --navy:#001a40;--accent:#00a6e0;--gray:#f4fbff;
+  --r:18px;--shadow:0 10px 26px rgba(0,0,0,.14);--tr:.3s cubic-bezier(.4,.2,.2,1);
+  --grid:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3ccircle cx='1' cy='1' r='.4' fill='%2300a6e0'/%3e%3c/svg%3e");
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;line-height:1.55;text-align:center;color:#0a0f1c;overflow-x:hidden}
+img{max-width:100%;display:block;margin-inline:auto}
+a{color:inherit;text-decoration:none}
+
+/* ─────────────────────────────────────────────────────────
+   010 · HERO
+───────────────────────────────────────────────────────── */
+header{
+  background:linear-gradient(135deg,var(--accent),#60dcff);color:#fff;
+  padding:130px 1rem 160px;position:relative;overflow:hidden
+}
+header h1{font-size:clamp(2.6rem,5vw,4.1rem);font-weight:800;line-height:1.1}
+header p{font-size:1.26rem;max-width:620px;margin:1rem auto 2.8rem}
+.btn{
+  display:inline-block;padding:1rem 2.6rem;border-radius:60px;font-weight:700;
+  background:#fff;color:var(--navy);box-shadow:var(--shadow);transition:var(--tr)
+}
+.btn:hover{transform:translateY(-4px)}
+header::after{content:"";position:absolute;inset:0;opacity:.12;background:var(--grid);background-size:120px 120px}
+
+/* ─────────────────────────────────────────────────────────
+   020 · FILTER BAR
+───────────────────────────────────────────────────────── */
+.filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:-56px}
+.filter-btn{
+  padding:.55rem 1.4rem;border-radius:40px;font-size:.9rem;font-weight:600;letter-spacing:.2px;
+  border:2px solid var(--accent);background:#fff;color:var(--accent);cursor:pointer;transition:var(--tr)
+}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff}
+
+/* ─────────────────────────────────────────────────────────
+   030 · WRAPPER
+───────────────────────────────────────────────────────── */
+.wrapper{display:grid;gap:40px;width:min(1500px,94%);margin:80px auto 120px}
+@media(min-width:1080px){.wrapper{grid-template-columns:1fr 420px}}
+
+/* ------ Galería ------ */
+.gallery{display:grid;gap:28px}
+@media(min-width:740px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1180px){.gallery{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  background:var(--gray);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);
+  transition:var(--tr);display:flex;flex-direction:column
+}
+.card:hover{transform:translateY(-6px)}
+.card img{aspect-ratio:16/9;object-fit:cover}
+.card-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.tag{
+  align-self:flex-start;background:var(--accent);color:#fff;border-radius:12px;
+  font-size:.7rem;font-weight:700;padding:4px 10px;margin-bottom:12px
+}
+.card h3{font-size:1.1rem;margin-bottom:auto}
+.actions{display:flex;gap:8px;margin-top:18px}
+.actions button{
+  flex:1;border:none;border-radius:50px;padding:.65rem;font-weight:600;font-size:.88rem;cursor:pointer;transition:var(--tr)
+}
+.preview{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.add{background:var(--accent);color:#fff}
+.preview:hover{background:var(--navy);color:#fff}
+.add:hover{filter:brightness(1.08)}
+
+/* ------ BUILDER ------ */
+.builder{
+  position:sticky;top:100px;background:var(--navy);color:#fff;border-radius:var(--r);
+  padding:26px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:18px
+}
+.builder h2{font-size:1.35rem}
+.canvas{
+  min-height:280px;max-height:54vh;overflow:auto;padding:14px;
+  background:rgba(255,255,255,.04);border:2px dashed #8fb1df;border-radius:var(--r);
+  display:flex;flex-direction:column;gap:10px
+}
+.block{
+  background:#fff;color:#001a40;border-radius:12px;padding:10px 12px;
+  display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);cursor:pointer;user-select:none
+}
+.block.selected{outline:3px solid var(--accent)}
+.block span{flex:1;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.block .tool{background:none;border:none;font-size:1.1rem;cursor:pointer;transition:var(--tr)}
+.move{color:#008ccd}.edit{color:#e09100}.del{color:#c61f1f}
+.block .tool:hover{transform:scale(1.25)}
+
+.controls{display:flex;gap:10px;margin-top:10px}
+.controls button{
+  flex:1;padding:.75rem;border:none;border-radius:50px;font-weight:700;font-size:.9rem;cursor:pointer;transition:var(--tr)
+}
+.clear{background:#fff;color:var(--navy)}
+.clear:hover{background:#cbd5e1}
+.export{background:var(--accent);color:#fff}
+.export:hover{filter:brightness(1.08)}
+
+/* ─────────────────────────────────────────────────────────
+   040 · MODAL
+───────────────────────────────────────────────────────── */
+.modal{
+  position:fixed;inset:0;display:flex;justify-content:center;align-items:center;
+  background:rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:.4s
+}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-content{
+  background:#fff;border-radius:var(--r);width:92%;max-width:900px;max-height:94vh;
+  overflow:auto;box-shadow:var(--shadow);position:relative;padding:30px
+}
+.modal img{border-radius:var(--r);margin-bottom:22px}
+.modal textarea{
+  width:100%;min-height:340px;font-family:Consolas,monospace;font-size:.84rem;
+  background:#1e1e1e;color:#c9d1d9;border:none;border-radius:var(--r);padding:18px;line-height:1.45
+}
+.save-btn{
+  margin-top:16px;background:var(--accent);color:#fff;border:none;border-radius:50px;
+  padding:.7rem 1.6rem;font-weight:700;cursor:pointer;transition:var(--tr)
+}
+.save-btn:hover{filter:brightness(1.08)}
+.close{
+  position:absolute;top:16px;right:18px;font-size:1.6rem;background:none;border:none;
+  color:#555;cursor:pointer;transition:var(--tr)
+}
+.close:hover{color:#000}
+
+/* ─────────────────────────────────────────────────────────
+   050 · FOOTER
+───────────────────────────────────────────────────────── */
+footer{background:#001a40;color:#8fb1df;padding:60px 1rem;font-size:.85rem}
+footer a{color:#a8c6ff}
+
+/* ─────────────────────────────────────────────────────────
+   060 · MOBILE ≤600
+───────────────────────────────────────────────────────── */
+@media(max-width:600px){
+  header{padding:110px 1rem 130px}
+  header h1{font-size:2.3rem}
+  header p{font-size:1.05rem}
+  .filters{margin-top:-40px}
+  .wrapper{grid-template-columns:1fr}
+  .builder{position:static}
+}
+</style>
+</head>
+<body>
+
+<!-- =================================================== HERO -->
+<header id="top">
+  <div class="container">
+    <h1>Template Hub&nbsp;+&nbsp;Buildeeeer</h1>
+    <p>Arrastra o toca «Añadir», edita al vuelo y exporta una landing completa.</p>
+    <a href="#hub" class="btn">Explorar plantillas</a>
+  </div>
+</header>
+
+<!-- =================================================== FILTER BAR -->
+<div class="filters" id="filterBar"></div>
+
+<!-- =================================================== WRAPPER -->
+<section class="wrapper" id="hub">
+
+  <!-- ------------- GALLERY ------------- -->
+  <div class="gallery" id="gallery"></div>
+
+  <!-- ------------- BUILDER PANEL ------------- -->
+  <aside class="builder">
+    <h2>Tu landing</h2>
+    <div class="canvas" id="canvas" aria-label="Área para secciones"></div>
+    <div class="controls">
+      <button class="clear" id="clearBtn">Vaciar</button>
+      <button class="export" id="exportBtn">Exportar</button>
+    </div>
+  </aside>
+</section>
+
+<!-- =================================================== MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="close" aria-label="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="preview">
+    <textarea id="codeArea"></textarea>
+    <button class="save-btn" id="saveSnippet">Guardar cambios</button>
+  </div>
+</div>
+
+<!-- =================================================== FOOTER -->
+<footer>
+  <p>&copy; <span id="year"></span> Template Hub • Benjamín Alegre</p>
+  <p><a href="#top">Volver arriba ↑</a></p>
+</footer>
+
+<!-- =================================================== SCRIPT -->
+<script>
+/* --------------- DATA --------------- */
+const cats   =["Todos","Captación","Squeeze","Thank-You","Venta","Webinar","Checkout","Upsell"];
+const tpls   =[
+  /* === 7 objetos con title, cat, img, code (igual que antes) === */
+];
+
+/* --------------- FILL FILTERS --------------- */
+const fb=document.getElementById('filterBar');
+cats.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='filter-btn'+(i===0?' active':'');b.textContent=c;b.dataset.cat=c;fb.appendChild(b);
+});
+
+/* --------------- GALLERY --------------- */
+const gallery=document.getElementById('gallery');
+function render(list){
+  gallery.innerHTML='';
+  list.forEach(t=>{
+    const card=document.createElement('article');
+    card.className='card';card.draggable=true;
+    card.innerHTML=`
+      <img src="${t.img}" alt="${t.title}">
+      <div class="card-body">
+        <span class="tag">${t.cat}</span>
+        <h3>${t.title}</h3>
+        <div class="actions">
+          <button class="preview">Ver</button>
+          <button class="add">Añadir</button>
+        </div>
+      </div>`;
+    /* Desktop drag */
+    card.addEventListener('dragstart',e=>{
+      e.dataTransfer.setData('text/plain',JSON.stringify(t));
+    });
+    /* Preview */
+    card.querySelector('.preview').onclick=()=>openModal(t,true);
+    /* Añadir (mobile safe) */
+    card.querySelector('.add').onclick=()=>addBlock(t);
+    gallery.appendChild(card);
+  });
+}
+render(tpls);
+
+/* --------------- FILTER LOGIC --------------- */
+fb.onclick=e=>{
+  if(!e.target.matches('.filter-btn'))return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  const cat=e.target.dataset.cat;
+  render(cat==='Todos'?tpls:tpls.filter(t=>t.cat===cat));
+};
+
+/* --------------- BUILDER --------------- */
+const canvas=document.getElementById('canvas');
+canvas.ondragover=e=>e.preventDefault();
+canvas.ondrop=e=>{
+  e.preventDefault();
+  addBlock(JSON.parse(e.dataTransfer.getData('text/plain')));
+};
+/* helper to deselect */
+canvas.onclick=e=>{
+  [...canvas.children].forEach(b=>b.classList.remove('selected'));
+};
+/* Add block function */
+function addBlock(tpl){
+  const block=document.createElement('div');
+  block.className='block';block.tabIndex=0;              /* focusable */
+  block.dataset.code=tpl.code;block.innerHTML=`
+    <i class="fas fa-up-down move tool" draggable="false"></i>
+    <span>${tpl.title}</span>
+    <i class="fas fa-pen edit tool"></i>
+    <i class="fas fa-xmark del tool"></i>`;
+  canvas.appendChild(block);
+  select(block);
+
+  /* Selección visual + botones ↑↓ */
+  block.onclick=e=>{
+    e.stopPropagation();
+    select(block);
+    if(e.target.classList.contains('edit')) openModal({img:tpl.img,code:block.dataset.code},false,block);
+    if(e.target.classList.contains('del'))  block.remove();
+    if(e.target.classList.contains('move')){
+      const dir=confirm('Aceptar = arriba · Cancelar = abajo');
+      dir ? canvas.insertBefore(block,block.previousElementSibling):canvas.insertBefore(block,block.nextElementSibling?.nextSibling);
+    }
+  };
+  /* Arrastre desktop reorder */
+  block.draggable=true;
+  block.ondragstart=e=>{canvas.dragSrc=block;e.dataTransfer.setData('text','reorder')};
+  block.ondragover=e=>{
+    if(e.dataTransfer.getData('text')!=='reorder')return;
+    e.preventDefault();
+    const after=(e.clientY-block.getBoundingClientRect().top)>(block.offsetHeight/2);
+    canvas.insertBefore(canvas.dragSrc,after?block.nextSibling:block);
+  };
+}
+function select(b){
+  [...canvas.children].forEach(i=>i.classList.remove('selected'));
+  b.classList.add('selected');
+}
+
+/* --------------- EXPORT --------------- */
+document.getElementById('exportBtn').onclick=()=>{
+  if(!canvas.children.length) return alert('Agrega secciones primero');
+  let html='';[...canvas.children].forEach(b=>html+=b.dataset.code+"\n\n");
+  openModal({img:'/img/export.png',code:html.trim()},true);
+};
+/* --------------- CLEAR --------------- */
+document.getElementById('clearBtn').onclick=()=>{if(confirm('¿Vaciar lienzo?'))canvas.innerHTML='';};
+
+/* --------------- MODAL --------------- */
+const modal=document.getElementById('modal'),
+      modalImg=document.getElementById('modalImg'),
+      codeArea=document.getElementById('codeArea');
+let editingBlock=null;
+function openModal(t,viewOnly,block){
+  modalImg.src=t.img;codeArea.value=t.code;editingBlock=block||null;
+  document.getElementById('saveSnippet').style.display=viewOnly?'none':'inline-block';
+  modal.classList.add('open');
+}
+modal.onclick=e=>{
+  if(e.target===modal||e.target.classList.contains('close')) modal.classList.remove('open');
+};
+document.getElementById('saveSnippet').onclick=()=>{
+  if(editingBlock) editingBlock.dataset.code = codeArea.value.trim();
+  modal.classList.remove('open');
+};
+
+/* --------------- YEAR --------------- */
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
