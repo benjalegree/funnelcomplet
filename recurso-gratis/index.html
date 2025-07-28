@@ -219,7 +219,7 @@
   <footer>© 2025 PsicoFunnel · Todos los derechos reservados</footer>
 
 <script>
-/* Countdown + fecha + atribución (igual que antes) */
+/* Countdown + fecha + atribución */
 function updateCountdown(){
   const now = new Date(), nextMid = new Date();
   nextMid.setHours(23,59,59,999);
@@ -240,7 +240,7 @@ document.getElementById('yy').textContent = String(now.getFullYear()).slice(-2);
 const urlParams = new URLSearchParams(window.location.search);
 document.getElementById('sourceField').value = urlParams.get('src') || 'ebook';
 
-/* ENVÍO A MAKE / INTEGROMAT */
+/* Envío con redirección */
 document.getElementById('leadMagnetForm').addEventListener('submit', async function(e){
   e.preventDefault();
 
@@ -264,8 +264,7 @@ document.getElementById('leadMagnetForm').addEventListener('submit', async funct
     });
 
     if (res.ok) {
-      alert("¡Listo! Revisa tu correo, ya te enviamos el ebook.");
-      document.getElementById("leadMagnetForm").reset();
+      window.location.href = "thankyou";
     } else {
       alert("Algo salió mal. Intenta nuevamente.");
     }
@@ -274,6 +273,7 @@ document.getElementById('leadMagnetForm').addEventListener('submit', async funct
   }
 });
 </script>
+
 
 </body>
 </html>
