@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =========================================================
+       SQUEEZE PAGE v2 • PsicoFunnel (jun-2025)
+       • Más persuasión + efectos animados + botones XL
+  ========================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Descarga tu Lead Magnet Premium | PsicoFunnel</title>
+  <meta name="description" content="Accede gratis hoy mismo al recurso N.º 1 para duplicar tus MQL. Déjanos tu mejor correo y recíbelo al instante.">
+
+  <!-- Íconos -->
+  <link rel="icon" type="image/png" href="/img/favicon150.png">  
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Animate.css para efectos de entrada (CDN ligero) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+  :root{
+    --pf-navy:#001a40;
+    --pf-light:#f1f9ff;
+    --pf-accent:#00a6e0;
+    --pf-gray:#5c6675;
+    --pf-radius:1.35rem;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Outfit',sans-serif;
+    color:var(--pf-navy);
+    background:radial-gradient(circle at top right,#e8f4ff 0%,#fff 45%);
+    min-height:100dvh;
+    display:flex;flex-direction:column;
+  }
+  /* ---------- Contenedor ----------- */
+  .container{
+    width:min(92%,54rem);
+    margin-inline:auto;
+    padding:4.5rem 0 7rem;
+    text-align:center;
+  }
+  /* ---------- HERO ----------- */
+  h1{
+    font-size:clamp(2rem,4.8vw,3.2rem);
+    font-weight:900;
+    line-height:1.15;
+    margin-bottom:0.75rem;
+    background:linear-gradient(90deg,var(--pf-navy),var(--pf-accent));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .subhead{
+    font-size:clamp(1.1rem,2.6vw,1.35rem);
+    color:var(--pf-gray);
+    margin-bottom:1.9rem;
+  }
+
+  /* Countdown Urgency */
+  #countdown{
+    font-weight:700;
+    color:var(--pf-accent);
+    margin-bottom:2.3rem;
+    font-size:clamp(1rem,2.2vw,1.1rem);
+  }
+
+  /* ---------- Bullets persuasivos ----------- */
+  .bullets{
+    display:grid;gap:1.25rem;margin-bottom:2.7rem;
+  }
+  .bullet{
+    background:#fff;
+    border-left:6px solid var(--pf-accent);
+    padding:1rem 1.25rem 1.25rem;
+    border-radius:var(--pf-radius);
+    box-shadow:0 8px 18px -6px rgba(0,0,0,.08);
+    text-align:left;
+  }
+  .bullet b{color:var(--pf-navy);}
+  .badge-pop{
+    display:inline-block;
+    background:var(--pf-accent);
+    color:#fff;
+    font-size:0.7rem;
+    font-weight:700;
+    padding:0.25rem 0.45rem;
+    border-radius:0.55rem;
+    margin-left:0.35rem;
+    vertical-align:middle;
+  }
+
+  /* ---------- FORM ----------- */
+  form{
+    background:#fff;
+    border-radius:var(--pf-radius);
+    box-shadow:0 18px 30px -10px rgba(0,0,0,.12);
+    padding:2.4rem 2rem 3rem;
+    display:grid;gap:1.25rem;
+    animation:fadeInUp .9s both;
+  }
+  .field{display:flex;flex-direction:column;text-align:left;gap:0.4rem;}
+  .field label{
+    font-size:0.9rem;font-weight:600;color:var(--pf-gray);
+  }
+  .field input{
+    padding:1rem 1.2rem;
+    font-size:1.05rem;
+    border:2px solid #d7e5f4;
+    border-radius:calc(var(--pf-radius)/1.5);
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .field input:focus{
+    outline:none;border-color:var(--pf-accent);
+    box-shadow:0 0 0 3px #bdf1ff;
+  }
+
+  /* ---------- Botón XL con micro-bounce ----------- */
+  .btn{
+    cursor:pointer;
+    padding:1.15rem 1.25rem;
+    font-size:1.25rem;
+    font-weight:800;
+    letter-spacing:0.3px;
+    color:#fff;
+    background:var(--pf-accent);
+    border:none;
+    border-radius:calc(var(--pf-radius)/1.5);
+    transition:transform .18s ease,box-shadow .18s ease;
+    animation:pulseBtn 2.8s infinite;
+  }
+  .btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 24px -8px rgba(0,166,224,.55);
+  }
+  @keyframes pulseBtn{
+    0%,100%{box-shadow:0 0 0 0 rgba(0,166,224,.5);}
+    50%{box-shadow:0 0 0 12px rgba(0,166,224,0);}
+  }
+
+  /* ---------- Trust & prueba social ----------- */
+  .social-proof{
+    font-size:0.8rem;
+    color:var(--pf-gray);
+    margin-top:0.4rem;
+  }
+  .social-proof strong{color:var(--pf-navy);}
+  .trust-badges{
+    display:flex;justify-content:center;gap:1rem;margin-top:1.3rem;flex-wrap:wrap;
+  }
+  .trust-badges img{height:34px;width:auto;filter:grayscale(1);opacity:0.8;}
+
+  /* Disclaimer */
+  .disclaimer{
+    font-size:0.75rem;color:var(--pf-gray);margin-top:0.75rem;
+  }
+
+  footer{
+    margin-top:auto;padding:1.8rem 0;font-size:0.8rem;color:var(--pf-gray);text-align:center;
+  }
+
+  /* ---------- Responsive tweaks ----------- */
+  @media(max-width:32rem){
+    .bullet{padding:0.9rem 1.1rem;}
+    .btn{font-size:1.1rem;}
+  }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- HERO -->
+    <header class="animate__animated animate__fadeInDown">
+      <h1>Accede Gratis al Kit&nbsp;<span style="white-space:nowrap;">#1&nbsp;de&nbsp;Funnels</span></h1>
+      <p class="subhead">Déjanos tu <strong>mejor correo</strong> y descubre cómo duplicar tus leads en 7 días.</p>
+    </header>
+
+    <!-- Countdown (escasez / urgencia) -->
+    <div id="countdown" class="animate__animated animate__fadeIn animate__delay-1s">
+      Oferta disponible hasta <span id="dd"></span>/<span id="mm"></span>/<span id="yy"></span> 23:59 — quedan <strong><span id="left">--:--:--</span> h</strong>
+    </div>
+
+    <!-- BULLETS persuasivos -->
+    <section class="bullets animate__animated animate__fadeInUp animate__delay-1s">
+      <article class="bullet">
+        🚀 Despega <b>tus ventas</b> con neuro-copy <span class="badge-pop">NUEVO</span>
+      </article>
+      <article class="bullet">
+        🧠 Basado en <b>psicologia al consumidor</b> by Psicofunnel.
+      </article>
+      <article class="bullet">
+        🌎 Valido para<b> marketers</b> de todo el mundo 
+      </article>
+      <article class="bullet">
+        🔒 100 % seguro: datos cifrados + <b>política anti-spam</b>
+      </article>
+    </section>
+
+    <!-- FORM -->
+    <form id="leadMagnetForm" action="https://hook.us1.make.com/tu-webhook-id" method="POST">
+      <div class="field">
+        <label for="fname">Nombre</label>
+        <input type="text" id="fname" name="First Name" placeholder="Tu nombre" required>
+      </div>
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="Email" placeholder="tu@mejorcorreo.com" required>
+      </div>
+      <!-- Origen campaña -->
+      <input type="hidden" name="source" id="sourceField" value="">
+      <button class="btn" type="submit">¡Sí, Quiero el Kit Ahora!</button>
+      <p class="social-proof">Únete a <strong>miles de emprendedores</strong> que ya lo están aplicando. 💪</p>
+      <p class="disclaimer">No enviamos spam. Cancelas cuando quieras.</p>
+      <!-- Trust badges (autoridad) -->
+      <div class="trust-badges">
+        <img src="/img/badge_ssl.svg" alt="SSL 256-bit">
+        <img src="/img/badge_gdpr.svg" alt="GDPR compliant">
+        <img src="/img/badge_google_sheets.svg" alt="Funciona con Google Sheets">
+      </div>
+    </form>
+  </main>
+
+  <footer>© 2025 PsicoFunnel · Todos los derechos reservados</footer>
+
+  <!-- =========================================================
+       SCRIPTS  —  urgencia + origen campaña + loader opcional
+  ========================================================= -->
+  <script>
+  /* 1. Countdown: restan horas hasta medianoche (hora local) */
+  function updateCountdown(){
+    const now=new Date(), nextMid=new Date();
+    nextMid.setHours(23,59,59,999);
+    const diff=nextMid-now;
+    const h=Math.floor(diff/3.6e6).toString().padStart(2,'0');
+    const m=Math.floor((diff%3.6e6)/6e4).toString().padStart(2,'0');
+    const s=Math.floor((diff%6e4)/1e3).toString().padStart(2,'0');
+    document.getElementById('left').textContent=`${h}:${m}:${s}`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+
+  /* 2. Muestra fecha límite */
+  const now=new Date();
+  document.getElementById('dd').textContent=String(now.getDate()).padStart(2,'0');
+  document.getElementById('mm').textContent=String(now.getMonth()+1).padStart(2,'0');
+  document.getElementById('yy').textContent=String(now.getFullYear()).slice(-2);
+
+  /* 3. Captura parámetro ?src= para atribución */
+  const urlParams=new URLSearchParams(window.location.search);
+  document.getElementById('sourceField').value=urlParams.get('src')||'desconocido';
+  </script>
+</body>
+</html>
