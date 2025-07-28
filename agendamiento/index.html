@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contrata PsicoFunnel | Funnels 1-a-1 con ciencia & corazón</title>
+<meta name="description" content="Reserva tu plaza y consigue un funnel artesanal, diseñado por Benjamín Alegre con neuro-copy, UX premium y automatizaciones 24/7 que convierten.">
+
+<link rel="icon" type="image/png" href="/img/favicon150.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+<style>
+/* ---------- Fallback si AOS no carga ---------- */
+[data-aos]{opacity:1!important;transform:none!important}
+
+/* ---------- Variables & reset ---------- */
+:root{--pf-navy:#001a40;--pf-accent:#00a6e0;--pf-light:#e9f7ff;--radius-xl:1.75rem;--shadow:0 10px 25px rgba(0,0,0,.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;line-height:1.6;color:#0a0f1c;background:#fff;text-align:center;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(-45deg,#003a8c,#001a40,#000e20,#003a8c);background-size:400% 400%;animation:bgmove 24s ease infinite}
+@keyframes bgmove{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.container{width:min(1180px,92%);margin-inline:auto}
+.hidden{display:none}
+.btn{display:inline-block;padding:.95rem 1.9rem;border-radius:3rem;font-weight:700;background:var(--pf-accent);color:#fff;box-shadow:0 6px 18px rgba(0,166,224,.35);transition:.3s}.btn:hover{transform:translateY(-3px)}
+
+/* ---------- NAV & HERO ---------- */
+header{padding:110px 1rem 150px;color:#fff;position:relative}
+header::after{content:"";position:absolute;left:-120px;bottom:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,#60dcff 0%,var(--pf-accent) 60%,transparent 80%);opacity:.12;filter:blur(100px)}
+.header-inner{position:absolute;top:0;left:0;width:100%;padding:20px min(4vw,32px);display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.25rem;font-weight:700;color:#fff}
+.nav-links a{margin-left:24px;color:#e9f7ff}
+#toggle{display:none}.hamburger{display:none}
+@media(max-width:780px){.nav-links{position:fixed;top:0;right:-100%;height:100vh;width:200px;background:#001a40;display:flex;flex-direction:column;padding-top:80px;transition:.4s}#toggle:checked~.nav-links{right:0}.hamburger{display:block;width:26px;height:22px;cursor:pointer;position:relative}.hamburger span,.hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.3s}.hamburger span{top:9px}.hamburger span::before{top:-8px}.hamburger span::after{top:8px}#toggle:checked + .hamburger span{background:transparent}#toggle:checked + .hamburger span::before{transform:rotate(45deg) translate(5px,5px)}#toggle:checked + .hamburger span::after{transform:rotate(-45deg) translate(5px,-5px)}}
+.tag{font-size:.75rem;background:var(--pf-light);color:var(--pf-navy);padding:.3rem .7rem;border-radius:.4rem;font-weight:600}
+.hero-title{font-size:clamp(2.3rem,5vw,3.8rem);font-weight:700;line-height:1.15;margin:.9rem 0 1.2rem}
+.gradient-text{background:linear-gradient(90deg,var(--pf-accent),#60dcff);-webkit-background-clip:text;color:transparent}
+.hero-sub{font-size:1.1rem;max-width:650px;margin-inline:auto}
+
+/* ---------- FORMULARIO ---------- */
+.lead-form{padding:90px 0;background:#f7fbfe}
+form{max-width:530px;margin-inline:auto;background:#fff;padding:2.4rem 2rem;border-radius:var(--radius-xl);box-shadow:var(--shadow)}
+.field{margin-bottom:1.35rem;text-align:left;position:relative}
+label{font-weight:600;font-size:.94rem;color:var(--pf-navy);display:block;margin-bottom:.4rem}
+.field i{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--pf-accent);pointer-events:none}
+input,select{width:100%;padding:.9rem .95rem .9rem 2.8rem;border:2px solid #d4d4d4;border-radius:.65rem;font-family:inherit;font-size:1rem;transition:border .2s,box-shadow .2s}
+input:focus,select:focus{border-color:var(--pf-accent);box-shadow:0 0 0 3px rgba(0,166,224,.25);outline:0}
+.error input,.error select{border-color:#d93025}
+.error-msg{color:#d93025;font-size:.8rem;margin-top:.35rem;min-height:1.05em}
+.hint{font-size:.8rem;color:#555;margin-top:-.6rem;margin-bottom:.75rem}
+.input-group{display:flex;border:2px solid #d4d4d4;border-radius:.65rem;overflow:hidden}
+.input-group:focus-within{border-color:var(--pf-accent);box-shadow:0 0 0 3px rgba(0,166,224,.25)}
+.input-group span{background:#eef4ff;color:#555;padding:.9rem .8rem;font-size:.9rem;white-space:nowrap}
+.input-group input{border:none;border-radius:0;padding:.9rem;font-size:1rem;width:100%}
+.tel-group{display:flex;gap:.55rem}
+.tel-group select{flex:0 0 45%;min-width:135px;padding:.9rem;border:2px solid #d4d4d4;border-radius:.65rem;font-size:.95rem;background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path d="M0 0h12L6 8z" fill="%23000"/></svg>') no-repeat right .8rem center / 8px 6px;appearance:none}
+.tel-group select:focus{border-color:var(--pf-accent);box-shadow:0 0 0 3px rgba(0,166,224,.25)}
+.tel-group input{flex:1}
+.lead-form .btn{width:100%;margin-top:.2rem}
+
+/* ---------- CALENDLY ---------- */
+.vsl{background:#000;padding:70px 1rem}
+.calendly-wrapper{width:100%;max-width:920px;height:720px;border:0;border-radius:var(--radius-xl);box-shadow:var(--shadow);overflow:hidden;margin-inline:auto}
+
+/* ---------- PAINS ---------- */
+.pains{padding:90px 0}
+.pains-grid{display:grid;gap:2rem}@media(min-width:950px){.pains-grid{grid-template-columns:repeat(2,1fr)}}
+.pain-card,.solution-card{border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:1.8rem 1.6rem}
+.pain-card{background:#fff;position:relative}.pain-card::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--pf-accent);font-weight:700}
+.solution-card{background:#0a0f1c;color:#fff}.pain-card h4,.solution-card h4{font-size:1.1rem;margin-bottom:.6rem}
+
+/* ---------- PILARES ---------- */
+.pillars{padding:100px 0}
+.pillars-grid{display:grid;gap:1.8rem}@media(min-width:900px){.pillars-grid{grid-template-columns:repeat(3,1fr)}}
+details.pillar{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:1.7rem 1.4rem;cursor:pointer}
+details.pillar summary{list-style:none;font-size:1.05rem;font-weight:600;color:var(--pf-navy);display:flex;justify-content:center;align-items:center;gap:.6rem}
+details.pillar summary::-webkit-details-marker{display:none}.pillars i{font-size:1.7rem;color:var(--pf-accent)}details.pillar p{font-size:.95rem;margin-top:.9rem}
+
+/* ---------- PRICING ---------- */
+.pricing{padding:100px 0;background:#f7fbfe}
+.pricing-grid{display:grid;gap:2rem}@media(min-width:960px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
+.plan{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:2.2rem 1.8rem;transition:.3s}.plan:hover{transform:translateY(-6px)}
+.plan h3{font-size:1.3rem;margin-bottom:.6rem;color:var(--pf-navy)}.price{font-size:2rem;font-weight:700;margin:.6rem 0 1rem;color:var(--pf-accent)}
+.plan ul{list-style:none;display:grid;gap:.6rem;font-size:.95rem;text-align:left;margin-bottom:1.4rem}.plan ul li i{margin-right:.4rem;color:var(--pf-accent)}
+.plan small{display:block;font-size:.8rem;margin-top:.9rem;color:#555}
+
+/* ---------- GARANTÍA ---------- */
+.guarantee{background:#001a40;color:#fff;padding:90px 1rem}.guarantee h2{font-size:1.9rem;margin-bottom:1rem}.guarantee p{max-width:680px;margin-inline:auto;font-size:1.05rem;line-height:1.55}
+
+/* ---------- TESTIMONIOS ---------- */
+.testimonials{padding:110px 0;text-align:center;color:#fff}
+.testimonial-box{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:2rem 1.6rem;max-width:680px;margin-inline:auto;color:#0a0f1c}
+.testimonial-box img{width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:1rem}.stars{color:#ffc600;font-size:1.2rem;margin-bottom:.6rem}
+
+/* ---------- FAQ ---------- */
+.faq{background:#001a40;color:#fff;padding:100px 0}
+.accordion{max-width:720px;margin-inline:auto}.faq-item{margin-bottom:14px;border-radius:var(--radius-xl);background:rgba(0,15,40,.45);backdrop-filter:blur(6px);box-shadow:var(--shadow)}
+.faq-btn{width:100%;padding:1.15rem 1.4rem;font-weight:600;font-size:1rem;background:none;color:#fff;border:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.faq-btn i{transition:.3s;color:var(--pf-accent)}.faq-content{max-height:0;overflow:hidden;padding:0 1.4rem;transition:max-height .45s ease}.faq-content p{padding:1rem 0;font-size:.9rem;color:#e9f7ff}.faq-item.open .faq-content{max-height:300px}.faq-item.open .faq-btn i{transform:rotate(45deg)}
+
+/* ---------- CTA ---------- */
+.cta{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:80px 1rem}.cta h2{font-size:2rem;margin-bottom:1rem}.cta p{font-size:1.05rem;margin-bottom:2rem}.cta .btn{background:#fff;color:var(--pf-navy);font-weight:700}
+
+/* ---------- FOOTER ---------- */
+footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font-size:.85rem}
+</style>
+</head>
+<body id="top">
+
+<!-- ========== NAV + HERO ========== -->
+<header data-aos="fade-down">
+  <div class="header-inner">
+    <a class="logo" href="/">PsicoFunnel</a>
+    <input type="checkbox" id="toggle"><label for="toggle" class="hamburger"><span></span></label>
+    <div class="nav-links"><a href="/">Inicio</a><a href="/servicios.html">Servicios</a><a href="/blog.html">Blog</a><a href="/contacto.html">Contacto</a></div>
+  </div>
+  <div class="container">
+    <span class="tag">PsicoFunnel · Funnels hechos a mano (solo 3 plazas)</span>
+    <h1 class="hero-title">Tu funnel de ventas hecho<br><span class="gradient-text">1-a-1 por Benjamín Alegre</span></h1>
+    <p class="hero-sub">Pagas una vez, tu embudo vende 24/7 con psicología del consumidor y datos reales.</p>
+    <a href="#brief" class="btn" style="margin-top:2rem">Reservar mi plaza ahora</a>
+  </div>
+</header>
+
+<!-- ========== FORMULARIO ========== -->
+<section class="lead-form" id="brief" data-aos="fade-up">
+  <div class="container">
+    <h2 class="gradient-text" style="margin-bottom:1.7rem">Cuéntame sobre tu negocio</h2>
+    <form id="briefForm" novalidate>
+      <div class="field">
+        <i class="fas fa-user"></i>
+        <label for="name">Nombre y Apellido</label>
+        <input id="name" name="name" autocomplete="name" required>
+        <span class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <div class="field">
+        <i class="fas fa-envelope"></i>
+        <label for="email">Email corporativo</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+        <span class="error-msg" aria-live="polite"></span>
+        <div class="hint">  </div>
+        <div class="hint">Usa tu email de trabajo (no Gmail, Hotmail…)</div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Número de teléfono</label>
+        <div class="tel-group">
+          <select id="code" name="code">
+            <!-- América -->
+            <optgroup label="América">
+              <option value="+54" selected>🇦🇷 Argentina +54</option><option value="+591">🇧🇴 Bolivia +591</option><option value="+55">🇧🇷 Brasil +55</option><option value="+1">🇨🇦 Canadá +1</option><option value="+56">🇨🇱 Chile +56</option><option value="+57">🇨🇴 Colombia +57</option><option value="+506">🇨🇷 Costa Rica +506</option><option value="+53">🇨🇺 Cuba +53</option><option value="+1-809">🇩🇴 R. Dominicana +1-809</option><option value="+593">🇪🇨 Ecuador +593</option><option value="+503">🇸🇻 El Salvador +503</option><option value="+502">🇬🇹 Guatemala +502</option><option value="+504">🇭🇳 Honduras +504</option><option value="+1-876">🇯🇲 Jamaica +1-876</option><option value="+52">🇲🇽 México +52</option><option value="+505">🇳🇮 Nicaragua +505</option><option value="+507">🇵🇦 Panamá +507</option><option value="+595">🇵🇾 Paraguay +595</option><option value="+51">🇵🇪 Perú +51</option><option value="+598">🇺🇾 Uruguay +598</option><option value="+58">🇻🇪 Venezuela +58</option><option value="+1-242">🇧🇸 Bahamas +1-242</option><option value="+1-246">🇧🇧 Barbados +1-246</option><option value="+1-868">🇹🇹 Trinidad & Tobago +1-868</option><option value="+509">🇭🇹 Haití +509</option><option value="+1-787">🇵🇷 Puerto Rico +1-787</option><option value="+592">🇬🇾 Guyana +592</option><option value="+597">🇸🇷 Surinam +597</option><option value="+501">🇧🇿 Belice +501</option><option value="+500">🇫🇰 Falkland +500</option><option value="+594">🇬🇫 Guyana Francesa +594</option>
+            </optgroup>
+            <!-- Europa -->
+            <optgroup label="Europa">
+              <option value="+355">🇦🇱 Albania +355</option><option value="+376">🇦🇩 Andorra +376</option><option value="+43">🇦🇹 Austria +43</option><option value="+375">🇧🇾 Bielorrusia +375</option><option value="+32">🇧🇪 Bélgica +32</option><option value="+387">🇧🇦 Bosnia & H. +387</option><option value="+359">🇧🇬 Bulgaria +359</option><option value="+385">🇭🇷 Croacia +385</option><option value="+357">🇨🇾 Chipre +357</option><option value="+420">🇨🇿 Chequia +420</option><option value="+45">🇩🇰 Dinamarca +45</option><option value="+372">🇪🇪 Estonia +372</option><option value="+358">🇫🇮 Finlandia +358</option><option value="+33">🇫🇷 Francia +33</option><option value="+49">🇩🇪 Alemania +49</option><option value="+30">🇬🇷 Grecia +30</option><option value="+36">🇭🇺 Hungría +36</option><option value="+354">🇮🇸 Islandia +354</option><option value="+353">🇮🇪 Irlanda +353</option><option value="+39">🇮🇹 Italia +39</option><option value="+383">🇽🇰 Kosovo +383</option><option value="+371">🇱🇻 Letonia +371</option><option value="+423">🇱🇮 Liechtenstein +423</option><option value="+370">🇱🇹 Lituania +370</option><option value="+352">🇱🇺 Luxemburgo +352</option><option value="+356">🇲🇹 Malta +356</option><option value="+373">🇲🇩 Moldavia +373</option><option value="+377">🇲🇨 Mónaco +377</option><option value="+382">🇲🇪 Montenegro +382</option><option value="+31">🇳🇱 Países Bajos +31</option><option value="+389">🇲🇰 Macedonia N. +389</option><option value="+47">🇳🇴 Noruega +47</option><option value="+48">🇵🇱 Polonia +48</option><option value="+351">🇵🇹 Portugal +351</option><option value="+40">🇷🇴 Rumanía +40</option><option value="+7">🇷🇺 Rusia +7</option><option value="+378">🇸🇲 San Marino +378</option><option value="+381">🇷🇸 Serbia +381</option><option value="+421">🇸🇰 Eslovaquia +421</option><option value="+386">🇸🇮 Eslovenia +386</option><option value="+34">🇪🇸 España +34</option><option value="+46">🇸🇪 Suecia +46</option><option value="+41">🇨🇭 Suiza +41</option><option value="+380">🇺🇦 Ucrania +380</option><option value="+44">🇬🇧 Reino Unido +44</option><option value="+379">🇻🇦 Vaticano +379</option>
+            </optgroup>
+          </select>
+          <input type="tel" id="phone" name="phone" placeholder="Ej.: 1134567890" required>
+        </div>
+        <span class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <div class="field">
+        <label for="website">Página web</label>
+        <div class="input-group"><span>https://</span><input id="website" name="website" placeholder="midominio.com" required></div>
+        <span class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <div class="field">
+        <label for="spend">Gasto marketing últimos 30 días</label>
+        <select id="spend" name="spend" required>
+          <option value="" disabled selected>Selecciona una opción…</option>
+          <option>0 – 1 000 USD</option><option>1 000 – 5 000 USD</option>
+          <option>5 000 – 20 000 USD</option><option>20 000 – 100 000 USD</option>
+        </select>
+        <span class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <button class="btn" type="submit">Enviar información</button>
+    </form>
+  </div>
+</section>
+
+<!-- ========== CALENDLY (oculto) ========== -->
+<section class="vsl hidden" id="calendlySection">
+  <div class="container"><h2 class="gradient-text" style="margin-bottom:1.4rem">¡Genial! Agenda tu llamada 👇</h2></div>
+  <div class="calendly-wrapper" id="calendlyWidget"></div>
+</section>
+
+<!-- ========== PAIN / SOLUTION ========== -->
+<section class="pains" data-aos="fade-up"><div class="container"><h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">¿Te suena familiar?</h2><div class="pains-grid">
+  <div class="pain-card" data-aos="fade-right"><h4>Muchas visitas pero <u>pocas conversiones</u></h4><p>El tráfico llega pero casi nadie deja su correo ni compra.</p></div>
+  <div class="solution-card" data-aos="fade-left"><h4>Segmentamos tu tráfico</h4><p>Analítica granular + copy neuro para entregar el mensaje perfecto.</p></div>
+  <div class="pain-card" data-aos="fade-right" data-aos-delay="50"><h4>CPA subiendo <u>cada mes</u></h4><p>Inviertes más en ads… pero el coste por lead no baja.</p></div>
+  <div class="solution-card" data-aos="fade-left" data-aos-delay="50"><h4>Quick-wins de CRO</h4><p>Optimización LCP, hooks y estructura TOFU-MOFU-BOFU para exprimir cada clic.</p></div>
+  <div class="pain-card" data-aos="fade-right" data-aos-delay="100"><h4>Automatizaciones <u>atascadas</u></h4><p>Zapier/Make a medias, leads fríos sin nutrir.</p></div>
+  <div class="solution-card" data-aos="fade-left" data-aos-delay="100"><h4>Flows listos en 7 días</h4><p>Secuencias email + bots que activan ventas mientras duermes.</p></div>
+</div></div></section>
+
+<!-- ========== PILARES (3 de muestra) ========== -->
+<section class="pillars"><div class="container"><h2 style="font-size:2rem;margin-bottom:2.4rem" data-aos="fade-up">10 <span class="gradient-text">Pilares</span> clave</h2><div class="pillars-grid">
+  <details class="pillar" data-tilt data-aos="zoom-in"><summary><i class="fas fa-search"></i> Diagnóstico profundo <span class="tag">Especificidad</span></summary><p>Detecto frenos y motivaciones reales de tu buyer persona.</p></details>
+  <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="50"><summary><i class="fas fa-sitemap"></i> Arquitectura TOFU-MOFU-BOFU <span class="tag">Cercanía</span></summary><p>Recorrido fluido que impulsa acción.</p></details>
+  <details class="pillar" data-tilt data-aos="zoom-in" data-aos-delay="100"><summary><i class="fas fa-pen-nib"></i> Copy neuro-persuasivo <span class="tag">Reciprocidad</span></summary><p>Hooks, historias y CTAs basados en sesgos.</p></details>
+  <!-- agrega los 7 restantes aquí -->
+</div></div></section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="planes" data-aos="fade-up"><div class="container"><h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">Elige tu punto de partida</h2><div class="pricing-grid">
+  <div class="plan" data-tilt><h3>Auditoria</h3><p class="price">US$ 70</p><ul><li><i class="fas fa-file-alt"></i> Informe PDF 8-10 págs</li><li><i class="fas fa-tachometer-alt"></i> Análisis del negocio</li><li><i class="fas fa-pen-nib"></i> Revisión copy TOFU-MOFU-BOFU</li><li><i class="fas fa-check-square"></i> Checklist 15 quick-wins</li><li><i class="fas fa-video"></i> Loom 10 min prioridades</li></ul><a href="#brief" class="btn">Reservar Auditoría</a><small>Entrega 48hs a 96hs</small></div>
+  <div class="plan" data-tilt data-aos-delay="50"><h3>Funnel de correos</h3><p class="price">US$ 150</p><ul><li><i class="fas fa-paper-plane"></i> Todo el Starter +</li><li><i class="fas fa-drafting-compass"></i> Automatizacion</li><li><i class="fas fa-bullhorn"></i> Asuntos y contenido con psicologia</li><li><i class="fas fa-brain"></i> Activamos sesgos</li></ul><a href="#brief" class="btn">Potenciar mi funnel</a><small>Entrega 4 a 7 días</small></div>
+  <div class="plan" data-tilt data-aos-delay="100"><h3>Evergreen Kit</h3><p class="price">US$ 300</p><ul><li><i class="fas fa-paper-plane"></i> Todo el Boost +</li><li><i class="fas fa-envelope"></i>Automatizaciones de emails</li><li><i class="fas fa-landmark"></i> Pagina de registro  </li><li><i class="fas fa-project-diagram"></i> Plantilla thank-you</li><li><i class="fas fa-file-pdf"></i> Guion VSL </li></ul><a href="#brief" class="btn">Miniatura VSL</a><small>Entrega 7 a 10 días</small></div>
+</div></div></section> 
+
+<!-- ========== GARANTÍA ========== -->
+<section class="guarantee" data-aos="zoom-in"><h2>Garantía “Objetivo o 7 días gratis”</h2><p>Si a los 30 días tu nuevo funnel no supera tu coste por lead actual, trabajo 7 días totalmente <strong>gratis</strong> hasta lograrlo.</p><a href="#brief" class="btn" style="margin-top:1.6rem">Sin riesgo – Agendar ahora</a></section>
+
+<!-- ========== TESTIMONIOS ========== -->
+<section class="testimonials" data-aos="fade-up"><h2 style="font-size:2rem;margin-bottom:2rem">Historias de éxito</h2>
+<div class="testimonial-box" data-tilt><div class="stars">★★★★★</div><p><em>“Tu puedes ser la proxima HISTORIA DE EXITO!”</em></p><p style="margin-top:1rem;font-weight:600">— Benja tu estratega de funnels</p></div></section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq" data-aos="fade-up"><div class="container"><h2 style="font-size:2rem;margin-bottom:2.2rem">Preguntas frecuentes</h2><div class="accordion">
+  <div class="faq-item"><button class="faq-btn">¿Necesito invertir en ads obligatoriamente? <i class="fas fa-plus"></i></button><div class="faq-content"><p>No. Podemos empezar optimizando tu tráfico orgánico y lanzar ads cuando el funnel esté afinado.</p></div></div>
+  <div class="faq-item"><button class="faq-btn">¿Qué plataformas integras? <i class="fas fa-plus"></i></button><div class="faq-content"><p>Make, Zapier, HubSpot, MailerLite, Shopify, Webflow y más.</p></div></div>
+  <div class="faq-item"><button class="faq-btn">¿Cuándo veré resultados? <i class="fas fa-plus"></i></button><div class="faq-content"><p>Leads iniciales suelen aparecer en 4-6 semanas; depende de tu nicho y presupuesto.</p></div></div>
+</div></div></section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta" data-aos="zoom-in"><h2>¿Listo para multiplicar tus conversiones?</h2><p>Rellena el brief y agenda tu diagnóstico gratuito.</p><a href="#brief" class="btn">Completar brief</a></section>
+
+<footer><p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#top">Subir ↑</a></p></footer>
+
+<!-- ================= JS ================= -->
+<script>
+/* año footer */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* AOS + Tilt */
+setTimeout(() => { if (!document.querySelector('.aos-init')) document.body.classList.add('no-aos'); }, 2000);
+try { AOS.init({ duration: 800, once: true }); } catch {}
+try { VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { max: 6, speed: 400, glare: true, 'max-glare': .25 }); } catch {}
+
+/* -------- VALIDACIÓN + ENVÍO -------- */
+const badDomains = ['gmail.com','hotmail.com','outlook.com','yahoo.com','icloud.com'];
+const form   = document.getElementById('briefForm');
+const calSec = document.getElementById('calendlySection');
+const calBox = document.getElementById('calendlyWidget');
+
+const err = (f,m)=>{const g=f.closest('.field');g.classList.add('error');g.querySelector('.error-msg').textContent=m;};
+const clr = f  =>{const g=f.closest('.field');g.classList.remove('error');g.querySelector('.error-msg').textContent='';};
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  /* --- validar --- */
+  let ok=true;
+  const name   = form.name.value.trim();
+  const email  = form.email.value.trim().toLowerCase();
+  const phone  = form.code.value + form.phone.value.trim();
+  const domain = form.website.value.trim();
+  const spend  = form.spend.value;
+
+  if(!name){err(form.name,'¡Nos falta tu nombre 😊!');ok=false;} else clr(form.name);
+  if(!email){err(form.email,'Indica tu email corporativo');ok=false;}
+  else if(badDomains.some(d=>email.endsWith('@'+d))){err(form.email,'Usa un email de trabajo 🙌');ok=false;} else clr(form.email);
+  if(!/^\d{6,14}$/.test(form.phone.value.trim())){err(form.phone,'Número demasiado corto');ok=false;} else clr(form.phone);
+  try{new URL('https://'+domain);clr(form.website);}catch{err(form.website,'Revisa tu dominio');ok=false;}
+  if(!spend){err(form.spend,'Elige un rango');ok=false;} else clr(form.spend);
+  if(!ok) return;
+
+  /* --- enviar al webhook con origen = consultoria --- */
+  try{
+    await fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        origen:'consultoria',      //  ←  **nuevo campo**
+        name,
+        email,
+        phone,
+        website:'https://'+domain,
+        spend
+      })
+    });
+  }catch{
+    alert('Ups… hubo un problema al enviar tu información, intenta de nuevo 😀');
+    return;
+  }
+
+  /* --- mostrar calendly --- */
+  form.innerHTML = '<h3 style="color:var(--pf-accent);margin-top:1rem">¡Perfecto! Ahora agenda tu llamada 👇</h3>';
+  calSec.classList.remove('hidden');
+  Calendly.initInlineWidget({
+    url:'https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1',
+    parentElement:calBox,
+    prefill:{name,email},
+    utm:{source:'brief-consultoria'}
+  });
+  calSec.scrollIntoView({behavior:'smooth'});
+});
+
+/* limpiar error al escribir */
+form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>clr(el)));
+</script>
+
+</body>
+</html>
