@@ -196,58 +196,84 @@
       </article>
     </section>
 
-    <!-- FORM -->
-    <form id="leadMagnetForm" action="https://hook.us1.make.com/tu-webhook-id" method="POST">
-      <div class="field">
-        <label for="fname">Nombre</label>
-        <input type="text" id="fname" name="First Name" placeholder="Tu nombre" required>
-      </div>
-      <div class="field">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="Email" placeholder="tu@mejorcorreo.com" required>
-      </div>
-      <!-- Origen campaña -->
-      <input type="hidden" name="source" id="sourceField" value="">
-      <button class="btn" type="submit">¡Sí, Quiero el Kit Ahora!</button>
-      <p class="social-proof">Únete a <strong>miles de emprendedores</strong> que ya lo están aplicando. 💪</p>
-      <p class="disclaimer">No enviamos spam. Cancelas cuando quieras.</p>
-      <!-- Trust badges (autoridad) -->
-      <div class="trust-badges">
-        <img src="/img/badge_ssl.svg" alt="SSL 256-bit">
-        <img src="/img/badge_gdpr.svg" alt="GDPR compliant">
-        <img src="/img/badge_google_sheets.svg" alt="Funciona con Google Sheets">
-      </div>
-    </form>
+<!-- FORM -->
+<form id="leadMagnetForm">
+  <div class="field">
+    <label for="fname">Nombre</label>
+    <input type="text" id="fname" name="First Name" placeholder="Tu nombre" required>
+  </div>
+  <div class="field">
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="Email" placeholder="tu@mejorcorreo.com" required>
+  </div>
+  <!-- Origen campaña -->
+  <input type="hidden" name="source" id="sourceField" value="ebook">
+  <button class="btn" type="submit" id="submitBtn">¡Sí, Quiero el eBook gratis!</button>
+  <p class="social-proof">Únete a <strong>miles de emprendedores</strong> que ya lo están aplicando.</p>
+  <p class="disclaimer">No enviamos spam. Cancelas cuando quieras.</p>
+  <div class="trust-badges"></div>
+</form>
+
   </main>
 
   <footer>© 2025 PsicoFunnel · Todos los derechos reservados</footer>
 
-  <!-- =========================================================
-       SCRIPTS  —  urgencia + origen campaña + loader opcional
-  ========================================================= -->
-  <script>
-  /* 1. Countdown: restan horas hasta medianoche (hora local) */
-  function updateCountdown(){
-    const now=new Date(), nextMid=new Date();
-    nextMid.setHours(23,59,59,999);
-    const diff=nextMid-now;
-    const h=Math.floor(diff/3.6e6).toString().padStart(2,'0');
-    const m=Math.floor((diff%3.6e6)/6e4).toString().padStart(2,'0');
-    const s=Math.floor((diff%6e4)/1e3).toString().padStart(2,'0');
-    document.getElementById('left').textContent=`${h}:${m}:${s}`;
+<script>
+/* Countdown + fecha + atribución (igual que antes) */
+function updateCountdown(){
+  const now = new Date(), nextMid = new Date();
+  nextMid.setHours(23,59,59,999);
+  const diff = nextMid - now;
+  const h = Math.floor(diff/3.6e6).toString().padStart(2,'0');
+  const m = Math.floor((diff%3.6e6)/6e4).toString().padStart(2,'0');
+  const s = Math.floor((diff%6e4)/1e3).toString().padStart(2,'0');
+  document.getElementById('left').textContent = `${h}:${m}:${s}`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const now = new Date();
+document.getElementById('dd').textContent = String(now.getDate()).padStart(2,'0');
+document.getElementById('mm').textContent = String(now.getMonth()+1).padStart(2,'0');
+document.getElementById('yy').textContent = String(now.getFullYear()).slice(-2);
+
+const urlParams = new URLSearchParams(window.location.search);
+document.getElementById('sourceField').value = urlParams.get('src') || 'ebook';
+
+/* ENVÍO A MAKE / INTEGROMAT */
+document.getElementById('leadMagnetForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const fname = document.getElementById('fname').value.trim();
+  const origen = document.getElementById('sourceField').value;
+
+  if (!email || !fname) return alert("Por favor, completa todos los campos.");
+
+  const payload = {
+    email: email,
+    nombre: fname,
+    origen: origen
+  };
+
+  try {
+    const res = await fetch("https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      alert("¡Listo! Revisa tu correo, ya te enviamos el ebook.");
+      document.getElementById("leadMagnetForm").reset();
+    } else {
+      alert("Algo salió mal. Intenta nuevamente.");
+    }
+  } catch (err) {
+    alert("Error al conectar con el servidor.");
   }
-  updateCountdown();
-  setInterval(updateCountdown,1000);
+});
+</script>
 
-  /* 2. Muestra fecha límite */
-  const now=new Date();
-  document.getElementById('dd').textContent=String(now.getDate()).padStart(2,'0');
-  document.getElementById('mm').textContent=String(now.getMonth()+1).padStart(2,'0');
-  document.getElementById('yy').textContent=String(now.getFullYear()).slice(-2);
-
-  /* 3. Captura parámetro ?src= para atribución */
-  const urlParams=new URLSearchParams(window.location.search);
-  document.getElementById('sourceField').value=urlParams.get('src')||'desconocido';
-  </script>
 </body>
 </html>
