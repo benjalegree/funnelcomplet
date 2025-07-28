@@ -197,7 +197,7 @@ nlForm.addEventListener('submit', async e => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ origen: 'newsletter', email })
     });
-    window.location.href = '/thankyoulanding.html';
+    window.location.href = '/thankyou';
   } catch {
     nlErr.textContent = 'Ups, algo falló. Inténtalo otra vez.';
   }
