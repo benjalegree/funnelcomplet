@@ -11,9 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-<script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
-
+<!-- (AOS.js se carga al final, antes de tu script) -->
+<!-- Calendly lo cargamos al final con defer -->
 <style>
 /* ---------------- Base y tokens ---------------- */
 :root{
@@ -71,7 +70,7 @@ hr.sep{
   padding:130px 1rem 70px; position:relative; overflow:hidden;
   background:
     linear-gradient(180deg, rgba(0,22,56,.85) 0%, rgba(0,12,30,.75) 100%),
-    url('/img/hero-bg.jpg') center/cover no-repeat;
+    url('./img/hero-bg.jpg') center/cover no-repeat;
   border-bottom:1px solid #0b2d59;
 }
 .hero h1{font-size:clamp(2.5rem,6vw,3.9rem); font-weight:800}
@@ -133,7 +132,7 @@ hr.sep{
 .panel .bullets li::before{content:"▹"; position:absolute; left:0; color:var(--accent); font-weight:800}
 .side-img{
   min-height:380px; border-radius:var(--radius-xl); overflow:hidden; border:1px solid #0f355f;
-  background:linear-gradient(180deg, rgba(0,30,70,.55) 0%, rgba(0,20,50,.55) 100%), url('/img/offer.jpg') center/cover no-repeat;
+  background:linear-gradient(180deg, rgba(0,30,70,.55) 0%, rgba(0,20,50,.55) 100%), url('./img/offer.jpg') center/cover no-repeat;
   box-shadow:var(--shadow);
 }
 
@@ -150,14 +149,14 @@ hr.sep{
 
 /* ---------------- Quién soy ---------------- */
 .me{
-  background:linear-gradient(180deg, rgba(0,24,64,.92) 0%, rgba(0,15,40,.92) 100%), url('/img/me-bg.jpg') center/cover no-repeat;
+  background:linear-gradient(180deg, rgba(0,24,64,.92) 0%, rgba(0,15,40,.92) 100%), url('./img/me-bg.jpg') center/cover no-repeat;
   border-top:1px solid #0b2d59; border-bottom:1px solid #0b2d59;
 }
 .me .wrap{display:grid; gap:26px; align-items:center}
 @media(min-width:1080px){.me .wrap{grid-template-columns: .9fr 1.1fr}}
 .portrait{
   border-radius:20px; overflow:hidden; border:1px solid #0e3e73; box-shadow:var(--shadow);
-  background: url('/img/benja.jpg') center/cover no-repeat; min-height:420px;
+  background: url('./img/benja.jpg') center/cover no-repeat; min-height:420px;
 }
 
 /* ---------------- Beneficios ---------------- */
@@ -179,7 +178,7 @@ hr.sep{
 
 /* ---------------- Agenda y FAQ ---------------- */
 .agenda{
-  background:linear-gradient(180deg, rgba(0,20,48,.92) 0%, rgba(0,12,30,.95) 100%), url('/img/agenda-bg.jpg') center/cover no-repeat;
+  background:linear-gradient(180deg, rgba(0,20,48,.92) 0%, rgba(0,12,30,.95) 100%), url('./img/agenda-bg.jpg') center/cover no-repeat;
   border-top:1px solid #0b2d59;
 }
 .calendly-inline-widget{
@@ -298,7 +297,7 @@ footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
       <li><strong>Tablero de métricas:</strong> Opt-in Rate, Revenue per View, RPM de contenido y % de clic en Bio/DM.</li>
     </ul>
 
-    <img class="resp" src="/img/quickwins.jpg" alt="Activos quick wins PsicoFunnel" loading="lazy" style="margin-top:18px" />
+    <img class="resp" src="./img/quickwins.jpg" alt="Activos quick wins PsicoFunnel" loading="lazy" style="margin-top:18px" />
     <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Activar quick wins ahora</a></div>
   </div>
 </section>
@@ -357,7 +356,7 @@ footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
       <div class="angle" data-aos="zoom-in" data-aos-delay="160"><h5>Plataformas caprichosas</h5><p>El algoritmo cambia. Tu sistema propio (email + activos evergreen) protege el negocio.</p></div>
     </div>
 
-    <img class="resp" src="/img/angles.jpg" alt="Ángulos estratégicos de conversión" loading="lazy" style="margin-top:18px" />
+    <img class="resp" src="./img/angles.jpg" alt="Ángulos estratégicos de conversión" loading="lazy" style="margin-top:18px" />
     <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Quiero el enfoque que me corresponde</a></div>
   </div>
 </section>
@@ -401,7 +400,7 @@ footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
       <div class="benefit" data-aos="fade-left" data-aos-delay="40"><h4>Operativa simple</h4><p>Un sistema que tu equipo mantiene sin fricción.</p></div>
     </div>
 
-    <img class="resp" src="/img/benefits.jpg" alt="Beneficios del sistema evergreen" loading="lazy" style="margin-top:18px" />
+    <img class="resp" src="./img/benefits.jpg" alt="Beneficios del sistema evergreen" loading="lazy" style="margin-top:18px" />
     <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Quiero estos beneficios</a></div>
   </div>
 </section>
@@ -494,12 +493,16 @@ footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
 <!-- CTA flotante siempre al #agenda -->
 <div class="cta-float"><a href="#agenda">Agenda tu diagnóstico</a></div>
 
-<script>
-/* Año */
-document.getElementById('year').textContent=new Date().getFullYear();
+<!-- Scripts: AOS primero (sin defer), luego Calendly (defer), luego tu script -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
 
+<script>
 /* AOS */
 AOS.init({duration:900, once:true, easing:'ease-out-cubic'});
+
+/* Año */
+document.getElementById('year').textContent=new Date().getFullYear();
 
 /* FAQ toggle */
 document.querySelectorAll('.faq .item .q').forEach(b=>{
@@ -514,12 +517,6 @@ const onScroll=()=>{
   progress.style.transform=`scaleX(${Math.max(0,Math.min(1,scrolled))})`;
 };
 document.addEventListener('scroll', onScroll, {passive:true});
-
-/* Seguridad: si Calendly no cargó aún, reintento suave */
-if(!document.querySelector('.calendly-inline-widget')){
-  setTimeout(()=>{}, 0);
-}
 </script>
 </body>
 </html>
-
