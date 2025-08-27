@@ -12,6 +12,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
+<!-- Perf hints -->
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://s.ytimg.com">
+
 <style>
 /* ===================== TOKENS / BASE ===================== */
 :root{
@@ -41,13 +47,13 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   width:100%;
-  /* evita cualquier “espacio a la derecha” */
-  overflow-x: clip; /* fallback en navegadores viejos: */
+  /* elimina cualquier “espacio a la derecha” */
+  overflow-x: clip; /* fallback */
   overflow-x: hidden;
 }
 img, video, iframe{max-width:100%; height:auto; display:block}
 .container{width:min(var(--max),92%); margin-inline:auto}
-section{padding:96px 0}
+section{padding:96px 0; content-visibility:auto; contain-intrinsic-size: 1000px}
 h1,h2,h3{letter-spacing:-.02em; line-height:1.12}
 h1{font-size:clamp(2.6rem,6vw,4.6rem); font-weight:800}
 h2{font-size:clamp(1.9rem,4.5vw,2.7rem); font-weight:800}
@@ -66,6 +72,7 @@ p{line-height:1.65}
   background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#08203a;
   box-shadow:0 14px 40px rgba(10,166,255,.38);
   transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  will-change: transform;
 }
 .btn:hover{transform:translateY(-3px); box-shadow:0 20px 54px rgba(10,166,255,.45)}
 .btn-xl{ font-size:1.05rem; padding:18px 28px }
@@ -146,6 +153,7 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   backdrop-filter: blur(10px);
   transition: transform .35s ease, box-shadow .35s ease;
   min-height:160px;
+  will-change: transform;
 }
 .tile:hover{ transform:translateY(-4px); box-shadow:0 34px 100px rgba(10,166,255,.25) }
 .tile .inner{ padding:20px }
@@ -183,23 +191,28 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   border-top:1px solid rgba(124,211,255,.18);
   overflow:hidden; /* evita desbordes del glow */
 }
-/* Calendly completamente fluido */
+/* Calendly completamente fluido + altura suficiente */
 .calendly-inline-widget{
-  width:100% !important;   /* evita corte horizontal */
-  min-width:0 !important;  /* rompe el min-width interno de Calendly */
-  height:760px;
+  width:100% !important;
+  min-width:0 !important; /* elimina el min-width que rompe en móvil */
+  height:1100px; /* base desktop amplia */
   border-radius:16px; overflow:hidden;
   border:1px solid rgba(124,211,255,.24); background:#031a39; box-shadow:var(--shadow);
   margin-inline:auto;
 }
-@media (max-width: 600px){
-  .calendly-inline-widget{ height:900px } /* más alto en móvil */
+.calendly-inline-widget iframe{
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:block;
 }
-@media (max-width: 380px){
-  .calendly-inline-widget{ height:980px }
-}
+@media (max-width: 1200px){ .calendly-inline-widget{ height:1200px } }
+@media (max-width: 992px){ .calendly-inline-widget{ height:1300px } }
+@media (max-width: 768px){ .calendly-inline-widget{ height:1450px } }
+@media (max-width: 520px){ .calendly-inline-widget{ height:1600px } }
+@media (max-width: 380px){ .calendly-inline-widget{ height:1750px } }
 
-/* ===================== FAQ (glass bubbles + optimizadas) ===================== */
+/* ===================== FAQ (glass bubbles + glow ANIMADO) ===================== */
 .faq{ margin-top:28px; position:relative; overflow:hidden }
 .faq:before, .faq:after{
   content:""; position:absolute; pointer-events:none; z-index:0; filter:blur(60px);
@@ -216,7 +229,25 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   backdrop-filter: blur(10px);
   box-shadow: 0 18px 60px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.04);
   max-width:980px;
+  will-change: transform;
+  transition: box-shadow .3s ease, transform .2s ease;
 }
+/* Anillo degradado (sutil) siempre, más intenso al abrir */
+.faq .item::before{
+  content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
+  background:linear-gradient(120deg, rgba(127,225,255,.45), rgba(38,184,255,.25), rgba(127,225,255,.45));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.45; transition:opacity .25s ease;
+}
+/* Halo interno (burbuja) que podemos animar sin jank (solo opacity/transform) */
+.faq .item::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:
+    radial-gradient(120% 60% at 10% -10%, rgba(255,255,255,.18), transparent 40%),
+    radial-gradient(120% 60% at 110% 120%, rgba(10,166,255,.12), transparent 50%);
+  mix-blend-mode:screen; opacity:.45; transform:scale(1); transition: opacity .25s ease, transform .4s ease;
+}
+
 .faq .item .q{
   width:100%; background:transparent; border:0; color:#eaf7ff; font-weight:800; letter-spacing:.01em;
   padding:18px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:1.02rem;
@@ -224,7 +255,20 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
 .faq .item .q i{transition:.25s}
 .faq .item .a{
   max-height:0; overflow:hidden; padding:0 20px; color:#cfeaff;
-  transition:max-height .32s ease; /* animación ligera */
+  transition:max-height .32s ease;
+}
+.faq .item.open{
+  transform:translateY(-2px);
+  box-shadow:0 34px 110px rgba(10,166,255,.26), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.faq .item.open::before{ opacity:.8 }
+.faq .item.open::after{
+  opacity:.85; transform:scale(1.02);
+  animation:haloPulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes haloPulse{
+  0% { opacity:.65; transform:scale(1.01) }
+  100%{ opacity:.90; transform:scale(1.03) }
 }
 .faq .item.open .q i{transform:rotate(45deg); color:var(--accent)}
 
@@ -271,7 +315,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1&controls=1&autohide=1&showinfo=0"
         title="VSL PsicoFunnel"
-        frameborder="0"
+        frameborder="0" loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
@@ -403,7 +447,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
   </div>
 </section>
 
-<!-- ===================== FAQ (glass bubbles + glows) ===================== -->
+<!-- ===================== FAQ (glass bubbles + glow) ===================== -->
 <section id="faq" class="faq">
   <div class="container">
     <h2 class="reveal" style="text-align:center; position:relative; z-index:1">Preguntas frecuentes</h2>
@@ -447,16 +491,16 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-/* FAQ optimizadas (sin jank) */
+/* FAQ optimizadas con glow */
 const faqItems = document.querySelectorAll('.faq .item');
 faqItems.forEach(item=>{
   const btn = item.querySelector('.q');
   const answer = item.querySelector('.a');
 
   const close = ()=>{
+    // fija altura actual para transición hacia 0
     const h = answer.scrollHeight;
-    answer.style.maxHeight = h + 'px';   // set current height to enable transition
-    // next frame -> collapse
+    answer.style.maxHeight = h + 'px';
     requestAnimationFrame(()=>{ answer.style.maxHeight = '0px'; });
     item.classList.remove('open'); btn.setAttribute('aria-expanded','false');
   };
@@ -464,7 +508,6 @@ faqItems.forEach(item=>{
   const open = ()=>{
     answer.style.maxHeight = answer.scrollHeight + 'px';
     item.classList.add('open'); btn.setAttribute('aria-expanded','true');
-    // al terminar la transición, fijamos altura auto para evitar saltos al reflow
     answer.addEventListener('transitionend', ()=>{
       if(item.classList.contains('open')) answer.style.maxHeight = 'none';
     }, { once:true });
@@ -479,7 +522,7 @@ faqItems.forEach(item=>{
 /* Recalcular alturas al redimensionar (para abiertas) */
 window.addEventListener('resize', ()=>{
   document.querySelectorAll('.faq .item.open .a').forEach(a=>{
-    a.style.maxHeight = 'none'; // deja respirar sin forzar reflow pesado
+    a.style.maxHeight = 'none';
   });
 });
 
@@ -490,12 +533,6 @@ document.body.addEventListener('keyup', (e)=>{
 </script>
 
 <style>
-/* Foco visible solo para teclado */
-.show-focus a:focus, .show-focus button:focus{ outline:2px solid var(--accent); outline-offset:2px; border-radius:10px }
-</style>
-</body>
-</html>
-
 /* Foco visible solo para teclado */
 .show-focus a:focus, .show-focus button:focus{ outline:2px solid var(--accent); outline-offset:2px; border-radius:10px }
 </style>
