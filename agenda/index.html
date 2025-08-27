@@ -3,193 +3,212 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PsicoFunnel · Evergreen que convierte contenido en ventas (sin lanzamientos)</title>
-<meta name="description" content="Sistema evergreen para convertir Instagram, YouTube y LinkedIn en ingresos predecibles, sin depender de lanzamientos ni virales. Agenda tu diagnóstico gratuito." />
+<title>PsicoFunnel · Evergreen elegante que convierte contenido en ventas</title>
+<meta name="description" content="Ruta simple + CTAs claros + nutrición automática. Convierte tu contenido en ingresos diarios sin lanzamientos. Diagnóstico gratuito." />
+<meta name="theme-color" content="#021227" />
 
-<!-- Tipografías + librerías -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-<!-- (AOS.js se carga al final, antes de tu script) -->
-<!-- Calendly lo cargamos al final con defer -->
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
 <style>
-/* ---------------- Base y tokens ---------------- */
+/* ===================== TOKENS / BASE ===================== */
 :root{
-  --navy:#00152e;         /* fondo base */
-  --navy-2:#001a40;       /* paneles */
-  --ink:#0a1020;          /* tinta */
-  --accent:#00a6e0;       /* celeste PF */
-  --accent-2:#60dcff;     /* celeste claro PF */
-  --ring:#87e6ff;         /* halo */
-  --muted:#9ec9ea;        /* textos suaves */
-  --panel:#0a162b;
-  --panel-2:#0c1a33;
-  --radius:18px;
-  --radius-xl:22px;
-  --shadow:0 18px 60px rgba(0,0,0,.35);
-  --shadow-sm:0 10px 28px rgba(0,0,0,.25);
+  --navy:#021227; --navy-2:#0a1c37; --ink:#0a1b2a;
+  --text:#ecf6ff; --muted:#a9c7e6; --white:#ffffff;
+  --accent:#0aa6ff; --accent-2:#7dd3ff;
+
+  --glass:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.16);
+  --stroke-strong:rgba(125,211,255,.28);
+
+  --shadow-xl:0 40px 120px rgba(0,0,0,.55);
+  --shadow-lg:0 28px 90px rgba(0,0,0,.42);
+  --shadow:0 18px 60px rgba(0,0,0,.34);
+
+  --radius:18px; --radius-lg:24px; --radius-xl:30px;
+  --max:1180px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
-  color:#ecf6ff; background:
-    radial-gradient(1200px 900px at 10% -10%, #003a8c22 0%, transparent 60%),
-    radial-gradient(1000px 700px at 110% 0%, #00a6e022 0%, transparent 55%),
-    linear-gradient(180deg,#000a18 0%, #00070f 100%);
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  font-family:'Manrope',-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(1200px 900px at 15% -10%, rgba(10,166,255,.10) 0%, transparent 60%),
+    radial-gradient(900px 700px at 110% 0%, rgba(124,211,255,.10) 0%, transparent 55%),
+    linear-gradient(180deg, #000a16 0%, #00060e 100%);
+  color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
 }
-.container{width:min(1180px,92%);margin:auto}
-section{padding:100px 1rem}
-h1,h2,h3{line-height:1.12; letter-spacing:-.02em; text-wrap:balance}
+.container{width:min(var(--max),92%); margin-inline:auto}
+section{padding:96px 0}
+h1,h2,h3{letter-spacing:-.02em; line-height:1.12}
+h1{font-size:clamp(2.6rem,6vw,4.6rem); font-weight:800}
+h2{font-size:clamp(1.9rem,4.5vw,2.7rem); font-weight:800}
+h3{font-size:clamp(1.2rem,3.2vw,1.5rem); font-weight:800}
 p{line-height:1.65}
-.center{text-align:center}
-.btn{
-  display:inline-block; padding:1rem 1.8rem; border-radius:999px; font-weight:800;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:#00213f; text-decoration:none; box-shadow:0 0 0 0 rgba(135,230,255,.0);
-  transition:transform .24s ease, box-shadow .24s ease, filter .24s ease;
-}
-.btn:hover{transform:translateY(-3px); box-shadow:0 0 0 8px rgba(135,230,255,.12)}
-.badge{
-  display:inline-block; padding:.38rem .7rem; border-radius:8px; font-size:.78rem; font-weight:800;
-  color:#bfe6ff; background:#07264f; border:1px solid #0e3e73; letter-spacing:.06em; text-transform:uppercase;
-}
-.gradient{background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
 .muted{color:var(--muted)}
-hr.sep{
-  border:0;height:1px; width:min(880px,94%); margin:30px auto;
-  background:linear-gradient(90deg,transparent, #0e3e73 30%, #0e3e73 70%, transparent);
-  opacity:.55;
-}
 
-/* ---------------- Hero + VSL ---------------- */
+.badge{
+  display:inline-flex; gap:8px; align-items:center;
+  padding:6px 10px; border-radius:999px; font-size:.78rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  color:#bfe6ff; background:rgba(10,166,255,.12); border:1px solid rgba(10,166,255,.26);
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 22px; border-radius:999px; font-weight:800; text-decoration:none;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#08203a;
+  box-shadow:0 14px 40px rgba(10,166,255,.38);
+  transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.btn:hover{transform:translateY(-3px); box-shadow:0 20px 54px rgba(10,166,255,.45)}
+.btn-xl{ font-size:1.05rem; padding:18px 28px }
+hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
+  background:linear-gradient(90deg,transparent, #1a3d66 30%, #1a3d66 70%, transparent); opacity:.6}
+
+/* ===================== HEADER (glass) ===================== */
+.header{
+  position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+  background:linear-gradient(180deg, rgba(0,12,24,.72), rgba(0,12,24,.40));
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800}
+.logo-dot{width:18px; height:18px; border-radius:6px; background:conic-gradient(from 210deg, var(--accent), var(--accent-2));
+  box-shadow:0 0 0 6px rgba(10,166,255,.12)}
+.nav-actions{display:flex; gap:10px}
+.nav-actions a{white-space:nowrap}
+
+/* ===================== HERO ===================== */
 .hero{
-  padding:130px 1rem 70px; position:relative; overflow:hidden;
-  background:
-    linear-gradient(180deg, rgba(0,22,56,.85) 0%, rgba(0,12,30,.75) 100%),
-    url('./img/hero-bg.jpg') center/cover no-repeat;
-  border-bottom:1px solid #0b2d59;
+  position:relative; overflow:hidden; padding-top:84px; padding-bottom:40px;
 }
-.hero h1{font-size:clamp(2.5rem,6vw,3.9rem); font-weight:800}
-.hero .lead{font-weight:300; color:#d8eeff; max-width:900px; margin:12px auto 0; font-size:1.22rem}
-.vsl-wrap{
-  margin:28px auto 0; width:min(1000px,100%); aspect-ratio:16/9; position:relative;
-  border-radius:20px; overflow:hidden; box-shadow:var(--shadow);
-  border:1px solid #104a7f;
+.hero:before,.hero:after{
+  content:""; position:absolute; pointer-events:none; filter:blur(50px); opacity:.55; z-index:0;
 }
-.vsl-wrap::before{
-  content:""; position:absolute; inset:-2px; border-radius:22px; padding:2px;
+.hero:before{width:600px;height:600px;left:-160px;top:-120px; background:radial-gradient(circle at 50% 50%, rgba(10,166,255,.30), rgba(10,166,255,0) 60%)}
+.hero:after{width:600px;height:600px;right:-140px;bottom:-140px; background:radial-gradient(circle at 50% 50%, rgba(125,211,255,.25), rgba(125,211,255,0) 60%)}
+
+.hero-card{
+  position:relative; z-index:1; max-width:920px; margin-inline:auto;
+  background:var(--glass); border:1px solid var(--stroke); border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-xl); backdrop-filter: blur(14px); padding:38px; text-align:center;
+}
+.hero h1 span{ background:linear-gradient(90deg,#cfefff,#7dd3ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent }
+.cta-wrap{margin-top:20px; display:flex; justify-content:center}
+
+/* ===================== VSL (grande) ===================== */
+.vsl{ position:relative; margin-top:32px }
+.vsl .wrap{
+  width:min(var(--max), 96%); margin-inline:auto; aspect-ratio:16/9; border-radius:26px; overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid var(--stroke-strong); box-shadow: var(--shadow-lg); backdrop-filter: blur(10px);
+}
+.vsl .wrap:before{
+  content:""; position:absolute; inset:-2px; border-radius:28px; pointer-events:none;
   background:linear-gradient(120deg, #7fe1ff, transparent 30%, #26b8ff, transparent 70%, #7fe1ff);
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude; animation:borderShift 6s linear infinite;
-  pointer-events:none;
+  -webkit-mask-composite:xor; mask-composite:exclude; padding:2px;
+  animation:borderShift 8s linear infinite;
 }
 @keyframes borderShift{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-.vsl-wrap iframe{width:100%;height:100%;display:block}
+.vsl iframe{width:100%;height:100%;display:block}
 
-/* ---------------- Grids y tarjetas ---------------- */
-.grid-2{display:grid; gap:22px}
-@media(min-width:980px){.grid-2{grid-template-columns:repeat(2,1fr)}}
-.card{
-  background:linear-gradient(180deg, #0a162b 0%, #081224 100%);
-  border:1px solid #103a6b; border-radius:var(--radius);
-  padding:24px; box-shadow:var(--shadow-sm); text-align:left; position:relative; isolation:isolate;
+/* ===================== SECTION BACKGROUND GLOWS ===================== */
+.bg-glow, .bg-glow--light{ position:relative; overflow:hidden }
+.bg-glow:before, .bg-glow:after,
+.bg-glow--light:before, .bg-glow--light:after{
+  content:""; position:absolute; pointer-events:none; z-index:0; filter:blur(60px);
 }
-.card::after{
-  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:radial-gradient(800px 180px at 10% -60%, rgba(135,230,255,.12), transparent 50%),
-             radial-gradient(700px 200px at 120% 120%, rgba(0,166,224,.12), transparent 60%);
-  mix-blend-mode:screen; opacity:.7;
-}
-.card h4{color:#9ddfff; font-size:1.08rem; font-weight:800; margin-bottom:.5rem; letter-spacing:.01em}
-.card p{color:#e8f6ff; font-weight:400}
+.bg-glow:before{ width:520px; height:520px; left:-140px; top:-120px; opacity:.35;
+  background:radial-gradient(circle at 50% 50%, rgba(10,166,255,.26), rgba(10,166,255,0) 60%) }
+.bg-glow:after{ width:520px; height:520px; right:-140px; bottom:-120px; opacity:.28;
+  background:radial-gradient(circle at 50% 50%, rgba(125,211,255,.22), rgba(125,211,255,0) 60%) }
+.bg-glow--light:before{ width:480px; height:480px; left:-120px; top:-140px; opacity:.18;
+  background:radial-gradient(circle at 50% 50%, rgba(10,166,255,.25), rgba(10,166,255,0) 60%) }
+.bg-glow--light:after{ width:480px; height:480px; right:-120px; bottom:-140px; opacity:.14;
+  background:radial-gradient(circle at 50% 50%, rgba(125,211,255,.22), rgba(125,211,255,0) 60%) }
 
-/* ---------------- Listas con checks ---------------- */
-.list{margin:16px auto 0; max-width:980px; text-align:left; columns:1}
-@media(min-width:980px){.list{columns:2; column-gap:32px}}
-.list li{break-inside:avoid; list-style:none; position:relative; padding-left:34px; margin:12px 0; line-height:1.6}
-.list li::before{
-  content:""; position:absolute; left:0; top:.45rem; width:18px; height:18px; border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, #cfffff 0%, #60dcff 50%, #00a6e0 100%);
-  box-shadow:0 0 0 3px rgba(135,230,255,.18);
+/* ===================== TILES (para vos si) ===================== */
+.tiles{ display:grid; gap:18px; position:relative; z-index:1 }
+@media(min-width:980px){ .tiles{ grid-template-columns: repeat(3,1fr) } }
+.tile{
+  position:relative; border-radius:22px; overflow:hidden; border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow: 0 24px 80px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+  backdrop-filter: blur(10px);
+  transition: transform .35s ease, box-shadow .35s ease;
+  min-height:160px;
 }
+.tile:hover{ transform:translateY(-4px); box-shadow:0 34px 100px rgba(10,166,255,.25) }
+.tile .inner{ padding:20px }
+.tile h3{color:#e8f7ff; margin-bottom:.35rem}
+.tile p{color:#d7eaff}
 
-/* ---------------- Oferta split ---------------- */
-.split{display:grid; gap:28px; align-items:center}
-@media(min-width:1080px){.split{grid-template-columns:1.2fr .8fr}}
+/* ===================== LIGHT SECTIONS ===================== */
+.section--light{ background:var(--white); color:var(--ink) }
+.section--light .badge{ color:#03508d; background:rgba(3,80,141,.08); border-color:rgba(3,80,141,.16) }
+.section--light .muted{ color:#4c6077 }
+.split{ display:grid; gap:28px; align-items:center; position:relative; z-index:1 }
+@media(min-width:1080px){ .split{ grid-template-columns: 1.05fr .95fr } }
 .panel{
-  background:linear-gradient(180deg, #0b1d3a 0%, #0b1830 100%);
-  border:1px solid #0f355f; border-radius:var(--radius-xl); padding:28px; box-shadow:var(--shadow);
-  text-align:left;
+  background:linear-gradient(180deg, #ffffff, #f7fbff);
+  border:1px solid #ddeaf6; border-radius:22px; padding:28px; box-shadow:0 26px 90px rgba(1,20,40,.10)
 }
-.panel h3{font-size:1.5rem; font-weight:800; margin-bottom:.6rem}
-.panel p{color:#d6ecff; font-weight:400}
-.panel .bullets{margin-top:12px}
-.panel .bullets li{list-style:none; margin:10px 0; padding-left:20px; position:relative}
-.panel .bullets li::before{content:"▹"; position:absolute; left:0; color:var(--accent); font-weight:800}
-.side-img{
-  min-height:380px; border-radius:var(--radius-xl); overflow:hidden; border:1px solid #0f355f;
-  background:linear-gradient(180deg, rgba(0,30,70,.55) 0%, rgba(0,20,50,.55) 100%), url('./img/offer.jpg') center/cover no-repeat;
-  box-shadow:var(--shadow);
+.panel h2{ color:#0c2233 }
+.bullets{ list-style:none; margin-top:10px }
+.bullets li{ margin:10px 0; padding-left:26px; position:relative }
+.bullets li::before{
+  content:""; position:absolute; left:0; top:.55rem; width:14px; height:14px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #0aa6ff, #7dd3ff); box-shadow:0 0 0 4px rgba(10,166,255,.14);
 }
 
-/* ---------------- Ángulos ---------------- */
-.angles{display:grid; gap:22px; margin-top:14px}
-@media(min-width:980px){.angles{grid-template-columns:repeat(5,1fr)}}
-.angle{
-  background:linear-gradient(180deg, #0a162b 0%, #071226 100%);
-  border:1px solid #123c6f; border-radius:16px; padding:18px; text-align:left; transition:transform .18s ease;
-}
-.angle:hover{transform:translateY(-4px)}
-.angle h5{color:#9cdcff; font-size:1rem; margin-bottom:.35rem; font-weight:800}
-.angle p{font-weight:400}
+/* ===================== GARANTÍA (glass, left) ===================== */
+.glass{ background:var(--glass); border:1px solid var(--stroke); border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); backdrop-filter: blur(14px) }
+#garantia .glass{ position:relative; z-index:1 }
 
-/* ---------------- Quién soy ---------------- */
-.me{
-  background:linear-gradient(180deg, rgba(0,24,64,.92) 0%, rgba(0,15,40,.92) 100%), url('./img/me-bg.jpg') center/cover no-repeat;
-  border-top:1px solid #0b2d59; border-bottom:1px solid #0b2d59;
-}
-.me .wrap{display:grid; gap:26px; align-items:center}
-@media(min-width:1080px){.me .wrap{grid-template-columns: .9fr 1.1fr}}
-.portrait{
-  border-radius:20px; overflow:hidden; border:1px solid #0e3e73; box-shadow:var(--shadow);
-  background: url('./img/benja.jpg') center/cover no-repeat; min-height:420px;
-}
-
-/* ---------------- Beneficios ---------------- */
-.benefits{display:grid; gap:22px; margin-top:12px}
-@media(min-width:980px){.benefits{grid-template-columns:repeat(3,1fr)}}
-.benefit{
-  background:linear-gradient(180deg, #0a1528 0%, #091224 100%);
-  border:1px solid #123c6f; border-radius:16px; padding:20px; text-align:left; position:relative;
-}
-.benefit h4{color:#86d8ff; margin-bottom:.35rem; font-weight:800}
-.benefit p{font-weight:400}
-
-/* ---------------- Garantía / Exclusividad ---------------- */
-.guarantee{
-  background:linear-gradient(180deg, #001a40 0%, #001332 100%);
-  border-top:1px solid #0b2d59; border-bottom:1px solid #0b2d59;
-}
-.note{font-size:.95rem; color:#bfe6ff; margin-top:.6rem}
-
-/* ---------------- Agenda y FAQ ---------------- */
+/* ===================== AGENDA / FAQ ===================== */
 .agenda{
-  background:linear-gradient(180deg, rgba(0,20,48,.92) 0%, rgba(0,12,30,.95) 100%), url('./img/agenda-bg.jpg') center/cover no-repeat;
-  border-top:1px solid #0b2d59;
+  background:
+    radial-gradient(1000px 700px at 10% 0%, rgba(10,166,255,.12), transparent 60%),
+    radial-gradient(900px 600px at 110% -10%, rgba(124,211,255,.12), transparent 60%),
+    linear-gradient(180deg, #03193a, #011227);
+  border-top:1px solid rgba(124,211,255,.18);
 }
-.calendly-inline-widget{
-  min-width:320px; height:760px; border-radius:16px; overflow:hidden;
-  border:1px solid #0e3e73; box-shadow:var(--shadow); background:#021733;
+
+/* FAQ - Glass bubbles */
+.faq{ margin-top:28px; position:relative }
+.faq:before, .faq:after{
+  content:""; position:absolute; pointer-events:none; z-index:0; filter:blur(60px);
 }
-.faq{background:#07152b; border-top:1px solid #0b2d59}
+.faq:before{ width:520px; height:520px; left:-140px; top:-120px; opacity:.30;
+  background:radial-gradient(circle at 50% 50%, rgba(10,166,255,.22), rgba(10,166,255,0) 60%) }
+.faq:after{ width:520px; height:520px; right:-140px; bottom:-140px; opacity:.24;
+  background:radial-gradient(circle at 50% 50%, rgba(125,211,255,.20), rgba(125,211,255,0) 60%) }
+
 .faq .item{
-  max-width:980px; margin:0 auto 12px; border-radius:16px; border:1px solid #123c6f;
-  background:linear-gradient(180deg,#0a162b 0%,#081224 100%); box-shadow:var(--shadow); text-align:left; overflow:hidden;
+  position:relative; z-index:1;
+  border:1px solid var(--stroke); border-radius:22px; overflow:hidden; margin:0 auto 14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 26px 90px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.04);
+  max-width:980px;
 }
+.faq .item::before{
+  content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
+  background:linear-gradient(120deg, rgba(127,225,255,.45), rgba(38,184,255,.25), rgba(127,225,255,.45));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.55;
+}
+.faq .item::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:
+    radial-gradient(120% 60% at 10% -10%, rgba(255,255,255,.18), transparent 40%),
+    radial-gradient(120% 60% at 110% 120%, rgba(10,166,255,.12), transparent 50%);
+  mix-blend-mode:screen; opacity:.5;
+}
+
 .faq .q{
   width:100%; background:transparent; border:0; color:#eaf7ff; font-weight:800; letter-spacing:.01em;
   padding:18px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:1.02rem;
@@ -197,47 +216,49 @@ hr.sep{
 .faq .q i{transition:.25s}
 .faq .a{max-height:0; overflow:hidden; padding:0 20px; color:#cfeaff; transition:max-height .45s ease}
 .faq .item.open .a{max-height:320px; padding-bottom:16px}
+.faq .item.open{ box-shadow:0 34px 110px rgba(10,166,255,.26), inset 0 0 0 1px rgba(255,255,255,.06) }
 .faq .item.open .q i{transform:rotate(45deg); color:var(--accent)}
 
-/* ---------------- Footer + barra flotante CTA ---------------- */
-footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
-.cta-float{
-  position:fixed; left:0; right:0; bottom:18px; z-index:50; display:flex; justify-content:center; pointer-events:none;
-}
-.cta-float a{
-  pointer-events:auto;
-  backdrop-filter:blur(10px);
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:#00213f; border-radius:999px; padding:.9rem 1.5rem; font-weight:800; text-decoration:none;
-  box-shadow:0 14px 40px rgba(0,166,224,.45);
-}
-
-/* ---------------- Scroll progress ---------------- */
-.progress{
-  position:fixed; inset:0 0 auto 0; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  transform-origin:0 50%; transform:scaleX(0); z-index:100;
-}
-
-/* ---------------- Accesibilidad movimiento ---------------- */
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important; transition:none !important}
-}
+/* ===================== FOOTER / REVEAL ===================== */
+footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
+.reveal{opacity:0; transform:translateY(14px); transition: opacity .6s ease, transform .6s ease}
+.reveal.show{opacity:1; transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
 </style>
 </head>
 <body>
 
-<!-- Barra de progreso -->
-<div class="progress" id="progress"></div>
+<!-- ===================== HEADER ===================== -->
+<header class="header">
+  <div class="container nav">
+    <div class="logo">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span>PsicoFunnel</span>
+    </div>
+    <nav class="nav-actions" aria-label="primaria">
+      <a class="btn" href="#agenda">Reservar diagnóstico</a>
+    </nav>
+  </div>
+</header>
 
-<!-- HERO + VSL -->
-<section class="hero center" data-aos="fade-down">
+<!-- ===================== HERO ===================== -->
+<section class="hero">
   <div class="container">
-    <span class="badge">PsicoFunnel · Evergreen orgánico</span>
-    <h1 style="margin-top:12px;">Escala con <span class="gradient">contenido que vende todos los días</span></h1>
-    <p class="lead">Sistema evergreen para convertir Instagram, YouTube y LinkedIn en <strong style="font-weight:800">ingresos predecibles</strong>, sin depender de lanzamientos ni “videos virales”. Menos show, más ventas. Todo con neuroventas y psicología del consumidor.</p>
+    <div class="hero-card reveal">
+      <span class="badge">Evergreen · minimal</span>
+      <h1 style="margin-top:10px">Convierte tu <span>contenido</span> en ventas diarias</h1>
+      <p class="muted" style="max-width:720px;margin:10px auto 0">
+        Ruta simple + CTAs claros + nutrición automática. Sin lanzamientos, sin sobrecarga.
+      </p>
+      <div class="cta-wrap">
+        <a href="#agenda" class="btn btn-xl" aria-label="Reservar diagnóstico gratuito">Reservar diagnóstico</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- VSL YouTube (reemplaza VIDEO_ID) -->
-    <div class="vsl-wrap" data-aos="zoom-in" data-aos-delay="80" aria-label="Video VSL">
+  <!-- VSL grande debajo del hero -->
+  <div class="vsl">
+    <div class="wrap reveal">
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1&controls=1&autohide=1&showinfo=0"
         title="VSL PsicoFunnel"
@@ -246,277 +267,191 @@ footer{padding:40px 1rem; text-align:center; color:#9cc3e6; font-size:.9rem}
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
     </div>
-
-    <a href="#agenda" class="btn" style="margin-top:24px">Reservar diagnóstico gratuito</a>
   </div>
 </section>
 
-<!-- PROBLEMAS -->
-<section>
+<!-- ===================== ESTO ES PARA VOS SI (glass tiles + glows) ===================== -->
+<section id="para-vos" class="bg-glow">
   <div class="container">
-    <div class="center" data-aos="fade-up">
-      <span class="badge">Lo que hoy te frena</span>
-      <h2 class="gradient" style="font-weight:800">Del “me gusta” a la venta (sin perder el alma)</h2>
-      <p class="muted" style="max-width:920px;margin:.6rem auto 0;font-weight:400">
-        Si tu contenido entretiene pero no convierte, no es culpa del algoritmo: es una ruta rota. El usuario no entiende qué hacer,
-        no existe una página puente clara y cada post compite por atención sin un sistema que lo convierta en citas o pagos.
-        Esto es lo que diagnosticamos y resolvemos primero.
-      </p>
+    <div class="reveal" style="margin-bottom:18px; position:relative; z-index:1">
+      <span class="badge">Identificación</span>
+      <h2 style="margin-top:8px">Esto es para vos si…</h2>
     </div>
-
-    <div class="grid-2" style="margin-top:22px">
-      <div class="card" data-aos="fade-right"><h4>Interacción vacía</h4><p>Publicaciones con “me gusta” pero sin <em>opt-ins</em>, agendas ni ingresos. Reemplazamos métricas de vanidad por métricas de negocio.</p></div>
-      <div class="card" data-aos="fade-left"><h4>Bio dispersa</h4><p>Demasiados links; el usuario no sabe qué hacer. Bio con una sola acción y <em>bridge page</em> cambian el juego.</p></div>
-      <div class="card" data-aos="fade-right" data-aos-delay="40"><h4>Tráfico desperdiciado</h4><p>Reels/Shorts sin CTA, Stories sin ganchos. Framework de CTAs y scripts de DM transforman alcance en conversaciones que venden.</p></div>
-      <div class="card" data-aos="fade-left" data-aos-delay="40"><h4>Montaña rusa</h4><p>Ingresos por promos aisladas. El evergreen estabiliza: captación, nutrición y oferta siempre encendida.</p></div>
-      <div class="card" data-aos="fade-right" data-aos-delay="80"><h4>Camino roto</h4><p>Sin una ruta única Captación → Nutrición → Oferta, el usuario se pierde. La arquitectura ordena cada punto de contacto.</p></div>
-      <div class="card" data-aos="fade-left" data-aos-delay="80"><h4>Señales equivocadas</h4><p>Likes no pagan nóminas. Optimizamos CTR Bio, Opt-in Rate, RpV y LTV.</p></div>
+    <div class="tiles">
+      <div class="tile reveal"><div class="inner"><h3>Querés escalar sin perder tu esencia</h3><p>Más impacto, menos desgaste.</p></div></div>
+      <div class="tile reveal"><div class="inner"><h3>Publicás y no vendés</h3><p>Likes sobran, ventas faltan.</p></div></div>
+      <div class="tile reveal"><div class="inner"><h3>Ingresos impredecibles</h3><p>Meses buenos y meses en blanco.</p></div></div>
+      <div class="tile reveal"><div class="inner"><h3>Leads fríos</h3><p>No sabés qué enviarles para que avancen.</p></div></div>
+      <div class="tile reveal"><div class="inner"><h3>Muchas ofertas, poca ruta</h3><p>Sin camino claro, no deciden.</p></div></div>
+      <div class="tile reveal"><div class="inner"><h3>Te falta un sistema simple</h3><p>Qué publicar, a dónde llevarlos y cómo cerrar.</p></div></div>
     </div>
-
-    <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Quiero que mi contenido venda</a></div>
   </div>
 </section>
 
 <hr class="sep" />
 
-<!-- QUICK WINS -->
-<section>
+<!-- ===================== ¿QUÉ VAS A ENCONTRAR? (light + glows) ===================== -->
+<section id="encontraras" class="section--light bg-glow--light">
   <div class="container">
-    <div class="center" data-aos="fade-up">
-      <span class="badge">Ganancias rápidas</span>
-      <h2 class="gradient" style="font-weight:800">Quick Wins en 2–4 semanas</h2>
-      <p class="muted" style="max-width:900px;margin:.6rem auto 0">No prometemos virales. Prometemos <strong style="font-weight:800">sistemas</strong>. En el primer mes, instalamos activos que empiezan a mover la aguja aun con audiencias pequeñas. Menos volumen, más intención.</p>
-    </div>
+    <span class="badge">¿Qué vas a encontrar en PsicoFunnel?</span>
+    <h2 style="margin-top:10px;color:#0b1c2c">Claridad en cada paso</h2>
 
-    <ul class="list" data-aos="fade-up" style="margin-top:16px">
-      <li><strong>Bio de alto rendimiento:</strong> 1 solo CTA, promesa clara y <em>bridge page</em> con pruebas ligeras, objeciones y acción inmediata.</li>
-      <li><strong>Lead magnet alineado:</strong> deja de regalar e-books desconectados. El imán prepara para tu oferta núcleo.</li>
-      <li><strong>Framework de CTAs:</strong> scripts para Reels/Shorts/Posts/Stories/DM con ganchos, urgencia y próximo paso.</li>
-      <li><strong>Secuencia de bienvenida evergreen:</strong> 4–7 emails que venden silenciosamente todos los días.</li>
-      <li><strong>Pauta editorial evergreen:</strong> pilares y calendario simple que no quema al equipo.</li>
-      <li><strong>Tablero de métricas:</strong> Opt-in Rate, Revenue per View, RPM de contenido y % de clic en Bio/DM.</li>
-    </ul>
-
-    <img class="resp" src="./img/quickwins.jpg" alt="Activos quick wins PsicoFunnel" loading="lazy" style="margin-top:18px" />
-    <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Activar quick wins ahora</a></div>
-  </div>
-</section>
-
-<hr class="sep" />
-
-<!-- OFERTA -->
-<section>
-  <div class="container">
-    <div class="split">
-      <div class="panel" data-aos="fade-right">
-        <h3 class="gradient">Evergreen Conversion System (90 días)</h3>
-        <p>Orgánico que vende + neuroventas + automatización. Sin lanzamientos. Sin humo. Una ruta que transforma alcance en ingresos predecibles con ejecución simple.</p>
-        <ul class="bullets">
-          <li><strong>Mapa estratégico 360°:</strong> posicionamiento, promesa, oferta núcleo y escalera de valor.</li>
-          <li><strong>Arquitectura evergreen:</strong> Captación (RRSS) → Nutrición (Email/YouTube) → Conversión (VSL/Webinar) → Retención/Upsell.</li>
-          <li><strong>Content OS:</strong> long-form (YT, artículos, newsletter) + repurpose en Reels/Shorts/LinkedIn.</li>
-          <li><strong>Pruebas sociales:</strong> mini-historias y manejo de objeciones para nutrir y cerrar sin forzar.</li>
-          <li><strong>Copy neuro:</strong> páginas, VSL, secuencias de email, CTAs y scripts de DM.</li>
-          <li><strong>Implementación técnica:</strong> páginas, automatizaciones, integraciones, tracking y QA.</li>
-          <li><strong>Reporting semanal:</strong> decisiones por datos y sprints de optimización.</li>
-        </ul>
-        <div style="margin-top:18px">
-          <span class="badge">Hitos</span>
-          <ul class="bullets" style="margin-top:10px">
-            <li><strong>Semana 1 –</strong> Diagnóstico & Prioridades (contenido, bio, web, email).</li>
-            <li><strong>Semanas 2–3 –</strong> Fundación evergreen (lead magnet, bridge page, bienvenida, pauta, CTAs).</li>
-            <li><strong>Semanas 4–6 –</strong> Conversión (VSL/Webinar, sales page, emails de oferta, scripts DM).</li>
-            <li><strong>Semanas 7–12 –</strong> Escala orgánica (repurpose, SEO/YT, remarketing orgánico, optimización por métricas).</li>
-          </ul>
-        </div>
-        <a href="#agenda" class="btn" style="margin-top:18px">Aplicar a la consultoría evergreen</a>
+    <div class="split" style="margin-top:18px">
+      <div class="panel reveal">
+        <h3>Acompañamiento 1:1</h3>
+        <p class="muted">Sesiones semanales con paso a paso claro. Soporte directo por WhatsApp para resolver dudas y mantener el ritmo.</p>
       </div>
-
-      <div class="side-img" data-aos="fade-left" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
-
-<hr class="sep" />
-
-<!-- ÁNGULOS -->
-<section>
-  <div class="container">
-    <div class="center" data-aos="fade-up">
-      <span class="badge">Perspectivas</span>
-      <h2 class="gradient" style="font-weight:800">5 ángulos para atacar el dolor correcto</h2>
-      <p class="muted" style="max-width:900px;margin:.6rem auto 0">Tu mensaje no tiene que cambiar la verdad: tiene que cambiar el enfoque. Atacamos desde donde más duele hoy, para que el usuario entienda por qué necesita un sistema evergreen ahora.</p>
-    </div>
-
-    <div class="angles" style="margin-top:10px">
-      <div class="angle" data-aos="zoom-in"><h5>Dinero perdido</h5><p>Horas creando sin CTA ni página puente. Cada view sin conversión es ingreso que se escapa.</p></div>
-      <div class="angle" data-aos="zoom-in" data-aos-delay="40"><h5>Dependencia de lanzamientos</h5><p>Picos y valles que agotan al equipo. El evergreen estabiliza la curva.</p></div>
-      <div class="angle" data-aos="zoom-in" data-aos-delay="80"><h5>Leads fríos</h5><p>Sin secuencias ni pruebas sociales, el lead no avanza. La nutrición vuelve el cierre inevitable.</p></div>
-      <div class="angle" data-aos="zoom-in" data-aos-delay="120"><h5>Métricas de vanidad</h5><p>Likes no pagan nóminas. Optimizamos Opt-in, CVR, RpV y LTV.</p></div>
-      <div class="angle" data-aos="zoom-in" data-aos-delay="160"><h5>Plataformas caprichosas</h5><p>El algoritmo cambia. Tu sistema propio (email + activos evergreen) protege el negocio.</p></div>
-    </div>
-
-    <img class="resp" src="./img/angles.jpg" alt="Ángulos estratégicos de conversión" loading="lazy" style="margin-top:18px" />
-    <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Quiero el enfoque que me corresponde</a></div>
-  </div>
-</section>
-
-<!-- QUIÉN SOY -->
-<section class="me">
-  <div class="container">
-    <div class="wrap">
-      <div class="portrait" data-aos="fade-right" aria-hidden="true"></div>
-      <div data-aos="fade-left">
-        <span class="badge">Sobre PsicoFunnel</span>
-        <h2 class="gradient" style="font-weight:800">Benjamín Alegre · Método humano, científico y artesanal</h2>
-        <p class="muted" style="font-weight:400">Neuroventas + psicología del consumidor + ejecución simple. No hacemos shows, hacemos ventas diarias. Respetamos tu esencia y amplificamos su impacto con estructura, no con trucos efímeros.</p>
-        <ul class="list" style="margin-top:12px">
-          <li><strong>Clareamos el camino:</strong> del contenido al cobro, sin pasos muertos.</li>
-          <li><strong>Diseñamos para decidir:</strong> cada elemento cumple una función, no hay relleno.</li>
-          <li><strong>Medimos lo que importa:</strong> Opt-in, RpV, CTR Bio, CVR, LTV.</li>
-          <li><strong>Operativa liviana:</strong> tu equipo puede mantenerla sin fricción.</li>
-        </ul>
-        <a href="#agenda" class="btn" style="margin-top:18px">Reservar diagnóstico gratuito</a>
+      <div class="panel reveal">
+        <h3>Ruta simple para escalar</h3>
+        <p class="muted">Roadmap evergreen: Captación → Nutrición → Oferta. Tu esencia intacta y un proceso fácil de sostener.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Avances rápidos</h3>
+        <p class="muted">Bio que convierte, recurso gratuito irresistible y secuencia de bienvenida que trabaja todos los días. CTAs para Reels/Shorts/LinkedIn y página puente enfocada en conversión.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Limitaciones bajo control</h3>
+        <p class="muted">Sprints con foco. Atacamos el mayor cuello de botella primero: ofertas dispersas, CTAs ausentes, web lenta o email sin respuesta.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Contenido que vende</h3>
+        <p class="muted">Content OS: una pieza larga semanal (YouTube/Podcast/Blog) que se reutiliza en Reels/Shorts/Posts. Objetivo: ventas constantes.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Páginas y mensajes que convierten</h3>
+        <p class="muted">Copy de neuroventas + Landing/VSL. Promesas concretas, objeciones resueltas y una ruta de decisión simple.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>Automatización sin complicarse</h3>
+        <p class="muted">Email que hace el trabajo 24/7: bienvenida, nutrición y oferta, con automatizaciones sencillas que tu equipo mantiene.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section>
+<!-- ===================== GARANTÍA (glass + bg glows) ===================== -->
+<section id="garantia" class="bg-glow">
   <div class="container">
-    <div class="center" data-aos="fade-up">
-      <span class="badge">Ventajas reales</span>
-      <h2 class="gradient" style="font-weight:800">Beneficios de trabajar con PsicoFunnel</h2>
-      <p class="muted" style="max-width:900px;margin:.6rem auto 0">Construimos activos, no campañas efímeras. La meta es estabilidad, foco y ventas constantes sin hipotecar tu calendario a “lanzamientos”.</p>
-    </div>
-
-    <div class="benefits" style="margin-top:12px">
-      <div class="benefit" data-aos="fade-right"><h4>Ingresos diarios</h4><p>Ventas 24/7 con email y activos evergreen bien orquestados.</p></div>
-      <div class="benefit" data-aos="fade-up"><h4>Contenido que vende</h4><p>Pasás de entretener a construir demanda e intención de compra.</p></div>
-      <div class="benefit" data-aos="fade-left"><h4>Ruta clara</h4><p>Captación → Nutrición → Oferta. Sin dispersión.</p></div>
-      <div class="benefit" data-aos="fade-right" data-aos-delay="40"><h4>Menos horas de cámara</h4><p>Repurpose inteligente = más alcance con el mismo esfuerzo.</p></div>
-      <div class="benefit" data-aos="fade-up" data-aos-delay="40"><h4>Métricas que importan</h4><p>Opt-in, RpV, LTV. No likes.</p></div>
-      <div class="benefit" data-aos="fade-left" data-aos-delay="40"><h4>Operativa simple</h4><p>Un sistema que tu equipo mantiene sin fricción.</p></div>
-    </div>
-
-    <img class="resp" src="./img/benefits.jpg" alt="Beneficios del sistema evergreen" loading="lazy" style="margin-top:18px" />
-    <div class="center"><a href="#agenda" class="btn" style="margin-top:22px">Quiero estos beneficios</a></div>
-  </div>
-</section>
-
-<!-- GARANTÍA -->
-<section class="guarantee">
-  <div class="container center">
-    <div data-aos="zoom-in">
-      <span class="badge">Sin humo</span>
-      <h2 class="gradient" style="font-weight:800">Garantía de rendimiento</h2>
-      <p class="muted" style="max-width:900px;margin:.6rem auto 0">
-        Mejora medible o se sigue trabajando sin honorarios adicionales. Si en 30 días no mejora al menos uno de estos indicadores orgánicos —
-        <strong style="font-weight:800">CTR Bio/Link</strong>, <strong style="font-weight:800">Opt-in Rate</strong> o <strong style="font-weight:800">RpV</strong> —
-        PsicoFunnel continúa 30 días más sin coste extra hasta lograrlo.
+    <div class="glass reveal" style="padding:28px; text-align:left">
+      <span class="badge">Garantía tranquila PsicoFunnel</span>
+      <h2 style="margin-top:8px">Mejora visible o seguimos sin coste</h2>
+      <p class="muted" style="max-width:820px;margin:8px 0 0 0">
+        Si en 30 días no mejora alguno de estos indicadores, continuamos 30 días más sin honorarios:
       </p>
-      <p class="note">Requiere implementar recomendaciones y mantener la frecuencia mínima acordada.</p>
-      <a href="#agenda" class="btn" style="margin-top:18px">Probar sin riesgo</a>
+      <ul class="bullets" style="margin-top:12px">
+        <li>Clics desde redes a la página principal (bio/link)</li>
+        <li>Nuevos suscriptores a la lista de email</li>
+        <li>Ventas del primer producto (libro/curso de entrada)</li>
+      </ul>
+      <p class="muted" style="max-width:820px;margin:10px 0 0 0">
+        <strong style="color:#0aa6ff">Condiciones justas:</strong> implementar lo acordado, mantener la frecuencia mínima y usar las páginas/mensajes proporcionados sin cambios críticos de última hora.
+      </p>
+      <div class="cta-wrap" style="justify-content:flex-start; margin-top:16px">
+        <a href="#agenda" class="btn">Probar sin riesgo</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EXCLUSIVIDAD -->
-<section class="excl">
-  <div class="container center">
-    <div data-aos="fade-up">
-      <span class="badge">Cupos limitados</span>
-      <h2 class="gradient" style="font-weight:800">Exclusividad y foco artesanal</h2>
-      <p class="muted" style="max-width:900px;margin:.6rem auto 0">Trabajo uno a uno, con dedicación total. Para proteger la calidad, se abren muy pocas plazas por mes. Si la agenda está completa, activamos lista de espera.</p>
-      <a href="#agenda" class="btn" style="margin-top:18px">Asegurar mi plaza este mes</a>
+<!-- ===================== QUIÉN SOY (light + glows) ===================== -->
+<section id="quien-soy" class="section--light bg-glow--light">
+  <div class="container split">
+    <div class="panel reveal">
+      <span class="badge">Sobre Benjamín Alegre — PsicoFunnel</span>
+      <h2 style="margin-top:10px">Estratega de funnels, neuroventas y contenido evergreen</h2>
+      <p class="muted" style="margin-top:8px">
+        Ayudo a coaches, infoproductores y negocios digitales a convertir su contenido en ingresos predecibles, sin lanzamientos agotadores. Psicología del consumidor, copy de alto rendimiento y ejecución artesanal para que tu esencia se mantenga mientras el sistema vende todos los días.
+      </p>
+      <ul class="bullets" style="margin-top:12px">
+        <li><strong>Humano y cercano:</strong> procesos claros, lenguaje simple.</li>
+        <li><strong>Científico y medible:</strong> decisiones por datos (clics, suscriptores, primeras ventas).</li>
+        <li><strong>Artesanal y enfocado:</strong> pocas plazas, 1:1, una palanca a la vez.</li>
+        <li><strong>Evergreen primero:</strong> orgánico que convierte; anuncios solo cuando los datos lo piden.</li>
+      </ul>
+      <p class="muted" style="margin-top:10px"><strong>Resultado:</strong> negocio ordenado, estable y alineado con tu vida.</p>
+      <div class="cta-wrap"><a href="#agenda" class="btn">Reservar diagnóstico gratuito</a></div>
+    </div>
+    <div class="panel reveal" style="min-height:420px; background:
+      url('./img/benja.jpg') center/cover no-repeat,
+      radial-gradient(80% 80% at 0% 0%, rgba(10,166,255,.10), transparent 50%),
+      linear-gradient(180deg,#ffffff,#f6fbff);
+      border:1px solid #ddeaf6;"></div>
+  </div>
+</section>
+
+<!-- ===================== AGENDA (CALENDLY) ===================== -->
+<section id="agenda" class="agenda bg-glow">
+  <div class="container" style="text-align:center; position:relative; z-index:1">
+    <div class="reveal">
+      <span class="badge">Agenda</span>
+      <h2 style="margin-top:8px">Diagnóstico gratuito (15–30 min)</h2>
+      <p class="muted" style="max-width:820px; margin:8px auto 0">
+        Revisamos tu ruta, priorizamos y definimos quick wins activables en 7–14 días.
+      </p>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="margin-top:18px"></div>
+      <p class="muted" style="margin-top:10px"><small>Si no ves el calendario, recarga la página.</small></p>
     </div>
   </div>
 </section>
 
-<!-- AGENDA (penúltima) -->
-<section id="agenda" class="agenda center">
+<!-- ===================== FAQ (glass bubbles + glows) ===================== -->
+<section id="faq" class="faq">
   <div class="container">
-    <h2 class="gradient" data-aos="fade-up" style="font-weight:800">Agenda tu diagnóstico gratuito</h2>
-    <p class="muted" data-aos="fade-up" data-aos-delay="40" style="max-width:900px;margin:.6rem auto 0">
-      15–30 minutos para auditar tu ruta actual, ordenar prioridades y definir los quick wins que activan ventas diarias.
-    </p>
+    <h2 class="reveal" style="text-align:center; position:relative; z-index:1">Preguntas frecuentes</h2>
 
-    <!-- Calendly -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="margin-top:18px;"></div>
-
-    <p style="margin-top:14px;color:#cde9ff"><small>Si no ves el calendario, recarga la página.</small></p>
-  </div>
-</section>
-
-<!-- FAQ (última) -->
-<section class="faq">
-  <div class="container">
-    <h2 class="gradient center" data-aos="fade-up" style="font-weight:800">Preguntas frecuentes</h2>
-
-    <div class="item" data-aos="fade-up">
-      <button class="q">¿Se hacen lanzamientos?<i>＋</i></button>
-      <div class="a"><p>No. La estrategia es 100% evergreen: contenido + email + oferta siempre encendida. Priorizamos estabilidad y escala sin “montaña rusa”.</p></div>
+    <div class="item reveal">
+      <button class="q">¿Necesito publicar a diario?<i>＋</i></button>
+      <div class="a"><p>No. 1–2 piezas long-form/semana + distribución inteligente.</p></div>
     </div>
-
-    <div class="item" data-aos="fade-up" data-aos-delay="40">
-      <button class="q">¿Hace falta publicar a diario?<i>＋</i></button>
-      <div class="a"><p>No. Importa la calidad estratégica y el repurpose. Con 1–2 piezas long-form semanales y distribución inteligente es suficiente para crecer.</p></div>
+    <div class="item reveal">
+      <button class="q">¿Se usan Ads?<i>＋</i></button>
+      <div class="a"><p>No para empezar. Amplificamos solo cuando los datos orgánicos lo piden.</p></div>
     </div>
-
-    <div class="item" data-aos="fade-up" data-aos-delay="80">
-      <button class="q">¿Qué plataformas se integran?<i>＋</i></button>
-      <div class="a"><p>Instagram, YouTube (long & Shorts), LinkedIn, Email (ActiveCampaign/Klaviyo/MailerLite), Web (WordPress/Webflow), automatizaciones (Zapier/Make), pagos (Stripe/Thrivecart).</p></div>
+    <div class="item reveal">
+      <button class="q">¿Cuándo veo resultados?<i>＋</i></button>
+      <div class="a"><p>Quick wins en 2–4 semanas. Conversión estable en 6–12 semanas.</p></div>
     </div>
-
-    <div class="item" data-aos="fade-up" data-aos-delay="120">
-      <button class="q">¿Cuándo se ven resultados?<i>＋</i></button>
-      <div class="a"><p>Quick wins en 2–4 semanas (clicks, opt-ins, apertura). Conversión consistente en 6–12 semanas al consolidar la ruta completa.</p></div>
-    </div>
-
-    <div class="item" data-aos="fade-up" data-aos-delay="160">
-      <button class="q">¿Se necesita invertir en Ads?<i>＋</i></button>
-      <div class="a"><p>No para empezar. Ads sólo se usan cuando los datos orgánicos lo justifican (amplificación, no parche).</p></div>
-    </div>
-
-    <div class="item" data-aos="fade-up" data-aos-delay="200">
-      <button class="q">¿Qué pasa si ya hay contenido o funnel montado?<i>＋</i></button>
-      <div class="a"><p>Se audita, se rescata lo que convierte y se optimiza lo que frena. Nada se rehace por rehacer: eficiencia primero.</p></div>
+    <div class="item reveal">
+      <button class="q">¿Puedo mantenerlo con mi equipo?<i>＋</i></button>
+      <div class="a"><p>Sí. Está pensado para operativa liviana y mejoras iterativas.</p></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón</p>
+  <div class="container">
+    <p>&copy; <span id="year"></span> PsicoFunnel · Diseño humano + ciencia aplicada</p>
+  </div>
 </footer>
 
-<!-- CTA flotante siempre al #agenda -->
-<div class="cta-float"><a href="#agenda">Agenda tu diagnóstico</a></div>
-
-<!-- Scripts: AOS primero (sin defer), luego Calendly (defer), luego tu script -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- ===================== SCRIPTS ===================== -->
 <script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
-
 <script>
-/* AOS */
-AOS.init({duration:900, once:true, easing:'ease-out-cubic'});
-
 /* Año */
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 
 /* FAQ toggle */
-document.querySelectorAll('.faq .item .q').forEach(b=>{
-  b.addEventListener('click',()=> b.closest('.item').classList.toggle('open'));
+document.querySelectorAll('.faq .item .q').forEach(btn=>{
+  btn.addEventListener('click',()=> btn.closest('.item').classList.toggle('open'));
 });
 
-/* Progress bar */
-const progress=document.getElementById('progress');
-const onScroll=()=>{
-  const h=document.documentElement;
-  const scrolled=(h.scrollTop)/(h.scrollHeight-h.clientHeight);
-  progress.style.transform=`scaleX(${Math.max(0,Math.min(1,scrolled))})`;
-};
-document.addEventListener('scroll', onScroll, {passive:true});
+/* Reveal on scroll (sin AOS) */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+  })
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+/* Foco accesible con teclado */
+document.body.addEventListener('keyup', (e)=>{
+  if(e.key === 'Tab'){ document.body.classList.add('show-focus'); }
+});
 </script>
+
+<style>
+/* Foco visible solo para teclado */
+.show-focus a:focus, .show-focus button:focus{ outline:2px solid var(--accent); outline-offset:2px; border-radius:10px }
+</style>
 </body>
 </html>
