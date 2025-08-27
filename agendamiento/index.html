@@ -172,16 +172,6 @@ footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font
         <span class="error-msg" aria-live="polite"></span>
       </div>
 
-      <div class="field">
-        <label for="spend">Gasto marketing últimos 30 días</label>
-        <select id="spend" name="spend" required>
-          <option value="" disabled selected>Selecciona una opción…</option>
-          <option>0 – 1 000 USD</option><option>1 000 – 5 000 USD</option>
-          <option>5 000 – 20 000 USD</option><option>20 000 – 100 000 USD</option>
-        </select>
-        <span class="error-msg" aria-live="polite"></span>
-      </div>
-
       <button class="btn" type="submit">Enviar información</button>
     </form>
   </div>
@@ -248,7 +238,6 @@ try { AOS.init({ duration: 800, once: true }); } catch {}
 try { VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { max: 6, speed: 400, glare: true, 'max-glare': .25 }); } catch {}
 
 /* -------- VALIDACIÓN + ENVÍO -------- */
-const badDomains = ['gmail.com','hotmail.com','outlook.com','yahoo.com','icloud.com'];
 const form   = document.getElementById('briefForm');
 const calSec = document.getElementById('calendlySection');
 const calBox = document.getElementById('calendlyWidget');
@@ -268,7 +257,7 @@ form.addEventListener('submit', async e => {
   const spend  = form.spend.value;
 
   if(!name){err(form.name,'¡Nos falta tu nombre 😊!');ok=false;} else clr(form.name);
-  if(!email){err(form.email,'Indica tu email corporativo');ok=false;}
+  if(!email){err(form.email,'Indica tu email');ok=false;}
   else if(badDomains.some(d=>email.endsWith('@'+d))){err(form.email,'Usa un email de trabajo 🙌');ok=false;} else clr(form.email);
   if(!/^\d{6,14}$/.test(form.phone.value.trim())){err(form.phone,'Número demasiado corto');ok=false;} else clr(form.phone);
   try{new URL('https://'+domain);clr(form.website);}catch{err(form.website,'Revisa tu dominio');ok=false;}
