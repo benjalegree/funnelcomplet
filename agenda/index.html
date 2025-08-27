@@ -31,16 +31,21 @@
   --max:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; width:100%}
 body{
   font-family:'Manrope',-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   background:
     radial-gradient(1200px 900px at 15% -10%, rgba(10,166,255,.10) 0%, transparent 60%),
     radial-gradient(900px 700px at 110% 0%, rgba(124,211,255,.10) 0%, transparent 55%),
     linear-gradient(180deg, #000a16 0%, #00060e 100%);
-  color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  width:100%;
+  /* evita cualquier “espacio a la derecha” */
+  overflow-x: clip; /* fallback en navegadores viejos: */
+  overflow-x: hidden;
 }
+img, video, iframe{max-width:100%; height:auto; display:block}
 .container{width:min(var(--max),92%); margin-inline:auto}
 section{padding:96px 0}
 h1,h2,h3{letter-spacing:-.02em; line-height:1.12}
@@ -104,6 +109,7 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   width:min(var(--max), 96%); margin-inline:auto; aspect-ratio:16/9; border-radius:26px; overflow:hidden;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border:1px solid var(--stroke-strong); box-shadow: var(--shadow-lg); backdrop-filter: blur(10px);
+  position:relative;
 }
 .vsl .wrap:before{
   content:""; position:absolute; inset:-2px; border-radius:28px; pointer-events:none;
@@ -168,17 +174,33 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
 .glass{ background:var(--glass); border:1px solid var(--stroke); border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); backdrop-filter: blur(14px) }
 #garantia .glass{ position:relative; z-index:1 }
 
-/* ===================== AGENDA / FAQ ===================== */
+/* ===================== AGENDA / CALENDLY ===================== */
 .agenda{
   background:
     radial-gradient(1000px 700px at 10% 0%, rgba(10,166,255,.12), transparent 60%),
     radial-gradient(900px 600px at 110% -10%, rgba(124,211,255,.12), transparent 60%),
     linear-gradient(180deg, #03193a, #011227);
   border-top:1px solid rgba(124,211,255,.18);
+  overflow:hidden; /* evita desbordes del glow */
+}
+/* Calendly completamente fluido */
+.calendly-inline-widget{
+  width:100% !important;   /* evita corte horizontal */
+  min-width:0 !important;  /* rompe el min-width interno de Calendly */
+  height:760px;
+  border-radius:16px; overflow:hidden;
+  border:1px solid rgba(124,211,255,.24); background:#031a39; box-shadow:var(--shadow);
+  margin-inline:auto;
+}
+@media (max-width: 600px){
+  .calendly-inline-widget{ height:900px } /* más alto en móvil */
+}
+@media (max-width: 380px){
+  .calendly-inline-widget{ height:980px }
 }
 
-/* FAQ - Glass bubbles */
-.faq{ margin-top:28px; position:relative }
+/* ===================== FAQ (glass bubbles + optimizadas) ===================== */
+.faq{ margin-top:28px; position:relative; overflow:hidden }
 .faq:before, .faq:after{
   content:""; position:absolute; pointer-events:none; z-index:0; filter:blur(60px);
 }
@@ -189,34 +211,21 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
 
 .faq .item{
   position:relative; z-index:1;
-  border:1px solid var(--stroke); border-radius:22px; overflow:hidden; margin:0 auto 14px;
+  border:1px solid var(--stroke); border-radius:22px; margin:0 auto 14px;
   background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-  backdrop-filter: blur(12px);
-  box-shadow: 0 26px 90px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.04);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.04);
   max-width:980px;
 }
-.faq .item::before{
-  content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
-  background:linear-gradient(120deg, rgba(127,225,255,.45), rgba(38,184,255,.25), rgba(127,225,255,.45));
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.55;
-}
-.faq .item::after{
-  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:
-    radial-gradient(120% 60% at 10% -10%, rgba(255,255,255,.18), transparent 40%),
-    radial-gradient(120% 60% at 110% 120%, rgba(10,166,255,.12), transparent 50%);
-  mix-blend-mode:screen; opacity:.5;
-}
-
-.faq .q{
+.faq .item .q{
   width:100%; background:transparent; border:0; color:#eaf7ff; font-weight:800; letter-spacing:.01em;
   padding:18px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:1.02rem;
 }
-.faq .q i{transition:.25s}
-.faq .a{max-height:0; overflow:hidden; padding:0 20px; color:#cfeaff; transition:max-height .45s ease}
-.faq .item.open .a{max-height:320px; padding-bottom:16px}
-.faq .item.open{ box-shadow:0 34px 110px rgba(10,166,255,.26), inset 0 0 0 1px rgba(255,255,255,.06) }
+.faq .item .q i{transition:.25s}
+.faq .item .a{
+  max-height:0; overflow:hidden; padding:0 20px; color:#cfeaff;
+  transition:max-height .32s ease; /* animación ligera */
+}
 .faq .item.open .q i{transform:rotate(45deg); color:var(--accent)}
 
 /* ===================== FOOTER / REVEAL ===================== */
@@ -270,7 +279,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
   </div>
 </section>
 
-<!-- ===================== ESTO ES PARA VOS SI (glass tiles + glows) ===================== -->
+<!-- ===================== ESTO ES PARA VOS SI ===================== -->
 <section id="para-vos" class="bg-glow">
   <div class="container">
     <div class="reveal" style="margin-bottom:18px; position:relative; z-index:1">
@@ -290,7 +299,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
 
 <hr class="sep" />
 
-<!-- ===================== ¿QUÉ VAS A ENCONTRAR? (light + glows) ===================== -->
+<!-- ===================== ¿QUÉ VAS A ENCONTRAR? ===================== -->
 <section id="encontraras" class="section--light bg-glow--light">
   <div class="container">
     <span class="badge">¿Qué vas a encontrar en PsicoFunnel?</span>
@@ -329,7 +338,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
   </div>
 </section>
 
-<!-- ===================== GARANTÍA (glass + bg glows) ===================== -->
+<!-- ===================== GARANTÍA ===================== -->
 <section id="garantia" class="bg-glow">
   <div class="container">
     <div class="glass reveal" style="padding:28px; text-align:left">
@@ -353,7 +362,7 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
   </div>
 </section>
 
-<!-- ===================== QUIÉN SOY (light + glows) ===================== -->
+<!-- ===================== QUIÉN SOY ===================== -->
 <section id="quien-soy" class="section--light bg-glow--light">
   <div class="container split">
     <div class="panel reveal">
@@ -400,19 +409,19 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
     <h2 class="reveal" style="text-align:center; position:relative; z-index:1">Preguntas frecuentes</h2>
 
     <div class="item reveal">
-      <button class="q">¿Necesito publicar a diario?<i>＋</i></button>
+      <button class="q" aria-expanded="false">¿Necesito publicar a diario?<i>＋</i></button>
       <div class="a"><p>No. 1–2 piezas long-form/semana + distribución inteligente.</p></div>
     </div>
     <div class="item reveal">
-      <button class="q">¿Se usan Ads?<i>＋</i></button>
+      <button class="q" aria-expanded="false">¿Se usan Ads?<i>＋</i></button>
       <div class="a"><p>No para empezar. Amplificamos solo cuando los datos orgánicos lo piden.</p></div>
     </div>
     <div class="item reveal">
-      <button class="q">¿Cuándo veo resultados?<i>＋</i></button>
+      <button class="q" aria-expanded="false">¿Cuándo veo resultados?<i>＋</i></button>
       <div class="a"><p>Quick wins en 2–4 semanas. Conversión estable en 6–12 semanas.</p></div>
     </div>
     <div class="item reveal">
-      <button class="q">¿Puedo mantenerlo con mi equipo?<i>＋</i></button>
+      <button class="q" aria-expanded="false">¿Puedo mantenerlo con mi equipo?<i>＋</i></button>
       <div class="a"><p>Sí. Está pensado para operativa liviana y mejoras iterativas.</p></div>
     </div>
   </div>
@@ -430,11 +439,6 @@ footer{padding:40px 0; text-align:center; color:#9cc3e6; font-size:.9rem}
 /* Año */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* FAQ toggle */
-document.querySelectorAll('.faq .item .q').forEach(btn=>{
-  btn.addEventListener('click',()=> btn.closest('.item').classList.toggle('open'));
-});
-
 /* Reveal on scroll (sin AOS) */
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
@@ -443,6 +447,42 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
+/* FAQ optimizadas (sin jank) */
+const faqItems = document.querySelectorAll('.faq .item');
+faqItems.forEach(item=>{
+  const btn = item.querySelector('.q');
+  const answer = item.querySelector('.a');
+
+  const close = ()=>{
+    const h = answer.scrollHeight;
+    answer.style.maxHeight = h + 'px';   // set current height to enable transition
+    // next frame -> collapse
+    requestAnimationFrame(()=>{ answer.style.maxHeight = '0px'; });
+    item.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  };
+
+  const open = ()=>{
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    item.classList.add('open'); btn.setAttribute('aria-expanded','true');
+    // al terminar la transición, fijamos altura auto para evitar saltos al reflow
+    answer.addEventListener('transitionend', ()=>{
+      if(item.classList.contains('open')) answer.style.maxHeight = 'none';
+    }, { once:true });
+  };
+
+  btn.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    isOpen ? close() : open();
+  });
+});
+
+/* Recalcular alturas al redimensionar (para abiertas) */
+window.addEventListener('resize', ()=>{
+  document.querySelectorAll('.faq .item.open .a').forEach(a=>{
+    a.style.maxHeight = 'none'; // deja respirar sin forzar reflow pesado
+  });
+});
+
 /* Foco accesible con teclado */
 document.body.addEventListener('keyup', (e)=>{
   if(e.key === 'Tab'){ document.body.classList.add('show-focus'); }
@@ -450,6 +490,12 @@ document.body.addEventListener('keyup', (e)=>{
 </script>
 
 <style>
+/* Foco visible solo para teclado */
+.show-focus a:focus, .show-focus button:focus{ outline:2px solid var(--accent); outline-offset:2px; border-radius:10px }
+</style>
+</body>
+</html>
+
 /* Foco visible solo para teclado */
 .show-focus a:focus, .show-focus button:focus{ outline:2px solid var(--accent); outline-offset:2px; border-radius:10px }
 </style>
