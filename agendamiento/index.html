@@ -48,9 +48,10 @@ form{max-width:530px;margin-inline:auto;background:#fff;padding:2.4rem 2rem;bord
 .field{margin-bottom:1.35rem;text-align:left;position:relative}
 label{font-weight:600;font-size:.94rem;color:var(--pf-navy);display:block;margin-bottom:.4rem}
 .field i{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--pf-accent);pointer-events:none}
-input,select{width:100%;padding:.9rem .95rem .9rem 2.8rem;border:2px solid #d4d4d4;border-radius:.65rem;font-family:inherit;font-size:1rem;transition:border .2s,box-shadow .2s}
-input:focus,select:focus{border-color:var(--pf-accent);box-shadow:0 0 0 3px rgba(0,166,224,.25);outline:0}
-.error input,.error select{border-color:#d93025}
+input,select,textarea{width:100%;padding:.9rem .95rem .9rem 2.8rem;border:2px solid #d4d4d4;border-radius:.65rem;font-family:inherit;font-size:1rem;transition:border .2s,box-shadow .2s;background:#fff}
+textarea{min-height:120px;resize:vertical;padding-left:1rem}
+input:focus,select:focus,textarea:focus{border-color:var(--pf-accent);box-shadow:0 0 0 3px rgba(0,166,224,.25);outline:0}
+.error input,.error select,.error textarea{border-color:#d93025}
 .error-msg{color:#d93025;font-size:.8rem;margin-top:.35rem;min-height:1.05em}
 .hint{font-size:.8rem;color:#555;margin-top:-.6rem;margin-bottom:.75rem}
 .input-group{display:flex;border:2px solid #d4d4d4;border-radius:.65rem;overflow:hidden}
@@ -141,11 +142,10 @@ footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font
 
       <div class="field">
         <i class="fas fa-envelope"></i>
-        <label for="email">Email corporativo</label>
+        <label for="email">Email</label>
         <input type="email" id="email" name="email" autocomplete="email" required>
         <span class="error-msg" aria-live="polite"></span>
-        <div class="hint">  </div>
-        <div class="hint">Usa tu email de trabajo (no Gmail, Hotmail…)</div>
+        <div class="hint">Te escribiré a este correo con los siguientes pasos.</div>
       </div>
 
       <div class="field">
@@ -169,6 +169,13 @@ footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font
       <div class="field">
         <label for="website">Página web</label>
         <div class="input-group"><span>https://</span><input id="website" name="website" placeholder="midominio.com" required></div>
+        <span class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <!-- NUEVO: Mensaje -->
+      <div class="field">
+        <label for="message">Mensaje (opcional)</label>
+        <textarea id="message" name="message" placeholder="Cuéntame brevemente sobre tu negocio, oferta y objetivo del funnel"></textarea>
         <span class="error-msg" aria-live="polite"></span>
       </div>
 
@@ -203,9 +210,9 @@ footer{background:#001a40;color:#8fb1df;text-align:center;padding:45px 1rem;font
 
 <!-- ========== PRICING ========== -->
 <section class="pricing" id="planes" data-aos="fade-up"><div class="container"><h2 class="gradient-text" style="font-size:2rem;margin-bottom:2rem">Elige tu punto de partida</h2><div class="pricing-grid">
-  <div class="plan" data-tilt><h3>Auditoria</h3><p class="price">US$ 70</p><ul><li><i class="fas fa-file-alt"></i> Informe PDF 8-10 págs</li><li><i class="fas fa-tachometer-alt"></i> Análisis del negocio</li><li><i class="fas fa-pen-nib"></i> Revisión copy TOFU-MOFU-BOFU</li><li><i class="fas fa-check-square"></i> Checklist 15 quick-wins</li><li><i class="fas fa-video"></i> Loom 10 min prioridades</li></ul><a href="#brief" class="btn">Reservar Auditoría</a><small>Entrega 48hs a 96hs</small></div>
+  <div class="plan" data-tilt><h3>Auditoría</h3><p class="price">US$ 70</p><ul><li><i class="fas fa-file-alt"></i> Informe PDF 8-10 págs</li><li><i class="fas fa-tachometer-alt"></i> Análisis del negocio</li><li><i class="fas fa-pen-nib"></i> Revisión copy TOFU-MOFU-BOFU</li><li><i class="fas fa-check-square"></i> Checklist 15 quick-wins</li><li><i class="fas fa-video"></i> Loom 10 min prioridades</li></ul><a href="#brief" class="btn">Reservar Auditoría</a><small>Entrega 48hs a 96hs</small></div>
   <div class="plan" data-tilt data-aos-delay="50"><h3>Funnel de correos</h3><p class="price">US$ 150</p><ul><li><i class="fas fa-paper-plane"></i> Todo el Starter +</li><li><i class="fas fa-drafting-compass"></i> Automatizacion</li><li><i class="fas fa-bullhorn"></i> Asuntos y contenido con psicologia</li><li><i class="fas fa-brain"></i> Activamos sesgos</li></ul><a href="#brief" class="btn">Potenciar mi funnel</a><small>Entrega 4 a 7 días</small></div>
-  <div class="plan" data-tilt data-aos-delay="100"><h3>Evergreen Kit</h3><p class="price">US$ 300</p><ul><li><i class="fas fa-paper-plane"></i> Todo el Boost +</li><li><i class="fas fa-envelope"></i>Automatizaciones de emails</li><li><i class="fas fa-landmark"></i> Pagina de registro  </li><li><i class="fas fa-project-diagram"></i> Plantilla thank-you</li><li><i class="fas fa-file-pdf"></i> Guion VSL </li></ul><a href="#brief" class="btn">Miniatura VSL</a><small>Entrega 7 a 10 días</small></div>
+  <div class="plan" data-tilt data-aos-delay="100"><h3>Evergreen Kit</h3><p class="price">US$ 300</p><ul><li><i class="fas fa-paper-plane"></i> Todo el Boost +</li><li><i class="fas fa-envelope"></i> Automatizaciones de emails</li><li><i class="fas fa-landmark"></i> Página de registro</li><li><i class="fas fa-project-diagram"></i> Plantilla thank-you</li><li><i class="fas fa-file-pdf"></i> Guion VSL</li></ul><a href="#brief" class="btn">Miniatura VSL</a><small>Entrega 7 a 10 días</small></div>
 </div></div></section> 
 
 <!-- ========== GARANTÍA ========== -->
@@ -254,14 +261,12 @@ form.addEventListener('submit', async e => {
   const email  = form.email.value.trim().toLowerCase();
   const phone  = form.code.value + form.phone.value.trim();
   const domain = form.website.value.trim();
-  const spend  = form.spend.value;
+  const message = (form.message?.value || '').trim();
 
   if(!name){err(form.name,'¡Nos falta tu nombre 😊!');ok=false;} else clr(form.name);
-  if(!email){err(form.email,'Indica tu email');ok=false;}
-  else if(badDomains.some(d=>email.endsWith('@'+d))){err(form.email,'Usa un email de trabajo 🙌');ok=false;} else clr(form.email);
-  if(!/^\d{6,14}$/.test(form.phone.value.trim())){err(form.phone,'Número demasiado corto');ok=false;} else clr(form.phone);
-  try{new URL('https://'+domain);clr(form.website);}catch{err(form.website,'Revisa tu dominio');ok=false;}
-  if(!spend){err(form.spend,'Elige un rango');ok=false;} else clr(form.spend);
+  if(!email){err(form.email,'Indica tu email');ok=false;} else clr(form.email);
+  if(!/^\d{6,14}$/.test(form.phone.value.trim())){err(form.phone,'Número demasiado corto (6-14 dígitos)');ok=false;} else clr(form.phone);
+  try{new URL('https://'+domain);clr(form.website);}catch{err(form.website,'Revisa tu dominio (sin https://)');ok=false;}
   if(!ok) return;
 
   /* --- enviar al webhook con origen = consultoria --- */
@@ -270,12 +275,12 @@ form.addEventListener('submit', async e => {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        origen:'consultoria',      //  ←  **nuevo campo**
+        origen:'consultoria',
         name,
         email,
         phone,
         website:'https://'+domain,
-        spend
+        message
       })
     });
   }catch{
@@ -286,17 +291,19 @@ form.addEventListener('submit', async e => {
   /* --- mostrar calendly --- */
   form.innerHTML = '<h3 style="color:var(--pf-accent);margin-top:1rem">¡Perfecto! Ahora agenda tu llamada 👇</h3>';
   calSec.classList.remove('hidden');
-  Calendly.initInlineWidget({
-    url:'https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1',
-    parentElement:calBox,
-    prefill:{name,email},
-    utm:{source:'brief-consultoria'}
-  });
+  try {
+    Calendly.initInlineWidget({
+      url:'https://calendly.com/benja-alegre077/30min?hide_event_type_details=1&hide_gdpr_banner=1',
+      parentElement:calBox,
+      prefill:{name,email},
+      utm:{source:'brief-consultoria'}
+    });
+  } catch {}
   calSec.scrollIntoView({behavior:'smooth'});
 });
 
 /* limpiar error al escribir */
-form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>clr(el)));
+form.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',()=>clr(el)));
 </script>
 
 </body>
