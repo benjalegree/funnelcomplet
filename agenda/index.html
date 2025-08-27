@@ -35,7 +35,16 @@
 
   --radius:18px; --radius-lg:24px; --radius-xl:30px;
   --max:1180px;
+
+  /* Altura del Calendly controlada por CSS vars (se sincroniza en el iframe con !important) */
+  --cal-h: 1100px;
 }
+@media (max-width: 1200px){ :root{ --cal-h: 1200px } }
+@media (max-width: 992px) { :root{ --cal-h: 1320px } }
+@media (max-width: 768px) { :root{ --cal-h: 1480px } }
+@media (max-width: 540px) { :root{ --cal-h: 1650px } }
+@media (max-width: 380px) { :root{ --cal-h: 1780px } }
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth; width:100%}
 body{
@@ -47,9 +56,7 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   width:100%;
-  /* elimina cualquier “espacio a la derecha” */
-  overflow-x: clip; /* fallback */
-  overflow-x: hidden;
+  overflow-x: clip; /* evita “espacio a la derecha” en móvil */
 }
 img, video, iframe{max-width:100%; height:auto; display:block}
 .container{width:min(var(--max),92%); margin-inline:auto}
@@ -152,8 +159,7 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   box-shadow: 0 24px 80px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
   backdrop-filter: blur(10px);
   transition: transform .35s ease, box-shadow .35s ease;
-  min-height:160px;
-  will-change: transform;
+  min-height:160px; will-change: transform;
 }
 .tile:hover{ transform:translateY(-4px); box-shadow:0 34px 100px rgba(10,166,255,.25) }
 .tile .inner{ padding:20px }
@@ -189,13 +195,14 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
     radial-gradient(900px 600px at 110% -10%, rgba(124,211,255,.12), transparent 60%),
     linear-gradient(180deg, #03193a, #011227);
   border-top:1px solid rgba(124,211,255,.18);
-  overflow:hidden; /* evita desbordes del glow */
+  overflow:hidden;
 }
-/* Calendly completamente fluido + altura suficiente */
+/* Calendly a medida exacta en contenedor e iframe */
 .calendly-inline-widget{
+  box-sizing:border-box;
   width:100% !important;
-  min-width:0 !important; /* elimina el min-width que rompe en móvil */
-  height:1100px; /* base desktop amplia */
+  min-width:0 !important;
+  height:var(--cal-h) !important;     /* el marco ahora iguala el iframe */
   border-radius:16px; overflow:hidden;
   border:1px solid rgba(124,211,255,.24); background:#031a39; box-shadow:var(--shadow);
   margin-inline:auto;
@@ -203,14 +210,9 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
 .calendly-inline-widget iframe{
   width:100% !important;
   min-width:0 !important;
-  height:100% !important;
+  height:var(--cal-h) !important;     /* forzamos misma altura en el iframe embebido */
   display:block;
 }
-@media (max-width: 1200px){ .calendly-inline-widget{ height:1200px } }
-@media (max-width: 992px){ .calendly-inline-widget{ height:1300px } }
-@media (max-width: 768px){ .calendly-inline-widget{ height:1450px } }
-@media (max-width: 520px){ .calendly-inline-widget{ height:1600px } }
-@media (max-width: 380px){ .calendly-inline-widget{ height:1750px } }
 
 /* ===================== FAQ (glass bubbles + glow ANIMADO) ===================== */
 .faq{ margin-top:28px; position:relative; overflow:hidden }
@@ -232,14 +234,12 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
   will-change: transform;
   transition: box-shadow .3s ease, transform .2s ease;
 }
-/* Anillo degradado (sutil) siempre, más intenso al abrir */
 .faq .item::before{
   content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
   background:linear-gradient(120deg, rgba(127,225,255,.45), rgba(38,184,255,.25), rgba(127,225,255,.45));
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite:xor; mask-composite:exclude; opacity:.45; transition:opacity .25s ease;
 }
-/* Halo interno (burbuja) que podemos animar sin jank (solo opacity/transform) */
 .faq .item::after{
   content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
   background:
@@ -247,7 +247,6 @@ hr.sep{border:0;height:1px; width:min(880px,94%); margin:40px auto;
     radial-gradient(120% 60% at 110% 120%, rgba(10,166,255,.12), transparent 50%);
   mix-blend-mode:screen; opacity:.45; transform:scale(1); transition: opacity .25s ease, transform .4s ease;
 }
-
 .faq .item .q{
   width:100%; background:transparent; border:0; color:#eaf7ff; font-weight:800; letter-spacing:.01em;
   padding:18px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:1.02rem;
@@ -492,13 +491,11 @@ const io = new IntersectionObserver((entries)=>{
 document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
 /* FAQ optimizadas con glow */
-const faqItems = document.querySelectorAll('.faq .item');
-faqItems.forEach(item=>{
+document.querySelectorAll('.faq .item').forEach(item=>{
   const btn = item.querySelector('.q');
   const answer = item.querySelector('.a');
 
   const close = ()=>{
-    // fija altura actual para transición hacia 0
     const h = answer.scrollHeight;
     answer.style.maxHeight = h + 'px';
     requestAnimationFrame(()=>{ answer.style.maxHeight = '0px'; });
@@ -514,15 +511,7 @@ faqItems.forEach(item=>{
   };
 
   btn.addEventListener('click', ()=>{
-    const isOpen = item.classList.contains('open');
-    isOpen ? close() : open();
-  });
-});
-
-/* Recalcular alturas al redimensionar (para abiertas) */
-window.addEventListener('resize', ()=>{
-  document.querySelectorAll('.faq .item.open .a').forEach(a=>{
-    a.style.maxHeight = 'none';
+    item.classList.contains('open') ? close() : open();
   });
 });
 
