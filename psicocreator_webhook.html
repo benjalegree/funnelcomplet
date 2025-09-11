@@ -2,310 +2,162 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<title>PsicoFunnel — POC con Make</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>POC PsicoFunnel → Make → GPT</title>
 <style>
-  body{font:15px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f7f9fc;color:#0b1220}
-  .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
-  h1{margin:14px 0;font-size:22px}
-  .row{display:grid;grid-template-columns:360px 1fr;gap:16px;align-items:start}
-  .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 6px 16px rgba(2,6,23,.06);padding:14px}
+  :root{--b:#0b1220;--m:#64748b;--br:#e5e7eb}
+  body{font:15px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f7f9fc;color:var(--b)}
+  .wrap{max-width:960px;margin:24px auto;padding:0 16px}
+  .card{background:#fff;border:1px solid var(--br);border-radius:12px;box-shadow:0 6px 16px rgba(2,6,23,.06);padding:14px;margin-bottom:16px}
+  h1{margin:8px 0 12px;font-size:20px}
   label{display:block;font-weight:800;font-size:12px;color:#0b3aa6;margin:8px 0 4px}
   input,textarea,button{font:inherit}
-  input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #d5def0}
+  input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #d5def0;background:#fff}
   textarea{min-height:110px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .btn{display:inline-block;padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:800;background:#0b5fff;color:#fff}
   .btn.ghost{background:#fff;color:#0b3aa6;border:1px solid #abc4ff}
-  .hint{color:#64748b;font-size:13px}
-  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 0}
-  pre{white-space:pre;overflow:auto;max-height:360px;background:#0b122002;border:1px solid #e5e7eb;border-radius:10px;padding:10px}
-  iframe{width:100%;height:70vh;border:1px solid #e5e7eb;border-radius:12px;background:#fff}
-  details{margin-top:10px}
-  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .hint{color:var(--m);font-size:13px}
+  iframe{width:100%;height:70vh;border:1px solid var(--br);border-radius:12px;background:#fff}
+  pre{white-space:pre-wrap;max-height:320px;overflow:auto;background:#f6f8fa;padding:10px;border-radius:8px;border:1px solid var(--br)}
+  .bar{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>PsicoFunnel — POC Make → GPT → HTML</h1>
-  <p class="hint">1) Completa brief y prompt. 2) “Generar con Make”. 3) Previsualiza la landing y edítala localmente.</p>
+  <div class="card">
+    <h1>Generar landing con Make + GPT</h1>
+    <p class="hint">Completa el brief y prompt → “Generar”. Asegúrate de tener el escenario en Make en <strong>Run once</strong>.</p>
 
-  <div class="row">
-    <div class="card">
-      <div class="grid-2">
-        <div>
-          <label>Marca</label>
-          <input id="brand_name" placeholder="PsicoFunnel" value="PsicoFunnel" />
-        </div>
-        <div>
-          <label>Nicho</label>
-          <input id="niche" placeholder="coaches / cursos" value="coaches" />
-        </div>
+    <div class="grid2">
+      <div>
+        <label>Marca</label>
+        <input id="brand_name" value="PsicoFunnel" />
       </div>
-      <div class="grid-2">
-        <div>
-          <label>Objetivo</label>
-          <input id="goal" placeholder="captar leads" value="captar leads" />
-        </div>
-        <div>
-          <label>Tono</label>
-          <input id="tone" placeholder="claro y profesional" value="claro y profesional" />
-        </div>
+      <div>
+        <label>Nicho</label>
+        <input id="niche" value="coaches" />
       </div>
-      <div class="grid-2">
-        <div>
-          <label>Color primario (HEX)</label>
-          <input id="color_primary" value="#0ea5e9" />
-        </div>
-        <div>
-          <label>Color acento (HEX)</label>
-          <input id="color_accent" value="#0b5fff" />
-        </div>
+      <div>
+        <label>Objetivo</label>
+        <input id="goal" value="captar leads" />
       </div>
-      <div class="grid-2">
-        <div>
-          <label>Precio (opcional)</label>
-          <input id="offer_price" type="number" step="1" placeholder="49" />
-        </div>
-        <div>
-          <label>Garantía (opcional)</label>
-          <input id="offer_guarantee" placeholder="Garantía 7 días" />
-        </div>
+      <div>
+        <label>Tono</label>
+        <input id="tone" value="claro y profesional" />
       </div>
-
-      <label style="margin-top:10px">Prompt</label>
-      <textarea id="prompt">Crea una landing opt-in para un checklist de productividad, con 3 beneficios, lead form y una sección FAQ. CTA: "Recibir mi checklist".</textarea>
-
-      <div class="bar">
-        <button class="btn" id="gen">Generar con Make</button>
-        <span class="hint" id="status"></span>
+      <div>
+        <label>Color primario (HEX)</label>
+        <input id="color_primary" value="#0ea5e9" />
+      </div>
+      <div>
+        <label>Color acento (HEX)</label>
+        <input id="color_accent" value="#0b5fff" />
+      </div>
+      <div>
+        <label>Precio (opcional)</label>
+        <input id="offer_price" type="number" step="1" placeholder="49" />
+      </div>
+      <div>
+        <label>Garantía (opcional)</label>
+        <input id="offer_guarantee" placeholder="Garantía 7 días" />
       </div>
     </div>
 
-    <div class="card">
-      <div class="bar" id="links" style="display:none"></div>
-      <iframe id="preview" title="Preview"></iframe>
+    <label style="margin-top:8px">Prompt</label>
+    <textarea id="prompt">Crea una landing opt-in con hero fuerte, 3 beneficios, formulario de email y FAQ. CTA: “Recibir mi checklist”.</textarea>
 
-      <details style="margin-top:10px">
-        <summary><strong>Ver código (index.html)</strong></summary>
-        <pre id="code"></pre>
-      </details>
-
-      <details style="margin-top:10px">
-        <summary><strong>Constructor simple (local)</strong></summary>
-        <div id="builder" class="grid-2" style="margin-top:8px"></div>
-        <div class="bar">
-          <button class="btn ghost" id="rerender">Re-render local</button>
-          <span class="hint">Este constructor no guarda en Make; re-renderiza el preview con los bloques retornados.</span>
-        </div>
-      </details>
+    <div class="bar">
+      <button class="btn" id="gen">Generar</button>
+      <button class="btn ghost" id="genQuick">Generar rápido (brief mínimo)</button>
+      <span class="hint" id="status"></span>
     </div>
+  </div>
+
+  <div class="card">
+    <h3>Preview</h3>
+    <iframe id="preview" title="Preview"></iframe>
+    <details style="margin-top:10px">
+      <summary><strong>Ver código (index.html)</strong></summary>
+      <pre id="code"></pre>
+    </details>
   </div>
 </div>
 
 <script>
-const MAKE_GENERATE_URL = "https://hook.us2.make.com/7ph7me6ycq9nabwqtvv8txnuu60f9kpc"; // tu webhook
-const SECRET = ""; // opcional: si filtras por header x-pf-secret en Make
+const MAKE_URL = "https://hook.us2.make.com/un34h9dqpi6qxcpclphk9rfav8fcvo1v"; // ← TU WEBHOOK
+const $ = id => document.getElementById(id);
+const statusEl = $('status'), preview = $('preview'), codeBox = $('code');
 
-const el = (id) => document.getElementById(id);
-const statusEl = el('status');
-const preview = el('preview');
-const codeBox = el('code');
-const links = el('links');
-const builder = el('builder');
-let last = { slug:null, blocks:null, index_html:null };
+function makeSlug(base){
+  const s = (base || 'demo').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,40);
+  return s + '-' + Math.random().toString(36).slice(2,6);
+}
 
-// ===== Render local desde BLOQUES (mismo esquema que Make) =====
-function safe(s=""){ return String(s).replace(/[<>]/g, c => ({'<':'&lt;','>':'&gt;'}[c])); }
-function isHex(s){ return /^#([0-9A-Fa-f]{3}){1,2}$/.test(s||""); }
-function coalesceColor(s, fb){ return isHex(s) ? s : fb; }
-function themeCSS(t){
-  const primary = coalesceColor(t?.primary, "#0ea5e9");
-  const accent  = coalesceColor(t?.accent,  "#0b5fff");
-  const font = t?.font_family ? safe(t.font_family) : "Inter, system-ui, Segoe UI, Helvetica, Arial, sans-serif";
-  return `
-<style>
-:root{--bg:#f9fafb;--card:rgba(255,255,255,.62);--border:rgba(255,255,255,.38);
---text:#0b1220;--muted:#6b7280;--primary:${primary};--accent:${accent};--radius:24px;--blur:16px}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:${font}}
-.container{max-width:1080px;margin:0 auto;padding:40px 20px}
-.glass{background:var(--card);border:1px solid var(--border);backdrop-filter:saturate(1.35) blur(var(--blur));-webkit-backdrop-filter:saturate(1.35) blur(var(--blur));border-radius:var(--radius);box-shadow:0 20px 60px rgba(15,23,42,.12)}
-.btn{display:inline-block;padding:14px 22px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--primary));color:#fff;text-decoration:none;font-weight:700;box-shadow:0 12px 28px rgba(14,165,233,.35)}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:rgba(14,165,233,.12);color:var(--accent);font-weight:700}
-.hint{color:var(--muted);font-size:14px}
-.hero h1{font-size:44px;line-height:1.05;margin:0 0 12px}
-.grid{display:grid;gap:18px}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:24px}
-.price{font-size:48px;font-weight:800;letter-spacing:-.02em}
-img.resp{max-width:100%;height:auto;border-radius:16px;border:1px solid var(--border)}
-</style>`;
-}
-function layout(slug,title,head,body){
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>${safe(title)}</title>${head||""}</head><body>${body}</body></html>`;
-}
-function blockHero(slug,d){
-  return `<section class="container hero"><div class="glass card">
-    <div class="badge">${safe(d.badge||"✨ Landing lista en minutos")}</div>
-    <h1>${safe(d.h1||"Tu Marca — convierte hoy")}</h1>
-    <p class="hint">${safe(d.subtitle||"")}</p>
-    <form method="post" action="/forms/${slug}/submit" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-      <input type="email" name="email" required placeholder="Tu email" style="flex:1;min-width:240px;padding:14px 16px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.7)">
-      <button class="btn" type="submit">${safe(d.cta||"Quiero mi demo")}</button>
-    </form>
-    ${d.image_url?`<div style="margin-top:16px"><img class="resp" src="${safe(d.image_url)}" alt="Hero"></div>`:""}
-  </div></section>`;
-}
-function blockBenefits(d){
-  const items = Array.isArray(d?.items)?d.items.slice(0,3):[];
-  const cards = items.map(b=>`<div class="glass card"><h3 style="margin:0 0 6px">${safe(b.title||"Beneficio")}</h3><p class="hint">${safe(b.desc||"")}</p></div>`).join("");
-  return `<section class="container"><div class="grid grid-3">${cards}</div></section>`;
-}
-function blockHow(d){
-  const steps = Array.isArray(d?.steps)?d.steps:[];
-  const lis = steps.map(s=>`<li><strong>${safe(s.title||"Paso")}</strong> — ${safe(s.desc||"")}</li>`).join("");
-  return `<section class="container"><div class="glass card"><h3 style="margin:0 0 8px">${safe(d.title||"Cómo funciona")}</h3><ol class="hint" style="margin:0 0 0 18px">${lis}</ol></div></section>`;
-}
-function blockLeadform(slug,d){
-  return `<section class="container"><div class="glass card">
-    <h3 style="margin:0 0 6px">${safe(d.title||"Recibe el recurso")}</h3>
-    <p class="hint">${safe(d.desc||"Déjanos tu email para enviarte el material.")}</p>
-    <form method="post" action="/forms/${slug}/submit" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-      <input type="email" name="email" required placeholder="Tu email" style="flex:1;min-width:240px;padding:14px 16px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.7)">
-      <button class="btn" type="submit">${safe(d.cta||"Recibir ahora")}</button>
-    </form>
-  </div></section>`;
-}
-function blockPricing(d){
-  const price = Number(d?.price||0);
-  return `<section class="container"><div class="glass card" style="text-align:center">
-    <div class="price">$${isFinite(price)?price.toFixed(0):"—"}</div>
-    <p class="hint">${safe(d?.guarantee||"Garantía 7 días")}</p>
-    <a class="btn" href="#cta">${safe(d?.cta||"Empezar ahora")}</a>
-  </div></section>`;
-}
-function blockFAQ(d){
-  const items = Array.isArray(d?.items)?d.items:[];
-  const acc = items.map(q=>`<details class="glass card"><summary><strong>${safe(q.q||"Pregunta")}</strong></summary><p class="hint">${safe(q.a||"")}</p></details>`).join("");
-  return `<section class="container" style="display:grid;gap:12px">${acc}</section>`;
-}
-function blockFooter(brand){
-  const y = new Date().getFullYear();
-  return `<footer class="container"><p class="hint">© ${y} ${safe(brand||"PsicoFunnel")} — Hecho con ♥</p></footer>`;
-}
-function renderIndexFromBlocks(slug, blocks){
-  const head = themeCSS(blocks.theme||{});
-  const out = [];
-  if(blocks.hero) out.push(blockHero(slug, blocks.hero));
-  (blocks.sections||[]).forEach(sec=>{
-    if(sec.type==="benefits") out.push(blockBenefits(sec));
-    else if(sec.type==="how") out.push(blockHow(sec));
-    else if(sec.type==="leadform") out.push(blockLeadform(slug, sec));
-    else if(sec.type==="pricing") out.push(blockPricing(sec));
-    else if(sec.type==="faq") out.push(blockFAQ(sec));
-  });
-  out.push(blockFooter(blocks?.brand || blocks?.hero?.brand));
-  return layout(slug, blocks?.hero?.h1 || "Landing", head, out.join(""));
-}
-// ==========================================================
-
-function buildPayload(){
-  const slug = (el('brand_name').value || 'demo')
-    .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')
-    .slice(0,40) + '-' + Math.random().toString(36).slice(2,6);
-
-  const brief = {
+function buildPayload(full=true){
+  const slug = makeSlug($('brand_name').value);
+  if(!full){
+    return {
+      project_slug: slug,
+      brand: { name: $('brand_name').value || 'PsicoFunnel',
+               colors: { primary: $('color_primary').value || '#0ea5e9',
+                         accent: $('color_accent').value || '#0b5fff' } },
+      goal: 'captar leads',
+      tone: 'claro y profesional',
+      sections: ["hero","leadform","footer"],
+      prompt: 'Landing simple de prueba'
+    };
+  }
+  return {
     project_slug: slug,
     brand: {
-      name: el('brand_name').value || 'PsicoFunnel',
-      colors: { primary: el('color_primary').value || '#0ea5e9', accent: el('color_accent').value || '#0b5fff' }
+      name: $('brand_name').value || 'PsicoFunnel',
+      colors: { primary: $('color_primary').value || '#0ea5e9', accent: $('color_accent').value || '#0b5fff' }
     },
-    niche: el('niche').value || 'general',
-    goal: el('goal').value || 'captar leads',
-    tone: el('tone').value || 'claro y profesional',
+    niche: $('niche').value || 'general',
+    goal: $('goal').value || 'captar leads',
+    tone: $('tone').value || 'claro y profesional',
     offer: {
-      price: el('offer_price').value ? Number(el('offer_price').value) : undefined,
-      guarantee: el('offer_guarantee').value || undefined
+      price: $('offer_price').value ? Number($('offer_price').value) : undefined,
+      guarantee: $('offer_guarantee').value || undefined
     },
-    sections: ["hero","benefits","leadform","faq","footer"],
-    prompt: el('prompt').value.trim()
+    // Si quieres forzar orden de secciones, puedes agregar: sections: [...]
+    prompt: $('prompt').value.trim()
   };
-  return brief;
 }
 
-function fillBuilder(blocks){
-  builder.innerHTML = `
-    <label>H1</label><input data-k="hero.h1" value="${(blocks?.hero?.h1||'').replace(/"/g,'&quot;')}">
-    <label>Subtítulo</label><input data-k="hero.subtitle" value="${(blocks?.hero?.subtitle||'').replace(/"/g,'&quot;')}">
-    <label>CTA</label><input data-k="hero.cta" value="${(blocks?.hero?.cta||'').replace(/"/g,'&quot;')}">
-    <label>Imagen URL</label><input data-k="hero.image_url" value="${(blocks?.hero?.image_url||'').replace(/"/g,'&quot;')}">
-    <label>Primario</label><input data-k="theme.primary" value="${(blocks?.theme?.primary||'#0ea5e9').replace(/"/g,'&quot;')}">
-    <label>Acento</label><input data-k="theme.accent" value="${(blocks?.theme?.accent||'#0b5fff').replace(/"/g,'&quot;')}">
-    <label>Font</label><input data-k="theme.font_family" value="${(blocks?.theme?.font_family||'Inter, system-ui, sans-serif').replace(/"/g,'&quot;')}">
-  `;
-}
-function setByPath(obj, path, val){
-  const seg = path.split('.');
-  let cur = obj;
-  for(let i=0;i<seg.length-1;i++){
-    const k = seg[i];
-    if(!(k in cur)) cur[k] = {};
-    cur = cur[k];
-  }
-  cur[seg[seg.length-1]] = val;
-}
-el('rerender').onclick = ()=>{
-  if(!last.blocks){ alert('Primero genera'); return; }
-  const clone = JSON.parse(JSON.stringify(last.blocks));
-  builder.querySelectorAll('[data-k]').forEach(inp => setByPath(clone, inp.dataset.k, inp.value));
-  const html = renderIndexFromBlocks(last.slug || 'demo', clone);
-  last.index_html = html;
-  last.blocks = clone;
+async function sendToMake(payload){
+  statusEl.textContent = 'Enviando a Make…';
+  codeBox.textContent = '';
+  preview.removeAttribute('srcdoc');
+
+  const r = await fetch(MAKE_URL, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  // Make debe responder JSON: { ok: true, index_html: "<!doctype html>..." }
+  const text = await r.text();
+  let j;
+  try { j = JSON.parse(text); } catch(e){ throw new Error('Respuesta no es JSON. Recibido: ' + text.slice(0,200)); }
+  if(!j.ok) throw new Error(j.error || 'Respuesta no OK del webhook');
+
+  const html = j.index_html;
+  if(!html || !html.includes('<html')) throw new Error('No vino HTML válido en index_html.');
   codeBox.textContent = html;
   preview.srcdoc = html;
+  statusEl.textContent = 'Listo ✔';
+}
+
+$('gen').onclick = async ()=>{
+  try{ await sendToMake(buildPayload(true)); }
+  catch(e){ statusEl.textContent = 'Error: ' + (e.message || e); }
 };
 
-el('gen').onclick = async ()=>{
-  const payload = buildPayload();
-  statusEl.textContent = 'Enviando a Make…';
-  links.style.display = 'none';
-  preview.removeAttribute('srcdoc');
-  codeBox.textContent = '';
-  try{
-    const r = await fetch(MAKE_GENERATE_URL, {
-      method:'POST',
-      headers: { 'Content-Type':'application/json', ...(SECRET?{'x-pf-secret':SECRET}:{}) },
-      body: JSON.stringify(payload)
-    });
-    const j = await r.json();
-    if(!j.ok){ throw new Error(j.error || 'Respuesta no OK'); }
-
-    // j puede traer: slug, index_html y/o preview_url, blocks
-    last.slug = j.slug || payload.project_slug;
-    last.index_html = j.index_html || null;
-    last.blocks = j.blocks || null;
-
-    const html = last.index_html || (last.blocks ? renderIndexFromBlocks(last.slug, last.blocks) : "<h1>Sin contenido</h1>");
-    codeBox.textContent = html;
-    preview.srcdoc = html;
-
-    links.innerHTML = '';
-    if(j.preview_url){
-      const a1 = document.createElement('a'); a1.className='btn'; a1.target='_blank'; a1.href=j.preview_url; a1.textContent='Visualizar web publicada';
-      links.appendChild(a1);
-    }
-    const a2 = document.createElement('button'); a2.className='btn ghost'; a2.textContent='Descargar index.html';
-    a2.onclick = ()=>{
-      const blob = new Blob([html], {type:'text/html;charset=utf-8'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = (last.slug||'landing') + '.html'; a.click(); URL.revokeObjectURL(url);
-    };
-    links.appendChild(a2);
-    links.style.display = 'flex';
-
-    fillBuilder(last.blocks || {});
-    statusEl.textContent = 'Hecho ✔';
-  }catch(err){
-    statusEl.textContent = 'Error: ' + (err.message || err);
-  }
+$('genQuick').onclick = async ()=>{
+  try{ await sendToMake(buildPayload(false)); }
+  catch(e){ statusEl.textContent = 'Error: ' + (e.message || e); }
 };
 </script>
 </body>
