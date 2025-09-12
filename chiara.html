@@ -1,140 +1,51 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>CHIARA CONSULTING</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; color: #333; background: #fff; line-height: 1.5; }
-    header { text-align: center; padding: 4rem 1rem; }
-    header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
-    .subtitle { font-size: 1.125rem; margin-bottom: 1rem; color: #555; }
-    .info-list { list-style: disc; margin: 1rem auto; padding-left: 1.5rem; display: inline-block; text-align: left; }
-    .info-list li { color: #555; }
-    .btn-primary { background: #e8abd4; color: #fff; border: none; padding: .75rem 1.5rem; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: filter .2s; }
-    .btn-primary:hover { filter: brightness(0.9); }
-    main { padding: 2rem 1rem; max-width: 800px; margin: auto; }
-    #beneficios { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
-    .card { flex: 1 1 220px; border: 1px solid #d9d9d3; border-radius: 8px; padding: 1.5rem; text-align: center; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform .2s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-bottom: .5rem; font-size: 1.125rem; color: #e8abd4; }
-    section#lead { background: #f9f9f9; padding: 2rem 1rem; border-radius: 8px; margin-bottom: 2rem; }
-    #leadForm { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: auto; }
-    #leadForm label { font-weight: bold; }
-    #leadForm input[type=email], #leadForm input[type=text], #leadForm input[type=tel] { padding: .75rem; border: 1px solid #d9d9d3; border-radius: 4px; width: 100%; }
-    #leadForm .btn-primary { width: 100%; }
-    #formMessage { font-size: .95rem; color: #e8abd4; text-align: center; min-height: 1.2em; }
-    #faq { margin-bottom: 2rem; }
-    #faq h2 { text-align: center; margin-bottom: 1rem; color: #e8abd4; }
-    dl { max-width: 700px; margin: auto; }
-    dt { font-weight: bold; margin-top: 1rem; }
-    dd { margin-left: 1rem; margin-bottom: .5rem; }
-    footer { text-align: center; padding: 1rem; font-size: .875rem; color: #777; }
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      .card { flex: 1 1 100%; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>CHIARA CONSULTING</h1>
-    <p class="subtitle">Descarga gratis tu checklist para un esmaltado impecable.</p>
-    <ul class="info-list"><li>Ubicación: Murcia</li></ul>
-    <button class="btn-primary" onclick="document.getElementById('leadForm').scrollIntoView()">Recibir mi checklist</button>
-  </header>
-  <main>
-    <section id="beneficios" aria-label="Beneficios">
-      <div class="card">
-        <h3>Pasos detallados</h3>
-        <p>Conoce cada fase del esmaltado para un acabado profesional.</p>
-      </div>
-      <div class="card">
-        <h3>Técnicas especiales</h3>
-        <p>Aprende métodos que prolongan la duración y el brillo.</p>
-      </div>
-      <div class="card">
-        <h3>Ahorra tiempo</h3>
-        <p>Optimiza tu rutina con consejos rápidos y efectivos.</p>
-      </div>
-    </section>
-    <section id="lead" aria-labelledby="form-title">
-      <h2 id="form-title" style="text-align:center;color:#e8abd4;margin-bottom:1rem;">Garantía de satisfacción de 7 días</h2>
-      <form id="leadForm" action="#" novalidate>
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-        <input type="hidden" name="project_slug" value="chiara-consulting-xgxy">
-        <input type="hidden" name="page_url">
-        <input type="hidden" name="utm_source">
-        <input type="hidden" name="utm_medium">
-        <input type="hidden" name="utm_campaign">
-        <input type="hidden" name="utm_term">
-        <input type="hidden" name="utm_content">
-        <button type="submit" class="btn-primary">Recibir mi checklist</button>
-        <p id="formMessage" aria-live="polite"></p>
-      </form>
-    </section>
-    <section id="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title">Preguntas frecuentes</h2>
-      <dl>
-        <dt>¿Es realmente gratis?</dt>
-        <dd>Sí, 100% gratuito y sin compromiso.</dd>
-        <dt>¿Cuánto tarda en llegar?</dt>
-        <dd>Lo recibirás en tu correo al instante.</dd>
-        <dt>¿Tengo garantía?</dt>
-        <dd>Garantía de satisfacción de 7 días.</dd>
-        <dt>¿Qué datos recopilan?</dt>
-        <dd>Solo tu email para enviarte el contenido.</dd>
-      </dl>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 CHIARA CONSULTING. Todos los derechos reservados.</p>
-  </footer>
-  <script>
-    (function(){
-      var form = document.getElementById('leadForm');
-      var fields = ['page_url','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
-      function setParams(){
-        document.querySelector('input[name="page_url"]').value = location.href;
-        var params = new URLSearchParams(location.search);
-        fields.slice(1).forEach(function(name){
-          document.querySelector('input[name="'+name+'"]').value = params.get(name) || '';
-        });
-      }
-      document.addEventListener('DOMContentLoaded', setParams);
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        var data = {
-          action: "upsert",
-          _key: "pon-un-secreto-simple-aqui"
-        };
-        new FormData(form).forEach(function(val,name){
-          data[name] = val;
-        });
-        fetch("https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        })
-        .then(function(res){ return res.json(); })
-        .then(function(json){
-          var msg = document.getElementById('formMessage');
-          if(json.ok){
-            msg.textContent = "¡Listo! Revisa tu correo.";
-            form.reset();
-            setParams();
-          } else {
-            msg.textContent = "Ocurrió un error. Inténtalo de nuevo.";
-          }
-        })
-        .catch(function(){
-          document.getElementById('formMessage').textContent = "Ocurrió un error. Inténtalo de nuevo.";
-        });
-      });
-    })();
-  </script>
+<meta charset="utf-8">
+<title>Tester CRM Sheets</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<body style="font:15px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial;padding:24px;background:#f8fafc;color:#0b1220">
+<h1 style="margin:0 0 12px">Tester — Alta de lead</h1>
+<p style="margin:0 0 16px">Envía un lead de prueba a tu API (Google Apps Script + Sheets).</p>
+
+<form id="f" style="display:grid;gap:10px;max-width:520px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px">
+  <label>Email <input name="email" type="email" required placeholder="test@example.com" style="width:100%"></label>
+  <label>Project slug <input name="project_slug" required placeholder="mi-landing-slug" style="width:100%"></label>
+  <label>Nombre (opcional) <input name="name" placeholder="Nombre" style="width:100%"></label>
+  <label>Teléfono (opcional) <input name="phone" placeholder="+34 600 000 000" style="width:100%"></label>
+  <button type="submit" style="padding:10px 14px;border:0;border-radius:10px;background:#0b5fff;color:#fff;font-weight:800">Enviar</button>
+</form>
+
+<pre id="out" style="margin-top:16px;white-space:pre-wrap;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px"></pre>
+
+<script>
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
+const API_KEY  = "pon-un-secreto-simple-aqui"; // ← ya puesta
+
+const f = document.getElementById('f');
+const out = document.getElementById('out');
+
+f.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(f).entries());
+  data.action = "upsert";
+  data._key   = API_KEY;
+  out.textContent = "Enviando…";
+  try{
+    const r = await fetch(ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const txt = await r.text();
+    out.textContent = txt;
+  }catch(err){
+    out.textContent = "Error de red: " + (err.message||String(err));
+  }
+});
+
+// Atajo: probar listado (GET) con tu key
+const listURL = `${ENDPOINT}?action=list&limit=5&key=${encodeURIComponent(API_KEY)}`;
+out.insertAdjacentHTML('beforebegin', `<p style="margin:12px 0">Ver últimos 5 leads: <a href="${listURL}" target="_blank" rel="noopener">${listURL}</a></p>`);
+</script>
 </body>
 </html>
