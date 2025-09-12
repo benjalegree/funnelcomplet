@@ -1,174 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Funnels Pro - Consultoría de Funnels Futurista</title>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{background:#fff;color:#000;font-family:system-ui,sans-serif;line-height:1.5;}
-    .container{width:90%;max-width:1200px;margin:0 auto;padding:20px;}
-    h1{font-size:2.5rem;text-align:center;color:#000;text-shadow:0 0 10px #00d5ff;}
-    p.subtitle{font-size:1.25rem;text-align:center;color:#333;margin-top:10px;}
-    .btn{display:inline-block;margin:20px auto 0;padding:15px 30px;background:#00d5ff;color:#fff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;box-shadow:0 0 10px #00d5ff;transition:box-shadow .3s;}
-    .btn:hover{box-shadow:0 0 20px #00d5ff;}
-    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin:40px 0;}
-    .card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:20px;width:280px;text-align:center;box-shadow:0 0 10px rgba(0,213,255,0.7);}
-    .card h3{margin-bottom:10px;color:#000;text-shadow:0 0 5px #00d5ff;}
-    .video-section{display:flex;flex-direction:column;align-items:center;margin:60px 0;}
-    .video-section video{width:100%;max-width:800px;border-radius:10px;box-shadow:0 0 10px rgba(0,213,255,0.7);}
-    .bullets{margin:30px auto;max-width:800px;}
-    .bullets ul{list-style:none;}
-    .bullets li{position:relative;padding-left:1.5em;margin-bottom:10px;}
-    .bullets li::before{content:"✔";position:absolute;left:0;color:#00d5ff;}
-    .social-proof{font-style:italic;text-align:center;margin:40px 0;color:#555;}
-    details{margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px;}
-    summary{cursor:pointer;font-weight:bold;}
-    form{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:30px;max-width:500px;margin:0 auto;box-shadow:0 0 10px rgba(0,213,255,0.7);}
-    form label{display:block;margin-bottom:5px;font-weight:bold;}
-    form input{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:5px;font-size:1rem;}
-    form button{width:100%;padding:15px;background:#00d5ff;color:#fff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;box-shadow:0 0 10px #00d5ff;transition:box-shadow .3s;}
-    form button:hover{box-shadow:0 0 20px #00d5ff;}
-    footer{text-align:center;padding:20px;margin-top:40px;color:#777;font-size:.9rem;}
-    @media(max-width:600px){
-      h1{font-size:2rem;}
-      .cards{flex-direction:column;align-items:center;}
-    }
+    :root { --primary: #00d5ff; --accent: #000; --bg: #fff; --text: #000; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; }
+    h1,h2,h3 { margin-bottom: 0.5em; }
+    p { margin-bottom: 1em; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .btn { background: var(--primary); color: var(--accent); padding: 15px 25px; border: none; border-radius: 999px; font-weight: bold; font-size: 1rem; cursor: pointer; }
+    .btn:hover { opacity: 0.9; }
+    .hero { text-align: center; padding: 60px 20px; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+    @media (min-width: 600px) { .cards { grid-template-columns: repeat(3,1fr); } }
+    .card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 0 10px var(--primary); }
+    .card h3 { color: var(--primary); }
+    .video-section { text-align: center; margin: 40px 0; }
+    .video-section video { max-width: 100%; border-radius: 16px; box-shadow: 0 0 20px var(--primary); }
+    .bullets { text-align: left; margin: 20px auto; max-width: 600px; list-style: none; }
+    .bullets li { margin-bottom: 10px; padding-left: 24px; position: relative; }
+    .bullets li:before { content: '✓'; position: absolute; left: 0; color: var(--primary); }
+    .testimonial { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; margin: 40px auto; max-width: 600px; backdrop-filter: blur(10px); box-shadow: 0 0 10px var(--primary); display: flex; align-items: center; }
+    .testimonial img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; }
+    .faq { margin: 40px 0; }
+    .faq details { margin-bottom: 10px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 10px; }
+    .faq summary { font-weight: bold; cursor: pointer; }
+    footer { text-align: center; padding: 20px 0; font-size: 0.9rem; color: #555; }
   </style>
 </head>
 <body>
-  <header class="container">
-    <h1>El Futuro de tus Funnels Hoy</h1>
-    <p class="subtitle">Consultoría especializada en embudos de ventas con tecnología de vanguardia.</p>
-    <div style="text-align:center;">
-      <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
-    </div>
-  </header>
+  <div class="container">
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Impulsa tu Negocio con Funnels del Futuro</h1>
+      <p>Descubre cómo nuestras estrategias de embudos pueden multiplicar tus conversiones.</p>
+      <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'});">Recibir mi checklist</button>
+    </section>
 
-  <section class="container cards">
-    <div class="card">
-      <h3>Estrategias con IA</h3>
-      <p>Diseñamos embudos que aprenden y optimizan solos.</p>
-    </div>
-    <div class="card">
-      <h3>Optimización 24/7</h3>
-      <p>Monitoreo continuo y mejoras automáticas.</p>
-    </div>
-    <div class="card">
-      <h3>Crecimiento Escalable</h3>
-      <p>Infraestructura lista para millones de clientes.</p>
-    </div>
-  </section>
+    <section aria-labelledby="benefits-heading">
+      <h2 id="benefits-heading" style="text-align:center; margin-bottom:20px;">Beneficios de nuestra Consultoría</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Aumento de Conversiones</h3>
+          <p>Optimiza cada paso para maximizar ventas y leads.</p>
+        </div>
+        <div class="card">
+          <h3>Automatización Inteligente</h3>
+          <p>Implementamos sistemas que trabajan 24/7 por ti.</p>
+        </div>
+        <div class="card">
+          <h3>Análisis Avanzado</h3>
+          <p>Decisiones basadas en datos reales y en tiempo real.</p>
+        </div>
+      </div>
+    </section>
 
-  <section class="container video-section">
-    <video controls poster="" aria-label="Video explicativo de Funnels Pro">
-      <source src="video.mp4" type="video/mp4">
-      Tu navegador no soporta video.
-    </video>
-    <div class="bullets">
-      <h3>Lo que aprenderás en este video:</h3>
-      <ul>
-        <li>Cómo diseñar funnels que convierten 10x</li>
-        <li>Tácticas secretas de automatización</li>
-        <li>Errores críticos que debes evitar</li>
+    <section class="video-section" aria-labelledby="video-heading">
+      <h2 id="video-heading">Mira Cómo Transformamos Embudos</h2>
+      <video controls poster="poster.jpg" aria-label="Video demostrativo de funnels">
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+      </video>
+      <ul class="bullets">
+        <li>Aumento promedio del 45% en ventas.</li>
+        <li>Reducción de costos de adquisición en 30%.</li>
+        <li>Escalabilidad automática sin esfuerzos.</li>
       </ul>
+    </section>
+
+    <section aria-labelledby="testimonial-heading">
+      <h2 id="testimonial-heading" style="text-align:center; margin-bottom:20px;">Lo que dicen nuestros clientes</h2>
+      <div class="testimonial">
+        <img src="avatar.jpg" alt="Foto de cliente satisfecho">
+        <blockquote>"Gracias a Funnels Pro, mis ventas se dispararon en semanas. Su enfoque futurista es imbatible."</blockquote>
+      </div>
+    </section>
+
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading" style="text-align:center; margin-bottom:20px;">Obtén tu Checklist de Embudos</h2>
+      <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
+<form id="leadForm" autocomplete="on">
+  <label>Email</label>
+  <input type="email" name="email" required placeholder="tu@correo.com">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div>
+      <label>Nombre (opcional)</label>
+      <input type="text" name="name" placeholder="Tu nombre">
     </div>
-    <blockquote class="social-proof">"Gracias a Funnels Pro aumenté mis conversiones un 300%" – Juan Pérez</blockquote>
-    <div style="text-align:center;">
-      <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
+    <div>
+      <label>Teléfono (opcional)</label>
+      <input type="tel" name="phone" placeholder="+34 600 000 000">
     </div>
-  </section>
+  </div>
 
-  <section class="container faq">
-    <h2 style="text-align:center;margin-bottom:20px;color:#000;text-shadow:0 0 5px #00d5ff;">Preguntas Frecuentes</h2>
-    <details>
-      <summary>¿Qué es un funnel de ventas futurista?</summary>
-      <p>Es un embudo optimizado con IA y automatizaciones en tiempo real.</p>
-    </details>
-    <details>
-      <summary>¿Cómo funciona la consultoría?</summary>
-      <p>Analizamos tu negocio, diseñamos estrategias y las implementamos con tecnología propia.</p>
-    </details>
-    <details>
-      <summary>¿Cuánto tiempo tarda en ver resultados?</summary>
-      <p>Los primeros cambios se notan en 2-4 semanas, la optimización es continua.</p>
-    </details>
-    <details>
-      <summary>¿Necesito experiencia técnica?</summary>
-      <p>No, nos encargamos de todo: diseño, implementación y seguimiento.</p>
-    </details>
-  </section>
+  <input type="hidden" name="project_slug" value="funnels-pro-u640">
+  <input type="hidden" name="page_url" value="">
+  <input type="hidden" name="utm_source" value="">
+  <input type="hidden" name="utm_medium" value="">
+  <input type="hidden" name="utm_campaign" value="">
+  <input type="hidden" name="utm_term" value="">
+  <input type="hidden" name="utm_content" value="">
 
-  <section class="container" id="formSection">
-    <form id="leadForm">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="tu@ejemplo.com">
-      <label for="name">Nombre (opcional)</label>
-      <input type="text" id="name" name="name" placeholder="Tu nombre">
-      <label for="phone">Teléfono (opcional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="+34 600 123 456">
-      <input type="hidden" name="project_slug" value="funnels-pro-8cd4">
-      <input type="hidden" name="page_url">
-      <input type="hidden" name="utm_source">
-      <input type="hidden" name="utm_medium">
-      <input type="hidden" name="utm_campaign">
-      <input type="hidden" name="utm_term">
-      <input type="hidden" name="utm_content">
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
+  <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:#0b5fff;color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
+    <span id="formMessage" style="color:#475569">—</span>
+  </div>
+</form>
 
-  <footer>
-    &copy; 2025 Funnels Pro. Todos los derechos reservados.
-  </footer>
+<script>
+(function(){
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
+  const API_KEY  = "pon-un-secreto-simple-aqui";
 
-  <script>
-    document.addEventListener('DOMContentLoaded',function(){
-      const form=document.getElementById('leadForm');
-      const params=new URLSearchParams(location.search);
-      function populateUtm(){
-        form.elements.page_url.value=location.href;
-        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
-          form.elements[k].value=params.get(k)||'';
-        });
-      }
-      populateUtm();
-      form.addEventListener('submit',function(e){
-        e.preventDefault();
-        const data={
-          action:'upsert',
-          _key:'pon-un-secreto-simple-aqui',
-          email:form.elements.email.value,
-          name:form.elements.name.value,
-          phone:form.elements.phone.value,
-          project_slug:form.elements.project_slug.value,
-          page_url:form.elements.page_url.value,
-          utm_source:form.elements.utm_source.value,
-          utm_medium:form.elements.utm_medium.value,
-          utm_campaign:form.elements.utm_campaign.value,
-          utm_term:form.elements.utm_term.value,
-          utm_content:form.elements.utm_content.value
-        };
-        fetch('https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec',{
-          method:'POST',
-          headers:{'Content-Type':'text/plain;charset=UTF-8'},
-          body:JSON.stringify(data)
-        })
-        .then(r=>r.json())
-        .then(res=>{
-          if(res.ok){
-            alert('¡Listo!');
-            form.reset();
-            populateUtm();
-          } else {
-            alert('Error: '+(res.error||'Desconocido'));
-          }
-        })
-        .catch(err){
-          alert('Error: '+err.message);
-        };
+  const form = document.getElementById('leadForm');
+  const msg  = document.getElementById('formMessage');
+  const btn  = document.getElementById('btnSubmit');
+
+  // Completa page_url y UTM
+  (function setParams(){
+    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
+    set('page_url', location.href);
+    const q = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
+  })();
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    msg.textContent = "Enviando…";
+    btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.action = "upsert";
+    data._key   = API_KEY;
+
+    try{
+      const r = await fetch(ENDPOINT, {
+        method:"POST",
+        headers:{ "Content-Type":"text/plain;charset=UTF-8" },
+        body: JSON.stringify(data)
       });
-    });
-  </script>
-</body>
-</html>
+      const txt = await r.text();
+      let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
+
+      if(json.ok){
+        msg.textContent = "¡Listo! Revisa tu correo.";
+        form.reset();
+      } else {
+        msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
+        btn.disabled = false; btn.textContent = prev;
+      }
+    }catch(err){
+      msg.textContent = "Error: " + (err.message || "Sin conexión.");
+      btn.disabled = false; btn.textContent = prev;
+    }
+  });
+})();
+</script>
+<!-- END LEAD BLOCK (DO NOT EDIT) -->
+    </section>
+
+    <section class="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" style="text-align:center; margin-bottom:20px;">Preguntas Frecuentes</h2>
+      <details>
+        <summary>¿Cómo funciona la consultoría?</summary>
+        <p>Analizamos tu embudo actual, proponemos mejoras y las implementamos paso a paso.</p>
+      </details>
+      <details>
+        <summary>¿Qué resultados puedo esperar?</summary>
+        <p>Incrementos de conversión entre 30% y 60% según tu sector y tráfico.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo dura el proceso?</summary>
+        <p>Dependiendo de la complejidad, entre 4 y 8 semanas.</p>
+      </details>
+      <details>
+        <summary>¿Ofrecen garantía de resultados?</summary>
+        <p>Ajustes ilimitados hasta cumplir con los objetivos pactados.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Funnels Pro. Todos los derechos reservados.</p>
