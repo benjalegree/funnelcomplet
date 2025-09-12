@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRM — Leads</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<body style="font:15px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f8fafc;color:#0b1220">
+<div style="max-width:1100px;margin:0 auto;padding:18px">
+  <h1 style="margin:0 0 10px">Leads</h1>
+
+  <div id="loginBox" style="display:flex;align-items:center;gap:12px;margin:12px 0 18px">
+    <div id="gbtn"></div>
+    <span id="loginStatus" style="color:#475569">Inicia sesión con Google</span>
+  </div>
+
+  <div id="crmBox" style="display:none;gap:10px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+    <div>Usuario: <b id="me"></b> · Rol: <b id="role"></b></div>
+    <div id="slugWrap" style="display:flex;gap:8px;align-items:center">
+      <label>Slug:</label>
+      <select id="slugSel" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:10px"></select>
+    </div>
+    <input id="q" placeholder="Buscar…" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:10px">
+    <button id="reload" style="padding:8px 12px;border-radius:10px;border:0;background:#0b5fff;color:#fff;font-weight:800">Actualizar</button>
+    <span id="st" style="color:#475569">—</span>
+  </div>
+
+  <div id="tableWrap" style="display:none;overflow:auto;border:1px solid #e5e7eb;border-radius:12px;background:#fff">
+    <table id="t" style="width:100%;border-collapse:collapse">
+      <thead style="background:#f8fafc">
+        <tr>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Fecha</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Email</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Nombre</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Teléfono</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Tags</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Estado</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const CLIENT_ID = "63285262932-aadkqkcj3c117jrj9epfvtqkaiivdl7s.apps.googleusercontent.com"; // OK
+const ENDPOINT  = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
+
+let ID_TOKEN = null; let WHO = null;
+const $ = (s,el=document)=>el.querySelector(s);
+const tbody = $('#t tbody'); const st = $('#st');
+
+window.onload = function(){
+  google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleCredentialResponse });
+  google.accounts.id.renderButton($('#gbtn'), { theme:'outline', size:'large', type:'standard', shape:'pill' });
+  $('#loginStatus').textContent = 'Inicia sesión con Google';
+};
+async function handleCredentialResponse(resp){
+  ID_TOKEN = resp.credential;
+  $('#loginStatus').textContent = 'Verificando…';
+  const me = await apiWhoAmI().catch(()=>({ok:false}));
+  if(!me.ok){ $('#loginStatus').textContent = me.error || 'No autorizado'; return; }
+  WHO = me;
+  $('#loginBox').style.display='none';
+  $('#crmBox').style.display='flex';
+  $('#tableWrap').style.display='';
+  $('#me').textContent = me.email;
+  $('#role').textContent = me.role;
+
+  const sel = $('#slugSel'); sel.innerHTML='';
+  if(me.role==='admin'){
+    sel.innerHTML = '<option value="">(Todos)</option>';
+    sel.disabled = false;
+  } else {
+    (me.slugs||[]).forEach(s=>{
+      const opt = document.createElement('option');
+      opt.value = s; opt.textContent = s; sel.appendChild(opt);
+    });
+    sel.disabled = false;
+  }
+  load();
+}
+
+/* API */
+async function apiWhoAmI(){
+  const u = new URL(ENDPOINT);
+  u.searchParams.set('action','whoami');
+  u.searchParams.set('id_token', ID_TOKEN);
+  const r = await fetch(u); return r.json();
+}
+async function apiList(q=''){
+  const u = new URL(ENDPOINT);
+  u.searchParams.set('action','list');
+  u.searchParams.set('limit','200');
+  u.searchParams.set('id_token', ID_TOKEN);
+  const slug = $('#slugSel').value || '';
+  if(slug) u.searchParams.set('slug', slug);
+  if(q) u.searchParams.set('q', q);
+  const r = await fetch(u); return r.json();
+}
+async function apiPost(body){
+  const r = await fetch(ENDPOINT, {
+    method:'POST',
+    headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
+    body: JSON.stringify({ id_token: ID_TOKEN, ...body })
+  });
+  return r.json();
+}
+
+/* UI */
+function draw(rows){
+  tbody.innerHTML = '';
+  rows.forEach(it=>{
+    const tr = document.createElement('tr');
+    tr.dataset.email = it.email||'';
+    tr.innerHTML = `
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${new Date(it.timestamp).toLocaleString()}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.email||''}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.name||''}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.phone||''}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
+        <span class="tags">${it.tags||''}</span>
+        <button class="et" style="margin-left:6px;padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff">Editar</button>
+      </td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
+        <select class="stSel" style="padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px">
+          ${['New','MQL','SQL','Won','Lost'].map(s=> `<option ${s===(it.status||'New')?'selected':''}>${s}</option>`).join('')}
+        </select>
+      </td>
+      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
+        <button class="note" style="padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff">Añadir nota</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+async function load(){
+  st.textContent='Cargando…';
+  const q = ($('#q').value||'').trim();
+  const out = await apiList(q).catch(()=>({ok:false}));
+  if(!out.ok){ st.textContent = out.error||'Error'; return; }
+  draw(out.items||[]);
+  st.textContent = `Mostrando ${out.items.length} lead(s).`;
+}
+document.addEventListener('click', async e=>{
+  const tr = e.target.closest('tr'); if(!tr) return;
+  const email = tr?.dataset?.email;
+  if(e.target.classList.contains('et')){
+    const cur = tr.querySelector('.tags').textContent.trim();
+    const next = prompt('Tags (coma):', cur);
+    if(next==null) return;
+    const res = await apiPost({ action:'updateTags', project_slug: $('#slugSel').value, email, tags: next });
+    if(res.ok) tr.querySelector('.tags').textContent = next.split(',').map(s=>s.trim()).filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).join(', ');
+    else alert(res.error||'No se pudo actualizar');
+  }
+  if(e.target.classList.contains('note')){
+    const note = prompt('Nueva nota:'); if(!note) return;
+    const res = await apiPost({ action:'addNote', project_slug: $('#slugSel').value, email, note });
+    if(!res.ok) alert(res.error||'No se pudo agregar');
+  }
+});
+document.addEventListener('change', async e=>{
+  if(!e.target.classList.contains('stSel')) return;
+  const tr = e.target.closest('tr'); const email = tr.dataset.email;
+  const res = await apiPost({ action:'updateStatus', project_slug: $('#slugSel').value, email, status: e.target.value });
+  if(!res.ok) alert(res.error||'No se pudo cambiar estado');
+});
+$('#reload').addEventListener('click', load);
+$('#q').addEventListener('keydown', e=>{ if(e.key==='Enter') load(); });
+$('#slugSel').addEventListener('change', load);
+</script>
+</body>
+</html>
