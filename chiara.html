@@ -1,117 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Landing — Opt-in</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  :root{--bg:#f8fafc;--fg:#0b1220;--muted:#475569;--line:#e5e7eb;--brand:#0b5fff}
-  html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial}
-  .wrap{max-width:920px;margin:0 auto;padding:24px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(2,6,23,.06)}
-  h1{margin:0 0 8px;font-size:32px}
-  p{margin:0 0 14px;color:var(--muted)}
-  label{display:block;font-weight:700;font-size:13px;margin:12px 0 6px}
-  input,button{font:inherit}
-  input[type="text"],input[type="email"],input[type="tel"]{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media (max-width:640px){.row{grid-template-columns:1fr}}
-  button{padding:12px 16px;border-radius:999px;border:0;background:var(--brand);color:#fff;font-weight:800;cursor:pointer}
-  .status{margin-left:10px;color:var(--muted)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funnels Pro - Consultoría de Funnels Futurista</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#fff;color:#000;font-family:system-ui,sans-serif;line-height:1.5;}
+    .container{width:90%;max-width:1200px;margin:0 auto;padding:20px;}
+    h1{font-size:2.5rem;text-align:center;color:#000;text-shadow:0 0 10px #00d5ff;}
+    p.subtitle{font-size:1.25rem;text-align:center;color:#333;margin-top:10px;}
+    .btn{display:inline-block;margin:20px auto 0;padding:15px 30px;background:#00d5ff;color:#fff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;box-shadow:0 0 10px #00d5ff;transition:box-shadow .3s;}
+    .btn:hover{box-shadow:0 0 20px #00d5ff;}
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin:40px 0;}
+    .card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:20px;width:280px;text-align:center;box-shadow:0 0 10px rgba(0,213,255,0.7);}
+    .card h3{margin-bottom:10px;color:#000;text-shadow:0 0 5px #00d5ff;}
+    .video-section{display:flex;flex-direction:column;align-items:center;margin:60px 0;}
+    .video-section video{width:100%;max-width:800px;border-radius:10px;box-shadow:0 0 10px rgba(0,213,255,0.7);}
+    .bullets{margin:30px auto;max-width:800px;}
+    .bullets ul{list-style:none;}
+    .bullets li{position:relative;padding-left:1.5em;margin-bottom:10px;}
+    .bullets li::before{content:"✔";position:absolute;left:0;color:#00d5ff;}
+    .social-proof{font-style:italic;text-align:center;margin:40px 0;color:#555;}
+    details{margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px;}
+    summary{cursor:pointer;font-weight:bold;}
+    form{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:30px;max-width:500px;margin:0 auto;box-shadow:0 0 10px rgba(0,213,255,0.7);}
+    form label{display:block;margin-bottom:5px;font-weight:bold;}
+    form input{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:5px;font-size:1rem;}
+    form button{width:100%;padding:15px;background:#00d5ff;color:#fff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;box-shadow:0 0 10px #00d5ff;transition:box-shadow .3s;}
+    form button:hover{box-shadow:0 0 20px #00d5ff;}
+    footer{text-align:center;padding:20px;margin-top:40px;color:#777;font-size:.9rem;}
+    @media(max-width:600px){
+      h1{font-size:2rem;}
+      .cards{flex-direction:column;align-items:center;}
+    }
+  </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="card">
-      <h1>Recibe la guía gratuita</h1>
-      <p>Deja tu email y te enviamos el recurso al instante.</p>
-
-      <form id="leadForm" autocomplete="on">
-        <label>Email</label>
-        <input type="email" name="email" required placeholder="tu@correo.com">
-
-        <div class="row">
-          <div>
-            <label>Nombre (opcional)</label>
-            <input type="text" name="name" placeholder="Tu nombre">
-          </div>
-          <div>
-            <label>Teléfono (opcional)</label>
-            <input type="tel" name="phone" placeholder="+34 600 000 000">
-          </div>
-        </div>
-
-        <!-- CAMBIA SOLO ESTO: tu slug de proyecto -->
-        <input type="hidden" name="project_slug" value="respira21">
-
-        <!-- Hidden técnicos (no toques) -->
-        <input type="hidden" name="page_url" value="">
-        <input type="hidden" name="utm_source" value="">
-        <input type="hidden" name="utm_medium" value="">
-        <input type="hidden" name="utm_campaign" value="">
-        <input type="hidden" name="utm_term" value="">
-        <input type="hidden" name="utm_content" value="">
-
-        <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
-          <button type="submit" id="btnSubmit">Quiero la guía</button>
-          <span class="status" id="formMessage">—</span>
-        </div>
-      </form>
+  <header class="container">
+    <h1>El Futuro de tus Funnels Hoy</h1>
+    <p class="subtitle">Consultoría especializada en embudos de ventas con tecnología de vanguardia.</p>
+    <div style="text-align:center;">
+      <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
     </div>
-  </main>
+  </header>
 
-<script>
-(function(){
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
-  const API_KEY  = "pon-un-secreto-simple-aqui";
+  <section class="container cards">
+    <div class="card">
+      <h3>Estrategias con IA</h3>
+      <p>Diseñamos embudos que aprenden y optimizan solos.</p>
+    </div>
+    <div class="card">
+      <h3>Optimización 24/7</h3>
+      <p>Monitoreo continuo y mejoras automáticas.</p>
+    </div>
+    <div class="card">
+      <h3>Crecimiento Escalable</h3>
+      <p>Infraestructura lista para millones de clientes.</p>
+    </div>
+  </section>
 
-  const form = document.getElementById('leadForm');
-  const msg  = document.getElementById('formMessage') || document.createElement('span');
-  if(!msg.id){ msg.id='formMessage'; form.appendChild(msg); }
+  <section class="container video-section">
+    <video controls poster="" aria-label="Video explicativo de Funnels Pro">
+      <source src="video.mp4" type="video/mp4">
+      Tu navegador no soporta video.
+    </video>
+    <div class="bullets">
+      <h3>Lo que aprenderás en este video:</h3>
+      <ul>
+        <li>Cómo diseñar funnels que convierten 10x</li>
+        <li>Tácticas secretas de automatización</li>
+        <li>Errores críticos que debes evitar</li>
+      </ul>
+    </div>
+    <blockquote class="social-proof">"Gracias a Funnels Pro aumenté mis conversiones un 300%" – Juan Pérez</blockquote>
+    <div style="text-align:center;">
+      <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
+    </div>
+  </section>
 
-  // Completa page_url y UTM
-  (function setParams(){
-    const set = (n,v)=>{ const el=form.querySelector(`[name="${n}"]`); if(el) el.value=v||''; };
-    set('page_url', location.href);
-    const q = new URLSearchParams(location.search);
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
-  })();
+  <section class="container faq">
+    <h2 style="text-align:center;margin-bottom:20px;color:#000;text-shadow:0 0 5px #00d5ff;">Preguntas Frecuentes</h2>
+    <details>
+      <summary>¿Qué es un funnel de ventas futurista?</summary>
+      <p>Es un embudo optimizado con IA y automatizaciones en tiempo real.</p>
+    </details>
+    <details>
+      <summary>¿Cómo funciona la consultoría?</summary>
+      <p>Analizamos tu negocio, diseñamos estrategias y las implementamos con tecnología propia.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto tiempo tarda en ver resultados?</summary>
+      <p>Los primeros cambios se notan en 2-4 semanas, la optimización es continua.</p>
+    </details>
+    <details>
+      <summary>¿Necesito experiencia técnica?</summary>
+      <p>No, nos encargamos de todo: diseño, implementación y seguimiento.</p>
+    </details>
+  </section>
 
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
-    const prev = btn ? btn.textContent : '';
-    if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
-    msg.textContent = 'Enviando…';
+  <section class="container" id="formSection">
+    <form id="leadForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="tu@ejemplo.com">
+      <label for="name">Nombre (opcional)</label>
+      <input type="text" id="name" name="name" placeholder="Tu nombre">
+      <label for="phone">Teléfono (opcional)</label>
+      <input type="tel" id="phone" name="phone" placeholder="+34 600 123 456">
+      <input type="hidden" name="project_slug" value="funnels-pro-8cd4">
+      <input type="hidden" name="page_url">
+      <input type="hidden" name="utm_source">
+      <input type="hidden" name="utm_medium">
+      <input type="hidden" name="utm_campaign">
+      <input type="hidden" name="utm_term">
+      <input type="hidden" name="utm_content">
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
-    const data = Object.fromEntries(new FormData(form).entries());
-    data.action = 'upsert';
-    data._key   = API_KEY;
+  <footer>
+    &copy; 2025 Funnels Pro. Todos los derechos reservados.
+  </footer>
 
-    try{
-      const r = await fetch(ENDPOINT, {
-        method:'POST',
-        // 👇 clave del arreglo: usar text/plain para evitar preflight CORS
-        headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
-        body: JSON.stringify(data)
-      });
-      const txt = await r.text();
-      let json; try { json = JSON.parse(txt); } catch(e){ throw new Error('Respuesta no JSON: ' + txt.slice(0,160)); }
-      if (json.ok){
-        msg.textContent = '¡Listo! Revisa tu correo.';
-        form.reset();
-      } else {
-        msg.textContent = 'Error: ' + (json.error || 'Inténtalo de nuevo.');
-        if(btn){ btn.disabled = false; btn.textContent = prev; }
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      const form=document.getElementById('leadForm');
+      const params=new URLSearchParams(location.search);
+      function populateUtm(){
+        form.elements.page_url.value=location.href;
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
+          form.elements[k].value=params.get(k)||'';
+        });
       }
-    }catch(err){
-      msg.textContent = 'Error: ' + (err.message || 'Sin conexión.');
-      if(btn){ btn.disabled = false; btn.textContent = prev; }
-    }
-  });
-})();
-</script>
-
+      populateUtm();
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        const data={
+          action:'upsert',
+          _key:'pon-un-secreto-simple-aqui',
+          email:form.elements.email.value,
+          name:form.elements.name.value,
+          phone:form.elements.phone.value,
+          project_slug:form.elements.project_slug.value,
+          page_url:form.elements.page_url.value,
+          utm_source:form.elements.utm_source.value,
+          utm_medium:form.elements.utm_medium.value,
+          utm_campaign:form.elements.utm_campaign.value,
+          utm_term:form.elements.utm_term.value,
+          utm_content:form.elements.utm_content.value
+        };
+        fetch('https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec',{
+          method:'POST',
+          headers:{'Content-Type':'text/plain;charset=UTF-8'},
+          body:JSON.stringify(data)
+        })
+        .then(r=>r.json())
+        .then(res=>{
+          if(res.ok){
+            alert('¡Listo!');
+            form.reset();
+            populateUtm();
+          } else {
+            alert('Error: '+(res.error||'Desconocido'));
+          }
+        })
+        .catch(err){
+          alert('Error: '+err.message);
+        };
+      });
+    });
+  </script>
 </body>
 </html>
