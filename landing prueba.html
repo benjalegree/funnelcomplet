@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funnels Pro - Consultoría de Funnels</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #fff; color: #000; }
+    .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+    header, section, footer { padding: 32px 0; }
+    h1, h2, h3 { margin: 0 0 .5em; }
+    p { margin: 0 0 1em; line-height: 1.5; }
+    .section-center { text-align: center; }
+    .hero h1 { font-size: 2rem; color: #00d5ff; letter-spacing: .05em; }
+    .hero p { font-size: 1.125rem; color: #000; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 600px) { .cards { grid-template-columns: repeat(3,1fr); } }
+    .card { background: #f9f9f9; padding: 24px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card h3 { font-size: 1.25rem; margin-bottom: .5em; }
+    .guarantee { background: #e0f7ff; padding: 24px; border-radius: 8px; margin: 32px 0; text-align: center; }
+    .faq details { margin-bottom: 16px; }
+    .faq summary { cursor: pointer; font-weight: 600; outline: none; }
+    button { font-family: inherit; }
+    footer { font-size: .875rem; text-align: center; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero section-center">
+      <h1>Transforma tus funnels con IA futurista</h1>
+      <p>Asesoría experta para potenciar conversiones y maximizar ingresos.</p>
+      <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
+<form id="leadForm" autocomplete="on">
+  <label>Email</label>
+  <input type="email" name="email" required placeholder="tu@correo.com">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div>
+      <label>Nombre (opcional)</label>
+      <input type="text" name="name" placeholder="Tu nombre">
+    </div>
+    <div>
+      <label>Teléfono (opcional)</label>
+      <input type="tel" name="phone" placeholder="+34 600 000 000">
+    </div>
+  </div>
+
+  <input type="hidden" name="project_slug" value="funnels-pro-y22o">
+  <input type="hidden" name="page_url" value="">
+  <input type="hidden" name="utm_source" value="">
+  <input type="hidden" name="utm_medium" value="">
+  <input type="hidden" name="utm_campaign" value="">
+  <input type="hidden" name="utm_term" value="">
+  <input type="hidden" name="utm_content" value="">
+
+  <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:#0b5fff;color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
+    <span id="formMessage" style="color:#475569">—</span>
+  </div>
+</form>
+
+<script>
+(function(){
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbx-JF9IG1XUBppmntd6TGTDFfG3kR5JLt9B4lMDEsWMgz_FTYOnO88KBCKqg7U1bPIIDA/exec";
+  const API_KEY  = "pon-un-secreto-simple-aqui";
+
+  const form = document.getElementById('leadForm');
+  const msg  = document.getElementById('formMessage');
+  const btn  = document.getElementById('btnSubmit');
+
+  // Completa page_url y UTM
+  (function setParams(){
+    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
+    set('page_url', location.href);
+    const q = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
+  })();
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    msg.textContent = "Enviando…";
+    btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.action = "upsert";
+    data._key   = API_KEY;
+
+    try{
+      const r = await fetch(ENDPOINT, {
+        method:"POST",
+        headers:{ "Content-Type":"text/plain;charset=UTF-8" },
+        body: JSON.stringify(data)
+      });
+      const txt = await r.text();
+      let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
+
+      if(json.ok){
+        msg.textContent = "¡Listo! Revisa tu correo.";
+        form.reset();
+      } else {
+        msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
+        btn.disabled = false; btn.textContent = prev;
+      }
+    }catch(err){
+      msg.textContent = "Error: " + (err.message || "Sin conexión.");
+      btn.disabled = false; btn.textContent = prev;
+    }
+  });
+})();
+</script>
+<!-- END LEAD BLOCK (DO NOT EDIT) -->
+    </header>
+
+    <section>
+      <h2 class="section-center">Beneficios de nuestra consultoría</h2>
+      <div class="cards">
+        <article class="card" aria-labelledby="b1">
+          <h3 id="b1">Optimización con IA</h3>
+          <p>Implementamos algoritmos avanzados para mejorar cada paso de tu funnel automáticamente.</p>
+        </article>
+        <article class="card" aria-labelledby="b2">
+          <h3 id="b2">Estrategias personalizadas</h3>
+          <p>Creamos flujos de trabajo únicos adaptados a tu negocio y público objetivo.</p>
+        </article>
+        <article class="card" aria-labelledby="b3">
+          <h3 id="b3">Análisis en tiempo real</h3>
+          <p>Monitoreo continuo para ajustes instantáneos y resultados medibles.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-center">Nuestra garantía</h2>
+      <div class="guarantee">
+        <p>Si no ves mejoras en 30 días, te devolvemos el 100% de tu inversión. Sin preguntas.</p>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2 class="section-center">Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Cómo funciona la consultoría?</summary>
+        <p>Te acompañamos en cada fase, desde el diseño hasta la implementación y optimización continua.</p>
+      </details>
+      <details>
+        <summary>¿Qué resultados puedo esperar?</summary>
+        <p>Aumentos de tasa de conversión de hasta un 50% según estudios internos y casos reales.</p>
+      </details>
+      <details>
+        <summary>¿Cuál es el plazo de entrega?</summary>
+        <p>En promedio iniciamos mejoras en las primeras 2 semanas y optimizaciones contínuas a lo largo del contrato.</p>
+      </details>
+      <details>
+        <summary>¿Necesito conocimientos técnicos?</summary>
+        <p>No, nos encargamos de la configuración y te guiamos con informes y recomendaciones claras.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Funnels Pro. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>
