@@ -5,6 +5,8 @@
 <title>PsicoFunnel — Creador (MVP)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
+<!-- ⬇️ Google Sign-In -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 /* =========================
    PsicoFunnel — Home MVP
@@ -230,6 +232,9 @@ hr.sep{border:0;height:1px;background:linear-gradient(90deg,rgba(11,95,255,.18),
 }
 .preview-modal.show-code iframe{display:none}
 .preview-modal.show-code pre{display:block}
+
+/* Auth tiny helpers */
+.authRow{display:flex; gap:10px; justify-content:center; align-items:center; margin-top:12px}
 </style>
 </head>
 <body>
@@ -255,6 +260,13 @@ hr.sep{border:0;height:1px;background:linear-gradient(90deg,rgba(11,95,255,.18),
     <h1 class="title">¿Qué funnel vamos a diseñar hoy?</h1>
     <p class="subtitle">Usa el chat a continuación para describir tu landing. O elige una plantilla rápida.
       <br>Cuando estés listo, haz clic en <strong>Creamos tu funnel</strong> para completar el brief de marca.</p>
+
+    <!-- ⬇️ Login con Google + estado -->
+    <div class="authRow">
+      <div id="btnGoogle" aria-label="Iniciar sesión con Google"></div>
+      <span id="authStatus" class="badge">No has iniciado sesión</span>
+      <a href="/crm.html" class="btn ghost" target="_blank" rel="noopener">Abrir CRM</a>
+    </div>
 
     <!-- Plantillas tipo Canva (iconos glass pequeños sin cuadrado) -->
     <div class="templates" id="templates">
@@ -476,13 +488,16 @@ hr.sep{border:0;height:1px;background:linear-gradient(90deg,rgba(11,95,255,.18),
 
 <script defer>
 /* =========================
-   PsicoFunnel — Home MVP JS (adaptado a Webhook Make que devuelve HTML)
+   PsicoFunnel — Home MVP JS (con Login Google y registro de proyecto)
    ========================= */
-const MAKE_URL = 'https://hook.us2.make.com/un34h9dqpi6qxcpclphk9rfav8fcvo1v'; // o '/api/psico-make-generate' si usas proxy
+const MAKE_URL = 'https://hook.us2.make.com/un34h9dqpi6qxcpclphk9rfav8fcvo1v';
 
-/* ➕ Añadido: constantes del CRM (para que Make pueda mapear si lo necesitas) */
 const CRM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwClYvEIqVgWa4xG93wmPJ7orZe2ryCqeKWQBfN-uoFQxaflmfn_tieoKgZyfeJPCkhLQ/exec';
-const CRM_KEY = 'pon-un-secreto-simple-aqui';
+const CRM_KEY = 'pon-un-secreto-simple-aqui'; // para forms (no se usa aquí)
+const CLIENT_ID = '63285262932-aadkqkcj3c117jrj9epfvtqkaiivdl7s.apps.googleusercontent.com';
+
+let ID_TOKEN = null;
+let USER_EMAIL = null;
 
 const $ = (sel, el=document) => el.querySelector(sel);
 const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
@@ -498,6 +513,7 @@ const briefForm = $('#briefForm');
 const briefReset = $('#briefReset');
 const recentGrid = $('#recentGrid');
 const help = $('#help');
+const authStatus = $('#authStatus');
 
 /* Preview modal elems */
 const previewModal = $('#previewModal');
@@ -509,8 +525,8 @@ const openTabBtn = $('#openNewTab');
 const closePreviewBtn = $('#closePreview');
 
 let selectedTemplate = null;
-let lastHTML = '';   // guarda el último HTML generado en memoria (para descarga/abrir)
-let lastBlobURL = ''; // object URL para abrir en pestaña
+let lastHTML = '';
+let lastBlobURL = '';
 
 /* Estado local: brief + recientes (solo metadatos) */
 const BriefStore = {
@@ -525,10 +541,62 @@ const RecentStore = {
   push(item){ const arr = this.list(); arr.unshift(item); localStorage.setItem(this.key, JSON.stringify(arr.slice(0,12))); }
 };
 
-/* Salud simple (solo texto) */
+/* Salud simple */
 healthBadge.textContent = '● Listo';
 healthBadge.style.color = 'var(--success)';
 healthBadge.title = 'Webhook configurado';
+
+/* ====== Google Sign-In ====== */
+window.addEventListener('load', async ()=>{
+  // Render del botón
+  /* global google */
+  google?.accounts?.id?.initialize({ client_id: CLIENT_ID, callback: onGoogleSignIn });
+  google?.accounts?.id?.renderButton(document.getElementById('btnGoogle'),
+    { theme:'outline', size:'large', type:'standard', shape:'pill' });
+
+  // Reanudar sesión si hay token guardado
+  const tok = localStorage.getItem('psico_id_token');
+  const em  = localStorage.getItem('psico_email');
+  if(tok && em){
+    ID_TOKEN = tok; USER_EMAIL = em;
+    const ok = await verifyToken(tok);
+    if(ok){
+      authStatus.textContent = 'Sesión: ' + USER_EMAIL;
+      authStatus.classList.add('badge');
+    }else{
+      localStorage.removeItem('psico_id_token');
+      localStorage.removeItem('psico_email');
+    }
+  }
+});
+
+async function onGoogleSignIn(resp){
+  ID_TOKEN = resp.credential;
+  const ok = await verifyToken(ID_TOKEN);
+  if(!ok){ authStatus.textContent = 'Login inválido'; return; }
+  localStorage.setItem('psico_id_token', ID_TOKEN);
+  localStorage.setItem('psico_email', USER_EMAIL);
+  authStatus.textContent = 'Sesión: ' + USER_EMAIL;
+}
+
+async function verifyToken(idTok){
+  try{
+    const url = new URL(CRM_ENDPOINT);
+    url.searchParams.set('action','whoami');
+    url.searchParams.set('id_token', idTok);
+    const r = await fetch(url); const j = await r.json();
+    if(j.ok){ USER_EMAIL = j.email; return true; }
+    return false;
+  }catch{ return false; }
+}
+
+function requireLogin(){
+  if(!ID_TOKEN){
+    addMsg('system','Primero inicia sesión con Google (arriba).');
+    return false;
+  }
+  return true;
+}
 
 /* Utilidades UI */
 function addMsg(role, html){
@@ -594,7 +662,7 @@ briefForm.addEventListener('submit', (e)=>{
 /* Ayuda flotante */
 help.addEventListener('click', ()=> help.classList.toggle('expanded'));
 
-/* Render recientes (sin persistir HTML por tamaño; link abre nueva pestaña si está en memoria de la sesión) */
+/* Render recientes (solo metadatos) */
 function renderRecents(){
   const arr = RecentStore.list();
   recentGrid.innerHTML = '';
@@ -663,10 +731,21 @@ async function sendToMake(payload){
   return html;
 }
 
+/* ====== Registro de proyecto (owner = usuario logueado) ====== */
+async function registerProject(slug){
+  const res = await fetch(CRM_ENDPOINT, {
+    method:'POST',
+    headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
+    body: JSON.stringify({ action:'registerProject', id_token: ID_TOKEN, project_slug: slug })
+  }).then(r=>r.json()).catch(()=>({ok:false}));
+  return res.ok;
+}
+
 /* Generación desde el chat */
 async function generateFromPrompt(){
   const text = composer.value.trim();
   if(!text){ composer.focus(); addMsg('system','Escribe un prompt o elige una plantilla ☝️'); return; }
+  if(!requireLogin()) return;
 
   const brief = BriefStore.get() || {
     brand_name:'PsicoFunnel Demo',
@@ -687,8 +766,13 @@ async function generateFromPrompt(){
     .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,40)
     + '-' + Math.random().toString(36).slice(2,6);
 
+  // 1) Registrar el proyecto a tu usuario (para que el CRM lo autorice)
+  const regOK = await registerProject(project_slug);
+  if(!regOK){ addMsg('system','No pude registrar el proyecto. Reintenta iniciar sesión.'); return; }
+
   const payload = {
     project_slug,
+    owner_email: USER_EMAIL,
     brand: { name: brief.brand_name || 'PsicoFunnel', colors: { primary: brief.color_primary, accent: brief.color_accent } },
     niche: brief.niche || 'general',
     goal: brief.goal || 'captar leads',
@@ -696,7 +780,7 @@ async function generateFromPrompt(){
     offer: { price: brief.offer_price ? String(brief.offer_price) : undefined, guarantee: brief.offer_guarantee || undefined },
     sections,
     prompt: text,
-    /* ➕ enviado por si tu escenario de Make lo mapea al bloque CRM */
+    // pistas para tu escenario (si las mapeas en Make):
     crm_endpoint: CRM_ENDPOINT,
     crm_key: CRM_KEY
   };
@@ -708,7 +792,6 @@ async function generateFromPrompt(){
     const html = await sendToMake(payload);
     thinking.remove();
 
-    // Guarda en memoria de sesión y en "Recientes" (metadatos)
     if(lastBlobURL) URL.revokeObjectURL(lastBlobURL);
     lastHTML = html;
     lastBlobURL = URL.createObjectURL(new Blob([html], {type:'text/html;charset=utf-8'}));
@@ -716,15 +799,13 @@ async function generateFromPrompt(){
     RecentStore.push({ slug: project_slug, title: (brief.brand_name||'Marca') + ' — ' + (selectedTemplate?.name || 'custom'), ts: Date.now() });
     renderRecents();
 
-    // Abre modal de preview
-    previewFrame.removeAttribute('sandbox'); // si quieres aislar: previewFrame.setAttribute('sandbox','allow-scripts allow-forms');
+    previewFrame.removeAttribute('sandbox');
     previewFrame.srcdoc = html;
     codeBox.textContent = html;
     previewModal.classList.remove('show-code');
     setPreview(true);
 
-    addMsg('assistant', `Listo ✅ Abre la preview para ver/descargar tu landing.`);
-
+    addMsg('assistant', `Listo ✅ Abre la preview para ver/descargar tu landing. Tu CRM ya puede ver los leads del slug <b>${project_slug}</b> con tu sesión.`);
     composer.value=''; selectedTemplate = null;
   }catch(err){
     thinking.textContent = 'Hubo un problema: ' + (err.message || err);
