@@ -63,56 +63,55 @@
 
 <script>
 (function(){
-  // YA CONECTADO A TU API + KEY
-  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
-  var API_KEY  = "pon-un-secreto-simple-aqui";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbxe8mPiH2ToslKtQqM-JyuZzZuJQGgkPEF0_6Vk4evQ2-FMTW-g-qWRr3d0YNz8_v3dVw/exec";
+  const API_KEY  = "pon-un-secreto-simple-aqui";
 
-  var form = document.getElementById('leadForm');
-  var msg  = document.getElementById('formMessage');
-  var btn  = document.getElementById('btnSubmit');
+  const form = document.getElementById('leadForm');
+  const msg  = document.getElementById('formMessage') || document.createElement('span');
+  if(!msg.id){ msg.id='formMessage'; form.appendChild(msg); }
 
-  // Completa page_url y UTMs
+  // Completa page_url y UTM
   (function setParams(){
-    var set = function(n,v){ var el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
+    const set = (n,v)=>{ const el=form.querySelector(`[name="${n}"]`); if(el) el.value=v||''; };
     set('page_url', location.href);
-    var q = new URLSearchParams(location.search);
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
-      set(k, q.get(k));
-    });
+    const q = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
   })();
 
-  form.addEventListener('submit', async function(e){
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    msg.textContent = "Enviando…";
-    btn.disabled = true; var prev = btn.textContent; btn.textContent = "Enviando…";
+    const btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+    const prev = btn ? btn.textContent : '';
+    if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
+    msg.textContent = 'Enviando…';
 
-    var data = Object.fromEntries(new FormData(form).entries());
-    // payload requerido por tu backend
-    data.action = "upsert";
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.action = 'upsert';
     data._key   = API_KEY;
 
     try{
-      var r = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const r = await fetch(ENDPOINT, {
+        method:'POST',
+        // 👇 clave del arreglo: usar text/plain para evitar preflight CORS
+        headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
         body: JSON.stringify(data)
       });
-      var txt = await r.text();
-      var json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: " + txt.slice(0,160)); }
-
+      const txt = await r.text();
+      let json; try { json = JSON.parse(txt); } catch(e){ throw new Error('Respuesta no JSON: ' + txt.slice(0,160)); }
       if (json.ok){
-        msg.textContent = "¡Listo! Revisa tu correo.";
+        msg.textContent = '¡Listo! Revisa tu correo.';
         form.reset();
       } else {
-        msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
-        btn.disabled = false; btn.textContent = prev;
+        msg.textContent = 'Error: ' + (json.error || 'Inténtalo de nuevo.');
+        if(btn){ btn.disabled = false; btn.textContent = prev; }
       }
     }catch(err){
-      msg.textContent = "Error: " + (err.message || "Sin conexión.");
-      btn.disabled = false; btn.textContent = prev;
+      msg.textContent = 'Error: ' + (err.message || 'Sin conexión.');
+      if(btn){ btn.disabled = false; btn.textContent = prev; }
     }
   });
 })();
 </script>
+
 </body>
 </html>
