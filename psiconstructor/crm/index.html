@@ -1,173 +1,396 @@
 <!doctype html>
 <html lang="es">
+<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CRM — Leads</title>
+<title>PsicoFunnel — CRM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<style>
+:root{
+  --bg:#f7f9fc;
+  --bg-grad: radial-gradient(1200px 800px at 20% -10%, #eaf2ff 0%, rgba(234,242,255,0) 60%),
+             radial-gradient(900px 700px at 100% 0%, #f0fbff 0%, rgba(240,251,255,0) 60%);
+  --card: rgba(255,255,255,.62);
+  --border: rgba(255,255,255,.38);
+  --text:#0b1220;
+  --muted:#6b7280;
+  --primary:#0ea5e9;
+  --accent:#0b5fff;
+  --success:#10b981;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --glass-blur: 18px;
+  --radius-2xl: 24px;
+  --radius-xl: 18px;
+  --radius-lg: 14px;
+  --shadow-lg: 0 20px 60px rgba(15,23,42,.12);
+  --shadow-sm: 0 6px 16px rgba(2,6,23,.08);
+  --font: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family:var(--font);
+  color:var(--text);
+  background: var(--bg);
+  background-image: var(--bg-grad);
+  background-attachment: fixed;
+}
+.container{max-width:1200px; margin:0 auto; padding:0 20px}
+.glass{
+  background:var(--card);
+  border:1px solid var(--border);
+  backdrop-filter:saturate(1.35) blur(var(--glass-blur));
+  -webkit-backdrop-filter:saturate(1.35) blur(var(--glass-blur));
+  border-radius:var(--radius-2xl);
+  box-shadow:var(--shadow-lg);
+}
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:12px 16px; border-radius:999px; border:0; cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--primary));
+  color:#fff; font-weight:800; text-decoration:none;
+  box-shadow:0 12px 28px rgba(14,165,233,.35);
+}
+.btn.ghost{
+  background:transparent; color:var(--accent); border:1px solid rgba(11,95,255,.25);
+  box-shadow:var(--shadow-sm); font-weight:700;
+}
+
+.nav{
+  position:sticky; top:0; z-index:50; height:68px;
+  display:flex; align-items:center; backdrop-filter:saturate(1.2) blur(14px);
+  -webkit-backdrop-filter:saturate(1.2) blur(14px);
+  border-bottom:1px solid rgba(11,95,255,.08);
+}
+.nav .inner{display:flex; align-items:center; justify-content:space-between}
+.brand{ display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.2px; }
+.brand .logo{
+  width:36px; height:36px; border-radius:14px;
+  background:linear-gradient(135deg,#0b5fff 0%, #0ea5e9 100%);
+  box-shadow:0 10px 30px rgba(11,95,255,.28), inset 0 0 20px rgba(255,255,255,.35);
+  position:relative; overflow:hidden;
+}
+.brand .logo::after{
+  content:""; position:absolute; inset:-40% -20% auto auto; width:120%; height:120%;
+  background:linear-gradient(60deg,rgba(255,255,255,.55),rgba(255,255,255,0));
+  transform:rotate(12deg);
+}
+.login{display:flex; align-items:center; gap:10px; margin-left:10px}
+.badge{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:rgba(14,165,233,.12); color:#0b3aa6; font-weight:800; font-size:12px; border:1px solid rgba(11,95,255,.25)}
+.hint{color:var(--muted); font-size:14px}
+
+.header{ padding:26px 0; }
+.header .row{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap }
+.controls{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+
+.select, .input{
+  padding:10px 12px; border-radius:12px; border:1px solid rgba(11,95,255,.18); background:#fff; min-height:40px;
+}
+.input{ min-width:260px }
+
+.table{
+  width:100%; border-collapse: separate; border-spacing:0; overflow:hidden; border-radius:16px; background:#fff; border:1px solid rgba(11,95,255,.14); box-shadow:var(--shadow-sm)
+}
+.table th, .table td{ padding:10px 12px; border-bottom:1px solid rgba(11,95,255,.08); text-align:left; font-size:14px }
+.table th{ background:linear-gradient(0deg, rgba(255,255,255,.8), rgba(255,255,255,.9)); position:sticky; top:0; z-index:1 }
+.table tr:last-child td{ border-bottom:0 }
+.table .actions{ display:flex; gap:8px; flex-wrap:wrap }
+
+.status{ font-weight:800; color:#0b3aa6 }
+.tags{ font-weight:700; color:#334155 }
+
+.modal{ position: fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:90; }
+.modal.active{display:flex}
+.modal .scrim{position:absolute; inset:0; background:rgba(2,6,23,.35); backdrop-filter: blur(6px)}
+.dialog{
+  position:relative; width:min(560px, 96vw); max-height:86vh; overflow:auto; padding:18px;
+  border-radius:24px; box-shadow:var(--shadow-lg); background:rgba(255,255,255,.9);
+  border:1px solid rgba(11,95,255,.25);
+}
+</style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<body style="font:15px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f8fafc;color:#0b1220">
-<div style="max-width:1100px;margin:0 auto;padding:18px">
-  <h1 style="margin:0 0 10px">Leads</h1>
-
-  <div id="loginBox" style="display:flex;align-items:center;gap:12px;margin:12px 0 18px">
-    <div id="gbtn"></div>
-    <span id="loginStatus" style="color:#475569">Inicia sesión con Google</span>
-  </div>
-
-  <div id="crmBox" style="display:none;gap:10px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
-    <div>Usuario: <b id="me"></b> · Rol: <b id="role"></b></div>
-    <div id="slugWrap" style="display:flex;gap:8px;align-items:center">
-      <label>Slug:</label>
-      <select id="slugSel" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:10px"></select>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav glass">
+    <div class="inner container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>PsicoFunnel — CRM</div>
+        <span class="badge" id="roleBadge">—</span>
+      </div>
+      <div class="login">
+        <div id="btnGoogle"></div>
+        <span class="hint" id="loginStatus">No has iniciado sesión</span>
+        <a class="btn ghost" href="./" title="Volver al generador">Ir al Creador</a>
+      </div>
     </div>
-    <input id="q" placeholder="Buscar…" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:10px">
-    <button id="reload" style="padding:8px 12px;border-radius:10px;border:0;background:#0b5fff;color:#fff;font-weight:800">Actualizar</button>
-    <span id="st" style="color:#475569">—</span>
   </div>
 
-  <div id="tableWrap" style="display:none;overflow:auto;border:1px solid #e5e7eb;border-radius:12px;background:#fff">
-    <table id="t" style="width:100%;border-collapse:collapse">
-      <thead style="background:#f8fafc">
-        <tr>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Fecha</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Email</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Nombre</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Teléfono</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Tags</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Estado</th>
-          <th style="text-align:left;padding:10px;border-bottom:1px solid #e5e7eb">Acciones</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+  <!-- MODAL LOGIN (liquid glass) -->
+  <div class="modal" id="loginModal" aria-hidden="true" role="dialog">
+    <div class="scrim"></div>
+    <div class="dialog glass" style="max-width:560px">
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; padding:8px">
+        <div class="logo" aria-hidden="true"></div>
+        <h2 style="margin:0; font-size:22px; letter-spacing:-.02em">Inicia sesión para ver tus leads</h2>
+        <p class="hint" style="margin:0">Si ya iniciaste sesión en el Creador, se reutilizará automáticamente.</p>
+        <div id="btnGoogleModal" style="display:flex; justify-content:center"></div>
+        <div class="hint" id="loginStatusModal">Tu correo no está conectado.</div>
+        <button class="btn ghost" id="closeLogin">Cerrar</button>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- HEADER -->
+  <header class="header container">
+    <div class="row">
+      <div class="controls">
+        <select id="slugSelect" class="select" title="Proyecto">
+          <option value="">Selecciona un proyecto…</option>
+        </select>
+        <input id="searchInput" class="input" placeholder="Buscar por email, nombre o tag">
+        <button class="btn" id="refreshBtn">Actualizar</button>
+      </div>
+      <div class="controls">
+        <span class="hint">Conectado: <strong id="userEmail">—</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- GRID -->
+  <main class="container" style="padding-bottom:28px">
+    <div class="glass" style="padding:14px">
+      <div style="overflow:auto">
+        <table class="table" id="leadsTable" aria-label="Tabla de leads">
+          <thead>
+            <tr>
+              <th style="min-width:160px">Email</th>
+              <th style="min-width:140px">Nombre</th>
+              <th style="min-width:110px">Teléfono</th>
+              <th style="min-width:120px">Status</th>
+              <th style="min-width:200px">Tags</th>
+              <th style="min-width:220px">Página</th>
+              <th style="min-width:160px">Fecha</th>
+              <th style="min-width:200px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="leadsBody">
+            <tr><td colspan="8" class="hint">Selecciona un proyecto para listar los leads…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
 
 <script>
-const CLIENT_ID = "63285262932-aadkqkcj3c117jrj9epfvtqkaiivdl7s.apps.googleusercontent.com"; // OK
-const ENDPOINT  = "https://script.google.com/macros/s/AKfycbx-JF9IG1XUBppmntd6TGTDFfG3kR5JLt9B4lMDEsWMgz_FTYOnO88KBCKqg7U1bPIIDA/exec";
+/* ====== CONFIG ====== */
+const CRM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec';
+const CLIENT_ID    = '63285262932-aadkqkcj3c117jrj9epfvtqkaiivdl7s.apps.googleusercontent.com';
 
-let ID_TOKEN = null; let WHO = null;
+/* ====== STATE ====== */
+let ID_TOKEN   = null;
+let USER_EMAIL = null;
+let USER_NAME  = null;
+let ROLE       = 'client';
+let SLUGS      = [];
+
+/* ====== HELPERS ====== */
 const $ = (s,el=document)=>el.querySelector(s);
-const tbody = $('#t tbody'); const st = $('#st');
+const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+function fmtDate(d){ try{ return new Date(d).toLocaleString(); }catch(_){ return d||''; } }
 
-window.onload = function(){
-  google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleCredentialResponse });
-  google.accounts.id.renderButton($('#gbtn'), { theme:'outline', size:'large', type:'standard', shape:'pill' });
-  $('#loginStatus').textContent = 'Inicia sesión con Google';
-};
-async function handleCredentialResponse(resp){
-  ID_TOKEN = resp.credential;
-  $('#loginStatus').textContent = 'Verificando…';
-  const me = await apiWhoAmI().catch(()=>({ok:false}));
-  if(!me.ok){ $('#loginStatus').textContent = me.error || 'No autorizado'; return; }
-  WHO = me;
-  $('#loginBox').style.display='none';
-  $('#crmBox').style.display='flex';
-  $('#tableWrap').style.display='';
-  $('#me').textContent = me.email;
-  $('#role').textContent = me.role;
-
-  const sel = $('#slugSel'); sel.innerHTML='';
-  if(me.role==='admin'){
-    sel.innerHTML = '<option value="">(Todos)</option>';
-    sel.disabled = false;
-  } else {
-    (me.slugs||[]).forEach(s=>{
-      const opt = document.createElement('option');
-      opt.value = s; opt.textContent = s; sel.appendChild(opt);
-    });
-    sel.disabled = false;
-  }
-  load();
+function setLoginModal(open){
+  const m = $('#loginModal');
+  m.classList.toggle('active', !!open);
+  m.setAttribute('aria-hidden', open ? 'false' : 'true');
 }
+function looksExpiredWhoami(json){ return !json || json.ok===false; }
 
-/* API */
-async function apiWhoAmI(){
-  const u = new URL(ENDPOINT);
+async function whoami(idToken){
+  const u = new URL(CRM_ENDPOINT);
   u.searchParams.set('action','whoami');
-  u.searchParams.set('id_token', ID_TOKEN);
-  const r = await fetch(u); return r.json();
+  u.searchParams.set('id_token', idToken);
+  const r = await fetch(u);
+  return r.json();
 }
-async function apiList(q=''){
-  const u = new URL(ENDPOINT);
+
+async function listLeads(slug, q=''){
+  const u = new URL(CRM_ENDPOINT);
   u.searchParams.set('action','list');
-  u.searchParams.set('limit','200');
   u.searchParams.set('id_token', ID_TOKEN);
-  const slug = $('#slugSel').value || '';
   if(slug) u.searchParams.set('slug', slug);
-  if(q) u.searchParams.set('q', q);
-  const r = await fetch(u); return r.json();
+  if(q)     u.searchParams.set('q', q);
+  const r = await fetch(u);
+  return r.json();
 }
-async function apiPost(body){
-  const r = await fetch(ENDPOINT, {
+
+async function postAction(action, body){
+  const r = await fetch(CRM_ENDPOINT, {
     method:'POST',
     headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
-    body: JSON.stringify({ id_token: ID_TOKEN, ...body })
+    body: JSON.stringify({ action, id_token: ID_TOKEN, ...body })
   });
   return r.json();
 }
 
-/* UI */
-function draw(rows){
-  tbody.innerHTML = '';
-  rows.forEach(it=>{
-    const tr = document.createElement('tr');
-    tr.dataset.email = it.email||'';
-    tr.innerHTML = `
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${new Date(it.timestamp).toLocaleString()}</td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.email||''}</td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.name||''}</td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">${it.phone||''}</td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
-        <span class="tags">${it.tags||''}</span>
-        <button class="et" style="margin-left:6px;padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff">Editar</button>
-      </td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
-        <select class="stSel" style="padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px">
-          ${['New','MQL','SQL','Won','Lost'].map(s=> `<option ${s===(it.status||'New')?'selected':''}>${s}</option>`).join('')}
-        </select>
-      </td>
-      <td style="padding:8px 10px;border-bottom:1px solid #f1f5f9">
-        <button class="note" style="padding:6px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff">Añadir nota</button>
-      </td>
-    `;
-    tbody.appendChild(tr);
+/* ====== LOGIN FLOW ====== */
+function renderGoogleButtons(){
+  if(window.google && google.accounts && google.accounts.id){
+    const btn = $('#btnGoogle');
+    google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onGoogleCredential });
+    if(btn) google.accounts.id.renderButton(btn, { theme:'outline', size:'medium', shape:'pill' });
+    const btnM = $('#btnGoogleModal');
+    if(btnM) google.accounts.id.renderButton(btnM, { theme:'filled_blue', size:'large', shape:'pill', text:'signin_with' });
+  }
+}
+async function onGoogleCredential(resp){
+  const w = await whoami(resp.credential).catch(()=>({ok:false}));
+  if(!w.ok){ $('#loginStatus').textContent = 'No autorizado'; $('#loginStatusModal').textContent='No autorizado'; return; }
+  ID_TOKEN   = resp.credential;
+  USER_EMAIL = w.email;
+  ROLE       = w.role || 'client';
+  SLUGS      = Array.isArray(w.slugs) ? w.slugs : [];
+  localStorage.setItem('psico_id_token', ID_TOKEN);
+  localStorage.setItem('psico_email', USER_EMAIL);
+  $('#loginStatus').textContent = 'Conectado: ' + USER_EMAIL;
+  $('#userEmail').textContent   = USER_EMAIL;
+  $('#roleBadge').textContent   = ROLE==='admin' ? 'Admin' : 'Client';
+  fillSlugs();
+  setLoginModal(false);
+}
+
+/* ====== INIT ====== */
+window.addEventListener('load', async ()=>{
+  renderGoogleButtons();
+
+  // Reutiliza sesión de la main (mismo dominio)
+  const t = localStorage.getItem('psico_id_token');
+  const e = localStorage.getItem('psico_email');
+  if(t){
+    const w = await whoami(t).catch(()=>({ok:false}));
+    if(w.ok){
+      ID_TOKEN   = t;
+      USER_EMAIL = w.email || e || '';
+      ROLE       = w.role || 'client';
+      SLUGS      = Array.isArray(w.slugs) ? w.slugs : [];
+      $('#loginStatus').textContent = 'Conectado: ' + USER_EMAIL;
+      $('#userEmail').textContent   = USER_EMAIL;
+      $('#roleBadge').textContent   = ROLE==='admin' ? 'Admin' : 'Client';
+      fillSlugs();
+      return; // listo, no pedimos login
+    }
+  }
+  // Si no hay token válido, pedimos login
+  setLoginModal(true);
+});
+
+/* ====== UI ====== */
+$('#closeLogin').addEventListener('click', ()=> setLoginModal(false));
+
+function fillSlugs(){
+  const sel = $('#slugSelect');
+  sel.innerHTML = '';
+  const first = document.createElement('option');
+  first.value=''; first.textContent = ROLE==='admin' ? 'Todos los proyectos…' : 'Selecciona un proyecto…';
+  sel.appendChild(first);
+  SLUGS.forEach(s=>{
+    const op = document.createElement('option');
+    op.value = s; op.textContent = s;
+    sel.appendChild(op);
   });
 }
-async function load(){
-  st.textContent='Cargando…';
-  const q = ($('#q').value||'').trim();
-  const out = await apiList(q).catch(()=>({ok:false}));
-  if(!out.ok){ st.textContent = out.error||'Error'; return; }
-  draw(out.items||[]);
-  st.textContent = `Mostrando ${out.items.length} lead(s).`;
+
+async function refreshTable(){
+  const slug = $('#slugSelect').value || (ROLE==='admin' ? '' : null);
+  if(ROLE!=='admin' && !slug){
+    $('#leadsBody').innerHTML = `<tr><td colspan="8" class="hint">Selecciona un proyecto para listar los leads…</td></tr>`;
+    return;
+  }
+  const q = $('#searchInput').value.trim();
+  const res = await listLeads(slug, q).catch(()=>({ok:false, items:[]}));
+  if(!res.ok){
+    $('#leadsBody').innerHTML = `<tr><td colspan="8" class="hint">No se pudieron cargar los leads.</td></tr>`;
+    // Si el token venció, forzar relogin
+    const t = localStorage.getItem('psico_id_token');
+    const w = await whoami(t).catch(()=>({ok:false}));
+    if(!w.ok) setLoginModal(true);
+    return;
+  }
+  renderRows(res.items||[]);
 }
-document.addEventListener('click', async e=>{
-  const tr = e.target.closest('tr'); if(!tr) return;
-  const email = tr?.dataset?.email;
-  if(e.target.classList.contains('et')){
-    const cur = tr.querySelector('.tags').textContent.trim();
-    const next = prompt('Tags (coma):', cur);
-    if(next==null) return;
-    const res = await apiPost({ action:'updateTags', project_slug: $('#slugSel').value, email, tags: next });
-    if(res.ok) tr.querySelector('.tags').textContent = next.split(',').map(s=>s.trim()).filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).join(', ');
-    else alert(res.error||'No se pudo actualizar');
+
+function renderRows(items){
+  const tb = $('#leadsBody');
+  tb.innerHTML = '';
+  if(!items.length){
+    tb.innerHTML = `<tr><td colspan="8" class="hint">Sin resultados.</td></tr>`;
+    return;
   }
-  if(e.target.classList.contains('note')){
-    const note = prompt('Nueva nota:'); if(!note) return;
-    const res = await apiPost({ action:'addNote', project_slug: $('#slugSel').value, email, note });
-    if(!res.ok) alert(res.error||'No se pudo agregar');
+  for(const it of items){
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${it.email||''}</td>
+      <td>${it.name||''}</td>
+      <td>${it.phone||''}</td>
+      <td>
+        <input class="select" style="min-width:120px" value="${it.status||'New'}" data-status>
+      </td>
+      <td>
+        <input class="input" style="min-width:200px" value="${it.tags||''}" data-tags>
+      </td>
+      <td><a href="${it.page_url||'#'}" target="_blank" rel="noopener">${(it.page_url||'').slice(0,40)}${(it.page_url||'').length>40?'…':''}</a></td>
+      <td>${fmtDate(it.timestamp)}</td>
+      <td class="actions">
+        <button class="btn ghost" data-save>Guardar</button>
+        <button class="btn ghost" data-note>Nota</button>
+        ${ROLE==='admin' ? '<button class="btn ghost" style="color:#c00;border-color:#f3c" data-del>Eliminar</button>' : ''}
+      </td>
+    `;
+    // Guardar handlers
+    tr.querySelector('[data-save]').addEventListener('click', async ()=>{
+      const slug = $('#slugSelect').value || it.project_slug;
+      const tags = tr.querySelector('[data-tags]').value.trim();
+      const status = tr.querySelector('[data-status]').value.trim() || 'New';
+      const [r1, r2] = await Promise.all([
+        postAction('updateTags',   { project_slug: slug, email: it.email, tags }),
+        postAction('updateStatus', { project_slug: slug, email: it.email, status })
+      ]);
+      if(r1.ok && r2.ok){
+        tr.style.outline = '2px solid rgba(16,185,129,.5)';
+        setTimeout(()=> tr.style.outline = 'none', 900);
+      }
+    });
+    tr.querySelector('[data-note]').addEventListener('click', async ()=>{
+      const note = prompt('Escribe una nota para este lead:', '');
+      if(!note) return;
+      const slug = $('#slugSelect').value || it.project_slug;
+      const r = await postAction('addNote', { project_slug: slug, email: it.email, note });
+      if(r.ok){
+        tr.style.outline = '2px solid rgba(11,95,255,.5)';
+        setTimeout(()=> tr.style.outline = 'none', 900);
+      }
+    });
+    const delBtn = tr.querySelector('[data-del]');
+    if(delBtn){
+      delBtn.addEventListener('click', async ()=>{
+        if(!confirm('¿Eliminar este lead?')) return;
+        const slug = $('#slugSelect').value || it.project_slug;
+        const r = await postAction('delete', { project_slug: slug, email: it.email });
+        if(r.ok){ tr.remove(); }
+      });
+    }
+    tb.appendChild(tr);
   }
+}
+
+/* ====== EVENTS ====== */
+$('#slugSelect').addEventListener('change', refreshTable);
+$('#refreshBtn').addEventListener('click', refreshTable);
+$('#searchInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter'){ e.preventDefault(); refreshTable(); }
 });
-document.addEventListener('change', async e=>{
-  if(!e.target.classList.contains('stSel')) return;
-  const tr = e.target.closest('tr'); const email = tr.dataset.email;
-  const res = await apiPost({ action:'updateStatus', project_slug: $('#slugSel').value, email, status: e.target.value });
-  if(!res.ok) alert(res.error||'No se pudo cambiar estado');
-});
-$('#reload').addEventListener('click', load);
-$('#q').addEventListener('keydown', e=>{ if(e.key==='Enter') load(); });
-$('#slugSel').addEventListener('change', load);
 </script>
 </body>
 </html>
