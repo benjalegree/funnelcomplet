@@ -1,69 +1,83 @@
+Ver código
+Descargar HTML
+Abrir en pestaña
+Cerrar
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Checklist Imprescindible</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Checklist esencial para tu consultoría de funnels – funnels prooooooo</title>
   <style>
-    :root {
-      --primary: #0b5fff;
-      --accent: #ff5722;
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #555555;
-      --radius: 8px;
-      --spacing: 1rem;
-      --font: system-ui, sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.5; }
-    a { color: var(--primary); text-decoration: none; }
-    .container { max-width: 640px; margin: 0 auto; padding: var(--spacing); }
-    header.hero { text-align: center; padding: calc(var(--spacing)*2) var(--spacing); }
-    header.hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    header.hero p { font-size: 1rem; color: var(--muted); margin-bottom: var(--spacing); }
-    button, input[type="email"], input[type="text"], input[type="tel"] {
-      font-family: inherit;
-    }
-    form { display: flex; flex-direction: column; gap: var(--spacing); align-items: center; }
-    input[type="email"], input[type="text"], input[type="tel"] {
-      width: 100%; max-width: 300px; padding: 0.75rem; border: 1px solid #ccc; border-radius: var(--radius);
-    }
-    button {
-      background: var(--accent); color: #fff; border: none; padding: 0.75rem 1.5rem;
-      border-radius: var(--radius); font-size: 1rem; cursor: pointer;
-    }
-    section.benefits { padding: var(--spacing) 0; }
-    .cards { display: grid; grid-template-columns: 1fr; gap: var(--spacing); }
-    @media (min-width: 600px) { .cards { grid-template-columns: repeat(3,1fr); } }
-    .card { border: 1px solid #eee; border-radius: var(--radius); padding: var(--spacing); text-align: center; }
-    .card h3 { margin-bottom: 0.5rem; color: var(--primary); }
-    section.faq { padding: var(--spacing) 0; }
-    details { margin-bottom: var(--spacing); }
-    summary { font-weight: bold; cursor: pointer; }
-    details p { margin-top: 0.5rem; color: var(--muted); }
-    footer { text-align: center; padding: var(--spacing); font-size: 0.875rem; color: var(--muted); }
+    :root {--primary:#00d5ff;--accent:#000;}
+    *,*:before,*:after {box-sizing:border-box;}
+    body {margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#000;background:#fff;}
+    a {color:var(--primary);text-decoration:none;}
+    .container {max-width:600px;margin:0 auto;padding:16px;}
+    .btn {display:inline-block;padding:12px 24px;border:none;border-radius:999px;background:var(--primary);color:#fff;font-weight:700;font-size:1rem;cursor:pointer;text-align:center;}
+    section {padding:60px 0;}
+    #hero {text-align:center;}
+    #hero h1 {margin:0 0 16px;font-size:2rem;}
+    #hero p {margin:0 0 24px;font-size:1.125rem;color:#444;}
+    .cards {display:grid;gap:16px;}
+    @media(min-width:600px) {.cards {grid-template-columns:repeat(3,1fr);}}
+    .card {padding:16px;border:1px solid #eee;border-radius:8px;text-align:center;}
+    .card h3 {margin:0 0 8px;font-size:1.125rem;color:var(--accent);}
+    .card p {margin:0;color:#555;font-size:0.95rem;}
+    #faq details {margin-bottom:12px;}
+    #faq summary {cursor:pointer;padding:12px;border:1px solid #eee;border-radius:4px;background:#f9f9f9;font-weight:600;}
+    #faq p {margin:8px 16px;font-size:0.95rem;color:#555;}
+    footer {padding:16px;text-align:center;font-size:0.85rem;color:#777;border-top:1px solid #eee;}
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Tu Checklist Imprescindible</h1>
-      <p>Descubre los pasos clave para lograr tus objetivos de forma rápida y eficiente.</p>
+  <main class="container">
+    <section id="hero">
+      <h1>Checklist esencial para tu consultoría de funnels</h1>
+      <p>Descarga gratis esta guía futurista con los pasos clave para optimizar tu embudo y aumentar tus ventas.</p>
+      <a href="#leadForm" class="btn">Recibir mi checklist</a>
+    </section>
+
+    <section id="steps">
+      <div class="cards">
+        <article class="card">
+          <h3>Detecta errores críticos</h3>
+          <p>Revisa cada etapa de tu funnel y corrige puntos de fuga que perjudican tu conversión.</p>
+        </article>
+        <article class="card">
+          <h3>Optimiza tu mensaje</h3>
+          <p>Alinea tu propuesta de valor con las necesidades de tu audiencia para maximizar interés.</p>
+        </article>
+        <article class="card">
+          <h3>Acelera tus ventas</h3>
+          <p>Implementa mejoras inmediatas para aumentar tu tasa de cierre y escalar tu negocio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="leadform">
+      <script>window.__PSICO_SLUG="funnels-prooooooo-65d0";</script>
       <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
+      <script>
+        // Plan C: deja el slug disponible incluso en preview (blob:/iframe)
+        window.__PSICO_SLUG = (typeof window.__PSICO_SLUG!=='undefined' && window.__PSICO_SLUG) ? window.__PSICO_SLUG : "";
+      </script>
+
       <form id="leadForm" autocomplete="on">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="tu@correo.com">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;width:100%;max-width:300px">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="tu@correo.com" style="width:100%;padding:8px;margin:4px 0;border:1px solid #ccc;border-radius:4px;">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
           <div>
-            <label for="name">Nombre (opcional)</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre">
+            <label>Nombre (opcional)</label>
+            <input type="text" name="name" placeholder="Tu nombre" style="width:100%;padding:8px;margin:4px 0;border:1px solid #ccc;border-radius:4px;">
           </div>
           <div>
-            <label for="phone">Teléfono (opcional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+            <label>Teléfono (opcional)</label>
+            <input type="tel" name="phone" placeholder="+34 600 000 000" style="width:100%;padding:8px;margin:4px 0;border:1px solid #ccc;border-radius:4px;">
           </div>
         </div>
+
         <input type="hidden" name="project_slug" value="">
         <input type="hidden" name="page_url" value="">
         <input type="hidden" name="utm_source" value="">
@@ -71,31 +85,49 @@
         <input type="hidden" name="utm_campaign" value="">
         <input type="hidden" name="utm_term" value="">
         <input type="hidden" name="utm_content" value="">
+
         <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:var(--accent);color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
-          <span id="formMessage" style="color:var(--muted)">—</span>
+          <button type="submit" id="btnSubmit" class="btn">Recibir mi checklist</button>
+          <span id="formMessage" style="color:#475569">—</span>
         </div>
       </form>
+
       <script>
       (function(){
         const ENDPOINT = "https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec";
         const API_KEY  = "pon-un-secreto-simple-aqui";
+
         const form = document.getElementById('leadForm');
         const msg  = document.getElementById('formMessage');
         const btn  = document.getElementById('btnSubmit');
+
+        function looksLikeTpl(v){ return typeof v==='string' && v.includes(') && v.includes('); }
+
         (function setParams(){
           const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
           set('page_url', location.href);
+
           const q = new URLSearchParams(location.search);
           ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
+
           const slugEl = form.querySelector('[name="project_slug"]');
-          if (slugEl && !slugEl.value) {
-            const fromUrl = q.get('project_slug') || q.get('slug') || '';
-            if (fromUrl) slugEl.value = fromUrl;
+          if (slugEl){
+            if (!slugEl.value || looksLikeTpl(slugEl.value)){
+              const fromUrl  = q.get('project_slug') || q.get('slug') || '';
+              let fromGlob   = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
+              if (looksLikeTpl(fromGlob)) fromGlob='';
+              slugEl.value = fromUrl || fromGlob || '';
+            }
           }
         })();
+
         form.addEventListener('submit', async (e)=>{
           e.preventDefault();
+          const slug = (form.querySelector('[name="project_slug"]')||{}).value || '';
+          if(!slug){
+            msg.textContent = "Error: falta project_slug (abre el enlace con ?project_slug=… o vuelve a generar la landing).";
+            return;
+          }
           msg.textContent = "Enviando…";
           btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
           const data = Object.fromEntries(new FormData(form).entries());
@@ -124,51 +156,31 @@
       })();
       </script>
       <!-- END LEAD BLOCK (DO NOT EDIT) -->
-    </div>
-  </header>
+    </section>
 
-  <section class="benefits container" aria-labelledby="benefits-title">
-    <h2 id="benefits-title" style="text-align:center; margin-bottom:var(--spacing)">Beneficios Clave</h2>
-    <div class="cards">
-      <article class="card">
-        <h3>Optimización Rápida</h3>
-        <p>Descubre los ajustes esenciales para mejorar tu rendimiento en tiempo récord.</p>
-      </article>
-      <article class="card">
-        <h3>Guía Paso a Paso</h3>
-        <p>Sigue una metodología clara y sencilla que te llevará al éxito.</p>
-      </article>
-      <article class="card">
-        <h3>Resultados Medibles</h3>
-        <p>Mide tu avance con indicadores clave y ajusta tu estrategia.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="faq container" aria-labelledby="faq-title">
-    <h2 id="faq-title" style="text-align:center; margin-bottom:var(--spacing)">Preguntas Frecuentes</h2>
-    <details>
-      <summary>¿Qué incluye el checklist?</summary>
-      <p>Incluye los pasos más importantes para optimizar tus procesos y maximizar resultados.</p>
-    </details>
-    <details>
-      <summary>¿Es gratuito?</summary>
-      <p>Sí, el checklist es completamente gratuito, solo necesitamos tu correo para enviártelo.</p>
-    </details>
-    <details>
-      <summary>¿Puedo compartirlo?</summary>
-      <p>Claro, puedes compartirlo con tu equipo o amigos interesados.</p>
-    </details>
-    <details>
-      <summary>¿Cuánto tiempo tarda en llegar?</summary>
-      <p>Recibirás el checklist en tu bandeja de entrada en menos de 5 minutos.</p>
-    </details>
-  </section>
+    <section id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Qué incluye el checklist?</summary>
+        <p>Incluye los puntos clave para auditar y optimizar tu embudo, paso a paso.</p>
+      </details>
+      <details>
+        <summary>¿Es realmente gratis?</summary>
+        <p>Sí, es 100% gratuito y sin compromiso. Ideal para mejorar tus funnels hoy.</p>
+      </details>
+      <details>
+        <summary>¿Puedo usarlo en cualquier nicho?</summary>
+        <p>Sí, está diseñado para adaptarse a consultorías de funnels de cualquier industria.</p>
+      </details>
+      <details>
+        <summary>¿La guía caduca?</summary>
+        <p>No, la descarga es inmediata y podrás revisarla cuando lo necesites.</p>
+      </details>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <p>© 2025 Tu Marca. Todos los derechos reservados.</p>
-    </div>
+    © 2025 funnels prooooooo
   </footer>
 </body>
 </html>
