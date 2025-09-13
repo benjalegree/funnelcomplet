@@ -288,26 +288,27 @@ hr.sep{border:0;height:1px;background:linear-gradient(90deg,rgba(11,95,255,.18),
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <!-- NAV -->
-  <div class="nav glass">
-    <div class="inner container">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>PsicoFunnel</div>
-        <span class="badge" id="healthBadge" title="Estado de API">● Listo</span>
-      </div>
-      <div class="tabs" role="tablist" aria-label="Secciones">
-        <button class="tab active" role="tab" aria-selected="true">Creador</button>
-        <button class="tab" role="tab" disabled title="MVP: próximamente">Leads</button>
-        <button class="tab" role="tab" disabled title="MVP: próximamente">Secuencias</button>
-        <button class="tab" role="tab" disabled title="MVP: próximamente">Analytics</button>
-      </div>
-      <div class="login">
-        <div id="btnGoogle"></div>
-        <span class="hint" id="loginStatus">No has iniciado sesión</span>
-      </div>
+<!-- NAV -->
+<div class="nav glass">
+  <div class="inner container">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>PsicoFunnel</div>
+      <span class="badge" id="healthBadge" title="Estado de API">● Listo</span>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Secciones">
+      <button class="tab active" role="tab" aria-selected="true">Creador</button>
+      <a class="tab" role="tab" aria-selected="false" href="/psiconstructor/crm" title="Ir al CRM">Leads</a>
+      <button class="tab" role="tab" disabled title="MVP: próximamente">Secuencias</button>
+      <button class="tab" role="tab" disabled title="MVP: próximamente">Analytics</button>
+    </div>
+    <div class="login">
+      <div id="btnGoogle"></div>
+      <span class="hint" id="loginStatus">No has iniciado sesión</span>
     </div>
   </div>
+</div>
+
 
   <!-- MODAL LOGIN (liquid glass) -->
   <div class="modal" id="loginModal" aria-hidden="true" role="dialog">
