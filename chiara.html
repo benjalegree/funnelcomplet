@@ -1,77 +1,74 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Checklist de Productividad | funnels proooooooas</title>
+  <title>Checklist Esencial para Funnels</title>
   <style>
     :root {
       --primary: #00d5ff;
-      --accent: #000000;
+      --accent: #000;
+      --bg: #fff;
+      --text: #111;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: system-ui, sans-serif; line-height:1.5; color: var(--accent); background: #fff; }
-    .container { width:90%; max-width:800px; margin: auto; padding: 40px 0; }
-    h1 { font-size:2rem; margin-bottom:16px; }
-    p { margin-bottom:16px; }
-    .btn-primary {
-      display:inline-block; padding:16px 24px; background: var(--primary); color:#fff; text-decoration:none;
-      border:none; border-radius:999px; font-size:1rem; font-weight:600;
-    }
-    section { padding:40px 0; }
-    .benefits { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
-    .benefit-card {
-      flex:1 1 220px; background:#f9f9f9; padding:24px; border-radius:8px; text-align:center;
-    }
-    .benefit-card h3 { margin-bottom:12px; font-size:1.25rem; }
-    #leadform { padding:40px 0; }
-    #faq details { margin-bottom:12px; }
-    #faq summary {
-      cursor:pointer; padding:12px; background:#f1f1f1; border-radius:4px; font-weight:600;
-    }
-    #faq p { padding:0 12px 12px; }
-    footer { text-align:center; padding:20px 0; font-size:0.9rem; color:#666; }
-    @media(max-width:600px){
-      h1 { font-size:1.75rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: system-ui, sans-serif; color: var(--text); background: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    header, main, footer, section { width: 100%; }
+    .container { max-width: 720px; margin: 0 auto; padding: 1rem; }
+    header { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 1rem; }
+    header h1 { font-size: 2rem; margin-bottom: .5rem; }
+    header p { font-size: 1.125rem; margin-bottom: 1.5rem; }
+    .btn { display: inline-block; padding: .75rem 1.5rem; background: var(--primary); color: #fff; font-weight: 600; border: none; border-radius: .5rem; font-size: 1rem; cursor: pointer; }
+    section.benefits { padding: 2rem 1rem; }
+    .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); }
+    .card { border: 1px solid #e0e0e0; border-radius: .5rem; padding: 1rem; background: #fafafa; }
+    .card h3 { margin-bottom: .5rem; font-size: 1.125rem; }
+    section#lead { padding: 2rem 1rem; background: #f9f9f9; }
+    section.faq { padding: 2rem 1rem; }
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item summary { cursor: pointer; font-weight: 600; }
+    footer { text-align: center; padding: 1rem; font-size: .875rem; color: #555; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #121212; color: #ddd; }
+      .card { background: #1e1e1e; border-color: #333; }
+      section#lead { background: #1a1a1a; }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <!-- Hero -->
-    <section id="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Checklist esencial de productividad para consultores de funnels</h1>
-      <p>Descubre los pasos clave para optimizar tu flujo de trabajo y maximizar tus resultados.</p>
-      <a href="#leadform" class="btn-primary">Recibir mi checklist</a>
-    </section>
-    <!-- Benefits -->
-    <section id="benefits" aria-labelledby="benefits-title">
-      <h2 id="benefits-title" class="visually-hidden">Beneficios</h2>
-      <div class="benefits">
-        <div class="benefit-card">
-          <h3>Optimiza tu tiempo</h3>
-          <p>Reduce tareas repetitivas con procesos claros y eficientes.</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Mejora tu enfoque</h3>
-          <p>Identifica y prioriza lo importante para avanzar sin distracciones.</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Aumenta conversiones</h3>
-          <p>Aplica técnicas de productividad que impactan directamente tu funnel.</p>
-        </div>
-      </div>
-    </section>
-    <!-- Lead Form -->
-    <section id="leadform" aria-labelledby="form-title">
-      <h2 id="form-title" style="text-align:center; margin-bottom:24px;">Obtén tu checklist gratis</h2>
-      <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
-<script>
-  /* Plan C: slug incluso en preview (blob:/iframe) */
-  window.__PSICO_SLUG = (typeof window.__PSICO_SLUG!=='undefined' && window.__PSICO_SLUG)
-    ? window.__PSICO_SLUG
-    : "";
-</script>
+
+<header>
+  <div class="container">
+    <h1>Checklist Esencial para Optimizar tus Funnels</h1>
+    <p>Descubre los pasos críticos para aumentar tus conversiones y ventas en consultoría de funnels.</p>
+    <a href="#leadForm" class="btn">Recibir mi checklist</a>
+  </div>
+</header>
+
+<main>
+  <section class="benefits container" aria-labelledby="beneficios-title">
+    <h2 id="beneficios-title" style="margin-bottom:1rem; text-align:center;">Beneficios Clave</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Diagnóstico Instantáneo</h3>
+        <p>Identifica fugas en tu embudo en minutos y evita pérdidas de prospectos.</p>
+      </article>
+      <article class="card">
+        <h3>Optimización de Conversión</h3>
+        <p>Implementa tácticas probadas para transformar visitantes en clientes.</p>
+      </article>
+      <article class="card">
+        <h3>Automatización Eficiente</h3>
+        <p>Maximiza tus ingresos con procesos automáticos y menos esfuerzo manual.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="lead" class="container" aria-labelledby="form-title">
+    <h2 id="form-title" style="text-align:center; margin-bottom:1rem;">Accede a tu Checklist Gratis</h2>
+    <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
+<script id="psico-payload" type="application/json">{"project_slug":"funnels-proooooooas-faaa","brand":{"name":"funnels proooooooas","colors":{"primary":"#00d5ff","accent":"#000000"}},"niche":"consultoria de funnels","goal":"vender servicios","tone":"futurista ","offer":{"price":"997"},"sections":["hero","steps","leadform","faq","footer"],"prompt":"Crea registro a webinar con fecha/horario, bullets de valor y agenda de 3 puntos.","crm_endpoint":"https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec","crm_key":"pon-un-secreto-simple-aqui","owner_email":"psicofunnel@gmail.com","owner_name":"Benjamin E. Alegre","id_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjljNjI1MTU4Nzk1MDg0NGE2NTZiZTM1NjNkOGM1YmQ2Zjg5NGM0MDciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI2MzI4NTI2MjkzMi1hYWRrcWtjajNjMTE3anJqOWVwZnZ0cWthaWl2ZGw3cy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjYzMjg1MjYyOTMyLWFhZGtxa2NqM2MxMTdqcmo5ZXBmdnRxa2FpaXZkbDdzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAzMTc0MTcyNjM2NzU4OTI5Nzg0IiwiZW1haWwiOiJwc2ljb2Z1bm5lbEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmJmIjoxNzU3NzcxMjAyLCJuYW1lIjoiQmVuamFtaW4gRS4gQWxlZ3JlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0ttZjRaTEVuV3Zpa3JNWFBRYmcwSURJRFp4VGxKdEFfbmVabnRnVWZRYkdEVWZ6Zz1zOTYtYyIsImdpdmVuX25hbWUiOiJCZW5qYW1pbiBFLiIsImZhbWlseV9uYW1lIjoiQWxlZ3JlIiwiaWF0IjoxNzU3NzcxNTAyLCJleHAiOjE3NTc3NzUxMDIsImp0aSI6IjE3YzE4MmU2MDZhNTA2Y2Q5ZjJiNjRhZDYxYmI0YjJmZjVkNGUyODIifQ.Bm0KWRwyYPbzHhJy4kqf0bZtI5ad4O08LIr0NZBxirVx4nMxstU8bvi7FNIkeQLKDNZW3-9J330XZrCUYIgg27qeiy1N5ZPEgsZ11AYmPHLkKfE39sC529N9L2Ptr5ZwporZt9YhiDXwXvjcv4uwYWhBgE5w8TdT4YLQE5z82q4oAk38CeHuZ-hqNzU-LxpdQXiHtdAwR6PfWweQDU-EFWOTJIDOczIp51RHIGFSvJ0jn0159d3O0-kHjZjzYz7VamsjZS0Vsk4asNBEWcJZ21UrtD8qtT08_7o4btYivSgm7DQXlGFa3J4Mlds_1cET7HbtWJ_gvQg-x1Y_OrhyXA"}</script>
 
 <form id="leadForm" autocomplete="on">
   <label>Email</label>
@@ -88,7 +85,6 @@
     </div>
   </div>
 
-  <!-- Slug mapeado directo desde el Webhook #1 -->
   <input type="hidden" name="project_slug" value="">
   <input type="hidden" name="page_url" value="">
   <input type="hidden" name="utm_source" value="">
@@ -112,56 +108,58 @@
   const msg  = document.getElementById('formMessage');
   const btn  = document.getElementById('btnSubmit');
 
-  /* FIX: helper correcto (antes faltaban comillas y rompía el JS) */
   function looksLikeTpl(v){ return typeof v==='string' && v.includes(') && v.includes('); }
 
-  // Completa page_url, UTM y asegura project_slug
-  (function setParams(){
-    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
-    set('page_url', location.href);
+  function readInline(field){
+    try{
+      const el = document.getElementById('psico-payload');
+      if(!el) return '';
+      const txt = el.textContent || el.innerText || '';
+      const obj = JSON.parse(txt || '{}');
+      return String(obj[field] || '');
+    }catch(_){ return ''; }
+  }
 
+  (function setParams(){
+    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el && v!=null) el.value=String(v); };
+    set('page_url', location.href);
     const q = new URLSearchParams(location.search);
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
-
     const slugEl = form.querySelector('[name="project_slug"]');
     if (slugEl){
-      // Si por alguna razón quedara la plantilla, usa URL o window.__PSICO_SLUG
-      if (!slugEl.value || looksLikeTpl(slugEl.value)){
-        const fromUrl  = q.get('project_slug') || q.get('slug') || '';
-        let fromGlob   = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
+      let v = slugEl.value;
+      if (!v || looksLikeTpl(v)){
+        const fromInline = readInline('project_slug');
+        const fromUrl    = q.get('project_slug') || q.get('slug') || '';
+        let fromGlob     = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
         if (looksLikeTpl(fromGlob)) fromGlob='';
-        slugEl.value = fromUrl || fromGlob || '';
+        v = fromInline || fromUrl || fromGlob || '';
+        slugEl.value = v;
       }
     }
   })();
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-
-    // No enviar si falta slug
     const slug = (form.querySelector('[name="project_slug"]')||{}).value || '';
     if(!slug){
-      msg.textContent = "Error: falta project_slug (abre el enlace con ?project_slug=… o vuelve a generar la landing).";
+      msg.textContent = "Error: falta project_slug (reabre el enlace desde el generador).";
       return;
     }
-
     msg.textContent = "Enviando…";
     const prev = btn.textContent;
     btn.disabled = true; btn.textContent = "Enviando…";
-
     const data = Object.fromEntries(new FormData(form).entries());
     data.action = "upsert";
     data._key   = API_KEY;
-
     try{
       const r = await fetch(ENDPOINT, {
         method:"POST",
-        headers:{ "Content-Type":"text/plain;charset=UTF-8" }, // evita preflight CORS
+        headers:{ "Content-Type":"text/plain;charset=UTF-8" },
         body: JSON.stringify(data)
       });
       const txt = await r.text();
       let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
-
       if(json.ok){
         msg.textContent = "¡Listo! Revisa tu correo.";
         form.reset();
@@ -177,30 +175,42 @@
 })();
 </script>
 <!-- END LEAD BLOCK (DO NOT EDIT) -->
-    </section>
-    <!-- FAQ -->
-    <section id="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title" style="margin-bottom:24px; text-align:center;">Preguntas frecuentes</h2>
+  </section>
+
+  <section class="faq container" aria-labelledby="faq-title">
+    <h2 id="faq-title" style="text-align:center; margin-bottom:1rem;">Preguntas Frecuentes</h2>
+    <div class="faq-item">
       <details>
-        <summary>¿Qué incluye el checklist?</summary>
-        <p>Una lista paso a paso para optimizar tu productividad en la creación y gestión de funnels.</p>
+        <summary>¿Qué incluye este checklist?</summary>
+        <p>Una lista paso a paso con los elementos clave para revisar y optimizar tu funnel.</p>
       </details>
+    </div>
+    <div class="faq-item">
       <details>
-        <summary>¿Cómo recibo el checklist?</summary>
-        <p>Lo enviaremos al correo que proporciones inmediatamente después de registrarte.</p>
+        <summary>¿Necesito conocimientos técnicos?</summary>
+        <p>No, es amigable para cualquier nivel. Solo sigue las instrucciones.</p>
       </details>
+    </div>
+    <div class="faq-item">
       <details>
-        <summary>¿Es realmente gratis?</summary>
-        <p>Sí, es una guía gratuita sin compromiso de compra.</p>
+        <summary>¿Es totalmente gratis?</summary>
+        <p>Sí, el checklist es gratuito y lo recibirás al instante.</p>
       </details>
+    </div>
+    <div class="faq-item">
       <details>
-        <summary>¿Puedo aplicar los consejos en cualquier tipo de funnel?</summary>
-        <p>Claro, las recomendaciones son universales y se adaptan a distintos nichos y objetivos.</p>
+        <summary>¿Cómo funciona el envío?</summary>
+        <p>Recibirás un correo con un enlace para descargar el PDF.</p>
       </details>
-    </section>
-  </main>
-  <footer>
-    <p>© 2025 funnels proooooooas</p>
-  </footer>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2025 funnels proooooooas. Todos los derechos reservados.
+  </div>
+</footer>
+
 </body>
 </html>
