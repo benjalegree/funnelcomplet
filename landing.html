@@ -2,75 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Registro al Webinar de Funnels Profesionales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domina tus Funnels con nuestra Checklist Futurista</title>
   <style>
-    :root { --primary: #00d5ff; --accent: #000000; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; color: #222; background: #fff; line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
-    .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 2rem 0; flex: 1; }
-    h1, h2, h3 { color: var(--accent); }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.5rem; margin-bottom: 1rem; }
-    p { margin-bottom: 1rem; }
-    .btn { display: inline-block; background: var(--primary); color: #fff; border: none; padding: 1rem 1.5rem; font-size: 1rem; border-radius: 999px; cursor: pointer; text-decoration: none; }
-    .benefits { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0; }
-    @media (min-width: 600px) { .benefits { grid-template-columns: repeat(3,1fr); } }
-    .card { border: 1px solid #eee; border-radius: 8px; padding: 1rem; text-align: center; background: #f9f9f9; }
-    .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
-    .faq { margin: 2rem 0; }
-    .faq-item + .faq-item { margin-top: 1rem; }
-    .faq-item button { width: 100%; text-align: left; background: #f1f1f1; border: none; padding: 0.75rem; font-size: 1rem; cursor: pointer; }
-    .faq-item button:focus { outline: 2px solid var(--primary); }
-    .faq-item [role="region"] { padding: 0.75rem; border: 1px solid #eee; border-top: none; }
-    footer { padding: 1rem 0; text-align: center; font-size: 0.875rem; color: #666; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; background:#fff; color:#000; line-height:1.5; }
+    .container { max-width:800px; padding:1rem; margin:0 auto; }
+    .hero { text-align:center; padding:4rem 1rem; }
+    .hero h1 { font-size:2.5rem; margin:0 0 .5rem; }
+    .hero p { font-size:1.125rem; margin:0 0 1.5rem; color:#333; }
+    .btn-primary { background:#00d5ff; color:#fff; border:none; padding:.75rem 1.5rem; font-size:1rem; border-radius:999px; cursor:pointer; }
+    .cards { display:grid; grid-template-columns:1fr; gap:1rem; margin:2rem 0; }
+    @media(min-width:600px) { .cards { grid-template-columns:repeat(3,1fr); } }
+    .card { border:1px solid #eee; border-radius:8px; padding:1.5rem; text-align:center; background:#f9f9f9; }
+    .card h3 { margin:0 0 .5rem; font-size:1.25rem; }
+    .card p { margin:0; font-size:1rem; color:#555; }
+    .faq { margin:2rem 0; }
+    .faq h2 { font-size:1.5rem; margin-bottom:1rem; }
+    .faq-item { margin-bottom:1rem; }
+    .faq-item button { width:100%; background:#00d5ff; color:#000; border:none; text-align:left; padding:.75rem 1rem; font-size:1rem; border-radius:4px; cursor:pointer; }
+    .faq-item .answer { display:none; padding:.75rem 1rem; margin-top:.25rem; background:#f1faff; border-left:3px solid #00d5ff; border-radius:0 4px 4px 0; color:#333; }
+    footer { text-align:center; padding:2rem 1rem; font-size:.875rem; color:#555; }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('.faq-item button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', !expanded);
-          content.hidden = expanded;
-        });
-      });
-    });
-  </script>
 </head>
 <body>
-  <main class="container" role="main">
-    <section aria-labelledby="hero-title">
-      <h1 id="hero-title">Únete al Webinar de Funnels Profesionales</h1>
-      <p>Aprende a diseñar embudos de venta que conviertan visitantes en clientes de alto valor.</p>
-      <a href="#lead-form" class="btn">Recibir mi checklist</a>
+  <main class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Domina tus Funnels con nuestra Checklist Futurista</h1>
+      <p>Descubre los 10 pasos esenciales para construir embudos que convierten.</p>
+      <button class="btn-primary" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
     </section>
 
-    <section class="benefits" aria-labelledby="benefits-title">
-      <h2 id="benefits-title" class="sr-only">Beneficios del Webinar</h2>
+    <section class="cards" aria-label="Beneficios">
       <div class="card">
-        <h3>Optimiza Conversiones</h3>
-        <p>Descubre técnicas para aumentar tu ratio de conversión hasta un 30%.</p>
+        <h3>Estructura Óptima</h3>
+        <p>Define cada etapa de tu embudo para maximizar conversiones.</p>
       </div>
       <div class="card">
-        <h3>Automatiza Ventas</h3>
-        <p>Implementa flujos automáticos que venden mientras duermes.</p>
+        <h3>Técnicas Avanzadas</h3>
+        <p>Aplica estrategias futuristas para captar y retener clientes.</p>
       </div>
       <div class="card">
-        <h3>Escala tu Negocio</h3>
-        <p>Aprende a replicar tu embudo para alcanzar nuevos mercados.</p>
+        <h3>Implementación Rápida</h3>
+        <p>Checklist lista para usar: ahorra tiempo y lanza hoy.</p>
       </div>
     </section>
 
-    <section id="lead-form" aria-labelledby="form-title">
-      <h2 id="form-title">Regístrate Ahora</h2>
+    <section aria-labelledby="form-title" class="container">
+      <h2 id="form-title" class="visually-hidden">Formulario de Captura</h2>
       <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
-<script>
-  // Plan C: deja el slug disponible incluso en preview (blob:/iframe)
-  window.__PSICO_SLUG = (typeof window.__PSICO_SLUG!=='undefined' && window.__PSICO_SLUG) ? window.__PSICO_SLUG : "";
-</script>
-
 <form id="leadForm" autocomplete="on">
   <label>Email</label>
   <input type="email" name="email" required placeholder="tu@correo.com">
@@ -169,37 +148,39 @@
 <!-- END LEAD BLOCK (DO NOT EDIT) -->
     </section>
 
-    <section class="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title">Preguntas Frecuentes</h2>
+    <section class="faq" aria-label="Preguntas Frecuentes">
+      <h2>Preguntas Frecuentes</h2>
       <div class="faq-item">
-        <button aria-expanded="false" aria-controls="faq1">¿En qué fecha y hora es el webinar?</button>
-        <div id="faq1" role="region" hidden>
-          <p>El webinar se realizará el 25 de septiembre a las 18:00 CEST.</p>
-        </div>
+        <button aria-expanded="false">¿Qué incluye la checklist?</button>
+        <div class="answer"><p>Incluye pasos detallados desde la captación hasta la conversión final.</p></div>
       </div>
       <div class="faq-item">
-        <button aria-expanded="false" aria-controls="faq2">¿Es gratuito?</button>
-        <div id="faq2" role="region" hidden>
-          <p>Sí, la asistencia al webinar es completamente gratuita.</p>
-        </div>
+        <button aria-expanded="false">¿Es apta para principiantes?</button>
+        <div class="answer"><p>Sí, está diseñada para guiarte paso a paso, sin importar tu nivel.</p></div>
       </div>
       <div class="faq-item">
-        <button aria-expanded="false" aria-controls="faq3">¿Necesito experiencia previa?</button>
-        <div id="faq3" role="region" hidden>
-          <p>No, cubrimos desde lo básico hasta técnicas avanzadas.</p>
-        </div>
+        <button aria-expanded="false">¿Cuánto tiempo toma implementarla?</button>
+        <div class="answer"><p>Puedes tener los pasos básicos listos en menos de un día.</p></div>
       </div>
       <div class="faq-item">
-        <button aria-expanded="false" aria-controls="faq4">¿Recibiré la grabación?</button>
-        <div id="faq4" role="region" hidden>
-          <p>Sí, todos los inscritos recibirán la grabación por correo.</p>
-        </div>
+        <button aria-expanded="false">¿Hay garantía?</button>
+        <div class="answer"><p>Ofrecemos soporte básico por 7 días tras la descarga.</p></div>
       </div>
     </section>
   </main>
 
+  <script>
+    document.querySelectorAll('.faq-item button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const open = btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.nextElementSibling.style.display = open ? 'none' : 'block';
+      });
+    });
+  </script>
+
   <footer>
-    © 2025 funnels prooooooo. Todos los derechos reservados.
+    <p>&copy; 2025 funnels proooooooas. Todos los derechos reservados.</p>
   </footer>
 </body>
 </html>
