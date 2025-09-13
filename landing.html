@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registro al Webinar de Funnels Profesionales</title>
+  <style>
+    :root { --primary: #00d5ff; --accent: #000000; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; color: #222; background: #fff; line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
+    .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 2rem 0; flex: 1; }
+    h1, h2, h3 { color: var(--accent); }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+    .btn { display: inline-block; background: var(--primary); color: #fff; border: none; padding: 1rem 1.5rem; font-size: 1rem; border-radius: 999px; cursor: pointer; text-decoration: none; }
+    .benefits { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0; }
+    @media (min-width: 600px) { .benefits { grid-template-columns: repeat(3,1fr); } }
+    .card { border: 1px solid #eee; border-radius: 8px; padding: 1rem; text-align: center; background: #f9f9f9; }
+    .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .faq { margin: 2rem 0; }
+    .faq-item + .faq-item { margin-top: 1rem; }
+    .faq-item button { width: 100%; text-align: left; background: #f1f1f1; border: none; padding: 0.75rem; font-size: 1rem; cursor: pointer; }
+    .faq-item button:focus { outline: 2px solid var(--primary); }
+    .faq-item [role="region"] { padding: 0.75rem; border: 1px solid #eee; border-top: none; }
+    footer { padding: 1rem 0; text-align: center; font-size: 0.875rem; color: #666; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.faq-item button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling;
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !expanded);
+          content.hidden = expanded;
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <main class="container" role="main">
+    <section aria-labelledby="hero-title">
+      <h1 id="hero-title">Únete al Webinar de Funnels Profesionales</h1>
+      <p>Aprende a diseñar embudos de venta que conviertan visitantes en clientes de alto valor.</p>
+      <a href="#lead-form" class="btn">Recibir mi checklist</a>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <h2 id="benefits-title" class="sr-only">Beneficios del Webinar</h2>
+      <div class="card">
+        <h3>Optimiza Conversiones</h3>
+        <p>Descubre técnicas para aumentar tu ratio de conversión hasta un 30%.</p>
+      </div>
+      <div class="card">
+        <h3>Automatiza Ventas</h3>
+        <p>Implementa flujos automáticos que venden mientras duermes.</p>
+      </div>
+      <div class="card">
+        <h3>Escala tu Negocio</h3>
+        <p>Aprende a replicar tu embudo para alcanzar nuevos mercados.</p>
+      </div>
+    </section>
+
+    <section id="lead-form" aria-labelledby="form-title">
+      <h2 id="form-title">Regístrate Ahora</h2>
+      <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
+<script>
+  // Plan C: deja el slug disponible incluso en preview (blob:/iframe)
+  window.__PSICO_SLUG = (typeof window.__PSICO_SLUG!=='undefined' && window.__PSICO_SLUG) ? window.__PSICO_SLUG : "";
+</script>
+
+<form id="leadForm" autocomplete="on">
+  <label>Email</label>
+  <input type="email" name="email" required placeholder="tu@correo.com">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+    <div>
+      <label>Nombre (opcional)</label>
+      <input type="text" name="name" placeholder="Tu nombre">
+    </div>
+    <div>
+      <label>Teléfono (opcional)</label>
+      <input type="tel" name="phone" placeholder="+34 600 000 000">
+    </div>
+  </div>
+
+  <input type="hidden" name="project_slug" value="">
+  <input type="hidden" name="page_url" value="">
+  <input type="hidden" name="utm_source" value="">
+  <input type="hidden" name="utm_medium" value="">
+  <input type="hidden" name="utm_campaign" value="">
+  <input type="hidden" name="utm_term" value="">
+  <input type="hidden" name="utm_content" value="">
+
+  <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:#0b5fff;color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
+    <span id="formMessage" style="color:#475569">—</span>
+  </div>
+</form>
+
+<script>
+(function(){
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec";
+  const API_KEY  = "pon-un-secreto-simple-aqui";
+
+  const form = document.getElementById('leadForm');
+  const msg  = document.getElementById('formMessage');
+  const btn  = document.getElementById('btnSubmit');
+
+  function looksLikeTpl(v){ return typeof v==='string' && v.includes(') && v.includes('); }
+
+  (function setParams(){
+    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
+    set('page_url', location.href);
+
+    const q = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
+
+    const slugEl = form.querySelector('[name="project_slug"]');
+    if (slugEl){
+      if (!slugEl.value || looksLikeTpl(slugEl.value)){
+        const fromUrl  = q.get('project_slug') || q.get('slug') || '';
+        let fromGlob   = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
+        if (looksLikeTpl(fromGlob)) fromGlob='';
+        slugEl.value = fromUrl || fromGlob || '';
+      }
+    }
+  })();
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const slug = (form.querySelector('[name="project_slug"]')||{}).value || '';
+    if(!slug){
+      msg.textContent = "Error: falta project_slug (abre el enlace con ?project_slug=… o vuelve a generar la landing).";
+      return;
+    }
+    msg.textContent = "Enviando…";
+    btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.action = "upsert";
+    data._key   = API_KEY;
+
+    try{
+      const r = await fetch(ENDPOINT, {
+        method:"POST",
+        headers:{ "Content-Type":"text/plain;charset=UTF-8" },
+        body: JSON.stringify(data)
+      });
+      const txt = await r.text();
+      let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
+
+      if(json.ok){
+        msg.textContent = "¡Listo! Revisa tu correo.";
+        form.reset();
+      } else {
+        msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
+        btn.disabled = false; btn.textContent = prev;
+      }
+    }catch(err){
+      msg.textContent = "Error: " + (err.message || "Sin conexión.");
+      btn.disabled = false; btn.textContent = prev;
+    }
+  });
+})();
+</script>
+<!-- END LEAD BLOCK (DO NOT EDIT) -->
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Preguntas Frecuentes</h2>
+      <div class="faq-item">
+        <button aria-expanded="false" aria-controls="faq1">¿En qué fecha y hora es el webinar?</button>
+        <div id="faq1" role="region" hidden>
+          <p>El webinar se realizará el 25 de septiembre a las 18:00 CEST.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button aria-expanded="false" aria-controls="faq2">¿Es gratuito?</button>
+        <div id="faq2" role="region" hidden>
+          <p>Sí, la asistencia al webinar es completamente gratuita.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button aria-expanded="false" aria-controls="faq3">¿Necesito experiencia previa?</button>
+        <div id="faq3" role="region" hidden>
+          <p>No, cubrimos desde lo básico hasta técnicas avanzadas.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button aria-expanded="false" aria-controls="faq4">¿Recibiré la grabación?</button>
+        <div id="faq4" role="region" hidden>
+          <p>Sí, todos los inscritos recibirán la grabación por correo.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 funnels prooooooo. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
