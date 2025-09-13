@@ -2,185 +2,179 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Domina tus Funnels con nuestra Checklist Futurista</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Checklist de Productividad | Funnels Proooooooas</title>
   <style>
-    body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; background:#fff; color:#000; line-height:1.5; }
-    .container { max-width:800px; padding:1rem; margin:0 auto; }
-    .hero { text-align:center; padding:4rem 1rem; }
-    .hero h1 { font-size:2.5rem; margin:0 0 .5rem; }
-    .hero p { font-size:1.125rem; margin:0 0 1.5rem; color:#333; }
-    .btn-primary { background:#00d5ff; color:#fff; border:none; padding:.75rem 1.5rem; font-size:1rem; border-radius:999px; cursor:pointer; }
-    .cards { display:grid; grid-template-columns:1fr; gap:1rem; margin:2rem 0; }
-    @media(min-width:600px) { .cards { grid-template-columns:repeat(3,1fr); } }
-    .card { border:1px solid #eee; border-radius:8px; padding:1.5rem; text-align:center; background:#f9f9f9; }
-    .card h3 { margin:0 0 .5rem; font-size:1.25rem; }
-    .card p { margin:0; font-size:1rem; color:#555; }
-    .faq { margin:2rem 0; }
-    .faq h2 { font-size:1.5rem; margin-bottom:1rem; }
-    .faq-item { margin-bottom:1rem; }
-    .faq-item button { width:100%; background:#00d5ff; color:#000; border:none; text-align:left; padding:.75rem 1rem; font-size:1rem; border-radius:4px; cursor:pointer; }
-    .faq-item .answer { display:none; padding:.75rem 1rem; margin-top:.25rem; background:#f1faff; border-left:3px solid #00d5ff; border-radius:0 4px 4px 0; color:#333; }
-    footer { text-align:center; padding:2rem 1rem; font-size:.875rem; color:#555; }
+    body {margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;background:#fff;color:#000;}
+    .container {max-width:640px;margin:0 auto;padding:20px;}
+    h1,h2,h3 {margin:0 0 .5em;line-height:1.2;}
+    p {margin:0 0 1em;}
+    a, button {font-family:inherit;}
+    a.btn, button {display:inline-block;padding:16px 24px;font-size:1rem;font-weight:bold;background:#00d5ff;color:#fff;border:none;border-radius:999px;cursor:pointer;text-align:center;text-decoration:none;}
+    section {padding:40px 0;}
+    #benefits .cards {display:grid;grid-template-columns:1fr;gap:20px;}
+    @media(min-width:600px){#benefits .cards{grid-template-columns:repeat(3,1fr);}}
+    .card {border:1px solid #eee;padding:20px;border-radius:8px;text-align:center;}
+    #faq details {margin-bottom:1em;}
+    #faq summary {cursor:pointer;font-weight:bold;}
+    footer {text-align:center;padding:20px 0;font-size:.875rem;color:#666;}
+    label {display:block;margin-bottom:4px;font-weight:600;}
+    input {width:100%;padding:8px;margin-bottom:8px;border:1px solid #ccc;border-radius:4px;font-family:inherit;}
   </style>
 </head>
 <body>
   <main class="container">
-    <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Domina tus Funnels con nuestra Checklist Futurista</h1>
-      <p>Descubre los 10 pasos esenciales para construir embudos que convierten.</p>
-      <button class="btn-primary" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Recibir mi checklist</button>
+    <section id="hero">
+      <h1>Checklist de Productividad para Consultorías de Funnels</h1>
+      <p>Optimiza tu flujo de trabajo y maximiza tus resultados con estos pasos esenciales.</p>
+      <a href="#leadForm" class="btn">Recibir mi checklist</a>
     </section>
-
-    <section class="cards" aria-label="Beneficios">
-      <div class="card">
-        <h3>Estructura Óptima</h3>
-        <p>Define cada etapa de tu embudo para maximizar conversiones.</p>
-      </div>
-      <div class="card">
-        <h3>Técnicas Avanzadas</h3>
-        <p>Aplica estrategias futuristas para captar y retener clientes.</p>
-      </div>
-      <div class="card">
-        <h3>Implementación Rápida</h3>
-        <p>Checklist lista para usar: ahorra tiempo y lanza hoy.</p>
+    <section id="benefits">
+      <h2>Beneficios</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Gestión de Tareas Eficiente</h3>
+          <p>Organiza y prioriza tus actividades diarias para cumplir objetivos sin estrés.</p>
+        </article>
+        <article class="card">
+          <h3>Priorización Inteligente</h3>
+          <p>Identifica las acciones de más alto impacto para impulsar tus ventas.</p>
+        </article>
+        <article class="card">
+          <h3>Automatización de Procesos</h3>
+          <p>Ahorra tiempo con workflows automatizados y enfócate en lo que importa.</p>
+        </article>
       </div>
     </section>
-
-    <section aria-labelledby="form-title" class="container">
-      <h2 id="form-title" class="visually-hidden">Formulario de Captura</h2>
+    <section id="leadform">
+      <h2>Obtén tu Checklist</h2>
       <!-- BEGIN LEAD BLOCK (DO NOT EDIT) -->
-<form id="leadForm" autocomplete="on">
-  <label>Email</label>
-  <input type="email" name="email" required placeholder="tu@correo.com">
+      <script>
+        /* Plan C: deja el slug disponible incluso en preview (blob:/iframe) */
+        window.__PSICO_SLUG = (typeof window.__PSICO_SLUG!=='undefined' && window.__PSICO_SLUG) ? window.__PSICO_SLUG : "";
+      </script>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-    <div>
-      <label>Nombre (opcional)</label>
-      <input type="text" name="name" placeholder="Tu nombre">
-    </div>
-    <div>
-      <label>Teléfono (opcional)</label>
-      <input type="tel" name="phone" placeholder="+34 600 000 000">
-    </div>
-  </div>
+      <form id="leadForm" autocomplete="on">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="tu@correo.com">
 
-  <input type="hidden" name="project_slug" value="">
-  <input type="hidden" name="page_url" value="">
-  <input type="hidden" name="utm_source" value="">
-  <input type="hidden" name="utm_medium" value="">
-  <input type="hidden" name="utm_campaign" value="">
-  <input type="hidden" name="utm_term" value="">
-  <input type="hidden" name="utm_content" value="">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <label for="name">Nombre (opcional)</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre">
+          </div>
+          <div>
+            <label for="phone">Teléfono (opcional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+          </div>
+        </div>
 
-  <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-    <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:#0b5fff;color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
-    <span id="formMessage" style="color:#475569">—</span>
-  </div>
-</form>
+        <!-- 👇 Make debe mapear esto; si no, lo rellenamos con Plan B/C -->
+        <input type="hidden" name="project_slug" value="funnels-proooooooas-3lsa">
+        <input type="hidden" name="page_url" value="">
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_term" value="">
+        <input type="hidden" name="utm_content" value="">
 
-<script>
-(function(){
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec";
-  const API_KEY  = "pon-un-secreto-simple-aqui";
+        <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button type="submit" id="btnSubmit" style="padding:12px 16px;border-radius:999px;border:0;background:#00d5ff;color:#fff;font-weight:800;cursor:pointer">Recibir mi checklist</button>
+          <span id="formMessage" style="color:#475569">—</span>
+        </div>
+      </form>
 
-  const form = document.getElementById('leadForm');
-  const msg  = document.getElementById('formMessage');
-  const btn  = document.getElementById('btnSubmit');
+      <script>
+        (function(){
+          const ENDPOINT = "https://script.google.com/macros/s/AKfycbzWAIlXAlJURfqDeUBgyFAeojocv-eciJ6FpVsS9lKbp_V5IsPwDTXQjLiTuxNie9taIg/exec";
+          const API_KEY  = "pon-un-secreto-simple-aqui";
 
-  function looksLikeTpl(v){ return typeof v==='string' && v.includes(') && v.includes('); }
+          const form = document.getElementById('leadForm');
+          const msg  = document.getElementById('formMessage');
+          const btn  = document.getElementById('btnSubmit');
 
-  (function setParams(){
-    const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
-    set('page_url', location.href);
+          function looksLikeTpl(v){ return typeof v==='string' && v.includes(') && v.includes('); }
 
-    const q = new URLSearchParams(location.search);
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
+          // Completa page_url, UTM y asegura project_slug
+          (function setParams(){
+            const set = (n,v)=>{ const el=form.querySelector('[name="'+n+'"]'); if(el) el.value=v||''; };
+            set('page_url', location.href);
 
-    const slugEl = form.querySelector('[name="project_slug"]');
-    if (slugEl){
-      if (!slugEl.value || looksLikeTpl(slugEl.value)){
-        const fromUrl  = q.get('project_slug') || q.get('slug') || '';
-        let fromGlob   = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
-        if (looksLikeTpl(fromGlob)) fromGlob='';
-        slugEl.value = fromUrl || fromGlob || '';
-      }
-    }
-  })();
+            const q = new URLSearchParams(location.search);
+            ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=> set(k, q.get(k)));
 
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const slug = (form.querySelector('[name="project_slug"]')||{}).value || '';
-    if(!slug){
-      msg.textContent = "Error: falta project_slug (abre el enlace con ?project_slug=… o vuelve a generar la landing).";
-      return;
-    }
-    msg.textContent = "Enviando…";
-    btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
+            const slugEl = form.querySelector('[name="project_slug"]');
+            if (slugEl){
+              if (!slugEl.value || looksLikeTpl(slugEl.value)){
+                const fromUrl  = q.get('project_slug') || q.get('slug') || '';
+                let fromGlob   = (typeof window!=='undefined' && window.__PSICO_SLUG) ? String(window.__PSICO_SLUG) : '';
+                if (looksLikeTpl(fromGlob)) fromGlob='';
+                slugEl.value = fromUrl || fromGlob || '';
+              }
+            }
+          })();
 
-    const data = Object.fromEntries(new FormData(form).entries());
-    data.action = "upsert";
-    data._key   = API_KEY;
+          form.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+            const slug = (form.querySelector('[name="project_slug"]')||{}).value || '';
+            if(!slug){
+              msg.textContent = "Error: falta project_slug (abre el enlace con ?project_slug=… o vuelve a generar la landing).";
+              return;
+            }
+            msg.textContent = "Enviando…";
+            btn.disabled = true; const prev = btn.textContent; btn.textContent = "Enviando…";
 
-    try{
-      const r = await fetch(ENDPOINT, {
-        method:"POST",
-        headers:{ "Content-Type":"text/plain;charset=UTF-8" },
-        body: JSON.stringify(data)
-      });
-      const txt = await r.text();
-      let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
+            const data = Object.fromEntries(new FormData(form).entries());
+            data.action = "upsert";
+            data._key   = API_KEY;
 
-      if(json.ok){
-        msg.textContent = "¡Listo! Revisa tu correo.";
-        form.reset();
-      } else {
-        msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
-        btn.disabled = false; btn.textContent = prev;
-      }
-    }catch(err){
-      msg.textContent = "Error: " + (err.message || "Sin conexión.");
-      btn.disabled = false; btn.textContent = prev;
-    }
-  });
-})();
-</script>
-<!-- END LEAD BLOCK (DO NOT EDIT) -->
+            try{
+              const r = await fetch(ENDPOINT, {
+                method:"POST",
+                headers:{ "Content-Type":"text/plain;charset=UTF-8" },
+                body: JSON.stringify(data)
+              });
+              const txt = await r.text();
+              let json; try{ json = JSON.parse(txt); } catch(e){ throw new Error("Respuesta no JSON: "+txt.slice(0,160)); }
+
+              if(json.ok){
+                msg.textContent = "¡Listo! Revisa tu correo.";
+                form.reset();
+              } else {
+                msg.textContent = "Error: " + (json.error || "Inténtalo de nuevo.");
+                btn.disabled = false; btn.textContent = prev;
+              }
+            }catch(err){
+              msg.textContent = "Error: " + (err.message || "Sin conexión.");
+              btn.disabled = false; btn.textContent = prev;
+            }
+          });
+        })();
+      </script>
+      <!-- END LEAD BLOCK (DO NOT EDIT) -->
     </section>
-
-    <section class="faq" aria-label="Preguntas Frecuentes">
+    <section id="faq">
       <h2>Preguntas Frecuentes</h2>
-      <div class="faq-item">
-        <button aria-expanded="false">¿Qué incluye la checklist?</button>
-        <div class="answer"><p>Incluye pasos detallados desde la captación hasta la conversión final.</p></div>
-      </div>
-      <div class="faq-item">
-        <button aria-expanded="false">¿Es apta para principiantes?</button>
-        <div class="answer"><p>Sí, está diseñada para guiarte paso a paso, sin importar tu nivel.</p></div>
-      </div>
-      <div class="faq-item">
-        <button aria-expanded="false">¿Cuánto tiempo toma implementarla?</button>
-        <div class="answer"><p>Puedes tener los pasos básicos listos en menos de un día.</p></div>
-      </div>
-      <div class="faq-item">
-        <button aria-expanded="false">¿Hay garantía?</button>
-        <div class="answer"><p>Ofrecemos soporte básico por 7 días tras la descarga.</p></div>
-      </div>
+      <details>
+        <summary>¿Para quién está diseñado este checklist?</summary>
+        <p>Para consultores de funnels que desean mejorar su productividad y resultados.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo toma implementar los pasos?</summary>
+        <p>Con solo 10 minutos diarios puedes integrar fácilmente cada recomendación.</p>
+      </details>
+      <details>
+        <summary>¿Es aplicable a cualquier tipo de funnel?</summary>
+        <p>Sí, los principios son universales y adaptables a tu flujo de ventas.</p>
+      </details>
+      <details>
+        <summary>¿Tiene algún costo adicional?</summary>
+        <p>No, el checklist es 100% gratuito al suscribirte.</p>
+      </details>
     </section>
   </main>
-
-  <script>
-    document.querySelectorAll('.faq-item button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const open = btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded', String(!open));
-        btn.nextElementSibling.style.display = open ? 'none' : 'block';
-      });
-    });
-  </script>
-
   <footer>
-    <p>&copy; 2025 funnels proooooooas. Todos los derechos reservados.</p>
+    <p>© 2025 Funnels Proooooooas</p>
   </footer>
 </body>
 </html>
