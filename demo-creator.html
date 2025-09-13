@@ -14,37 +14,38 @@
   /* Tema */
   --bg:#f7f9fc;                 /* blanco suave */
   --bg-grad: radial-gradient(1200px 800px at 20% -10%, #eaf2ff 0%, rgba(234,242,255,0) 60%),
-               radial-gradient(800px 600px at 120% 10%, #f0f7ff 0%, rgba(240,247,255,0) 58%),
-               radial-gradient(600px 500px at 80% 90%, #e8f1ff 0%, rgba(232,241,255,0) 68%);
-  --card: rgba(255,255,255,.7);
-  --border: rgba(11,95,255,.15);
-  --shadow-lg: 0 24px 40px rgba(11,95,255,.10), 0 6px 14px rgba(2,6,23,.06);
-  --shadow-sm: 0 6px 16px rgba(2,6,23,.06);
-  --glass-blur: 14px;
-
-  /* Colores base */
-  --primary:#0b5fff;  /* azul fuerte */
-  --accent:#0ea5e9;   /* celeste */
-  --text:#0b1220;     /* casi-negro */
-  --muted:#475569;    /* slate */
-  --success:#0CE756;  /* verde éxito */
-
-  /* Tipografía y radio */
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  --radius-3xl: 32px;
+             radial-gradient(900px 700px at 100% 0%, #f0fbff 0%, rgba(240,251,255,0) 60%);
+  --card: rgba(255,255,255,.62);
+  --border: rgba(255,255,255,.38);
+  --text:#0b1220;               /* navy muy oscuro */
+  --muted:#6b7280;
+  --primary:#0ea5e9;            /* celeste */
+  --accent:#0b5fff;             /* azul */
+  --success:#10b981;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --glass-blur: 18px;
   --radius-2xl: 24px;
   --radius-xl: 18px;
   --radius-lg: 14px;
+  --shadow-lg: 0 20px 60px rgba(15,23,42,.12);
+  --shadow-md: 0 10px 30px rgba(2,6,23,.10);
+  --shadow-sm: 0 6px 16px rgba(2,6,23,.08);
+  --ring: 0 0 0 8px rgba(14,165,233,.15);
+  --ring-strong: 0 0 0 10px rgba(14,165,233,.22);
 
-  /* Layout */
-  --max-w: 1200px;
-  --nav-h: 64px;
+  /* Tipografía */
+  --font: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+  /* Dimensiones */
+  --nav-h: 68px;
+  --max-w: 1180px;
 }
-
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%;margin:0}
 body{
-  margin:0; font: 500 14px/1.5 var(--font); color:var(--text);
+  font-family:var(--font);
+  color:var(--text);
   background: var(--bg);
   background-image: var(--bg-grad);
   background-attachment: fixed;
@@ -62,15 +63,33 @@ body{
 }
 .btn{
   display:inline-flex; align-items:center; gap:10px;
-  padding:10px 14px; border:0; border-radius:999px; cursor:pointer;
-  font-weight:800; letter-spacing:.2px;
-  background:linear-gradient(135deg, #0b5fff, #0ea5e9);
-  color:#fff;
+  padding:14px 20px; border-radius:999px; border:0; cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--primary));
+  color:#fff; font-weight:700; letter-spacing:.2px; text-decoration:none;
+  box-shadow:0 12px 28px rgba(14,165,233,.35);
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
 }
-.btn.secondary{
-  background:transparent; color:#0b5fff; border:1px solid rgba(11,95,255,.25);
+.btn:hover{transform:translateY(-1px); filter:saturate(1.1)}
+.btn:active{transform:translateY(0); box-shadow:0 10px 20px rgba(14,165,233,.3)}
+.btn.ghost{
+  background:transparent; color:var(--accent); border:1px solid rgba(11,95,255,.25);
+  box-shadow:var(--shadow-sm);
 }
-.btn.icon svg{flex:0 0 auto}
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 12px; border-radius:999px;
+  background:rgba(14,165,233,.12); color:var(--accent); font-weight:700; font-size:12px;
+  border:1px solid rgba(11,95,255,.25);
+}
+.pills{display:flex; gap:8px; flex-wrap:wrap}
+.pill{
+  padding:8px 12px; border-radius:999px; border:1px solid rgba(11,95,255,.18);
+  background:rgba(255,255,255,.6); color:#0b3aa6; font-weight:600; cursor:pointer;
+  transition:transform .1s ease, background .2s ease;
+}
+.pill:hover{transform:translateY(-1px); background:#fff}
+.hint{color:var(--muted); font-size:14px}
+hr.sep{border:0;height:1px;background:linear-gradient(90deg,rgba(11,95,255,.18),rgba(14,165,233,.18)); margin:28px 0}
 
 /* Nav superior */
 .nav{
@@ -87,14 +106,12 @@ body{
   box-shadow:0 10px 30px rgba(11,95,255,.28), inset 0 0 20px rgba(255,255,255,.35);
   position:relative; overflow:hidden;
 }
-.badge{
-  margin-left:8px; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:800; color:#0b3aa6;
-  background:rgba(255,255,255,.6); border:1px solid rgba(11,95,255,.15);
+.brand .logo::after{
+  content:""; position:absolute; inset:-40% -20% auto auto; width:120%; height:120%;
+  background:linear-gradient(60deg,rgba(255,255,255,.55),rgba(255,255,255,0));
+  transform:rotate(12deg);
 }
-.tabs{display:flex; gap:8px; align-items:center}
-.tabs .hint{font-size:12px; color:var(--muted)}
-.tabs .sp{width:1px; height:18px; background:rgba(11,95,255,.15)}
-.tabs .group{display:flex; gap:6px; align-items:center}
+.nav .tabs{display:flex; gap:8px; align-items:center}
 .tab{
   padding:10px 14px; border-radius:999px; font-weight:700; font-size:14px;
   background:rgba(255,255,255,.7); border:1px solid rgba(11,95,255,.15); cursor:pointer;
@@ -106,67 +123,67 @@ body{
 /* Header pregunta + CTA */
 .header-hero{ padding:34px 0 18px; text-align:center; }
 .title{
-  font-size: clamp(28px, 4vw, 60px);
+  font-size: clamp(28px, 4vw, 44px);
   line-height:1.05; font-weight:900; letter-spacing:-.02em; margin:10px 0 8px;
   background:linear-gradient(120deg,#0b5fff 0%,#0ea5e9 35%,#0b5fff 70%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
   position:relative; display:inline-block;
 }
 .title::after{
-  content:""; display:block; height:8px; border-radius:999px; margin:14px auto 0; width:180px;
-  background:linear-gradient(90deg, rgba(11,95,255,.28), rgba(14,165,233,.28));
+  content:""; display:block; height:8px; border-radius:999px; margin:10px auto 0;
+  width:58%; background:linear-gradient(90deg,rgba(11,95,255,.45),rgba(14,165,233,.35)); filter: blur(2px);
 }
+.header-hero .subtitle{color:var(--muted); max-width:780px; margin:8px auto 0}
 
-/* Plantillas estilo “Canva” */
+/* Plantillas (iconos glass pequeños, sin cuadrado) */
 .templates{
-  margin:20px auto 8px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center;
+  margin-top:18px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap;
 }
-.template{
-  display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; cursor:pointer;
-  border:1px solid rgba(11,95,255,.15); background:rgba(255,255,255,.65); box-shadow:var(--shadow-sm);
-  transition:.2s transform ease, .2s box-shadow ease;
-}
-.template:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(11,95,255,.14) }
+.template{ display:flex; flex-direction:column; align-items:center; gap:10px; width:96px; cursor:pointer; user-select:none; }
 .icon-glass{
-  width:34px; height:34px; border-radius:999px; display:grid; place-items:center;
-  background: linear-gradient(135deg, rgba(11,95,255,.16), rgba(14,165,233,.16));
-  border:1px solid rgba(11,95,255,.22);
+  width:68px; height:68px; border-radius:50%;
+  background: radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.35) 100%),
+              linear-gradient(135deg, rgba(11,95,255,.18), rgba(14,165,233,.18));
+  border:1px solid rgba(11,95,255,.25);
+  backdrop-filter:saturate(1.35) blur(12px); -webkit-backdrop-filter:saturate(1.35) blur(12px);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,.6);
+  display:grid; place-items:center;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.template .name{ font-weight:800; letter-spacing:.2px }
+.icon-glass:hover{ transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: rgba(11,95,255,.35) }
+.template .name{font-size:12px; font-weight:700; color:#0b3aa6; text-align:center}
 
-/* Panel central (chat-style) */
-.main{
-  display:grid; grid-template-columns: minmax(0,1fr) 380px; gap:16px; align-items:start; padding:10px 0 34px;
+/* Chat canvas */
+.canvas{ min-height: calc(100vh - var(--nav-h) - 176px); display:grid; place-items:stretch; margin-top:10px; }
+.chat{
+  position:relative; overflow:hidden; border-radius:var(--radius-2xl);
+  padding:0; display:grid; grid-template-rows: 1fr auto; height:72vh;
 }
-.left .panel{
-  min-height:420px; padding:16px; border-radius:var(--radius-2xl);
-  display:grid; grid-template-rows: 1fr auto; gap:12px;
+.chat .bg{ position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(800px 600px at 15% 20%, rgba(11,95,255,.12), transparent 60%),
+              radial-gradient(700px 600px at 85% 10%, rgba(14,165,233,.10), transparent 60%),
+              radial-gradient(900px 700px at 50% 100%, rgba(11,95,255,.10), transparent 60%); }
+.chat .surface{ position:absolute; inset:0; padding:18px; display:flex; flex-direction:column; }
+.chat .pane{ flex:1; overflow:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
+.msg{
+  max-width:68ch; padding:12px 14px; border-radius:16px; box-shadow:var(--shadow-sm);
+  border:1px solid rgba(11,95,255,.12); background:#fff; line-height:1.35;
 }
-.pane{
-  background:rgba(255,255,255,.7); border-radius:var(--radius-xl); border:1px solid rgba(11,95,255,.18);
-  padding:12px; overflow:auto; max-height:min(56vh, 580px);
-}
-.msg{ display:flex; gap:10px; margin-bottom:10px }
-.msg.system{ color:#0b3aa6; font-weight:700 }
-.msg.assistant{ color:#082a7a }
-.msg.user{ color:#0b1220 }
+.msg.user{ align-self:flex-end; background:linear-gradient(135deg, #ffffff, #f6fbff); border-color:rgba(14,165,233,.25) }
+.msg.assistant{ align-self:flex-start }
+.msg.system{ align-self:center; font-size:13px; color:var(--muted); background:rgba(255,255,255,.6) }
+
 .composer{
-  border:1px dashed rgba(11,95,255,.28); border-radius:16px; padding:10px; background:rgba(255,255,255,.8);
-  display:flex; align-items:center; gap:10px;
+  display:flex; gap:10px; padding:10px; border-top:1px solid rgba(11,95,255,.1);
+  background:rgba(255,255,255,.75); backdrop-filter: blur(8px);
+  border-bottom-left-radius:var(--radius-2xl); border-bottom-right-radius:var(--radius-2xl);
 }
-.composer textarea{
-  width:100%; min-height:62px; border:0; outline:0; resize:vertical; background:transparent; font:500 14px var(--font)
-}
-
-/* Panel derecho */
-.right .panel{
-  padding:16px; border-radius:var(--radius-2xl); display:grid; gap:12px;
-}
-.card{ padding:14px; border-radius:var(--radius-xl); background:rgba(255,255,255,.8); border:1px solid rgba(11,95,255,.14); box-shadow:var(--shadow-sm) }
-.card .k{font-weight:800; color:#0b3aa6}
-.card .v{font-weight:700}
-.kv{ display:grid; grid-template-columns: 120px 1fr; gap:8px; align-items:center }
-.hint{ color:var(--muted) }
+.input{ flex:1; display:flex; align-items:center; gap:8px; padding:10px 12px;
+  background:#fff; border:1px solid rgba(11,95,255,.18); border-radius:14px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.input textarea{ width:100%; border:0; outline:0; resize:none; max-height:180px; font: 500 15px/1.4 var(--font); color:var(--text); }
+.chips{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 0}
+.chip{ padding:6px 10px; border-radius:999px; background:rgba(14,165,233,.12);
+  border:1px solid rgba(11,95,255,.25); color:#0b3aa6; font-weight:700; font-size:12px; cursor:pointer; }
 
 /* Últimas landings & ideas */
 .section{padding:30px 0}
@@ -185,8 +202,16 @@ body{
   border-radius:var(--radius-2xl); box-shadow:var(--shadow-lg); background:rgba(255,255,255,.9);
   border:1px solid rgba(11,95,255,.25);
 }
+.form-grid{display:grid; gap:12px; grid-template-columns:repeat(2, minmax(0,1fr))}
+.form-grid .full{grid-column:1/-1}
+.label{font-size:12px; font-weight:800; color:#0b3aa6; letter-spacing:.3px}
+.input-txt, .input-num, .input-sel{
+  width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(11,95,255,.2); background:#fff; font:500 14px var(--font)
+}
+.colors{display:flex; gap:10px}
+.colors input[type=color]{appearance:none; width:44px; height:36px; border-radius:12px; border:1px solid rgba(11,95,255,.25); padding:0}
 
-/* Preview modal */
+/* Modal Preview (iframe + código) */
 .preview-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:90; }
 .preview-modal.active{display:flex}
 .preview-modal .sheet{
@@ -203,24 +228,11 @@ body{
 .preview-modal iframe{ width:100%; height:100%; border:0; }
 .preview-modal pre{
   display:none; margin:0; padding:14px; height:100%; overflow:auto; background:#0b1220; color:#e5e7eb;
-  font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font: 12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
-.preview-modal.show-code iframe{ display:none }
-.preview-modal.show-code pre{ display:block }
-
-/* Footer mini */
-footer{ padding:24px 0 30px; color:#64748b; text-align:center }
-
-/* Responsivo */
-@media (max-width: 980px){
-  .main{grid-template-columns: 1fr}
-}
-
-/* Accesibilidad simple */
-:focus-visible{ outline: 2px solid rgba(14,165,233,.6); outline-offset: 2px; border-radius:8px }
+.preview-modal.show-code iframe{display:none}
+.preview-modal.show-code pre{display:block}
 </style>
-
-<!-- Google Identity Services -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -242,23 +254,6 @@ footer{ padding:24px 0 30px; color:#64748b; text-align:center }
     </div>
   </div>
 
-  <!-- LOGIN MODAL (liquid glass) -->
-  <div id="loginModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="scrim" data-close-login></div>
-    <div class="dialog glass" style="max-width:560px">
-      <button class="btn secondary" style="position:absolute; top:10px; right:10px" data-close-login aria-label="Cerrar">
-        ✕
-      </button>
-      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; padding:10px 6px 2px">
-        <div class="logo" aria-hidden="true"></div>
-        <h2 style="margin:0; font-size:22px; letter-spacing:-.02em">Inicia sesión para continuar</h2>
-        <p class="hint" style="margin:0 0 8px">Conéctate con Google para guardar tu proyecto y generar la landing.</p>
-        <div id="btnGoogleModal" style="display:flex; justify-content:center"></div>
-        <div class="hint" id="loginStatusModal">Tu correo no está conectado.</div>
-      </div>
-    </div>
-  </div>
-
   <!-- HEADER -->
   <header class="header-hero container">
     <h1 class="title">¿Qué funnel vamos a diseñar hoy?</h1>
@@ -277,7 +272,7 @@ footer{ padding:24px 0 30px; color:#64748b; text-align:center }
         <div class="name">Opt-in</div>
       </div>
 
-      <div class="template" data-template="vsl" data-sections='["hero","benefits","leadform","faq","footer"]' data-prompt="Landing VSL minimalista con video central, bullets, prueba social mínima y CTA al formulario.">
+      <div class="template" data-template="vsl" data-sections='["hero","how","leadform","pricing","faq","footer"]' data-prompt="Crea una página VSL con un video central, bullets, prueba social mínima y CTA al formulario.">
         <div class="icon-glass" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <rect x="3" y="6" width="18" height="12" rx="2.2" stroke="#0ea5e9" stroke-width="1.4"/>
@@ -287,135 +282,201 @@ footer{ padding:24px 0 30px; color:#64748b; text-align:center }
         <div class="name">VSL</div>
       </div>
 
-      <div class="template" data-template="webinar" data-sections='["hero","benefits","leadform","faq","footer"]' data-prompt="Landing de registro a webinar con fecha/horario, bullets de valor y agenda de 3 puntos.">
+      <div class="template" data-template="webinar" data-sections='["hero","steps","leadform","faq","footer"]' data-prompt="Crea registro a webinar con fecha/horario, bullets de valor y agenda de 3 puntos.">
         <div class="icon-glass" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="#0ea5e9" stroke-width="1.4"/>
-            <path d="M8.8 12h6.4M12 8.8v6.4" stroke="#0b5fff" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="3" y="5" width="18" height="14" rx="2.2" stroke="#0ea5e9" stroke-width="1.4"/>
+            <path d="M3 9h18" stroke="#0b5fff" stroke-width="1.4"/>
+            <circle cx="9" cy="13" r="1.4" fill="#0b5fff"/><circle cx="15" cy="13" r="1.4" fill="#0ea5e9"/>
           </svg>
         </div>
         <div class="name">Webinar</div>
       </div>
+
+      <div class="template" data-template="checkout" data-sections='["hero","pricing","faq","footer"]' data-prompt="Crea una página de checkout simple con beneficios y garantía breve.">
+        <div class="icon-glass" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h2l2 10h8l2-7H7" stroke="#0b5fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="19" r="1.5" fill="#0ea5e9"/><circle cx="16" cy="19" r="1.5" fill="#0ea5e9"/>
+          </svg>
+        </div>
+        <div class="name">Checkout</div>
+      </div>
+
+      <div class="template" data-template="thanks" data-sections='["hero","how","footer"]' data-prompt="Crea una página de gracias con próximos pasos claros.">
+        <div class="icon-glass" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#0ea5e9" stroke-width="1.4"/>
+            <path d="M8.5 12.5l2.5 2.5 4.5-5.5" stroke="#0b5fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="name">Thank You</div>
+      </div>
+
+      <div class="template" data-template="sales" data-sections='["hero","benefits","how","pricing","faq","footer"]' data-prompt="Crea una sales page breve con beneficios, cómo funciona, precio y FAQ.">
+        <div class="icon-glass" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l8 8-7 7-8-8V3h7z" stroke="#0b5fff" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="10" cy="8" r="1.4" fill="#0ea5e9"/>
+          </svg>
+        </div>
+        <div class="name">Sales Page</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; justify-content:center;">
+      <button class="btn" id="openBrief">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        Creamos tu funnel
+      </button>
+      <button class="btn ghost" id="loadDemo">Cargar demo rápida</button>
     </div>
   </header>
 
-  <!-- MAIN -->
-  <main class="main container">
-    <!-- izquierda -->
-    <section class="left">
-      <div class="panel glass">
-        <div id="pane" class="pane" aria-live="polite" aria-label="Mensajes"></div>
+  <!-- CHAT CANVAS -->
+  <main class="container canvas">
+    <section class="chat glass" aria-label="Creador tipo chat">
+      <div class="bg" aria-hidden="true"></div>
+      <div class="surface">
+        <div id="pane" class="pane" role="log" aria-live="polite" aria-label="Mensajes del chat">
+          <div class="msg system">Consejo: selecciona una plantilla arriba para autocompletar el prompt o escribe libremente.</div>
+        </div>
         <div class="composer">
-          <textarea id="composer" placeholder="Describe tu landing (objetivo, público, estilo)…"></textarea>
-          <button class="btn secondary" id="openBrief" title="Creamos tu funnel (brief)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="#0b5fff" stroke-width="2" stroke-linecap="round"/></svg> Creamos tu funnel</button>
-          <button class="btn" id="send" aria-label="Generar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l14-7-7 14-2-5-5-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Generar</button>
+          <div class="input" style="flex:1">
+            <textarea id="composer" rows="1" placeholder="Describe tu funnel… (Shift+Enter para salto de línea)"></textarea>
+          </div>
+          <button class="btn" id="send" aria-label="Enviar prompt y generar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l16-8-7 16-2-7-7-1z" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+            Generar
+          </button>
+        </div>
+        <div class="chips" id="chips">
+          <div class="chip">Añade FAQ</div>
+          <div class="chip">Incluye garantía 7 días</div>
+          <div class="chip">Tono profesional y claro</div>
+          <div class="chip">CTA con beneficio</div>
         </div>
       </div>
     </section>
-
-    <!-- derecha -->
-    <aside class="right">
-      <div class="panel glass">
-        <div class="card">
-          <div class="k">Estado</div>
-          <div class="v" id="state">Listo para generar</div>
-        </div>
-
-        <div class="card">
-          <div class="k">Brief (predeterminado)</div>
-          <div class="kv"><div class="k">Marca</div><div class="v" id="kvBrand">—</div></div>
-          <div class="kv"><div class="k">Nicho</div><div class="v" id="kvNiche">—</div></div>
-          <div class="kv"><div class="k">Tono</div><div class="v" id="kvTone">—</div></div>
-          <div class="kv"><div class="k">Colores</div><div class="v"><span class="colors"><span class="chip" id="kvPrimary"></span><span class="chip" id="kvAccent"></span></span></div></div>
-        </div>
-
-        <div class="card">
-          <div class="k">Ayuda</div>
-          <div class="hint">Describe claramente el objetivo, público y estilo. Ej: “Landing opt-in para checklist de productividad, tono profesional y minimalista, CTA ‘Recibir mi checklist’”.</div>
-        </div>
-      </div>
-    </aside>
   </main>
 
-  <!-- Modal Brief -->
-  <div class="modal" id="briefModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="scrim" id="briefClose"></div>
-    <div class="dialog glass">
-      <h2 style="margin:0 0 8px">Brief de marca</h2>
-      <form id="briefForm">
-        <div class="form-grid">
-          <div>
-            <div class="label">Marca</div>
-            <input class="input-txt" name="brand_name" placeholder="Ej.: PsicoFunnel">
+  <!-- ÚLTIMAS LANDINGS + IDEAS -->
+  <section class="container section" id="recentSection">
+    <h3 style="margin:0 0 10px; font-size:20px">Últimas landings generadas</h3>
+    <div class="grid cards" id="recentGrid" aria-live="polite"></div>
+    <hr class="sep">
+    <h3 style="margin:0 0 10px; font-size:20px">Ideas y plantillas recomendadas</h3>
+    <div class="grid cards" id="ideasGrid">
+      <div class="card"><div class="k">Opt-in con lead magnet</div><div class="hint">Ebook, checklist o mini-curso. Conversión esperada 3-7% con tráfico templado.</div></div>
+      <div class="card"><div class="k">VSL con CTA a agenda</div><div class="hint">Video 3-7 min + prueba social breve. Ideal coaches/agencias.</div></div>
+      <div class="card"><div class="k">Webinar evergreen</div><div class="hint">Registro + confirmación + replay. Secuencia 0/60/120s.</div></div>
+      <div class="card"><div class="k">Checkout + garantía</div><div class="hint">Precio claro, bullets de valor, preguntas frecuentes.</div></div>
+    </div>
+  </section>
+
+  <!-- MODAL BRIEF -->
+  <div class="modal" id="briefModal" aria-hidden="true" aria-labelledby="briefTitle" role="dialog">
+    <div class="scrim" data-close></div>
+    <div class="dialog">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px">
+        <div>
+          <div class="badge">Brief de marca</div>
+          <h2 id="briefTitle" style="margin:8px 0 2px">Completemos tu brief</h2>
+          <div class="hint">Estos datos se usarán como default al generar tu funnel.</div>
+        </div>
+        <button class="btn ghost" data-close aria-label="Cerrar">Cerrar</button>
+      </div>
+
+      <form id="briefForm" class="form-grid">
+        <div>
+          <label class="label">Nombre de marca</label>
+          <input class="input-txt" name="brand_name" required placeholder="Ej. PsicoFunnel">
+        </div>
+        <div>
+          <label class="label">Nicho</label>
+          <input class="input-txt" name="niche" placeholder="Ej. Coaching de hábitos">
+        </div>
+
+        <div>
+          <label class="label">Objetivo</label>
+          <input class="input-txt" name="goal" placeholder="Ej. Captar leads para sesión diagnóstica">
+        </div>
+        <div>
+          <label class="label">Tono</label>
+          <input class="input-txt" name="tone" placeholder="Ej. Positivo, claro, sin promesas vacías">
+        </div>
+
+        <div class="full colors">
+          <div style="flex:1">
+            <label class="label">Color primario</label>
+            <input type="color" name="color_primary" value="#0ea5e9">
           </div>
-          <div>
-            <div class="label">Nicho</div>
-            <input class="input-txt" name="niche" placeholder="Ej.: coaches/cursos">
+          <div style="flex:1">
+            <label class="label">Color acento</label>
+            <input type="color" name="color_accent" value="#0b5fff">
           </div>
-          <div>
-            <div class="label">Objetivo</div>
-            <input class="input-txt" name="goal" placeholder="Ej.: captar leads">
-          </div>
-          <div>
-            <div class="label">Tono</div>
-            <input class="input-txt" name="tone" placeholder="Ej.: claro y profesional">
-          </div>
-          <div>
-            <div class="label">Color primario</div>
-            <input class="input-txt" name="color_primary" value="#0ea5e9">
-          </div>
-          <div>
-            <div class="label">Color acento</div>
-            <input class="input-txt" name="color_accent" value="#0b5fff">
-          </div>
-          <div>
-            <div class="label">Precio (opcional)</div>
-            <input class="input-num" type="number" step="1" min="0" name="offer_price" placeholder="Ej.: 49">
-          </div>
-          <div>
-            <div class="label">Garantía (opcional)</div>
-            <input class="input-txt" name="offer_guarantee" placeholder="Ej.: 7 días">
-          </div>
-          <div class="full">
-            <div class="label">Estilo (palabras clave)</div>
-            <input class="input-txt" name="style_keywords" placeholder="Ej.: liquid glass, minimalista, premium">
+          <div style="flex:2">
+            <label class="label">Estilo / keywords</label>
+            <input class="input-txt" name="style_keywords" placeholder="liquid glass, minimalista, premium">
           </div>
         </div>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <button class="btn" type="submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Guardar</button>
-          <button class="btn secondary" id="briefReset" type="button">Reset</button>
+
+        <div>
+          <label class="label">Precio (opcional)</label>
+          <input class="input-num" type="number" min="0" step="1" name="offer_price" placeholder="49">
+        </div>
+        <div>
+          <label class="label">Garantía (opcional)</label>
+          <input class="input-txt" name="offer_guarantee" placeholder="Garantía 7 días">
+        </div>
+
+        <div class="full" style="display:flex; gap:10px; justify-content:flex-end; margin-top:6px">
+          <button type="button" class="btn ghost" id="briefReset">Reset</button>
+          <button type="submit" class="btn">Guardar brief</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Preview -->
-  <div class="preview-modal" id="previewModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="scrim" id="previewClose"></div>
-    <div class="sheet glass">
+  <!-- MODAL PREVIEW (iframe + código + descarga) -->
+  <div class="preview-modal" id="previewModal" aria-hidden="true" role="dialog">
+    <div class="sheet">
       <div class="bar">
-        <div class="k">Preview de tu landing</div>
+        <div class="pills">
+          <span class="pill">Preview</span>
+          <span class="pill" id="toggleCode">Ver código</span>
+        </div>
         <div class="actions">
-          <button class="btn secondary" id="toggleCode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3" stroke="#0b5fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ver código</button>
-          <button class="btn secondary" id="downloadHTML"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="#0b5fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar</button>
-          <button class="btn" id="openNewTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Abrir</button>
+          <button class="btn ghost" id="downloadHTML">Descargar HTML</button>
+          <button class="btn ghost" id="openNewTab">Abrir en pestaña</button>
+          <button class="btn" id="closePreview">Cerrar</button>
         </div>
       </div>
-      <iframe id="previewFrame" title="Preview"></iframe>
+      <iframe id="previewFrame" title="Vista previa de la landing"></iframe>
       <pre id="codeBox"></pre>
     </div>
   </div>
 
-  <section class="section container">
-    <div class="grid cards" id="recentGrid"></div>
-  </section>
-
-  <footer class="container">
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px">
-      <button id="loadDemo" class="btn secondary">Cargar prompt demo</button>
-      <button id="help" class="btn secondary">Ayuda</button>
+  <!-- HELP BUBBLE -->
+  <div class="help" id="help">
+    <div class="bubble" title="Ayuda" aria-label="Abrir ayuda">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 17h.01" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9.1 9.5a3.1 3.1 0 016.01.9c0 2-2.1 2.4-2.1 3.6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5" opacity=".7"/>
+      </svg>
     </div>
-  </footer>
+    <div class="panel">
+      <div class="card glass">
+        <div class="k">Tips rápidos</div>
+        <ul class="hint" style="margin:8px 0 0; padding-left:18px">
+          <li>Elige una plantilla para autocompletar el prompt.</li>
+          <li>Click en <strong>Creamos tu funnel</strong> para guardar tu brief.</li>
+          <li>Tras generar, podrás previsualizar, descargar o abrir la landing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 <script defer>
 /* =========================
@@ -444,8 +505,6 @@ window.addEventListener('load', async () => {
     google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onGoogleSignIn });
     const btn = document.getElementById('btnGoogle');
     if(btn) google.accounts.id.renderButton(btn, { theme:'outline', size:'medium', type:'standard', shape:'pill' });
-    const btnM = document.getElementById('btnGoogleModal');
-    if(btnM) google.accounts.id.renderButton(btnM, { theme:'filled_blue', size:'large', type:'standard', shape:'pill', text:'signin_with' });
   }
   // Reusar token si existe
   try{
@@ -475,26 +534,7 @@ async function onGoogleSignIn(resp){
   localStorage.setItem('psico_email', USER_EMAIL);
   document.body.classList.add('logged');
   if(ls) ls.textContent = 'Conectado: ' + USER_EMAIL;
-  const lsm = document.getElementById('loginStatusModal'); if(lsm) lsm.textContent = 'Conectado: ' + USER_EMAIL;
-  setLoginModal(false);
 }
-
-function setLoginModal(open){
-  const m = document.getElementById('loginModal');
-  if(!m) return;
-  m.classList.toggle('active', !!open);
-  m.setAttribute('aria-hidden', open ? 'false' : 'true');
-}
-function ensureLogged(){
-  if(ID_TOKEN) return true;
-  setLoginModal(true);
-  return false;
-}
-// cerrar modal al clickear scrim o botón
-document.addEventListener('click', (e)=>{
-  const t = e.target.closest('[data-close-login]');
-  if(t){ setLoginModal(false); }
-});
 
 const $ = (sel, el=document) => el.querySelector(sel);
 const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
@@ -517,35 +557,32 @@ const previewFrame = $('#previewFrame');
 const codeBox = $('#codeBox');
 const toggleCodeBtn = $('#toggleCode');
 const downloadBtn = $('#downloadHTML');
-const openNewTabBtn = $('#openNewTab');
-const previewClose = $('#previewClose');
+const openTabBtn = $('#openNewTab');
+const closePreviewBtn = $('#closePreview');
 
-/* Estado */
 let selectedTemplate = null;
-let lastHTML = '';
-let lastBlobURL = '';
-let RECENTS = []; // {slug, title, ts}
+let lastHTML = '';   // guarda el último HTML generado en memoria (para descarga/abrir)
+let lastBlobURL = ''; // object URL para abrir en pestaña
 
-/* Stores */
+/* Estado local: brief + recientes (solo metadatos) */
 const BriefStore = {
-  key:'psico_brief',
-  get(){ try{ return JSON.parse(localStorage.getItem(this.key)||'{}') }catch(_){ return {} } },
-  set(v){ localStorage.setItem(this.key, JSON.stringify(v||{})); renderBriefKV(); },
+  key: 'pf_brief_v1',
+  get(){ try { return JSON.parse(localStorage.getItem(this.key)||'null') } catch { return null } },
+  set(data){ localStorage.setItem(this.key, JSON.stringify(data||{})); },
   reset(){ localStorage.removeItem(this.key); }
 };
 const RecentStore = {
-  key:'psico_recents',
-  get(){ try{ return JSON.parse(localStorage.getItem(this.key)||'[]') }catch(_){ return [] } },
-  set(v){ localStorage.setItem(this.key, JSON.stringify(v||[])) },
-  push(item){ const arr=this.get(); arr.unshift(item); this.set(arr.slice(0,12)); RECENTS=arr; },
-};
-const SessionHTML = {
-  key:'psico_html_',
-  get(slug){ try{ return JSON.parse(sessionStorage.getItem(this.key+slug)||'{}') }catch(_){ return {} } },
-  set(slug, obj){ sessionStorage.setItem(this.key+slug, JSON.stringify(obj||{})) }
+  key: 'pf_recent_sites_v1',
+  list(){ try { return JSON.parse(localStorage.getItem(this.key)||'[]') } catch { return [] } },
+  push(item){ const arr = this.list(); arr.unshift(item); localStorage.setItem(this.key, JSON.stringify(arr.slice(0,12))); }
 };
 
-/* Utils */
+/* Salud simple (solo texto) */
+healthBadge.textContent = '● Listo';
+healthBadge.style.color = 'var(--success)';
+healthBadge.title = 'Webhook configurado';
+
+/* Utilidades UI */
 function addMsg(role, html){
   const div = document.createElement('div');
   div.className = `msg ${role}`;
@@ -557,6 +594,7 @@ function addMsg(role, html){
 function setModal(open){
   briefModal.classList.toggle('active', !!open);
   briefModal.setAttribute('aria-hidden', open ? 'false' : 'true');
+  if(open){ setTimeout(()=> $("[name='brand_name']", briefForm)?.focus(), 50) }
 }
 function setPreview(open){
   previewModal.classList.toggle('active', !!open);
@@ -564,7 +602,7 @@ function setPreview(open){
 }
 
 /* Plantillas */
-$('#templates').addEventListener('click', (e)=>{ if(!ensureLogged()){ addMsg('system','Inicia sesión para usar plantillas.'); return; }
+$('#templates').addEventListener('click', (e)=>{
   const item = e.target.closest('.template');
   if(!item) return;
   selectedTemplate = {
@@ -576,8 +614,18 @@ $('#templates').addEventListener('click', (e)=>{ if(!ensureLogged()){ addMsg('sy
   addMsg('assistant', `Plantilla <strong>${selectedTemplate.name}</strong> seleccionada. Puedes editar el prompt y presionar <em>Generar</em>.`);
 });
 
-/* Brief */
-openBriefBtn.addEventListener('click', ()=>{ if(!ensureLogged()) return;
+/* Chips: autocompletar */
+$('#chips').addEventListener('click', (e)=>{
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  const add = chip.textContent.trim();
+  const cur = composer.value.trim();
+  composer.value = cur ? cur + (cur.endsWith('.')?'':'') + ' ' + add + '.' : add + '.';
+  composer.focus();
+});
+
+/* Brief modal */
+openBriefBtn.addEventListener('click', ()=>{
   const saved = BriefStore.get() || {};
   $$('[name]', briefForm).forEach(inp=>{
     const k = inp.name; if(saved[k] != null) inp.value = saved[k];
@@ -598,50 +646,50 @@ briefForm.addEventListener('submit', (e)=>{
 /* Ayuda flotante */
 help.addEventListener('click', ()=> help.classList.toggle('expanded'));
 
-/* Render recientes */
+/* Render recientes (sin persistir HTML por tamaño; link abre nueva pestaña si está en memoria de la sesión) */
 function renderRecents(){
-  const arr = RecentStore.get();
+  const arr = RecentStore.list();
   recentGrid.innerHTML = '';
-  arr.forEach(({slug, title, ts})=>{
-    const {blobURL} = SessionHTML.get(slug);
-    const card = document.createElement('div'); card.className='card';
+  if(!arr.length){
+    recentGrid.innerHTML = `<div class="card"><div class="k">Aún no hay landings</div><div class="hint">Cuando generes tu primera landing, aparecerá aquí.</div></div>`;
+    return;
+  }
+  arr.forEach(it=>{
+    const card = document.createElement('div');
+    card.className = 'card';
     card.innerHTML = `
-      <div class="k" style="margin-bottom:6px">${new Date(ts).toLocaleString()}</div>
-      <div class="v" style="margin-bottom:8px">${title}</div>
+      <div class="k">${it.title || 'Landing generada'}</div>
+      <div class="hint" style="margin:6px 0 10px">Slug: <strong>${it.slug}</strong> • Fecha: ${new Date(it.ts).toLocaleString()}</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap">
-        <a class="btn secondary" href="${blobURL||'#'}" target="_blank" rel="noopener" ${blobURL?'':'aria-disabled="true"'}>Abrir</a>
-        <button class="btn secondary" data-view-code="${slug}">Ver código</button>
-      </div>
-    `;
+        <button class="btn" data-open="${it.slug}">Abrir</button>
+        <button class="btn ghost" data-copy="${it.slug}">Copiar código</button>
+      </div>`;
     recentGrid.appendChild(card);
   });
 }
-recentGrid.addEventListener('click', (e)=>{
-  const btn = e.target.closest('[data-view-code]');
-  if(!btn) return;
-  const slug = btn.getAttribute('data-view-code');
-  const {html} = SessionHTML.get(slug);
-  if(!html){ alert('No guardamos el HTML de esa sesión.'); return; }
-  previewFrame.removeAttribute('src');
-  codeBox.textContent = html;
-  previewModal.classList.add('show-code');
-  setPreview(true);
+const SessionHTML = new Map(); // slug -> {html, blobURL}
+recentGrid.addEventListener('click', async (e)=>{
+  const open = e.target.closest('[data-open]');
+  const copy = e.target.closest('[data-copy]');
+  if(open){
+    const slug = open.getAttribute('data-open');
+    const item = SessionHTML.get(slug);
+    if(!item){ open.textContent='No disponible'; return; }
+    window.open(item.blobURL, '_blank', 'noopener');
+  }
+  if(copy){
+    const slug = copy.getAttribute('data-copy');
+    const item = SessionHTML.get(slug);
+    if(!item){ copy.textContent='No disponible'; return; }
+    await navigator.clipboard.writeText(item.html);
+    copy.textContent='¡Copiado!';
+    setTimeout(()=> copy.textContent='Copiar código', 1200);
+  }
 });
-
-/* KV brief mostrado en panel */
-function validHex(s){ return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test((s||'').trim()); }
-function renderBriefKV(){
-  const b = BriefStore.get();
-  $('#kvBrand').textContent = b.brand_name||'—';
-  $('#kvNiche').textContent = b.niche||'—';
-  $('#kvTone').textContent = b.tone||'—';
-  $('#kvPrimary').style.background = validHex(b.color_primary)? b.color_primary : '#0ea5e9';
-  $('#kvAccent').style.background  = validHex(b.color_accent)?  b.color_accent  : '#0b5fff';
-}
-renderBriefKV();
 
 /* ====== Envío al Webhook de Make (espera HTML) ====== */
 const TIMEOUT_MS = 60000;
+function validHex(s){ return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test((s||'').trim()); }
 
 async function sendToMake(payload){
   const ctrl = new AbortController();
@@ -650,6 +698,7 @@ async function sendToMake(payload){
   try{
     r = await fetch(MAKE_URL, {
       method:'POST',
+      /* ⬇️ text/plain evita el preflight CORS y vuelve a entregar el HTML */
       headers:{ 'Content-Type':'text/plain;charset=UTF-8', 'Accept':'text/html' },
       body: JSON.stringify(payload),
       signal: ctrl.signal
@@ -669,7 +718,6 @@ async function sendToMake(payload){
 
 /* Generación desde el chat */
 async function generateFromPrompt(){
-  if(!ensureLogged()){ addMsg('system','Primero inicia sesión para generar.'); return; }
   const text = composer.value.trim();
   if(!text){ composer.focus(); addMsg('system','Escribe un prompt o elige una plantilla ☝️'); return; }
 
@@ -710,6 +758,22 @@ async function generateFromPrompt(){
   const thinking = addMsg('assistant', 'Generando tu funnel… ⏳');
 
   try{
+    /* Registrar proyecto solo si hay sesión Google; si no, continuar igual */
+    if(ID_TOKEN){
+      try{
+        const reg = await fetch(CRM_ENDPOINT, {
+          method:'POST',
+          headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
+          body: JSON.stringify({ action:'registerProject', id_token: ID_TOKEN, project_slug })
+        }).then(r=>r.json());
+        if(!reg.ok){ addMsg('system','No pude registrar tu proyecto en el CRM (continuamos de todos modos).'); }
+        payload.owner_email = USER_EMAIL;
+        payload.id_token = ID_TOKEN;
+      }catch(e){
+        addMsg('system','Error registrando en CRM (continuamos sin CRM).');
+      }
+    }
+
     const html = await sendToMake(payload);
     thinking.remove();
 
@@ -722,7 +786,7 @@ async function generateFromPrompt(){
     renderRecents();
 
     // Abre modal de preview
-    previewFrame.removeAttribute('sandbox'); // si quieres aislar, añade sandbox con allow-scripts/allow-forms
+    previewFrame.removeAttribute('sandbox'); // si deseas: previewFrame.setAttribute('sandbox','allow-scripts allow-forms');
     previewFrame.srcdoc = html;
     codeBox.textContent = html;
     previewModal.classList.remove('show-code');
@@ -732,9 +796,10 @@ async function generateFromPrompt(){
 
     composer.value=''; selectedTemplate = null;
   }catch(err){
-    thinking.remove();
-    console.error(err);
-    addMsg('system', 'Error: ' + (err.message||String(err)));
+    thinking.textContent = 'Hubo un problema: ' + (err.message || err);
+    if(String(err).includes('CORS')){
+      addMsg('system','Parece CORS. Revisa el Webhook Response y/o usa un proxy /api/psico-make-generate.');
+    }
   }
 }
 
@@ -746,37 +811,25 @@ composer.addEventListener('keydown', (e)=>{
 
 /* Demo rápida */
 loadDemoBtn.addEventListener('click', ()=>{
-  composer.value = "Crea una landing opt-in para un checklist de productividad dirigido a freelancers. Estilo minimalista, premium, con efecto liquid glass, tonos azul/celeste, copy profesional, sin promesas vacías. CTA a ‘Recibir mi checklist’.";
+  composer.value = "Crea una landing opt-in para un checklist de productividad (3 beneficios y FAQ). Tono claro, profesional, sin promesas vacías. CTA a ‘Recibir mi checklist’.";
   addMsg('assistant','Cargué un prompt de ejemplo. ¡Dale a Generar!');
 });
 
 /* Preview modal actions */
 toggleCodeBtn.addEventListener('click', ()=> previewModal.classList.toggle('show-code'));
 downloadBtn.addEventListener('click', ()=>{
-  if(!lastHTML){ return }
+  if(!lastHTML.trim()) return;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([lastHTML], {type:'text/html;charset=utf-8'}));
-  a.download = 'landing.html';
+  a.download = 'index.html';
   a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 1000);
 });
-openNewTabBtn.addEventListener('click', ()=>{
-  if(!lastBlobURL) return;
-  window.open(lastBlobURL, '_blank', 'noopener');
-});
-previewClose.addEventListener('click', ()=> setPreview(false));
+openTabBtn.addEventListener('click', ()=>{ if(lastBlobURL) window.open(lastBlobURL,'_blank','noopener'); });
+closePreviewBtn.addEventListener('click', ()=> setPreview(false));
 
-/* Salud (ping simple al endpoint CRM) */
-(async ()=>{
-  try{
-    const u = new URL(CRM_ENDPOINT); u.searchParams.set('action','ping');
-    const r = await fetch(u, {method:'GET'}); if(!r.ok) throw 0;
-    healthBadge.textContent = '● Online';
-    healthBadge.style.color = 'green';
-  }catch(_){
-    healthBadge.textContent = '● Offline';
-    healthBadge.style.color = '#b91c1c';
-  }
-})();
+/* Init */
+renderRecents();
 </script>
 </body>
 </html>
