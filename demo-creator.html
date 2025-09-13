@@ -20,7 +20,7 @@
   --border: rgba(11,95,255,.15);
   --shadow-lg: 0 24px 40px rgba(11,95,255,.10), 0 6px 14px rgba(2,6,23,.06);
   --shadow-sm: 0 6px 16px rgba(2,6,23,.06);
-  --glass-blur: 10px;
+  --glass-blur: 14px;
 
   /* Colores base */
   --primary:#0b5fff;  /* azul fuerte */
@@ -31,10 +31,14 @@
 
   /* Tipografía y radio */
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  --radius-xl: 16px; --radius-2xl: 20px; --radius-3xl: 28px;
+  --radius-3xl: 32px;
+  --radius-2xl: 24px;
+  --radius-xl: 18px;
+  --radius-lg: 14px;
 
   /* Layout */
   --max-w: 1200px;
+  --nav-h: 64px;
 }
 
 *{box-sizing:border-box}
@@ -43,7 +47,7 @@ body{
   margin:0; font: 500 14px/1.5 var(--font); color:var(--text);
   background: var(--bg);
   background-image: var(--bg-grad);
-  min-height:100%;
+  background-attachment: fixed;
 }
 
 /* Utilidades */
@@ -68,16 +72,20 @@ body{
 }
 .btn.icon svg{flex:0 0 auto}
 
-/* NAV */
-.nav{ position: sticky; top:0; z-index:50; }
-.nav .inner{
-  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; margin-top:10px;
+/* Nav superior */
+.nav{
+  position:sticky; top:0; z-index:50; height:var(--nav-h);
+  display:flex; align-items:center; backdrop-filter:saturate(1.2) blur(14px);
+  -webkit-backdrop-filter:saturate(1.2) blur(14px);
+  border-bottom:1px solid rgba(11,95,255,.08);
 }
-.brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.3px}
-.logo{
-  width:34px; height:34px; border-radius:999px;
-  background: radial-gradient(circle at 30% 30%, #0ea5e9 0%, #0b5fff 65%, #082a7a 100%);
-  box-shadow: 0 6px 16px rgba(11,95,255,.35) inset, 0 8px 18px rgba(11,95,255,.18);
+.nav .inner{display:flex; align-items:center; justify-content:space-between}
+.brand{ display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.2px; }
+.brand .logo{
+  width:36px; height:36px; border-radius:14px;
+  background:linear-gradient(135deg,#0b5fff 0%, #0ea5e9 100%);
+  box-shadow:0 10px 30px rgba(11,95,255,.28), inset 0 0 20px rgba(255,255,255,.35);
+  position:relative; overflow:hidden;
 }
 .badge{
   margin-left:8px; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:800; color:#0b3aa6;
@@ -95,23 +103,19 @@ body{
 .login{display:flex; align-items:center; gap:10px; margin-left:10px}
 .logged #loginStatus{color:var(--success); font-weight:700}
 
-/* Login UI polish */
-.login {
-  display:flex; align-items:center; gap:12px; margin-left:10px; padding:6px 10px;
-  border-radius:999px; background:rgba(255,255,255,.6); border:1px solid rgba(11,95,255,.14);
-}
-#btnGoogle > div { transform: scale(0.95); transform-origin:left center; }
-.logged .login { background:rgba(12, 231, 86, .08); border-color: rgba(12,231,86,.25); }
-
 /* Header pregunta + CTA */
 .header-hero{ padding:34px 0 18px; text-align:center; }
 .title{
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(28px, 4vw, 60px);
   line-height:1.05; font-weight:900; letter-spacing:-.02em; margin:10px 0 8px;
   background:linear-gradient(120deg,#0b5fff 0%,#0ea5e9 35%,#0b5fff 70%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
+  position:relative; display:inline-block;
 }
-.subtitle{ margin:0 auto 18px; max-width:800px; color:var(--muted) }
+.title::after{
+  content:""; display:block; height:8px; border-radius:999px; margin:14px auto 0; width:180px;
+  background:linear-gradient(90deg, rgba(11,95,255,.28), rgba(14,165,233,.28));
+}
 
 /* Plantillas estilo “Canva” */
 .templates{
@@ -181,14 +185,6 @@ body{
   border-radius:var(--radius-2xl); box-shadow:var(--shadow-lg); background:rgba(255,255,255,.9);
   border:1px solid rgba(11,95,255,.25);
 }
-.form-grid{display:grid; gap:12px; grid-template-columns:repeat(2, minmax(0,1fr))}
-.form-grid .full{grid-column:1/-1}
-.label{font-size:12px; font-weight:800; color:#0b3aa6; letter-spacing:.3px}
-.input-txt, .input-num, .input-sel{
-  width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(11,95,255,.2); background:#fff; font:500 14px var(--font)
-}
-.colors{display:flex; gap:10px; align-items:center}
-.colors .chip{width:26px; height:26px; border-radius:999px; border:1px solid rgba(2,6,23,.12)}
 
 /* Preview modal */
 .preview-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:90; }
@@ -246,13 +242,12 @@ footer{ padding:24px 0 30px; color:#64748b; text-align:center }
     </div>
   </div>
 
-  <!-- LOGIN MODAL -->
+  <!-- LOGIN MODAL (liquid glass) -->
   <div id="loginModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="scrim" data-close-login></div>
     <div class="dialog glass" style="max-width:560px">
-      <button class="btn icon" style="position:absolute; top:10px; right:10px" title="Cerrar" data-close-login aria-label="Cerrar login">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#0b5fff" stroke-width="2" stroke-linecap="round"/></svg>
-        <span>Cerrar</span>
+      <button class="btn secondary" style="position:absolute; top:10px; right:10px" data-close-login aria-label="Cerrar">
+        ✕
       </button>
       <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; padding:10px 6px 2px">
         <div class="logo" aria-hidden="true"></div>
@@ -484,9 +479,6 @@ async function onGoogleSignIn(resp){
   setLoginModal(false);
 }
 
-const $ = (sel, el=document) => el.querySelector(sel);
-
-/* ====== Login helpers (modal + guard) ====== */
 function setLoginModal(open){
   const m = document.getElementById('loginModal');
   if(!m) return;
@@ -498,11 +490,13 @@ function ensureLogged(){
   setLoginModal(true);
   return false;
 }
+// cerrar modal al clickear scrim o botón
 document.addEventListener('click', (e)=>{
-  const target = e.target.closest('[data-close-login]');
-  if(target) setLoginModal(false);
+  const t = e.target.closest('[data-close-login]');
+  if(t){ setLoginModal(false); }
 });
 
+const $ = (sel, el=document) => el.querySelector(sel);
 const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
 
 const healthBadge = $('#healthBadge');
@@ -536,7 +530,8 @@ let RECENTS = []; // {slug, title, ts}
 const BriefStore = {
   key:'psico_brief',
   get(){ try{ return JSON.parse(localStorage.getItem(this.key)||'{}') }catch(_){ return {} } },
-  set(v){ localStorage.setItem(this.key, JSON.stringify(v||{})); renderBriefKV(); }
+  set(v){ localStorage.setItem(this.key, JSON.stringify(v||{})); renderBriefKV(); },
+  reset(){ localStorage.removeItem(this.key); }
 };
 const RecentStore = {
   key:'psico_recents',
@@ -562,7 +557,6 @@ function addMsg(role, html){
 function setModal(open){
   briefModal.classList.toggle('active', !!open);
   briefModal.setAttribute('aria-hidden', open ? 'false' : 'true');
-  if(open){ setTimeout(()=> $("[name='brand_name']", briefForm)?.focus(), 50) }
 }
 function setPreview(open){
   previewModal.classList.toggle('active', !!open);
@@ -570,9 +564,9 @@ function setPreview(open){
 }
 
 /* Plantillas */
-$('#templates').addEventListener('click', (e)=>{
+$('#templates').addEventListener('click', (e)=>{ if(!ensureLogged()){ addMsg('system','Inicia sesión para usar plantillas.'); return; }
   const item = e.target.closest('.template');
-  if(!item) return;  if(!ID_TOKEN){ setLoginModal(true); addMsg('system','Inicia sesión para usar plantillas.'); return; }
+  if(!item) return;
   selectedTemplate = {
     name: item.dataset.template,
     sections: JSON.parse(item.dataset.sections||'[]'),
@@ -583,19 +577,14 @@ $('#templates').addEventListener('click', (e)=>{
 });
 
 /* Brief */
-openBriefBtn.addEventListener('click', ()=>{
-  if(!ensureLogged()) return;
-  const b = BriefStore.get();
-  $$('[name]', briefForm).forEach(el=>{
-    el.value = b[el.name] ?? el.value ?? '';
+openBriefBtn.addEventListener('click', ()=>{ if(!ensureLogged()) return;
+  const saved = BriefStore.get() || {};
+  $$('[name]', briefForm).forEach(inp=>{
+    const k = inp.name; if(saved[k] != null) inp.value = saved[k];
   });
   setModal(true);
 });
-briefReset.addEventListener('click', ()=>{
-  localStorage.removeItem(BriefStore.key);
-  $$('[name]', briefForm).forEach(el=> el.value='');
-  renderBriefKV();
-});
+briefReset.addEventListener('click', ()=>{ BriefStore.reset(); $$('[name]', briefForm).forEach(inp=> inp.value = ''); });
 briefForm.addEventListener('submit', (e)=>{
   e.preventDefault();
   const data = Object.fromEntries(new FormData(briefForm).entries());
@@ -609,7 +598,7 @@ briefForm.addEventListener('submit', (e)=>{
 /* Ayuda flotante */
 help.addEventListener('click', ()=> help.classList.toggle('expanded'));
 
-/* Render recientes (sin persistir HTML por tamaño; link abre nueva pestaña si está en memoria de la sesión) */
+/* Render recientes */
 function renderRecents(){
   const arr = RecentStore.get();
   recentGrid.innerHTML = '';
@@ -640,7 +629,7 @@ recentGrid.addEventListener('click', (e)=>{
 });
 
 /* KV brief mostrado en panel */
-function validHex(s){ return /^#([0-9A-Fa-f]{3}){1,2}$/.test(s||'') }
+function validHex(s){ return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test((s||'').trim()); }
 function renderBriefKV(){
   const b = BriefStore.get();
   $('#kvBrand').textContent = b.brand_name||'—';
@@ -651,7 +640,7 @@ function renderBriefKV(){
 }
 renderBriefKV();
 
-/* ====== Generación ====== */
+/* ====== Envío al Webhook de Make (espera HTML) ====== */
 const TIMEOUT_MS = 60000;
 
 async function sendToMake(payload){
@@ -712,32 +701,15 @@ async function generateFromPrompt(){
     offer: { price: brief.offer_price ? String(brief.offer_price) : undefined, guarantee: brief.offer_guarantee || undefined },
     sections,
     prompt: text,
-    system2: `Eres un generador de páginas. Devuelves SIEMPRE un único archivo HTML COMPLETO (<!doctype html>…</html>) con CSS y JS inline, sin dependencias externas ni CDNs.
-Debes ser minimalista, rápido (Lighthouse OK), responsive y accesible (HTML semántico, alt, aria).
-Estilo: fondo blanco + acentos de color; tipografía del sistema; botones grandes.
-No expliques nada fuera del HTML. No uses iframes.
-NO usar fetch salvo el que viene dentro del BLOQUE CRM obligatorio.
-El formulario de captura será el BLOQUE CRM obligatorio (inserta tal cual, sin cambiar NADA).`,
-    lead_block_required: true
+    /* ➕ enviado por si tu escenario de Make lo mapea al bloque CRM */
+    crm_endpoint: CRM_ENDPOINT,
+    crm_key: CRM_KEY
   };
 
   addMsg('user', text);
-  const thinking = addMsg('assistant', 'Generando la landing… ⏳');
+  const thinking = addMsg('assistant', 'Generando tu funnel… ⏳');
 
   try{
-    // Registrar proyecto en CRM (asigna slug al owner)
-    try{
-      const reg = await fetch(CRM_ENDPOINT, {
-        method:'POST',
-        headers:{'Content-Type':'text/plain;charset=UTF-8'},
-        body: JSON.stringify({ action:'registerProject', id_token: ID_TOKEN, project_slug })
-      }).then(r=>r.json());
-      if(!reg.ok){ addMsg('system', 'No pude registrar tu proyecto en el CRM: ' + (reg.error||'')); return; }
-    }catch(e){ addMsg('system','Error registrando el proyecto en CRM'); return; }
-
-    payload.owner_email = USER_EMAIL;
-    payload.id_token = ID_TOKEN;
-
     const html = await sendToMake(payload);
     thinking.remove();
 
