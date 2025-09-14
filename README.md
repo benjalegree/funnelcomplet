@@ -1,19 +1,23 @@
-# PsicoFunnel — Proyecto mínimo (SIN terminal)
+# PsicoFunnel — Proyecto COMPLETO listo para subir (sin terminal)
+Subí TODO este contenido a la **raíz** del repo desde GitHub Web (Add file → Upload files).
 
-Subí TODO este contenido a tu repo usando **GitHub Web → Add file → Upload files** en la raíz.
+## Qué hace
+- `/api/publish` guarda borradores o publica HTML en Vercel Blob.
+- `/preview?slug=...` muestra borradores (noindex).
+- `/_serve?slug=...` muestra publicados.
+- `middleware.ts` habilita `https://{slug}.psicofunnel.com` (wildcard).
 
-## Luego, en Vercel
-- Project → Settings → Environment Variables (Production y Preview):
+## Requisito en Vercel
+- Variables de entorno (Production y Preview):
   - `PUBLISH_KEY = psico_pub_galo_millonario`
 
-## Qué incluye
-- `package.json`, `next.config.mjs`, `tsconfig.json`, `next-env.d.ts`
-- `app/layout.tsx`, `app/page.tsx`
-- `middleware.ts`
-- `app/api/publish/route.ts`, `app/_serve/route.ts`, `app/preview/route.ts`
+## Probar sin terminal
+- Abrí `/publish-tester` en tu dominio y usá el formulario para crear `draft` o `publish`.
+- Luego:
+  - Draft: `https://TU_DOMINIO/preview?slug=demo`
+  - Publish: `https://TU_DOMINIO/_serve?slug=demo` y `https://demo.psicofunnel.com`
 
-Con esto, Vercel va a hacer build solo. Después podés usar:
-- POST `/api/publish` (draft/publish)
-- `https://TU_DOMINIO/preview?slug=demo`
-- `https://TU_DOMINIO/_serve?slug=demo`
-- y, con wildcard DNS, `https://demo.psicofunnel.com`
+## Importante
+- Esta carpeta ya incluye `package.json` (Next 14 + React + @vercel/blob) y TypeScript en devDependencies.
+- Si tu repo tenía otros archivos, dejalos. Vercel usará este `package.json` para construir.
+- Cuando termines las pruebas, borra la página `/publish-tester`.
