@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
   <!-- =========================================================
-       SQUEEZE PAGE GPTs • PsicoFunnel (nov-2025)
-       • Entrega de GPTs + microinteracciones
+       SQUEEZE PAGE • PsicoFunnel — GPT Suite (nov-2025)
+       • Entrega automática de los 3 GPTs · Optimizada para Make
   ========================================================= -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Accedé a los GPTs Exclusivos de PsicoFunnel</title>
-  <meta name="description" content="Accede gratis a los 3 GPTs más poderosos de PsicoFunnel: Funnel Architect, Offer Architect y BotBreaker. Diseña, optimiza y escala tu funnel con IA.">
+  <title>Activa tus GPTs de PsicoFunnel | Funnel Architect · Botbreaker · Offer Architect</title>
+  <meta name="description" content="Accede gratis a los 3 GPTs de PsicoFunnel para diseñar tu funnel, romper objeciones y crear ofertas irresistibles.">
 
-  <link rel="icon" type="image/png" href="/img/favicon150.png">  
+  <link rel="icon" type="image/png" href="/img/favicon150.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -89,7 +89,9 @@
     animation:fadeInUp .9s both;
   }
   .field{display:flex;flex-direction:column;text-align:left;gap:0.4rem;}
-  .field label{font-size:0.9rem;font-weight:600;color:var(--pf-gray);}
+  .field label{
+    font-size:0.9rem;font-weight:600;color:var(--pf-gray);
+  }
   .field input{
     padding:1rem 1.2rem;
     font-size:1.05rem;
@@ -123,7 +125,9 @@
     50%{box-shadow:0 0 0 12px rgba(0,166,224,0);}
   }
   .social-proof{
-    font-size:0.8rem;color:var(--pf-gray);margin-top:0.4rem;
+    font-size:0.8rem;
+    color:var(--pf-gray);
+    margin-top:0.4rem;
   }
   .social-proof strong{color:var(--pf-navy);}
   .disclaimer{
@@ -141,26 +145,26 @@
 <body>
   <main class="container">
     <header class="animate__animated animate__fadeInDown">
-      <h1>🔥 Accedé a los 3 GPTs Exclusivos de PsicoFunnel</h1>
-      <p class="subhead">Descubrí cómo usar inteligencia artificial para diseñar, optimizar y escalar tu funnel completo — sin depender de agencias ni freelancers.</p>
+      <h1>Activa tus <span style="white-space:nowrap;">GPTs de PsicoFunnel</span></h1>
+      <p class="subhead">Recibe <b>Funnel Architect</b>, <b>Botbreaker</b> y <b>Offer Architect</b> en tu correo. Gratis por tiempo limitado.</p>
     </header>
 
     <div id="countdown" class="animate__animated animate__fadeIn animate__delay-1s">
-      Acceso gratuito disponible hasta <span id="dd"></span>/<span id="mm"></span>/<span id="yy"></span> — quedan <strong><span id="left">--:--:--</span> h</strong>
+      Acceso gratuito disponible hasta <span id="dd"></span>/<span id="mm"></span>/<span id="yy"></span> 23:59 — quedan <strong><span id="left">--:--:--</span> h</strong>
     </div>
 
     <section class="bullets animate__animated animate__fadeInUp animate__delay-1s">
       <article class="bullet">
-        🤖 Accedé al <b>Funnel Architect GPT</b> para crear tu embudo paso a paso <span class="badge-pop">IA PRO</span>
+        🧩 <b>Funnel Architect</b>: crea tu embudo completo con <b>estructura, copy y métricas</b> listas para lanzar. <span class="badge-pop">PRO</span>
       </article>
       <article class="bullet">
-        💡 Usá <b>Offer Architect GPT</b> para construir ofertas imposibles de ignorar.
+        🧠 <b>Botbreaker</b>: genera respuestas irresistibles y <b>rompe objeciones</b> en DM, WhatsApp o email.
       </article>
       <article class="bullet">
-        🧠 Detectá cuellos de botella con <b>PsicoFunnel BotBreaker GPT</b> y desbloqueá tus ventas.
+        💎 <b>Offer Architect</b>: optimiza tu <b>oferta, promesa y pricing</b> como un experto en neuroventas.
       </article>
       <article class="bullet">
-        🚀 100 % gratis, inmediato y diseñado por <b>Benjamín Alegre</b> para creadores que quieren escalar con estrategia.
+        🔒 100 % seguro: datos cifrados + <b>política anti-spam</b> · Cancela en un clic.
       </article>
     </section>
 
@@ -173,9 +177,9 @@
         <label for="email">Correo electrónico</label>
         <input type="email" id="email" name="Email" placeholder="tu@mejorcorreo.com" required>
       </div>
-      <input type="hidden" name="source" id="sourceField" value="GPT">
-      <button class="btn" type="submit" id="submitBtn">🔓 Quiero mis GPTs ahora</button>
-      <p class="social-proof">Más de <strong>1200 creadores</strong> ya los están usando.</p>
+      <input type="hidden" name="source" id="sourceField" value="gpt">
+      <button class="btn" type="submit" id="submitBtn">¡Quiero mis GPTs gratis!</button>
+      <p class="social-proof">Únete a <strong>miles de emprendedores</strong> que ya los están usando.</p>
       <p class="disclaimer">No enviamos spam. Cancelas cuando quieras.</p>
     </form>
   </main>
@@ -200,32 +204,35 @@ document.getElementById('dd').textContent = String(now.getDate()).padStart(2,'0'
 document.getElementById('mm').textContent = String(now.getMonth()+1).padStart(2,'0');
 document.getElementById('yy').textContent = String(now.getFullYear()).slice(-2);
 
-const urlParams = new URLSearchParams(window.location.search);
-document.getElementById('sourceField').value = urlParams.get('src') || 'GPT';
-
-document.getElementById('leadMagnetForm').addEventListener('submit', async function(e){
+document.getElementById('leadMagnetForm').addEventListener('submit',async e=>{
   e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  const fname=document.getElementById('fname').value.trim();
+  if(!email||!fname)return alert("Por favor, completa todos los campos.");
 
-  const email = document.getElementById('email').value.trim();
-  const fname = document.getElementById('fname').value.trim();
-  const origen = document.getElementById('sourceField').value;
+  const payload={
+    email:email,
+    nombre:fname,
+    origen:"gpt",
+    gpts:[
+      "Funnel Architect",
+      "Botbreaker",
+      "Offer Architect"
+    ]
+  };
 
-  if(!email || !fname) return alert("Por favor, completa todos los campos.");
-
-  const payload = { email: email, nombre: fname, origen: origen };
-
-  try {
-    const res = await fetch("https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii", {
+  try{
+    const res=await fetch("https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii",{
       method:"POST",
-      headers:{ "Content-Type":"application/json" },
+      headers:{"Content-Type":"application/json"},
       body:JSON.stringify(payload)
     });
     if(res.ok){
-      window.location.href = "thankyou-gpt";
-    } else {
+      window.location.href="thankyou";
+    }else{
       alert("Algo salió mal. Intenta nuevamente.");
     }
-  } catch(err){
+  }catch(err){
     alert("Error al conectar con el servidor.");
   }
 });
