@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =========================================================
+       PsicoFunnel • GPT Suite (landing estática sin build)
+       • Entrega automática de los 3 GPTs · Optimizada para Make
+  ========================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Activa tus GPTs de PsicoFunnel | Funnel Architect · Botbreaker · Offer Architect</title>
+  <meta name="description" content="Recibe gratis los 3 GPTs de PsicoFunnel para diseñar tu embudo, romper objeciones y optimizar tu oferta.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Twitter (opcional) -->
+  <meta property="og:title" content="Activa tus GPTs de PsicoFunnel">
+  <meta property="og:description" content="Funnel Architect · Botbreaker · Offer Architect — gratis por tiempo limitado.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://psicofunnel.com/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Ícono (opcional; si no existe, no rompe) -->
+  <link rel="icon" type="image/png" href="/img/favicon150.png">
+
+  <!-- Fuentes y animaciones (opcionales; la página funciona sin ellas) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    :root{
+      --pf-navy:#001a40;
+      --pf-light:#f1f9ff;
+      --pf-accent:#00a6e0;
+      --pf-gray:#5c6675;
+      --pf-radius:1.35rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+      color:var(--pf-navy);
+      background:radial-gradient(circle at top right,#e8f4ff 0%,#fff 45%);
+      display:flex;flex-direction:column;min-height:100dvh;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .container{width:min(92%,54rem);margin-inline:auto;padding:4.5rem 0 7rem;text-align:center}
+    h1{
+      font-size:clamp(2rem,4.8vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:.75rem;
+      background:linear-gradient(90deg,var(--pf-navy),var(--pf-accent));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .subhead{font-size:clamp(1.1rem,2.6vw,1.35rem);color:var(--pf-gray);margin-bottom:1.9rem}
+    #countdown{font-weight:700;color:var(--pf-accent);margin-bottom:2.1rem;font-size:clamp(1rem,2.2vw,1.1rem)}
+    .bullets{display:grid;gap:1.1rem;margin-bottom:2.4rem}
+    .bullet{
+      background:#fff;border-left:6px solid var(--pf-accent);padding:1rem 1.25rem 1.15rem;
+      border-radius:var(--pf-radius);box-shadow:0 8px 18px -6px rgba(0,0,0,.08);text-align:left
+    }
+    .bullet b{color:var(--pf-navy)}
+    .badge-pop{display:inline-block;background:var(--pf-accent);color:#fff;font-size:.7rem;font-weight:700;padding:.25rem .45rem;border-radius:.55rem;margin-left:.35rem;vertical-align:middle}
+    form{
+      background:#fff;border-radius:var(--pf-radius);box-shadow:0 18px 30px -10px rgba(0,0,0,.12);
+      padding:2.2rem 2rem 2.6rem;display:grid;gap:1.1rem;animation:fadeInUp .9s both
+    }
+    .field{display:flex;flex-direction:column;text-align:left;gap:.4rem}
+    .field label{font-size:.9rem;font-weight:600;color:var(--pf-gray)}
+    .field input{
+      padding:1rem 1.1rem;font-size:1.05rem;border:2px solid #d7e5f4;border-radius:calc(var(--pf-radius)/1.5);
+      transition:border-color .2s ease,box-shadow .2s ease;width:100%
+    }
+    .field input:focus{outline:none;border-color:var(--pf-accent);box-shadow:0 0 0 3px #bdf1ff}
+    .btn{
+      cursor:pointer;padding:1.1rem 1.2rem;font-size:1.2rem;font-weight:800;letter-spacing:.3px;color:#fff;
+      background:var(--pf-accent);border:none;border-radius:calc(var(--pf-radius)/1.5);
+      transition:transform .18s ease,box-shadow .18s ease;animation:pulseBtn 2.8s infinite
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px -8px rgba(0,166,224,.55)}
+    .btn[disabled]{opacity:.7;cursor:not-allowed;animation:none}
+    @keyframes pulseBtn{0%,100%{box-shadow:0 0 0 0 rgba(0,166,224,.5)}50%{box-shadow:0 0 0 12px rgba(0,166,224,0)}}
+    .social-proof{font-size:.8rem;color:var(--pf-gray);margin-top:.4rem}
+    .social-proof strong{color:var(--pf-navy)}
+    .disclaimer{font-size:.75rem;color:var(--pf-gray);margin-top:.6rem}
+    .alert{font-size:.92rem;border-radius:.75rem;padding:.85rem 1rem;text-align:left}
+    .alert.ok{background:#e9fbf1;border:1px solid #b8f0cf;color:#104c2e}
+    .alert.err{background:#fff2f2;border:1px solid #ffd6d6;color:#6b1111}
+    .hidden{display:none}
+    footer{margin-top:auto;padding:1.6rem 0;font-size:.8rem;color:var(--pf-gray);text-align:center}
+    @media(max-width:32rem){.bullet{padding:.9rem 1.05rem}.btn{font-size:1.05rem}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- HERO -->
+    <header class="animate__animated animate__fadeInDown" id="hero">
+      <h1>Activa tus <span style="white-space:nowrap;">GPTs de PsicoFunnel</span></h1>
+      <p class="subhead">Recibe <b>Funnel Architect</b>, <b>Botbreaker</b> y <b>Offer Architect</b> en tu correo. Gratis por tiempo limitado.</p>
+    </header>
+
+    <!-- Countdown -->
+    <div id="countdown" class="animate__animated animate__fadeIn animate__delay-1s">
+      Acceso gratuito disponible hasta <span id="dd"></span>/<span id="mm"></span>/<span id="yy"></span> 23:59 — quedan <strong><span id="left">--:--:--</span> h</strong>
+    </div>
+
+    <!-- Bullets -->
+    <section class="bullets animate__animated animate__fadeInUp animate__delay-1s" id="bullets">
+      <article class="bullet">🧩 <b>Funnel Architect</b>: estructura completa (TOFU · MOFU · BOFU), <b>copy</b> y <b>KPIs</b> listos para lanzar <span class="badge-pop">PRO</span></article>
+      <article class="bullet">🧠 <b>Botbreaker</b>: rompe objeciones con <b>scripts conversacionales</b> que convierten en DM, WhatsApp y email</article>
+      <article class="bullet">💎 <b>Offer Architect</b>: afina <b>propuesta de valor</b>, bonuses, garantías y pricing sin perder margen</article>
+      <article class="bullet">🔒 Privacidad primero: datos cifrados + <b>política anti-spam</b> · Cancelas en 1 clic</article>
+    </section>
+
+    <!-- Mensajes dinámicos -->
+    <div id="msg-ok" class="alert ok hidden">¡Listo! Te enviamos los 3 GPTs a tu correo. Revisa tu bandeja (y el spam/promociones).</div>
+    <div id="msg-err" class="alert err hidden">Ups, hubo un problema al enviar. Intenta nuevamente en unos segundos.</div>
+
+    <!-- FORM (sin selector; envía los 3 GPTs) -->
+    <form id="leadMagnetForm" class="animate__animated animate__fadeInUp" novalidate>
+      <div class="field">
+        <label for="fname">Nombre</label>
+        <input type="text" id="fname" name="First Name" placeholder="Tu nombre" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="Email" placeholder="tu@mejorcorreo.com" autocomplete="email" required>
+      </div>
+
+      <!-- Origen fijo + UTM -->
+      <input type="hidden" id="sourceField" name="source" value="gpt">
+      <input type="hidden" id="utm_source" name="utm_source" value="">
+      <input type="hidden" id="utm_medium" name="utm_medium" value="">
+      <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+
+      <button class="btn" type="submit" id="submitBtn">¡Quiero mis GPTs gratis!</button>
+      <p class="social-proof">Únete a <strong>miles de emprendedores</strong> que ya los están usando.</p>
+      <p class="disclaimer">No enviamos spam. Cancelas cuando quieras.</p>
+    </form>
+  </main>
+
+  <footer>© 2025 PsicoFunnel · Todos los derechos reservados</footer>
+
+  <script>
+    /* ========= Urgencia ========= */
+    function updateCountdown(){
+      const now = new Date(), end = new Date();
+      end.setHours(23,59,59,999);
+      const diff = end - now;
+      const h = Math.max(0, Math.floor(diff/3.6e6)).toString().padStart(2,'0');
+      const m = Math.max(0, Math.floor((diff%3.6e6)/6e4)).toString().padStart(2,'0');
+      const s = Math.max(0, Math.floor((diff%6e4)/1e3)).toString().padStart(2,'0');
+      document.getElementById('left').textContent = `${h}:${m}:${s}`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const now = new Date();
+    document.getElementById('dd').textContent = String(now.getDate()).padStart(2,'0');
+    document.getElementById('mm').textContent = String(now.getMonth()+1).padStart(2,'0');
+    document.getElementById('yy').textContent = String(now.getFullYear()).slice(-2);
+
+    /* ========= UTM ========= */
+    const urlParams = new URLSearchParams(location.search);
+    document.getElementById('utm_source').value = urlParams.get('utm_source') || '';
+    document.getElementById('utm_medium').value = urlParams.get('utm_medium') || '';
+    document.getElementById('utm_campaign').value = urlParams.get('utm_campaign') || '';
+    document.getElementById('sourceField').value = 'gpt'; // origen fijo
+
+    /* ========= Envío ========= */
+    const form = document.getElementById('leadMagnetForm');
+    const btn  = document.getElementById('submitBtn');
+    const ok   = document.getElementById('msg-ok');
+    const err  = document.getElementById('msg-err');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.classList.add('hidden');
+      err.classList.add('hidden');
+
+      const email = document.getElementById('email').value.trim();
+      const nombre = document.getElementById('fname').value.trim();
+      if(!email || !nombre){ alert('Completa nombre y correo.'); return; }
+
+      const payload = {
+        email,
+        nombre,
+        origen: 'gpt',
+        gpts: ["Funnel Architect","Botbreaker","Offer Architect"],
+        utm_source: document.getElementById('utm_source').value,
+        utm_medium: document.getElementById('utm_medium').value,
+        utm_campaign: document.getElementById('utm_campaign').value
+      };
+
+      btn.disabled = true;
+      const oldText = btn.textContent;
+      btn.textContent = 'Enviando…';
+
+      try{
+        const res = await fetch("https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify(payload)
+        });
+
+        if(res.ok){
+          // Estado de gracias en la MISMA página
+          form.classList.add('hidden');
+          document.getElementById('hero').innerHTML =
+            '<h1>¡GPTs activados!</h1><p class="subhead">Revisa tu correo: te enviamos <b>Funnel Architect</b>, <b>Botbreaker</b> y <b>Offer Architect</b>.</p>';
+          ok.classList.remove('hidden');
+          window.scrollTo({top:0, behavior:'smooth'});
+        }else{
+          err.classList.remove('hidden');
+        }
+      }catch(e){
+        err.classList.remove('hidden');
+      }finally{
+        btn.disabled = false;
+        btn.textContent = oldText;
+      }
+    });
+  </script>
+</body>
+</html>
