@@ -1,771 +1,1196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#05070c" />
+  <title>PsicoFunnel — Tu equipo de funnels</title>
+  <meta name="description" content="PsicoFunnel diseña e implementa funnels completos: estrategia, copy, landing, automatizaciones y medición. Para crecer con previsibilidad, sin apostar." />
 
-  <!-- Pre-conexiones y DNS-prefetch -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet" />
 
-  <!-- Íconos -->
-  <link rel="icon" type="image/png" href="/img/favicon150.png">
-  <link rel="manifest" href="/img/site.webmanifest">
+  <style>
+    :root{
+      --bg0:#05070c;
+      --ink:#eaf0ff;
+      --muted:rgba(234,240,255,.74);
+      --muted2:rgba(234,240,255,.56);
+      --line:rgba(234,240,255,.10);
+      --line2:rgba(234,240,255,.06);
 
-  <!-- Windows / Safari -->
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+      /* Accent */
+      --pf-accent-main:#1953ff;
+      --pf-accent-sec:#19a3ff;
 
-  <title>Servicio de creación de funnels y estrategias de marketing</title>
-  <meta name="description" content="funnels 1:1, neuro-ventas, blog, ebook, newsletter y más.">
+      --shadow: 0 18px 60px rgba(0,0,0,.42);
+      --shadow2: 0 14px 50px rgba(0,0,0,.34);
 
-  <!-- Google Fonts – preload + font-display swap -->
-  <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
-        onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"></noscript>
+      --r: 22px;
+      --ease: cubic-bezier(.2,.9,.2,1);
 
-  <!-- AOS CSS (2.3.4) – preload -->
-  <link rel="preload" as="style"
-        href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"
-        onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"></noscript>
+      --wrap: min(1140px, calc(100% - 44px));
+      --scrollFade: 0;
+      --headerH: 68px;
+      --mainPadTop: 28px;
+    }
 
-  <!-- Scripts externos (defer) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
-  <script defer src="https://kit.fontawesome.com/a3f4e7b8d1.js" crossorigin="anonymous"></script>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background: var(--bg0);
+      overflow-x:hidden;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit}
+    img{max-width:100%; height:auto}
+    button,input,select,textarea{font:inherit; color:inherit}
+    ::selection{background: rgba(25,118,255,.20)}
 
-<!-- ======================  E S T I L O S  ====================== -->
-<style>
-/* ------------------------------------------------------------------
-   000 · VARIABLES, RESET & BASE
------------------------------------------------------------------- */
-:root{
-  --pf-navy:#001a40;
-  --pf-accent:#00a6e0;
-  --pf-light:#e9f7ff;
-  --radius-xl:1.8rem;
-  --shadow-card:0 14px 34px rgba(0,0,0,.17);
-  --glow:0 0 12px rgba(0,166,224,.55);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;max-width:100vw}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Outfit',sans-serif;
-  line-height:1.6;
-  color:#0a0f1c;
-  text-align:center;
-  overflow-x:hidden;
-}
-img,iframe{max-width:100%;height:auto;display:block;margin-inline:auto}
-a{color:var(--pf-accent);text-decoration:none;transition:.25s}
-a:hover{opacity:.8}
+    /* ===== Background ===== */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 20% 15%, rgba(25,83,255,.14), rgba(0,0,0,0) 60%),
+        radial-gradient(1000px 700px at 80% 10%, rgba(25,163,255,.10), rgba(0,0,0,0) 55%),
+        radial-gradient(1200px 900px at 60% 85%, rgba(25,83,255,.08), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, #04060b 0%, #05070c 55%, #05070c 100%);
+      transform: translateZ(0);
+    }
 
-/* ------------------------------------------------------------------
-   010 · FONDO ANIMADO
------------------------------------------------------------------- */
-body::before{
-  content:"";
-  position:fixed;inset:0;z-index:-2;
-  background:linear-gradient(-45deg,#0043a3,#001a40,#000e20,#0043a3);
-  background-size:400% 400%;
-  animation:bgmove 25s ease infinite;
-}
-@keyframes bgmove{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+    .grain{
+      position:fixed;
+      inset:-40%;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.08;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/></filter><rect width='260' height='260' filter='url(%23n)' opacity='.55'/></svg>");
+      background-size: 260px 260px;
+      animation: grainMove 10s steps(10) infinite;
+      transform: translateZ(0);
+    }
+    @keyframes grainMove{
+      0%{transform:translate3d(0,0,0)}
+      10%{transform:translate3d(-5%, -10%,0)}
+      20%{transform:translate3d(-15%, 5%,0)}
+      30%{transform:translate3d(7%, -25%,0)}
+      40%{transform:translate3d(-5%, 25%,0)}
+      50%{transform:translate3d(-15%, 10%,0)}
+      60%{transform:translate3d(15%, 0%,0)}
+      70%{transform:translate3d(0%, 15%,0)}
+      80%{transform:translate3d(3%, 35%,0)}
+      90%{transform:translate3d(-10%, 10%,0)}
+      100%{transform:translate3d(0,0,0)}
+    }
 
-/* ------------------------------------------------------------------
-   020 · UTILIDADES
------------------------------------------------------------------- */
-.container{width:min(1180px,92%);margin-inline:auto}
-.btn{
-  display:inline-block;padding:.95rem 1.9rem;border-radius:3rem;
-  font-weight:700;background:var(--pf-accent);color:#fff;transition:.3s}
-.btn:hover{transform:translateY(-3px);box-shadow:var(--glow)}
+    .vignette{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(1200px 900px at 50% 18%,
+          rgba(0,0,0, calc(.30 * (1 - var(--scrollFade)))) 0%,
+          rgba(0,0,0, calc(.55 * (1 - var(--scrollFade)))) 46%,
+          rgba(0,0,0, calc(.82 * (1 - var(--scrollFade)))) 74%,
+          rgba(0,0,0, calc(.92 * (1 - var(--scrollFade)))) 100%);
+      transition: background 300ms linear;
+    }
 
-/* ------------------------------------------------------------------
-   030 · NAVBAR
------------------------------------------------------------------- */
-.header-inner{position:fixed;top:0;left:0;width:100%;z-index:1000;
-  backdrop-filter:blur(12px);background:rgba(0,15,40,.6)}
-.nav{display:flex;align-items:center;padding:16px 32px}
-.logo{font-size:1.3rem;font-weight:700;color:#fff}
-.nav-links{display:flex;margin-left:auto}
-.nav-links a{margin-left:22px;color:#fff;font-weight:600;transition:.25s}
-.nav-links a:hover{opacity:.75}
-#toggle{display:none}
-.burger{display:none;width:28px;height:22px;cursor:pointer;position:relative;z-index:1001;margin-left:auto}
-.burger span,.burger::before,.burger::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;transition:.35s}
-.burger span{top:9px}.burger::before{top:0}.burger::after{bottom:0}
-#toggle:checked + .burger span{opacity:0}
-#toggle:checked + .burger::before{transform:translateY(9px) rotate(45deg)}
-#toggle:checked + .burger::after{transform:translateY(-9px) rotate(-45deg)}
-@media(max-width:780px){
-  .burger{display:block}
-  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:210px;
-    background:#000e20;flex-direction:column;align-items:center;
-    padding-top:100px;transition:.35s;overflow-y:auto}
-  #toggle:checked~.nav-links{right:0}
-  .nav-links a{margin:18px;font-size:1.1rem}
-  .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:999;display:none}
-  #toggle:checked~.nav-overlay{display:block}
-}
+    /* ===== Layout helpers ===== */
+    .wrap{width:var(--wrap); margin:0 auto}
+    .section{padding: 92px 0}
+    .section.tight{padding: 68px 0}
+    .center{text-align:center}
 
-/* ------------------------------------------------------------------
-   040 · HERO
------------------------------------------------------------------- */
-header#top{
-  color:#fff;
-  position:relative;
-  background:none;
-  padding:100px 1rem 40px;
-}
-.hero-wrapper{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:3rem;
-  max-width:1200px;
-  margin-inline:auto;
-  overflow:hidden;
-}
-.hero-content{
-  flex:1 1 360px;
-  text-align:center;
-  min-width:0;
-}
+    .sep{
+      height:1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.08), rgba(255,255,255,0));
+      opacity:.55;
+      margin: 0 auto;
+      width: min(960px, 92%);
+    }
 
-/* TITULO HERO  */
-.hero-title{
-  display:inline-block;           /* ancho exacto del texto */
-  margin-inline:auto;             /* centro real */
-  text-align:center;
-  font-size:clamp(3.1rem,7vw,4.8rem);
-  font-weight:800;
-  line-height:1.12;
-  margin-bottom:1rem;
-}
-.nowrap{white-space:nowrap}
+    /* ===== Navbar (texto como antes) ===== */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      padding:14px 0;
+      background: linear-gradient(180deg, rgba(5,7,12,.86) 0%, rgba(5,7,12,.58) 90%, rgba(5,7,12,0) 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+    .logoDot{
+      width:14px; height:14px;
+      border-radius:999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.25) 55%, rgba(255,255,255,.08) 100%),
+        linear-gradient(180deg, rgba(25,83,255,.95), rgba(25,163,255,.95));
+      box-shadow: 0 12px 26px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .brand strong{font-size:14px; letter-spacing:.02em}
 
-/* “Forma de embudo” solo en desktop */
-@media (min-width:901px){
-  .hero-title .nowrap-lg{
-    display:inline-block;
-    max-width:22ch;               /* ancho más estrecho */
-  }
-}
+    .navLinks{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .navLink{
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.02em;
+      color: rgba(234,240,255,.76);
+      text-decoration:none;
+      padding: 8px 2px;
+      border-bottom: 1px solid transparent;
+      transition: color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .navLink:hover{
+      color: rgba(255,255,255,.92);
+      border-color: rgba(255,255,255,.14);
+      transform: translateY(-1px);
+    }
 
-.hero-sub{
-  font-size:1.32rem;
-  font-weight:600;
-  max-width:560px;
-  margin:0 auto 2.1rem;
-}
-.hero-bullets{
-  list-style:none;display:flex;flex-wrap:wrap;justify-content:center;
-  gap:1rem;font-size:.97rem;margin:0 0 2.5rem;
-}
-.hero-bullets li{display:flex;align-items:center;gap:.45rem}
-.hero-bullets i{color:var(--pf-accent)}
-.hero-btn{
-  display:inline-block;padding:1.08rem 2.7rem;
-  font-size:1.1rem;font-weight:900;border-radius:60px;
-  color:#001a40;background:#fff;box-shadow:0 0 20px rgba(0,166,224,.55);
-  transition:.3s;
-}
-.hero-btn:hover{transform:translateY(-4px)}
-.hero-note{font-size:.8rem;margin-top:.8rem;opacity:.88}
-.hero-img{flex:1 1 340px;text-align:center}
-.hero-img img{width:100%;max-width:700px;border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
+    main{padding: var(--mainPadTop) 0 20px}
 
-/* Breakpoints */
-@media (max-width:900px){
-  .hero-wrapper{flex-direction:column;align-items:center;gap:2.2rem;padding:80px 1rem 120px;max-width:100%}
-  .hero-title{font-size:2.4rem}
-  .hero-sub{font-size:1.05rem}
-  .hero-img img{width:92%;max-width:420px}
-}
-@media (max-width:600px){
-  header#top{padding:70px 1rem 25px}
-  .hero-title{font-size:2.1rem}
-  .hero-sub{font-size:.95rem}
-  .hero-bullets{font-size:.88rem;gap:.7rem}
-  .hero-img img{max-width:340px}
-}
-/* Evita overflow en pantallas muy angostas */
-@media (max-width:500px){
-  .nowrap{white-space:normal;}
-}
+    /* ===== Buttons (tu estética) ===== */
+    .btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 22px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-family: Manrope, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.02em;
+      line-height:1;
+      outline:none;
+      -webkit-tap-highlight-color:transparent;
+      transition:
+        background .22s ease,
+        color .22s ease,
+        box-shadow .22s ease,
+        transform .1s ease,
+        filter .22s ease;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .btn:active{
+      transform:scale(.97) translateY(1px);
+    }
+    .btn-1{
+      color:#fff;
+      background:linear-gradient(135deg,var(--pf-accent-main),var(--pf-accent-sec));
+      box-shadow:0 18px 36px rgba(25,118,255,.35);
+    }
+    .btn-1:hover{
+      filter:brightness(1.05);
+      box-shadow:0 20px 42px rgba(25,118,255,.42);
+    }
+    .btn.big{
+      padding: 16px 30px;
+      font-size:15px;
+      min-width: min(520px, 92vw);
+    }
 
-/* Animación glow (solo keyframes) */
-@keyframes glow{0%{transform:translate(-50%,-50%) scale(.7)}50%{transform:translate(150%,150%) scale(1)}100%{transform:translate(-50%,-50%) scale(.7)}
-}
-@media(prefers-reduced-motion:reduce){
-  header a span{animation:none}
-}
+    /* ===== HERO (negro + fondo llamativo) ===== */
+    .hero{
+      position:relative;
+      min-height: calc(100svh - var(--headerH) - var(--mainPadTop));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 10px 0 7vh;
+      overflow:hidden;
+      background: transparent;
+    }
+    /* “algo llamativo” sin imagen: auroras suaves + líneas */
+    .heroFx{
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(900px 520px at 50% 42%, rgba(25,83,255,.18), rgba(0,0,0,0) 60%),
+        radial-gradient(720px 460px at 28% 30%, rgba(25,163,255,.12), rgba(0,0,0,0) 58%),
+        radial-gradient(760px 520px at 78% 32%, rgba(25,83,255,.10), rgba(0,0,0,0) 62%),
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.22) 60%, rgba(0,0,0,.55));
+      filter: saturate(1.08);
+    }
+    .heroFx::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.18;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255,255,255,.12) 0px,
+          rgba(255,255,255,.12) 1px,
+          rgba(255,255,255,0) 1px,
+          rgba(255,255,255,0) 120px);
+      mask-image: radial-gradient(900px 520px at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,.6) 46%, rgba(0,0,0,0) 72%);
+      -webkit-mask-image: radial-gradient(900px 520px at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,.6) 46%, rgba(0,0,0,0) 72%);
+    }
+    .heroFx::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width: 980px;
+      height: 980px;
+      transform: translate(-50%,-50%);
+      background: conic-gradient(from 180deg,
+        rgba(25,83,255,0) 0deg,
+        rgba(25,83,255,.22) 50deg,
+        rgba(25,163,255,.18) 120deg,
+        rgba(25,83,255,0) 200deg,
+        rgba(25,83,255,.18) 280deg,
+        rgba(25,83,255,0) 360deg);
+      filter: blur(42px);
+      opacity:.35;
+      animation: spin 16s linear infinite;
+    }
+    @keyframes spin{
+      to{transform:translate(-50%,-50%) rotate(360deg)}
+    }
 
-/* ------------------------------------------------------------------
-   050 · SECCIONES
------------------------------------------------------------------- */
-section{padding:110px 0}
+    .heroInner{position:relative; z-index:1; width:100%}
 
-/* ------------------------------------------------------------------
-   060 · ABOUT
------------------------------------------------------------------- */
-.about{background:#fff}
-.about-inner{display:grid;gap:2.6rem;align-items:center}
-@media(min-width:940px){.about-inner{grid-template-columns:1fr 1fr}}
-.about img{border-radius:var(--radius-xl);box-shadow:var(--shadow-card)}
-.about p{text-align:left;font-size:1rem}
+    h1{
+      margin:0 auto;
+      width:min(980px, 92%);
+      font-weight:800;
+      letter-spacing:-.04em;
+      line-height:1.04;
+      font-size: clamp(38px, 5.2vw, 66px);
+      text-shadow: 0 26px 80px rgba(0,0,0,.62);
+    }
+    .emph{
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      font-weight:600;
+      letter-spacing:-.01em;
+      opacity:.98;
+      position:relative;
+    }
+    .emph::after{
+      content:"";
+      position:absolute;
+      left:-2px; right:-2px;
+      bottom:-6px;
+      height:2px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(25,83,255,0), rgba(25,163,255,.95), rgba(25,83,255,0));
+      opacity:1;
+      filter: drop-shadow(0 10px 20px rgba(25,118,255,.25));
+    }
 
-/* ------------------------------------------------------------------
-   070 · TIMELINE
------------------------------------------------------------------- */
-.timeline{max-width:700px;margin-inline:auto;position:relative}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);width:4px;background:var(--pf-accent)}
-.tl-item{width:50%;padding:1.2rem 1rem;position:relative}
-.tl-item:nth-child(odd){left:0;text-align:right}.tl-item:nth-child(even){left:50%}
-.tl-item::before{content:"";position:absolute;top:22px;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--pf-accent)}
-.tl-item:nth-child(odd)::before{right:-12px}.tl-item:nth-child(even)::before{left:-12px}
-.tl-item h4{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;color:var(--pf-navy)}
-.tl-item p{font-size:.9rem}
-@media(max-width:600px){
-  .timeline::before{left:4px}
-  .tl-item{width:100%;padding-left:2.4rem;text-align:left!important;left:0!important}
-  .tl-item::before{left:0!important}
-  .tl-item h4{font-size:.92rem}.tl-item p{font-size:.78rem;line-height:1.42}
-}
+    .heroActions{
+      margin-top: 26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+    }
+    .heroNote{
+      color: rgba(234,240,255,.62);
+      font-size: 12.5px;
+      line-height:1.6;
+      max-width: 60ch;
+      text-shadow: 0 16px 40px rgba(0,0,0,.60);
+    }
 
-/* ------------------------------------------------------------------
-   080 · BENEFICIOS
------------------------------------------------------------------- */
-.benefits-grid{display:grid;gap:1.8rem}
-@media(min-width:900px){.benefits-grid{grid-template-columns:repeat(3,1fr)}}
-.benefit{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:1.9rem 1.5rem;transition:.35s}
-.benefit:hover{transform:translateY(-8px);box-shadow:var(--glow)}
-.benefit h3{font-size:1.15rem;margin-bottom:.7rem}
+    /* ===== Typography ===== */
+    .k{
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color: rgba(234,240,255,.52);
+      margin:0 0 14px;
+      text-align:center;
+    }
 
-/* ------------------------------------------------------------------
-   090 · BLOG
------------------------------------------------------------------- */
-.blog{background:#fff}
-.blog-grid{display:grid;gap:1.9rem}
-@media(min-width:860px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
-.post{background:#fff;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-card);transition:.35s;text-align:left}
-.post:hover{transform:translateY(-8px);box-shadow:var(--glow)}
-.post img{aspect-ratio:16/9;width:100%;object-fit:cover}
-.post h4{font-size:1.05rem;margin:1rem 1rem .6rem;color:var(--pf-navy)}
-.post p{font-size:.9rem;margin:0 1rem 1rem}
-.post a{display:block;width:max-content;margin:0 auto 1.4rem;font-weight:600}
+    h2{
+      margin:0;
+      font-size: clamp(24px, 3.2vw, 38px);
+      letter-spacing:-.03em;
+      line-height:1.14;
+      text-align:center;
+    }
+    h2 .i{
+      font-family:"Playfair Display", serif;
+      font-style:italic;
+      font-weight:500;
+      color: rgba(234,240,255,.86);
+    }
 
-/* ------------------------------------------------------------------
-   100 · NEWSLETTER
------------------------------------------------------------------- */
-.newsletter{background:#001a40;color:#fff}
-.nl-inner{max-width:540px;margin-inline:auto}
-.newsletter form{display:flex;gap:.65rem;margin-top:1.4rem}
-@media(max-width:580px){.newsletter form{flex-direction:column}}
-.newsletter input{flex:1;padding:.85rem;border:1px solid #3c4e7a;border-radius:2rem;font-family:inherit;color:#fff;background:#001a40}
-.newsletter input::placeholder{color:#cfd8ff}
+    .p{
+      margin: 16px auto 0;
+      color: rgba(234,240,255,.70);
+      line-height:1.85;
+      font-size:15px;
+      max-width: 74ch;
+      text-align:center;
+    }
 
-/* ------------------------------------------------------------------
-   110 · EBOOK
------------------------------------------------------------------- */
-.ebook{background:#fff}
-.ebook-inner{max-width:600px;margin-inline:auto;text-align:center}
-.ebook img{width:260px;border-radius:var(--radius-xl);box-shadow:var(--shadow-card);margin-bottom:1.4rem}
+    /* ===== Grids ===== */
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items:center;
+    }
 
-/* ------------------------------------------------------------------
-   120 · YOUTUBE
------------------------------------------------------------------- */
-.yt-section{background:#f7fbfe}
-.yt-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.6rem}
-.yt-card{width:320px;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow-card);transition:.35s}
-.yt-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:var(--glow)}
-.yt-card iframe{width:100%;aspect-ratio:16/9;border:0}
+    .surfaceBox{
+      border-radius: var(--r);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: var(--shadow2);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+      text-align:left;
+    }
+    .plainBlock{padding: 0}
 
-/* ------------------------------------------------------------------
-   130 · SOCIAL
------------------------------------------------------------------- */
-.social{background:#fff}
-.social img.photo{width:180px;border-radius:50%;box-shadow:var(--shadow-card);margin-bottom:1rem}
-.social-links{display:flex;justify-content:center;gap:1.4rem;margin-top:1rem}
-.social-links a{width:58px;height:58px;border-radius:50%;display:flex;justify-content:center;align-items:center;background:var(--pf-accent);transition:.3s;overflow:hidden}
-.social-links a:hover{transform:translateY(-4px);background:#008ccd}
-.social-links img{width:60%;height:60%;object-fit:contain;pointer-events:none}
+    .mediaBox{
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      aspect-ratio: 16/11;
+      position:relative;
+    }
+    .mediaBox::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 380px at 30% 25%, rgba(25,83,255,.14), rgba(0,0,0,0) 55%),
+        radial-gradient(700px 450px at 80% 20%, rgba(25,163,255,.08), rgba(0,0,0,0) 55%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      pointer-events:none;
+    }
+    .mediaBox .hint{
+      position:absolute; left:18px; bottom:16px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(10,14,24,.42);
+      color: rgba(234,240,255,.74);
+      font-size:12.5px;
+      max-width: 88%;
+      backdrop-filter: blur(12px);
+    }
 
-/* ------------------------------------------------------------------
-   140 · FAQ
------------------------------------------------------------------- */
-.faq{background:#001a40;color:#fff}
-.accordion{max-width:720px;margin-inline:auto}
-.faq-item{margin-bottom:14px;border-radius:var(--radius-xl);background:rgba(0,15,40,.45);backdrop-filter:blur(6px);box-shadow:var(--shadow-card)}
-.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.15rem 1.4rem;font-weight:600;font-size:1rem;background:none;color:#fff;border:none;cursor:pointer}
-.faq-btn i{transition:.3s;color:var(--pf-accent)}
-.faq-content{max-height:0;overflow:hidden;padding:0 1.4rem;transition:max-height .4s ease}
-.faq-content p{padding:1rem 0;font-size:.9rem;color:#e9f7ff}
-.faq-item.open .faq-btn i{transform:rotate(45deg)}
+    .tK{margin:0 0 10px; font-size:12px; letter-spacing:.10em; text-transform:uppercase; color: rgba(234,240,255,.52)}
+    .tH{
+      margin:0;
+      font-size: clamp(22px, 2.9vw, 34px);
+      letter-spacing:-.02em;
+      line-height:1.18;
+    }
+    .tH .i{
+      font-family:"Playfair Display", serif;
+      font-style:italic;
+      font-weight:500;
+      color: rgba(234,240,255,.86);
+    }
+    .tP{
+      margin:14px 0 0;
+      color: rgba(234,240,255,.70);
+      line-height:1.85;
+      font-size:15px;
+      max-width: 74ch;
+    }
 
-/* ------------------------------------------------------------------
-   150 · CTA (Servicios)
------------------------------------------------------------------- */
-.svc{background:#001a40;color:#fff;text-align:center}
-.cta{background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;padding:95px 1rem;text-align:center}
-.cta .btn{background:#fff;color:#001a40;font-weight:900}
+    .bullets{
+      margin-top: 18px;
+      display:grid;
+      gap: 12px;
+    }
+    .bullet{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding-left: 14px;
+      border-left: 1px solid rgba(255,255,255,.12);
+    }
+    .bullet strong{display:block; font-size:13.8px; letter-spacing:-.01em}
+    .bullet span{display:block; margin-top:6px; color: rgba(234,240,255,.70); line-height:1.7; font-size:13.8px}
 
-/* ------------------------------------------------------------------
-   160 · FOOTER & SCROLL TOP
------------------------------------------------------------------- */
-footer{background:#000e20;color:#8fb1df;text-align:center;padding:48px 1rem;font-size:.85rem}
-.scrolltop{position:fixed;right:22px;bottom:-60px;width:46px;height:46px;border-radius:50%;background:var(--pf-accent);color:#fff;display:flex;justify-content:center;align-items:center;font-size:1.2rem;cursor:pointer;transition:.4s;box-shadow:var(--shadow-card);z-index:999}
-.scrolltop.show{bottom:22px}
+    /* ===== Programa (centrado) ===== */
+    .programWrap{
+      width: min(980px, 100%);
+      margin: 0 auto;
+      text-align:center;
+    }
+    .programList{
+      margin: 22px auto 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap: 12px;
+      width: min(860px, 100%);
+      text-align:left;
+    }
+    .programItem{
+      padding-left: 14px;
+      border-left: 1px solid rgba(255,255,255,.12);
+      color: rgba(234,240,255,.72);
+      line-height:1.78;
+      font-size: 13.9px;
+    }
+    .programItem strong{
+      display:block;
+      color: rgba(255,255,255,.92);
+      font-size: 13.8px;
+      letter-spacing:-.01em;
+      margin-bottom: 4px;
+    }
 
-/* ------------------------------------------------------------------
-   170 · PF WOW
------------------------------------------------------------------- */
-.pf-wow{background:#fff;padding:150px 0;text-align:center;color:#001a40}
-.pf-headline{font-size:2.1rem;line-height:1.35;margin-bottom:4.5rem}
-.fx{display:inline-block;background:linear-gradient(90deg,var(--pf-accent),#60dcff,var(--pf-accent));-webkit-background-clip:text;color:transparent;background-size:200%;animation:shineTxt 6s linear infinite}
-@keyframes shineTxt{0%{background-position:0 50%}100%{background-position:200% 50%}}
-.pf-row{display:grid;gap:40px;width:min(1100px,92%);margin:0 auto 110px}
-@media(min-width:960px){.pf-row{grid-template-columns:1fr 1fr}}
-.pf-card{padding:2.4rem 2rem;border-radius:var(--radius-xl);box-shadow:0 18px 40px rgba(0,0,0,.15);position:relative;overflow:hidden}
-.pf-card::after{content:"";position:absolute;top:-120%;left:-30%;width:60%;height:300%;background:rgba(255,255,255,.13);transform:rotate(25deg);animation:shine 9s linear infinite}
-@keyframes shine{0%{left:-40%}100%{left:140%}}
-.pf-card h3{font-size:1.6rem;margin-bottom:1.2rem}
-.pf-white{background:#fff}.pf-white h3{color:var(--pf-accent)}
-.pf-blue{background:var(--pf-navy);color:#fff}.pf-blue h3{color:var(--pf-accent)}
-.pf-list{list-style:none;padding:0;margin:0;font-size:1.15rem;line-height:1.72}
-.pf-list li{margin:.65rem 0;padding-left:1.9rem;position:relative}
-.pf-list li::before{content:"✔";position:absolute;left:0;color:var(--pf-accent);font-weight:700}
-.pf-fireCard{position:relative;overflow:hidden;margin:120px auto 0;padding:50px 30px;max-width:760px;text-align:center;background:linear-gradient(135deg,var(--pf-accent),#60dcff);color:#fff;border-radius:28px;box-shadow:0 18px 42px rgba(0,166,224,.45);animation:pulse 6s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.pf-fireCard h3{font-size:1.9rem;margin-bottom:14px}
-.pf-fireCard p{font-size:1.15rem;line-height:1.55;margin-bottom:26px}
-.pf-fireBtn{background:#fff;color:var(--pf-navy)!important;font-weight:900;padding:1.2rem 2.8rem}
-#fireCanvas{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
+    /* ===== Servicios ===== */
+    .cards{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: 20px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+      transform: translateY(6px);
+      opacity: 0;
+      transition: transform .7s var(--ease), opacity .7s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+      text-align:left;
+    }
+    .card.reveal{transform: translateY(0); opacity: 1}
+    .card:hover{border-color: rgba(255,255,255,.14); background: rgba(255,255,255,.035)}
+    .cardIcon{
+      width:36px; height:36px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 12px;
+      color: rgba(234,240,255,.86);
+      font-weight:900;
+    }
+    .cardTitle{margin:0; font-size:15px; font-weight:900; letter-spacing:-.01em}
+    .cardText{margin:10px 0 0; color: rgba(234,240,255,.70); line-height:1.75; font-size:13.8px}
 
-/* ------------------------------------------------------------------
-   180 · MOBILE FIXES EXTRA
------------------------------------------------------------------- */
-@media(max-width:640px){
-  .about-inner>div{text-align:center}
-  .pf-row{margin:0 auto 90px}
-  .pf-fireCard{margin:90px auto 0;padding:40px 20px}
-}
-@media(min-width:700px){.nowrap-lg{white-space:nowrap}}
-@media(max-width:480px){
-  .hero-title{font-size:clamp(1.9rem,7vw,3rem)}
-  .hero-sub{font-size:1.05rem}
-  .hero-img img{max-width:320px}
-}
-/* Ajuste de tamaño SOLO para el H1 del hero
-   (“Vende tus conocimientos / con ingresos predecibles”) */
-.hero-title{
-  font-size:clamp(2.4rem,6vw,3.6rem);   /* ↓ antes era 3.1 – 4.8 rem */
-}
+    /* ===== Lead magnet ===== */
+    .leadMag{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:center;
+    }
+    .leadMag h3{
+      margin:0;
+      font-size: 21px;
+      letter-spacing:-.02em;
+      line-height:1.2;
+    }
+    .leadMag h3 .i{
+      font-family:"Playfair Display", serif;
+      font-style:italic;
+      font-weight:500;
+      color: rgba(234,240,255,.86);
+    }
+    .leadMag p{
+      margin:12px 0 0;
+      color: rgba(234,240,255,.70);
+      line-height:1.8;
+      font-size:13.8px;
+      max-width: 70ch;
+    }
+    .magRight{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-/* Si también quieres que en móviles sea un poco menor: */
-@media (max-width:600px){
-  .hero-title{
-    font-size:clamp(1.8rem,6vw,2.4rem); /* ↓ antes era 2.1 rem máx */
-  }
-}
+    /* ===== Video + texto ===== */
+    .videoGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 24px;
+      align-items:center;
+    }
+    .videoBox{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 16/9;
+      position:relative;
+    }
+    .videoBox::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 420px at 35% 25%, rgba(25,83,255,.10), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      pointer-events:none;
+    }
+    .videoHint{
+      position:absolute;
+      left:16px; bottom:14px;
+      padding: 9px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(10,14,24,.42);
+      color: rgba(234,240,255,.74);
+      font-size:12.5px;
+      backdrop-filter: blur(12px);
+    }
 
-</style>
+    /* ===== FAQs ===== */
+    .faqGrid{
+      margin-top: 24px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    details{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow2);
+      padding: 14px 14px;
+      transition: border-color .3s var(--ease), background .3s var(--ease);
+    }
+    details[open]{border-color: rgba(255,255,255,.14); background: rgba(255,255,255,.035)}
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      letter-spacing:-.01em;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      font-size:13.7px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .faqA{
+      margin-top: 12px;
+      color: rgba(234,240,255,.70);
+      line-height:1.8;
+      font-size:13.8px;
+    }
+    .chev{
+      width: 26px; height: 26px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      transition: transform .3s var(--ease);
+      opacity:.9;
+    }
+    details[open] .chev{transform: rotate(180deg)}
 
+    /* ===== Form ===== */
+    .formShell{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+    .formGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 18px;
+      margin-top: 18px;
+      align-items:end;
+    }
+    .field{
+      padding: 0 0 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .field label{
+      display:block;
+      font-size: 11.5px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color: rgba(234,240,255,.54);
+      margin-bottom: 7px;
+      font-weight:900;
+    }
+    .input, .textarea, .select{
+      width:100%;
+      padding: 6px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      outline:none;
+      color: rgba(255,255,255,.92);
+      font-size: 15px;
+    }
+    .input::placeholder, .textarea::placeholder{color: rgba(234,240,255,.40)}
+    .textarea{min-height: 96px; resize:vertical}
+    .full{grid-column: 1 / -1}
+
+    .formBottom{
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      color: rgba(234,240,255,.60);
+      font-size:12.5px;
+      line-height:1.6;
+    }
+
+    footer{
+      padding: 38px 0 46px;
+      color: rgba(234,240,255,.58);
+      font-size:12.5px;
+      text-align:center;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .grid2, .leadMag, .videoGrid{grid-template-columns: 1fr; gap: 20px}
+      .cards{grid-template-columns: 1fr; gap: 12px}
+      .faqGrid{grid-template-columns: 1fr}
+      .formGrid{grid-template-columns: 1fr}
+      .navLinks{display:none}
+      .section{padding: 76px 0}
+      .section.tight{padding: 58px 0}
+      .magRight{justify-content:flex-start}
+      .btn.big{min-width: min(560px, 92vw)}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .grain{animation:none}
+      .heroFx::after{animation:none}
+      .card{transition:none; opacity:1; transform:none}
+      .btn{transition:none}
+      .navLink{transition:none}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
 
-<!-- ========== NAVBAR ========== -->
-<div class="header-inner">
-  <nav class="nav" aria-label="Menú principal">
-    <a class="logo" href="/">PsicoFunnel</a>
-    <input type="checkbox" id="toggle" aria-label="Abrir / cerrar menú" aria-controls="menu" aria-expanded="false">
-    <label for="toggle" class="burger"><span></span></label>
-    <div class="nav-links" id="menu">
-      <a href="/">Inicio</a>
-      <a href="/servicios">Servicios</a>
-      <a href="/blog">Blog</a>
-      <a href="/agendamiento">Contacto</a>
-    </div>
-    <div class="nav-overlay"></div>
-  </nav>
-</div>
-
-<!-- ========== HERO ========== -->
-<header id="top">
-  <div class="hero-wrapper">
-    <!-- Texto -->
-    <div class="hero-content" data-aos="fade-down">
-      <h1 class="hero-title">
-        <span class="nowrap">Vende tus&nbsp;conocimientos</span><br>
-        <span class="nowrap-lg"
-              style="background:linear-gradient(90deg,var(--pf-accent),#60dcff);
-                     -webkit-background-clip:text;color:transparent">
-          con&nbsp;ingresos&nbsp;predecibles
-        </span>
-      </h1>
-
-      <p class="hero-sub">
-        Embudos hechos&nbsp;para&nbsp;vos que convierten comunidad
-        en <strong>alumnos premium</strong> — vos solo enfocáte en mejorar el producto.
-      </p>
-
-      <ul class="hero-bullets">
-        <li><i class="fas fa-check-circle"></i> Ventas evergreen</li>
-        <li><i class="fas fa-check-circle"></i> Leads calientes</li>
-        <li><i class="fas fa-check-circle"></i> Potencia lanzamientos</li>
-      </ul>
-
-      <a href="/agendamiento" class="hero-btn">¡QUIERO MI EMBUDO!</a>
-      <p class="hero-note">Aquí no se agendan los diagnósticos gratuitos</p>
-    </div>
-
-    <!-- Imagen -->
-    <div class="hero-img" data-tilt data-aos="zoom-in" data-aos-delay="120">
-      <picture>
-        <source srcset="/img/benjamin-hero.webp" type="image/webp">
-        <img src="/img/benjamin-hero.png"
-             alt="Benjamín Alegre — Funnel Strategist"
-             loading="lazy" decoding="async">
-      </picture>
-    </div>
-  </div>
-</header>
-
-<!-- ========== BLOQUE TRANSACCIONAL ========== -->
-<section id="pf-wow" class="pf-wow">
-  <h2 class="pf-headline" data-aos="zoom-in">
-    <span style="color:#001a40;font-weight:700;">PsicoFunnel no es solo un funnel.</span><br>
-    <span class="fx">Es estrategia, emoción y resultados.</span>
-  </h2>
-
-  <div class="pf-row">
-    <article class="pf-card pf-blue" data-aos="fade-left" data-aos-delay="100">
-      <h3>¿Qué es PsicoFunnel?</h3>
-      <p>PsicoFunnel es un servicio de embudos de venta enfocado <strong>100&nbsp;% en cómo funciona la mente del consumidor</strong>. Cada funnel se crea desde cero, conecta con tu cliente ideal y convierte emoción en acción real.</p>
-    </article>
-
-    <article class="pf-card pf-blue" data-aos="fade-left" data-aos-delay="150">
-      <h3>¿Qué hace PsicoFunnel por vos?</h3>
-      <ul class="pf-list">
-        <li>Te libera del caos de improvisar ventas.</li>
-        <li>Recorrido de cliente natural y convincente.</li>
-        <li>Activa motivos de compra reales.</li>
-        <li>Multiplica resultados sin más horas.</li>
-        <li>Delegás la venta con confianza.</li>
-      </ul>
-    </article>
-  </div>
-
-  <article class="pf-card pf-white pf-diagnosis" data-aos="fade-up" data-aos-delay="450">
-    <h3>Auditoría de tu funnel</h3>
-    <p class="pf-micro">Un buen funnel no es un lujo: <strong>es el sistema que sostiene tu negocio</strong> mientras vos vivís, creás o escalás. Agenda una llamada conmigo y veamos tu funnel de principio a fin; si aún no tenés uno lo creo por vos para que dispongas de un sistema predecible de ventas. ¡El diagnóstico es totalmente gratuito!</p>
-    <a href="/servicios" class="btn pf-btn">Quiero un funnel que venda con psicología</a>
-  </article>
-
-  <article class="pf-fireCard" id="fireCard">
-    <h3>🎉 BONO ESPECIAL</h3>
-    <p>🧠 Regalo <strong>3 consultorías gratuitas</strong> cada mes para auditar tu sistema y potenciar tus campañas.</p>
-    <a href="/diagnostico" class="btn pf-fireBtn">¡Quiero mi consulta GRATIS!</a>
-    <canvas id="fireCanvas"></canvas>
-  </article>
-</section>
-
-<!-- ========== BENEFICIOS ========== -->
-<section style="background:#001a40">
-  <div class="container" data-aos="fade-up">
-    <h2 style="color:#fff">Beneficios de trabajar conmigo</h2>
-    <div class="benefits-grid">
-      <div class="benefit" data-tilt>
-        <h3>🚀 Impacto directo</h3>
-        <ul><li>+ Leads calificados en 4–6 sem</li><li>CAC ↓ · LTV ↑</li><li>Embudos evergreen 24/7</li></ul>
-      </div>
-      <div class="benefit" data-tilt>
-        <h3>⏰ En tu día a día</h3>
-        <ul><li>Recuperás horas → foco</li><li>Operación sin urgencias</li><li>Dashboard semanal = claridad</li></ul>
-      </div>
-      <div class="benefit" data-tilt>
-        <h3>🌱 A mediano plazo</h3>
-        <ul><li>Posicionamiento experto</li><li>Innovación continua</li><li>Efecto compuesto en cada test</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== BLOG ========== -->
-<section class="blog">
-  <div class="container" data-aos="fade-up">
-    <h2 style="color:var(--pf-navy)">Últimos artículos</h2>
-    <div class="blog-grid">
-      <article class="post" data-tilt>
-        <img src="/img/que-es-un-funnel.webp" alt="¿Qué es un funnel de ventas?" width="640" height="360" loading="lazy" decoding="async">
-        <h4>¿Qué es un funnel de ventas?</h4>
-        <p>Guía paso a paso para entender y aplicar embudos en 2025.</p>
-        <a href="/blog/que-es-un-funnel.html" class="btn">Leer</a>
-      </article>
-      <article class="post" data-tilt>
-        <img src="/img/cover-copy-ventas.webp" alt="Copywriting neuro-persuasivo" width="640" height="360" loading="lazy" decoding="async">
-        <h4>Copywriting neuro-persuasivo</h4>
-        <p>Sesgos y ejemplos para que tu mensaje sea irresistible.</p>
-        <a href="/blog/copywriting-para-una-pagina-de-ventas.html" class="btn">Leer</a>
-      </article>
-      <article class="post" data-tilt>
-        <img src="/img/que-es-un-customer-jouney.webp" alt="Tráfico de calidad" width="640" height="360" loading="lazy" decoding="async">
-        <h4>Tráfico de calidad con menos CAC</h4>
-        <p>Conoce lo que sienten tus leads.</p>
-        <a href="/blog/que_es_un_customer_journey.html" class="btn">Leer</a>
-      </article>
-    </div>
-    <a href="/blog" class="btn" style="margin-top:2rem">Ver Blog completo</a>
-  </div>
-</section>
-
-<!-- ========== NEWSLETTER ========== -->
-<section class="newsletter" data-aos="fade-up">
-  <div class="container nl-inner">
-    <img src="/img/newsletter-imagefr.webp" width="300" height="300" alt="Logo newsletter" loading="lazy" decoding="async">
-    <h2>Únete a <span style="color:var(--pf-accent)">La Fraternidad</span></h2>
-    <p>Newsletter dominical con hacks de psicología, funnels y mindset. Sin spam. Solo valor.</p>
-    <form id="newsletter-form">
-      <input type="hidden" name="origen" value="newsletter">
-      <input type="email" name="email" placeholder="Tu email" required>
-      <button class="btn" type="submit">Suscribirme</button>
-    </form>
-  </div>
-</section>
-
-<!-- ========== EBOOK ========== -->
-<section class="ebook" data-aos="fade-up">
-  <div class="container ebook-inner">
-    <img src="img/guiadefinitivadefunnels.webp" alt="Portada Ebook" width="260" height="346" loading="lazy" decoding="async">
-    <h3>Ebook GRATUITO "GUIA DEFINITIVA DE FUNNELS DE VENTA"</h3>
-    <p> </p>
-    <p>Descarga ahora esta guia totalmente gratuita donde aprenderas todo lo que necesitas saber sobre funnels!</p>
-    <p> </p>
-    <a href="/recurso-gratis" class="btn">Quiero el EBOOK! </a>
-  </div>
-</section>
-
-<!-- ========== YOUTUBE ========== -->
-<section class="yt-section">
-  <div class="container" data-aos="fade-up">
-    <h2 style="color:var(--pf-navy)">Últimos vídeos</h2>
-    <div class="yt-grid">
-      <div class="yt-card" data-tilt><iframe width="560" height="315" src="https://www.youtube.com/embed/KhiNaC7LRCs?si=fcv1BFFn4TllAPQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" title="La IA no salvara tu negocio... Esto si! ">></iframe> </div>
-      <div class="yt-card" data-tilt><iframe width="560" height="315" src="https://www.youtube.com/embed/7prremlONqs?si=yjRrdu4z17Bm8_Gz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" title="La formula prohibida del LEAD MAGNET"></iframe></div>
-      <div class="yt-card" data-tilt><iframe width="560" height="315" src="https://www.youtube.com/embed/0bnok7FI9wA?si=YwKjK809LVYy41LH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" title="La habilidad que te hara ganar dinero en tus 20's"></iframe></div>
-    </div>
-    <a href="https://www.youtube.com/@BenjaminAlegre317" target="_blank" class="btn" style="margin-top:2.3rem">Visitar canal</a>
-  </div>
-</section>
-
-<!-- ========== SOBRE MÍ ========== -->
-<section class="about">
-  <div class="container about-inner" data-aos="fade-up">
-    <div>
-      <h2 style="font-size:1.6rem;margin-bottom:10px">¿Quién está detrás de PsicoFunnel?</h2>
-      <p style="font-size:1.05rem;max-width:700px;margin:0 auto">
-        Soy <strong>Benjamín E. Alegre</strong>, tengo 19 años y me dedico de lleno al estudio de los funnels de venta. Desde chico me fascinó el marketing: a los 8 ya tenía un canal de YouTube y buscaba cómo posicionarlo (aunque no siempre con éxito 😅).<br><br>
-        Trabajé en una cafetería y en un gimnasio, intenté ser infoproductor fitness, pero descubrí que mi verdadera pasión es el marketing estratégico. En 2025 fundé <strong>PsicoFunnel</strong> y desde entonces no paré. Mi aspiración es ser el mejor en lo que hago, y estoy decidido a construir mi camino trabajando con compromiso y corazón.
-      </p>
-    </div>
-    <img src="/img/benjamin-alegre01.jpg" alt="Benjamín Alegre" width="300" height="300" loading="lazy" decoding="async">
-  </div>
-</section>
-
-<!-- ========== HISTORIA ========== -->
-<section id="historia" style="background:#f7fbfe">
-  <div class="container">
-    <h2 data-aos="fade-up" style="color:var(--pf-navy)">Mi historia (en 5 hitos)</h2>
-    <div class="timeline" data-aos="fade-up">
-      <div class="tl-item"><h4>🌟 Niño con un sueño (9 años)</h4><p>Intenté posicionar mi primer canal de YouTube.</p></div>
-      <div class="tl-item"><h4>💻 Secundaria técnica</h4><p>Aprendí programación e informática.</p></div>
-      <div class="tl-item"><h4>📚 Mentalidad ganadora</h4><p>Lectura diaria para crecer y tomar acción.</p></div>
-      <div class="tl-item"><h4>🏋️ Coach fitness</h4><p>Ayudé a otros con disciplina y constancia.</p></div>
-      <div class="tl-item"><h4>🚀 Funnel strategist (18 años)</h4><p>Encontré mi pasión en marketing &amp; neuro-ventas.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== SOCIAL ========== -->
-<section class="social" data-aos="fade-up">
-  <div class="container">
-    <img src="/img/benjamin-alegre.JPG" class="photo" alt="Foto Benjamín" width="180" height="180" loading="lazy" decoding="async">
-    <h2 style="color:var(--pf-navy)">Sígueme en redes</h2>
-    <p>Para ver de cerca mi lifestyle, recibir contenido de valor y estar al tanto de todo:</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/benja" target="_blank" aria-label="LinkedIn">
-        <img src="/img/logo-linkedin.svg" alt="LinkedIn" width="48" height="48" loading="lazy" decoding="async">
+  <header>
+    <div class="wrap navRow">
+      <a class="brand" href="#top" aria-label="PsicoFunnel inicio">
+        <span class="logoDot" aria-hidden="true"></span>
+        <strong>PsicoFunnel</strong>
       </a>
-      <a href="https://www.instagram.com/benjalegree" target="_blank" aria-label="Instagram">
-        <img src="/img/logo-instagram.svg" alt="Instagram" width="48" height="48" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.youtube.com/@BenjaminAlegre317" target="_blank" aria-label="YouTube">
-        <img src="/img/logo-youtube.svg" alt="YouTube" width="48" height="48" loading="lazy" decoding="async">
-      </a>
+
+      <!-- NAV: solo texto (pero clickeable) -->
+      <nav class="navLinks" aria-label="Navegación">
+        <a class="navLink" href="#top">Inicio</a>
+        <a class="navLink" href="#servicios">Servicios</a>
+        <a class="navLink" href="#quienes">Quiénes somos</a>
+        <a class="navLink" href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="btn btn-1" href="#contacto">Agendar diagnóstico</a>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ========== CTA SERVICIOS ========== -->
-<section class="svc" data-aos="zoom-in">
-  <div class="container">
-    <h2>¿Quieres un embudo hecho 1-a-1 por Benja?</h2>
-    <p style="max-width:640px;margin-inline:auto">Embudo artesanal, KPIs claros y atención sin intermediarios.<br>Descubre la propuesta completa.</p>
-    <a href="/servicios" class="btn">Ir a Servicios</a>
-  </div>
-</section>
+  <main id="top">
+    <!-- HERO (negro + fondo llamativo) -->
+    <section class="hero" aria-label="Hero PsicoFunnel">
+      <div class="heroFx" aria-hidden="true"></div>
 
-<!-- ========== FAQ ========== -->
-<section class="faq" data-aos="fade-up">
-  <div class="container">
-    <h2>Preguntas frecuentes</h2>
-    <div class="accordion">
-      <div class="faq-item">
-        <button class="faq-btn">¿Necesito experiencia previa en funnels? <i class="fas fa-plus"></i></button>
-        <div class="faq-content"><p>No. Partimos de cero y te guío paso a paso.</p></div>
+      <div class="wrap heroInner">
+        <h1>
+          Tu equipo de <span class="emph">funnels</span><br />
+          para crecer <span class="emph">sin apostar</span>
+        </h1>
+
+        <div class="heroActions">
+          <a class="btn btn-1 big" href="#contacto">Agendar diagnóstico gratuito</a>
+          <div class="heroNote">15 minutos. Sin compromiso. Solo claridad sobre qué ajustar primero para vender con previsibilidad.</div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-btn">¿Cuándo veré retorno de inversión? <i class="fas fa-plus"></i></button>
-        <div class="faq-content"><p>Primeros leads en 4-6 sem y ROI completo en ~90 días (depende de tu ticket).</p></div>
+    </section>
+
+    <div class="sep" aria-hidden="true"></div>
+
+    <!-- INTRO -->
+    <section class="section tight">
+      <div class="wrap center">
+        <p class="k">Sistema completo</p>
+        <h2>Estrategia + copy + diseño + automatización <span class="i">en orden</span></h2>
+        <p class="p">
+          Un funnel ordena el recorrido y sostiene la decisión. Para dejar de “publicar y esperar” y empezar a medir lo que funciona.
+        </p>
+
+        <div style="margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn-1" href="#servicios">Ver servicios</a>
+          <a class="btn btn-1" href="#contacto">Hablar ahora</a>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-btn">¿Trabajas solo o con equipo? <i class="fas fa-plus"></i></button>
-        <div class="faq-content"><p>Trabajo personalmente tu funnel; involucro partners senior solo cuando es imprescindible.</p></div>
+    </section>
+
+    <!-- BLOQUE 1 -->
+    <section class="section" id="porque">
+      <div class="wrap grid2">
+        <div class="mediaBox" aria-label="Imagen/preview">
+          <div class="hint">Espacio visual (producto / captura / mockup).</div>
+        </div>
+
+        <div class="plainBlock">
+          <p class="tK">Por qué</p>
+          <h3 class="tH">Un funnel te da <span class="i">control</span></h3>
+          <p class="tP">
+            Cuando el camino está definido, el lead entiende, avanza y decide con menos fricción. Eso se traduce en ventas más estables.
+          </p>
+
+          <div class="bullets">
+            <div class="bullet">
+              <div>
+                <strong>Mensaje consistente</strong>
+                <span>Anuncio, landing y seguimiento cuentan lo mismo, sin ruido.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Seguimiento elegante</strong>
+                <span>La intención no se pierde por falta de sistema.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Optimización real</strong>
+                <span>Se mejora con datos, no con suposiciones.</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-btn">¿Qué hace diferente a PsicoFunnel? <i class="fas fa-plus"></i></button>
-        <div class="faq-content"><p>Diagnóstico neuro-persuasivo, máximo 3 clientes y trato humano 1-a-1.</p></div>
+    </section>
+
+    <!-- BLOQUE 2 -->
+    <section class="section tight">
+      <div class="wrap grid2">
+        <div class="plainBlock">
+          <p class="tK">Por qué PsicoFunnel</p>
+          <h3 class="tH">Se diseña la decisión</h3>
+          <p class="tP">
+            Menos adorno, más intención: estructura clara, copy preciso y automatización que acompaña sin perseguir.
+          </p>
+
+          <div class="bullets">
+            <div class="bullet">
+              <div>
+                <strong>Estrategia primero</strong>
+                <span>Mapa del recorrido y fricciones reales.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Copy editorial</strong>
+                <span>Directo, humano y con jerarquía.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Implementación prolija</strong>
+                <span>Listo para tráfico y para medir.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mediaBox" aria-label="Imagen/preview">
+          <div class="hint">Espacio visual (emails / dashboard / funnel).</div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-btn">¿Puedo aprender gratis? <i class="fas fa-plus"></i></button>
-        <div class="faq-content"><p>Sí: Blog, canal YouTube y la newsletter “La Fraternidad” son gratuitos.</p></div>
+    </section>
+
+    <div class="sep" aria-hidden="true"></div>
+
+    <!-- PROGRAMA -->
+    <section class="section tight" id="programa">
+      <div class="wrap programWrap">
+        <p class="k">Programa</p>
+        <h2>Un sistema para vender con <span class="i">previsibilidad</span></h2>
+        <p class="p">
+          No es “un entregable suelto”. Es un proceso: se define el camino, se construyen las piezas y se deja listo para operar con medición.
+        </p>
+
+        <ul class="programList">
+          <li class="programItem">
+            <strong>1) Diagnóstico + mapa</strong>
+            Se revisa oferta, fricción, objeciones y el recorrido actual. Se define qué paso sigue y por qué.
+          </li>
+          <li class="programItem">
+            <strong>2) Arquitectura del funnel</strong>
+            Etapas, estructura de la landing y lógica de conversión: qué ve el lead, cuándo, y con qué intención.
+          </li>
+          <li class="programItem">
+            <strong>3) Copy + diseño minimal</strong>
+            Texto claro y jerárquico con estética sobria: fácil de leer, fácil de decidir.
+          </li>
+          <li class="programItem">
+            <strong>4) Automatización + medición</strong>
+            Seguimiento (emails o mensajes) + eventos para medir y optimizar sin adivinar.
+          </li>
+        </ul>
+
+        <div style="margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn-1" href="#contacto">Agendar diagnóstico gratuito</a>
+          <a class="btn btn-1" href="#servicios">Ver servicios</a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ========== CTA PRINCIPAL ========== -->
-<section class="cta" data-aos="zoom-in">
-  <h2>Multipliquemos tus conversiones</h2>
-  <p>Reserva tu Diagnóstico Gratuito de 30 min y recibe <strong>3 ideas accionables</strong> para tu embudo.<br><em>Solo 3 proyectos simultáneos – plaza prioritaria.</em></p>
-  <a href="/diagnostico" class="btn">Agenda ahora</a>
-</section>
+    <!-- QUIÉNES SOMOS -->
+    <section class="section" id="quienes">
+      <div class="wrap center">
+        <p class="k">Quiénes somos</p>
+        <h2>Un enfoque sobrio, humano y <span class="i">medible</span></h2>
+        <p class="p">
+          PsicoFunnel trabaja desde la psicología del consumidor y la claridad del mensaje. Menos “humo”, más sistema que se pueda sostener y mejorar.
+        </p>
 
-<!-- ========== FOOTER ========== -->
-<footer><p>&copy; <span id="year"></span> PsicoFunnel · Con ciencia y corazón · <a href="#top">Subir ↑</a></p></footer>
-<div class="scrolltop" id="topbtn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></div>
+        <div style="margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn-1" href="#contacto">Hacer una consulta</a>
+        </div>
+      </div>
+    </section>
 
-<!-- ─── TRACKING ───────────────────────────────────────────── -->
-<!-- Clarity -->
-<script defer>
-(function(c,l,a,r,i,t,y){
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window,document,"clarity","script","scfdh6p42a");
-</script>
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <div class="center">
+          <p class="k">Servicios</p>
+          <h2>Lo esencial para vender <span class="i">mejor</span></h2>
+          <p class="p">Piezas clave, sin saturar: claridad, sistema y seguimiento.</p>
+        </div>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TCDK50V329"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-TCDK50V329');
-</script>
+        <div class="cards">
+          <article class="card js-reveal">
+            <div class="cardIcon" aria-hidden="true">✦</div>
+            <h3 class="cardTitle">Estrategia</h3>
+            <p class="cardText">Mapa del recorrido: etapas, mensajes y fricciones.</p>
+          </article>
 
-<!-- Confetti library (defer) -->
-<script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+          <article class="card js-reveal">
+            <div class="cardIcon" aria-hidden="true">⌁</div>
+            <h3 class="cardTitle">Copy</h3>
+            <p class="cardText">Texto claro, humano y orientado a decisión.</p>
+          </article>
 
-<!-- ====================== SCRIPTS PRINCIPALES ====================== -->
-<script defer>
-document.addEventListener('DOMContentLoaded',()=>{
+          <article class="card js-reveal">
+            <div class="cardIcon" aria-hidden="true">⤴</div>
+            <h3 class="cardTitle">Automatización</h3>
+            <p class="cardText">Seguimiento con timing, sin fricción.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  /* AOS & VANILLA-TILT */
-  if(window.AOS) AOS.init({duration:800,once:true});
-  if(window.VanillaTilt){
-    VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{
-      max:6,speed:400,glare:true,'max-glare':.25
-    });
-  }
+    <!-- LEAD MAGNET -->
+    <section class="section tight" id="leadmagnet">
+      <div class="wrap">
+        <div class="surfaceBox leadMag">
+          <div>
+            <p class="tK">Recurso</p>
+            <h3>Checklist para detectar qué frena tu <span class="i">conversión</span></h3>
+            <p>
+              Rápido y al grano: mensaje, oferta, fricción y seguimiento. Para saber qué tocar primero.
+            </p>
+          </div>
+          <div class="magRight">
+            <a class="btn btn-1" href="#contacto">Quiero el checklist</a>
+            <span style="color: rgba(234,240,255,.60); font-size:12.5px">PDF + guía corta</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  /* NEWSLETTER */
-  const form=document.getElementById('newsletter-form');
-  if(form){
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      fetch('https://hook.us2.make.com/l1h37pmaijehhv6h6l2ripgv2ial94ii',{
-        method:'POST',body:new FormData(form)
+    <!-- VIDEO + TEXTO -->
+    <section class="section" id="video">
+      <div class="wrap videoGrid">
+        <div class="plainBlock">
+          <p class="tK">Qué se entrega</p>
+          <h3 class="tH">Un funnel listo para operar</h3>
+          <p class="tP">
+            Landing + copy + estructura + automatización. Acá dejé el espacio para que pegues tu video (sin marcos).
+          </p>
+
+          <div class="bullets">
+            <div class="bullet">
+              <div>
+                <strong>Landing ordenada</strong>
+                <span>Ritmo, aire y jerarquía para leer fácil.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Seguimiento</strong>
+                <span>Mensajes que sostienen la decisión.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div>
+                <strong>Base para optimizar</strong>
+                <span>Lo que se mide, mejora.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <a class="btn btn-1" href="#contacto">Agendar diagnóstico gratuito</a>
+          </div>
+        </div>
+
+        <div class="videoBox" aria-label="Espacio de video">
+          <div class="videoHint">Espacio para tu video (iframe / embed) — bordes redondeados.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQS -->
+    <section class="section tight" id="faqs">
+      <div class="wrap">
+        <div class="center">
+          <p class="k">FAQs</p>
+          <h2>Respuestas <span class="i">claras</span></h2>
+          <p class="p">Para decidir sin vueltas.</p>
+        </div>
+
+        <div class="faqGrid">
+          <details>
+            <summary>
+              ¿Sirve si ya tengo web?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              Sí. Se integra sobre lo que ya existe y se ordena el recorrido + seguimiento.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Es solo diseño?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              No. Se arma el sistema: estrategia, copy, estructura y automatización.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Cuánto texto lleva?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              El necesario. Se prioriza claridad y ritmo (sin saturar).
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Qué necesito para empezar?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              Oferta actual + objetivo. Con eso se define el mapa del funnel y el primer entregable.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿En cuánto tiempo se ve un funnel listo?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              Depende de la complejidad, pero el enfoque es construir lo esencial primero para salir a operar y medir cuanto antes.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Incluye emails y automatizaciones?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              Sí. Se plantea la lógica del seguimiento y se implementa una base de automatización alineada a tu oferta y a tu ciclo de compra.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Necesito tener anuncios corriendo?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              No necesariamente. El funnel puede funcionar con tráfico orgánico, referidos o anuncios. Lo importante es que el camino esté bien diseñado.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              ¿Qué pasa después de publicarlo?
+              <span class="chev" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="faqA">
+              Se observa el comportamiento real (métricas y respuestas). Con eso se priorizan ajustes para aumentar conversión sin rehacer todo.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="wrap">
+        <div class="center">
+          <p class="k">Contacto</p>
+          <h2>Definimos el <span class="i">camino</span></h2>
+          <p class="p">Dejá tu mensaje. Respuesta humana, sin vueltas.</p>
+        </div>
+
+        <div class="formShell">
+          <form>
+            <div class="formGrid">
+              <div class="field">
+                <label for="nombre">Nombre</label>
+                <input class="input" id="nombre" name="nombre" placeholder="Tu nombre" />
+              </div>
+
+              <div class="field">
+                <label for="empresa">Empresa</label>
+                <input class="input" id="empresa" name="empresa" placeholder="Tu empresa" />
+              </div>
+
+              <div class="field">
+                <label for="correo">Correo</label>
+                <input class="input" id="correo" name="correo" placeholder="tucorreo@..." />
+              </div>
+
+              <div class="field">
+                <label for="origen">¿Cómo nos conociste?</label>
+                <select class="select" id="origen" name="origen">
+                  <option>Instagram</option>
+                  <option>Google</option>
+                  <option>Recomendación</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="mensaje">Mensaje</label>
+                <textarea class="textarea" id="mensaje" name="mensaje" placeholder="Contame tu situación y qué querés lograr."></textarea>
+              </div>
+
+              <div class="full">
+                <button class="btn btn-1" type="button" style="width:100%;">Enviar →</button>
+              </div>
+            </div>
+
+            <div class="formBottom">
+              <span>Si preferís: <strong>benjaminalegre@psicofunnel.com</strong> · <strong>+34 634113164</strong></span>
+              <span>Respuesta clara.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="sep" aria-hidden="true" style="margin-top: 56px;"></div>
+
+    <footer>
+      © <span id="y"></span> PsicoFunnel — claridad, estética y conversión.
+    </footer>
+  </main>
+
+  <script defer>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Reveal cards
+    const cards = document.querySelectorAll('.js-reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('reveal');
+          io.unobserve(e.target);
+        }
       })
-      .then(r=>r.ok?alert('¡Bienvenido! Revisa tu correo 📬'):alert('Ups, intenta de nuevo.'))
-      .then(()=>form.reset())
-      .catch(()=>alert('Error de conexión.'));
-    });
-  }
+    }, {threshold: .25});
+    cards.forEach(c=>io.observe(c));
 
-  /* FAQ accordion */
-  document.querySelectorAll('.faq-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const item=btn.parentElement;
-      const content=item.querySelector('.faq-content');
-      const open=item.classList.toggle('open');
-      content.style.maxHeight=open?content.scrollHeight+'px':'0';
-      btn.setAttribute('aria-expanded',open);
-    });
-  });
+    // Scroll fade vignette
+    const root = document.documentElement;
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const max = 520;
+      const v = Math.min(1, y / max);
+      root.style.setProperty('--scrollFade', v.toFixed(3));
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
 
-  /* Nav móvil toggle */
-  const chk=document.getElementById('toggle'),
-        overlay=document.querySelector('.nav-overlay'),
-        menu=document.querySelector('.nav-links');
-  if(chk){
-    const toggleAria=()=>chk.setAttribute('aria-expanded',chk.checked);
-    chk.addEventListener('change',toggleAria);
-    overlay?.addEventListener('click',()=>{chk.checked=false;toggleAria()});
-    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{chk.checked=false;toggleAria()}));
-    let startX;
-    menu.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
-    menu.addEventListener('touchend',e=>{
-      if(e.changedTouches[0].clientX-startX<-60){chk.checked=false;toggleAria()}
-    },{passive:true});
-  }
-
-  /* Scroll-top */
-  const topbtn=document.getElementById('topbtn');
-  window.addEventListener('scroll',()=>topbtn.classList.toggle('show',window.scrollY>500),{passive:true});
-  topbtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-  /* Año autom. */
-  document.getElementById('year').textContent=new Date().getFullYear();
-
-  /* Fireworks bonus */
-  const fireCard=document.getElementById('fireCard');
-  if(fireCard && window.confetti){
-    const canvas=fireCard.querySelector('#fireCanvas');
-    const conf=confetti.create(canvas,{resize:true,useWorker:true});
-    fireCard.addEventListener('pointerdown',e=>{
-      if(e.target.closest('.pf-fireBtn')) return;
-      const rect=canvas.getBoundingClientRect();
-      const x=(e.clientX-rect.left)/rect.width;
-      const y=(e.clientY-rect.top)/rect.height;
-      for(let i=0;i<5;i++){
-        conf({particleCount:28,spread:60,scalar:1.1,origin:{x,y}});
-      }
-    });
-  }
-});
-</script>
+    // Header height var (for perfect hero centering)
+    const header = document.querySelector('header');
+    const setHeaderH = () => {
+      const h = header ? header.getBoundingClientRect().height : 68;
+      root.style.setProperty('--headerH', Math.round(h) + 'px');
+    };
+    setHeaderH();
+    window.addEventListener('resize', setHeaderH, {passive:true});
+  </script>
 </body>
 </html>
+
